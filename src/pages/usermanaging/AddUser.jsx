@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BlockTable = () => {
+const AddUser = () => {
     return (
         <div>
-            
+            <h1>addUserPage</h1>
         </div>
     );
 };
 
-export default BlockTable;
+export default AddUser;
