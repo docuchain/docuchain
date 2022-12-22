@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BlockTable = () => {
+const service = () => {
     return (
         <div>
-            
+            <h1>service page</h1>
         </div>
     );
 };
 
-export default BlockTable;
+export default service;

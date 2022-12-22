@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BlockTable = () => {
+const block = () => {
     return (
         <div>
-            
+            <h1>블록페이지</h1>
         </div>
     );
 };
 
-export default BlockTable;
+export default block;

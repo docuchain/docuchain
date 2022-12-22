@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BlockTable = () => {
+const Trans = () => {
     return (
         <div>
-            
+           <h1>trans page</h1> 
         </div>
     );
 };
 
-export default BlockTable;
+export default Trans;
