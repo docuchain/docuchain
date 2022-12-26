@@ -22,6 +22,8 @@ const LoginPage = () => {
     } catch (error) {
       console.log(error.message);
     }
+    setEmail("");
+    setPassword("");
   };
 
   //로그인
@@ -36,30 +38,37 @@ const LoginPage = () => {
     } catch (error) {
       console.log(error.message);
     }
+    setEmail("");
+    setPassword("");
   };
   //로그아웃
   const logout = async () => {
     await signOut(authService);
     console.log(authService);
+    setEmail("");
+    setPassword("");
   };
 
   return (
     <div>
+      <h2>로그인창</h2>
       <label>
         ID :{" "}
         <input
           type={"text"}
           name="email"
           placeholder="Email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
       <label>
         PW :{" "}
         <input
-          type={"text"}
+          type={"password"}
           name="password"
           placeholder="Password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
