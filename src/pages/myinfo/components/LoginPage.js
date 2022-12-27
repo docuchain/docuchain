@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../../common/components/Button";
 import {
   createUserWithEmailAndPassword, //회원생성기능
   signInWithEmailAndPassword, //로그인
@@ -72,9 +73,9 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button onClick={register}>회원가입</button>
-      <button onClick={login}>로그인</button>
-      <button onClick={logout}>로그아웃</button>
+      <Button onClick={register}>회원가입</Button>
+      <Button onClick={login}>로그인</Button>
+      <Button onClick={logout}>로그아웃</Button>
     </div>
   );
 };
