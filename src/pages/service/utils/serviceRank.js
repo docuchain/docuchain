@@ -7,17 +7,9 @@ import {
   Title,
   Tooltip,
   Legend,
-  ArcElement,
-  PointElement,
-  LineElement,
-  LineController,
-  BarController,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import "./components/data";
-import { Data } from "./components/data";
-import { Pie } from "react-chartjs-2";
-import { Line } from "react-chartjs-2";
+import "../component/data";
+import { Data } from "../component/data";
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
@@ -26,12 +18,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend,
-  ArcElement,
-  PointElement,
-  LineElement,
-  LineController,
-  BarController
+  Legend
 );
 
 export const options = {
@@ -46,6 +33,7 @@ export const options = {
     },
   },
 };
+
 // map을 이용해서 데이터를 불러온다!
 const labels = Data.map((item) => item.label);
 
@@ -53,21 +41,13 @@ export const data = {
   labels,
   datasets: [
     {
-      type: "line",
-      label: "Dataset 1",
+      label: "누적 호출 상위 TOP5",
       data: Data.map((data) => data.amount),
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-        "rgba(255, 205, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(201, 203, 207, 0.2)",
-      ],
+      backgroundColor: "rgb(40,171,223)",
     },
   ],
 };
+
 const serviceRank = () => {
   return (
     <>

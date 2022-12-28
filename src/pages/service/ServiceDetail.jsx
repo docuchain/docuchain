@@ -26,7 +26,7 @@ const ServiceDetail = () => {
       {/* 버튼(목록으로) */}
       <ToServiceMainBtn />
       <h5>네트워크명 : {user.name}</h5>
-      <h5>타임스탬프 :{user.time}</h5>
+      <h5>타임스탬프 : {user.time}</h5>
       <h5>API 종류 : {user.API}</h5>
       <h5 className="NodeName">
         <NodeName /> {user.node}
