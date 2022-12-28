@@ -18,6 +18,7 @@ import MyInfo from "../pages/myinfo/MyInfo";
 import UserManaging from "../pages/usermanaging/UserManaging";
 import AddUser from "../pages/usermanaging/AddUser";
 import UserModify from "../pages/usermanaging/UserModify";
+import LoginPage from "../pages/myinfo/components/LoginPage";
 const PageRouter = () => {
   return (
     <>
@@ -45,6 +46,7 @@ const PageRouter = () => {
         <Route path="/usermanaging/adduser" element={<AddUser />}></Route>
         <Route path="/usermanaging/:id" element={<UserModify />}></Route>
 
+        <Route path="/login" element={<LoginPage />}></Route>
         {/* exception */}
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

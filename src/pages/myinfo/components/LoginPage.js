@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../common/components/Button";
 import {
   createUserWithEmailAndPassword, //회원생성기능
@@ -7,10 +7,26 @@ import {
 } from "firebase/auth";
 import { authService } from "../../../apis/firebase";
 import { async } from "@firebase/util";
+
+//로그아웃
+export const logout = async () => {
+  await signOut(authService);
+  console.log(authService);
+};
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(`${user.email}로그인 되었습니다`);
+      } else {
+        console.log("로그아웃 되었습니다");
+      }
+    });
+  }, []);
   //회원가입
   const register = async () => {
     try {
@@ -39,13 +55,6 @@ const LoginPage = () => {
     } catch (error) {
       console.log(error.message);
     }
-    setEmail("");
-    setPassword("");
-  };
-  //로그아웃
-  const logout = async () => {
-    await signOut(authService);
-    console.log(authService);
     setEmail("");
     setPassword("");
   };
