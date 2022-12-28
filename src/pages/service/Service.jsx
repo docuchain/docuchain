@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+// import ServiceChart from "./component/ServiceChart";
 
 const service = () => {
-    return (
-        <div>
-            <h1>service page</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>service</h1>
+    </div>
+  );
 };
 
 export default service;
