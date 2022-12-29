@@ -1,11 +1,14 @@
+/* eslint-disable */
 import React from "react";
+import TimeperBlock from "../utils/timeperBlock";
+import AvgBlock from "../utils/avgBlockSize";
+import "../BlockStyle.css";
 
-const BlockChart = () => {
+export default function BlockChart() {
   return (
-    <div>
-      <div>블록차트 컴포넌트</div>
+    <div className="blockChartContainer">
+      <TimeperBlock />
+      <AvgBlock />
     </div>
   );
-};
-
-export default BlockChart;
+}

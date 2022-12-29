@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Button from "../../common/components/Button";
 const MyPage = () => {
   //user state 저장
   const [user, setUser] = useState({
@@ -55,9 +55,7 @@ const MyPage = () => {
           />{" "}
         </label>
 
-        <button type="button" onClick={changePassword}>
-          변경
-        </button>
+        <Button onClick={changePassword}>변경</Button>
       </form>
       <span>{changePwRes}</span>
       <h5 className="myinfo__detailauth">
