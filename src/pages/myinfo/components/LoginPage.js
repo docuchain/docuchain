@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../common/components/Button";
+import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword, //회원생성기능
   signInWithEmailAndPassword, //로그인
@@ -17,18 +18,22 @@ export const logout = async () => {
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
         console.log(`${user.email}로그인 되었습니다`);
+        navigate("/myinfo");
       } else {
         console.log("로그아웃 되었습니다");
       }
     });
   }, []);
+
   //회원가입
-  const register = async () => {
+  const registerUser = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
         authService,
@@ -38,6 +43,7 @@ const LoginPage = () => {
       console.log(user);
     } catch (error) {
       console.log(error.message);
+      setError(error.message);
     }
     setEmail("");
     setPassword("");
@@ -54,6 +60,7 @@ const LoginPage = () => {
       console.log(user);
     } catch (error) {
       console.log(error.message);
+      setError(error.message);
     }
     setEmail("");
     setPassword("");
@@ -61,30 +68,33 @@ const LoginPage = () => {
 
   return (
     <div>
-      <h2>로그인창</h2>
-      <label>
-        ID :{" "}
-        <input
-          type={"text"}
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label>
-        PW :{" "}
-        <input
-          type={"password"}
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <Button onClick={register}>회원가입</Button>
-      <Button onClick={login}>로그인</Button>
-      <Button onClick={logout}>로그아웃</Button>
+      <form>
+        <h2>로그인창</h2>
+        <label>
+          ID :{" "}
+          <input
+            type={"email"}
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          PW :{" "}
+          <input
+            type={"password"}
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <Button onClick={registerUser}>회원가입</Button>
+        <Button onClick={login}>로그인</Button>
+        {/* <Button onClick={logout}>로그아웃</Button> */}
+        {error && <p>다시 입력해 주십시오</p>}
+      </form>
     </div>
   );
 };

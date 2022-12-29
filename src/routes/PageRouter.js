@@ -45,7 +45,7 @@ const PageRouter = () => {
         <Route path="/usermanaging" element={<UserManaging />}></Route>
         <Route path="/usermanaging/adduser" element={<AddUser />}></Route>
         <Route path="/usermanaging/:id" element={<UserModify />}></Route>
-
+        {/* login route */}
         <Route path="/login" element={<LoginPage />}></Route>
         {/* exception */}
         <Route path="*" element={<NotFound />}></Route>

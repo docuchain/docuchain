@@ -6,8 +6,7 @@ import { authService } from "../../../apis/firebase";
 import { logout } from "../../myinfo/components/LoginPage";
 const UserLogo = () => {
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
-
-  const [toggleState, setToggleState] = useState(); //toggle상태저장
+  const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -17,7 +16,7 @@ const UserLogo = () => {
         if (user) {
           setToggleState(
             <ul>
-              <li>이메일자리</li>
+              <li>abc.aaa.com</li>
               <li>
                 <Link to="/myinfo">나의 정보</Link>
               </li>
