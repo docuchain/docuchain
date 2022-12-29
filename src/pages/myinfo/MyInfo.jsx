@@ -1,11 +1,12 @@
 import React from 'react';
-
-const myinfo = () => {
+import LoginPage from './components/LoginPage';
+import MyPage from './components/MyPage';
+const MyInfo = () => {
     return (
         <div>
-            <h1>myinfo페이지</h1>
+            <MyPage/>
         </div>
     );
 };
 
-export default myinfo;
+export default MyInfo;
