@@ -1,10 +1,11 @@
 import React from "react";
-import AvgTransSize from "../utils/avgTransSize";
-import TimeperTrans from "../utils/timeperTrans";
+import AvgTransSize from "../utils/AvgTransSize";
+import TimeperTrans from "../utils/TimeperTrans";
+import "./TransChart.scss";
 
 const TransChart = () => {
   return (
-    <div>
+    <div className="TransChart">
       <TimeperTrans />
       <AvgTransSize />
     </div>
