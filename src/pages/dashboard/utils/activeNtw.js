@@ -1,52 +1,72 @@
-import React from 'react'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { Data } from '../data';
-import { Pie } from 'react-chartjs-2';
+import { collection, getDocs } from "firebase/firestore";
+import React, { useCallback, useEffect, useState } from "react";
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { dbService } from "../../../apis/firebase";
 
-ChartJS.register(ArcElement, Tooltip, Legend,ChartDataLabels);
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#00C49F"];
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-export const data = {
-  labels: Data.map((item)=>item.serviceName),
-  datasets: [
-    {
-      label: '%',
-      data: Data.map((data)=>data.serviceNtw),
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(53, 162, 235, 0.5)',
-        'rgba(53, 102, 235, 0.5)',
-        'rgba(53, 12, 235, 0.5)',
-        
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(53, 102, 235, 1)',
-        'rgba(53, 12, 235, 1)',
-        
-      ],
-      borderWidth: 1,
-      datalabels:{
-
-        color:'black',         // 너무 흐리다 싶어서 잘 보이도록 완전히 검게..
-
-                                // 배경색을 어떻게 세팅했냐에 따라 적절히..
-
-        font:{size:24}        // pixel 단위이고, 수치로 입력
-
-      }
-    },
-  ],
-};
-
-const ActiveNtw = () => {
   return (
-    <div className='ActiveNtw' style={{width:'600px',height:'400px'}} >
-      <h3>서비스별 네트워크 활동 비율</h3>
-      <Pie data={data} />
-    </div>
-  )
-}
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
+function ActiveNtw() {
+  const chartData = collection(dbService, "chartData");
+  const [chartInfo, setChartInfo] = useState([]);
 
-export default ActiveNtw
+  useEffect(() => {
+    async function getChart() {
+      const data = await getDocs(chartData);
+
+      setChartInfo(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+    }
+
+    getChart();
+  }, []);
+
+  return (
+    <PieChart width={600} height={400}>
+      <Tooltip />
+      <Legend />
+      <Pie
+        data={chartInfo}
+        cx={300}
+        cy={200}
+        labelLine={false}
+        label={renderCustomizedLabel}
+        outerRadius={150}
+        fill="#8884d8"
+        dataKey="serviceCnt"
+      >
+        {chartInfo.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+    </PieChart>
+  );
+}
+export default ActiveNtw;

@@ -1,78 +1,71 @@
-import React from 'react'
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-  import { Line } from 'react-chartjs-2';
-  import { Data } from '../data';
-  
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-  
-  export const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top' 
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-    },
-  };
-  
-  const labels = Data.map((item)=>item.label)
-  
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: '네트워크A',
-        data: Data.map((data)=>data.blocktimeA),
-        backgroundColor: 'rgba(255, 99, 132)',
-        borderColor:'rgba(255, 99, 132, 0.5)'
-      },
-      {
-        label: '네트워크B',
-        data: Data.map((data)=>data.blocktimeB),
-        backgroundColor: 'rgba(53, 162, 235)',
-        borderColor:'rgba(53, 162, 235,0.5)'
-      },
-      {
-        label: '네트워크C',
-        data: Data.map((data)=>data.blocktimeC),
-        backgroundColor: 'rgba(53, 102, 235)',
-        borderColor:'rgba(53, 102, 235, 0.5)'
-      },
-      {
-        label: '네트워크D',
-        data: Data.map((data)=>data.blocktimeD),
-        backgroundColor: 'rgba(53, 12, 235)',
-        borderColor:'rgba(53, 12, 235, 0.5)'
-      },
-    ],
-  };
-const NtwBlockTime = () => {
-  return (
-    <div className='NtwBlockTime' style={{width:'600px',height:'400px'}}>
-        <h3>네트워크별 블록생성시간(초)</h3>
-        <Line options={options} data={data} />
-    </div>
-  )
-}
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { dbService } from "../../../apis/firebase";
 
-export default NtwBlockTime
+function NtwBlockTime() {
+  const chartData = collection(dbService, "chartData");
+  const [chartInfo, setChartInfo] = useState([]);
+
+  useEffect(() => {
+    async function getChart() {
+      const data = await getDocs(chartData);
+
+      setChartInfo(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+    }
+
+    getChart();
+  }, []);
+  return (
+    <LineChart width={600} height={400} data={chartInfo}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="label" padding={{ left: 30, right: 30 }} />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line
+        type="monotone"
+        dataKey="networkA"
+        stroke="#0088FE"
+        activeDot={{ r: 8 }}
+        strokeWidth="3px"
+        key={Math.random()}
+      />
+      <Line
+        type="monotone"
+        dataKey="networkB"
+        stroke="#00C49F"
+        strokeWidth="3px"
+        key={Math.random()}
+      />
+      <Line
+        type="monotone"
+        dataKey="networkC"
+        stroke="#FFBB28"
+        activeDot={{ r: 8 }}
+        strokeWidth="3px"
+        key={Math.random()}
+      />
+      <Line
+        type="monotone"
+        dataKey="networkD"
+        stroke="#FF8042"
+        strokeWidth="3px"
+        key={Math.random()}
+      />
+    </LineChart>
+  );
+}
+export default NtwBlockTime;

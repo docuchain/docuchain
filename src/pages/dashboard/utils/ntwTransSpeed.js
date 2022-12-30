@@ -1,74 +1,55 @@
-import React from 'react'
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-  import { Bar } from 'react-chartjs-2';
-import { Data } from '../data';
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { dbService } from "../../../apis/firebase";
 
+function NtwTransSpeed() {
+  const chartData = collection(dbService, "chartData");
+  const [chartInfo, setChartInfo] = useState([]);
 
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  useEffect(() => {
+    async function getChart() {
+      const data = await getDocs(chartData);
 
-  export const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top' 
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
-      },
-      
-    },
-  };
+      setChartInfo(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+    }
 
-  const labels = Data.map((item)=>item.label)
-
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: '네트워크A',
-        data: Data.map((data)=>data.networkA),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: '네트워크B',
-        data: Data.map((data)=>data.networkB),
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-      {
-        label: '네트워크C',
-        data: Data.map((data)=>data.networkC),
-        backgroundColor: 'rgba(53, 102, 235, 0.5)',
-      },
-      {
-        label: '네트워크D',
-        data: Data.map((data)=>data.networkD),
-        backgroundColor: 'rgba(53, 12, 235, 0.5)',
-      },
-    ],
-  };
-const NtwTransSpeed = () => {
-
+    getChart();
+  }, []);
   return (
-    <div className='NtwTransSpeed'style={{width:'600px',height:'400px'}}>
-        <h3>네트워크별 TPS</h3>
-        <Bar options={options} data={data} /></div>
-  )
+    <BarChart
+      width={600}
+      height={400}
+      data={chartInfo}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 0,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="label" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="networkA" fill="#0088FE" key={Math.random()} />
+      <Bar dataKey="networkB" fill="#00C49F" key={Math.random()} />
+      <Bar dataKey="networkC" fill="#FFBB28" key={Math.random()} />
+      <Bar dataKey="networkD" fill="#FF8042" key={Math.random()} />
+    </BarChart>
+  );
 }
-
-export default NtwTransSpeed
+export default NtwTransSpeed;
