@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import TransDetailModal from "./utils/transDetailModal";
+import BlockDetailTitle from "./utils/blockDetailItitle";
+import "./BlockStyle.css";
 
 const BlockDetailData = () => {
-    return (
-        <div>
-            <h1>블록상세 데이터 모달페이지</h1>
-        </div>
-    );
+  return (
+    <>
+      <BlockDetailTitle />
+      <TransDetailModal />
+    </>
+  );
 };
 
 export default BlockDetailData;

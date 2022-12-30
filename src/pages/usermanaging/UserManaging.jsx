@@ -1,7 +1,10 @@
 import React from "react";
-
-const UserManaging = () => {
-  return <div></div>;
+const usermanaging = () => {
+  return (
+    <div>
+      <h1>usermanaging page</h1>
+    </div>
+  );
 };
 
-export default UserManaging;
+export default usermanaging;

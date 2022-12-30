@@ -5,7 +5,6 @@ const MyInfo = () => {
     return (
         <div>
             <MyPage/>
-            <LoginPage/>
         </div>
     );
 };
