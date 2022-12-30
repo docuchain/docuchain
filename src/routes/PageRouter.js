@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
+import Header from "../pages/common/components/Header";
+import Footer from "../pages/common/components/Footer";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Block from "../pages/block/Block";
 import BlockDetail from "../pages/block/BlockDetail";
@@ -16,34 +18,40 @@ import MyInfo from "../pages/myinfo/MyInfo";
 import UserManaging from "../pages/usermanaging/UserManaging";
 import AddUser from "../pages/usermanaging/AddUser";
 import UserModify from "../pages/usermanaging/UserModify";
+import LoginPage from "../pages/myinfo/components/LoginPage";
 const PageRouter = () => {
   return (
-    <Routes>
-      {/* dashboard route */}
-      <Route path="/" element={<Dashboard />}></Route>
-      {/* block route */}
-      <Route path="/block" element={<Block />}></Route>
-      <Route path="/block/:id" element={<BlockDetail />}></Route>
-      <Route path="/block/:id/:data" element={<BlockDetailData />}></Route>
-      {/* trans route */}
-      <Route path="/trans" element={<Trans />}></Route>
-      <Route path="/trans/:id" element={<TransDetail />}></Route>
-      {/* node route */}
-      <Route path="/node" element={<Node />}></Route>
-      <Route path="/node/detail" element={<NodeDetail />}></Route>
-      {/* service page */}
-      <Route path="/service" element={<Service />}></Route>
-      <Route path="/service/:id" element={<ServiceDetail />}></Route>
-      {/* myinfo page */}
-      <Route path="/myinfo" element={<MyInfo />}></Route>
-      {/* usermanaging page */}
-      <Route path="/usermanaging" element={<UserManaging />}></Route>
-      <Route path="/usermanaging/adduser" element={<AddUser />}></Route>
-      <Route path="/usermanaging/:id" element={<UserModify />}></Route>
-
-      {/* exception */}
-      <Route path="*" element={<NotFound />}></Route>
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        {/* dashboard route */}
+        <Route path="/" element={<Dashboard />}></Route>
+        {/* block route */}
+        <Route path="/block" element={<Block />}></Route>
+        <Route path="/block/:id" element={<BlockDetail />}></Route>
+        <Route path="/block/:id/:data" element={<BlockDetailData />}></Route>
+        {/* trans route */}
+        <Route path="/trans" element={<Trans />}></Route>
+        <Route path="/trans/:id" element={<TransDetail />}></Route>
+        {/* node route */}
+        <Route path="/node" element={<Node />}></Route>
+        <Route path="/node/detail" element={<NodeDetail />}></Route>
+        {/* service route */}
+        <Route path="/service" element={<Service />}></Route>
+        <Route path="/service/:id" element={<ServiceDetail />}></Route>
+        {/* myinfo route */}
+        <Route path="/myinfo" element={<MyInfo />}></Route>
+        {/* usermanaging route */}
+        <Route path="/usermanaging" element={<UserManaging />}></Route>
+        <Route path="/usermanaging/adduser" element={<AddUser />}></Route>
+        <Route path="/usermanaging/:id" element={<UserModify />}></Route>
+        {/* login route */}
+        <Route path="/login" element={<LoginPage />}></Route>
+        {/* exception */}
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
+      <Footer />
+    </>
   );
 };
 
