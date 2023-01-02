@@ -1,19 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
-import Header from "../../pages/common/components/Header";
-import NodeTable from "./utils/NodeTable";
+import NodeTable from "./components/NodeTable";
 import NodeTap from "../node/components/NodeTab";
-
-const S = {
-  GlobalContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    height: 100vh;
-  `,
-};
 
 const Node = () => {
   const [selectedTap, setSelectedTap] = useState("NODE_LIST");
