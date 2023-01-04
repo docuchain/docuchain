@@ -18,6 +18,8 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { dbService } from "../../../apis/firebase";
 import { getDocs, collection } from "firebase/firestore";
+// 상세페이지 이동
+import { useNavigate, useParams } from "react-router-dom";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -112,6 +114,19 @@ const TransTable = () => {
     getTrans();
   }, []);
 
+  // 상세페이지 이동 위한 navigate
+  const [transId, setTransId] = useState("");
+  const navigate = useNavigate();
+
+  const toTransDetail = (e) => {
+    console.log(e.target.value);
+    setTransId(e.target.value);
+  };
+
+  useEffect(() => {
+    navigate(`/trans/${transId}`);
+  }, [transId]);
+
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - trans.length) : 0;
@@ -152,6 +167,22 @@ const TransTable = () => {
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {data.time}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {data.transHash}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {data.transSize}
+                <button
+                  className="transDetailBtn"
+                  value={data.transNum}
+                  onClick={toTransDetail}
+                >
+                  트랜잭션상세
+                </button>
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {data.blockNum}
               </TableCell>
             </TableRow>
           ))}
