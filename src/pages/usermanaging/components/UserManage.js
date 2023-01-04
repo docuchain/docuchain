@@ -1,45 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import UserPage from "./UserPage";
+import { dbService } from "../../../apis/firebase";
+import { collection } from "firebase/firestore";
+
 const UserManage = () => {
-  const [data, setData] = useState([]);
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/arr.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const userData = collection(dbService, "user");
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
+  //삭제
   return (
     <div>
-      <div>hello usermanage</div>
-      <table>
-        <thead>
-          <tr>
-            <th>authority</th>
-            <th>email</th>
-            <th>gender</th>
-            <th>Ipaddress</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((element) => (
-            <tr key={element.id}>
-              <td>{element.authorrity}</td>
-              <td>{element.email}</td>
-              <td>{element.gender}</td>
-              <td>{element.ip_address}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <button>
+        <Link to="/usermanaging/adduser">사용자 추가</Link>
+      </button>
+      <UserPage userData={userData} />
     </div>
   );
 };
