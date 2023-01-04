@@ -1,1 +1,19 @@
-
+//ServiceChart 부분
+.ServiceChart {
+  display: flex;
+  flex-direction: row;
+  //추후 변경 예정입니다.
+  font-size: 10px;
+  background-color: "#F4F4F4";
+}
+.serviceCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.serviceChart_Center {
+  width: 1200px;
+  flex-direction: column;
+  align-items: flex-start;
+  // border: 1px solid red;
+}
