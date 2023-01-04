@@ -1,12 +1,11 @@
-import React from 'react';
-import UserManage from './components/UserManage';
+import React from "react";
+import UserManage from "./components/UserManage";
 const usermanaging = () => {
-    return (
-        <div>
-            <h1>usermanaging page</h1>
-            <UserManage />
-        </div>
-    );
+  return (
+    <div>
+      <UserManage />
+    </div>
+  );
 };
 
 export default usermanaging;
