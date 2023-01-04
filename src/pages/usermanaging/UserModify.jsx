@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import UserInfo from "./components/UserInfo";
 
 const UserModify = () => {
-    return (
-        <div>
-            <h1>usermodify page</h1>
-        </div>
-    );
+  return (
+    <div>
+      <UserInfo />
+    </div>
+  );
 };
 
 export default UserModify;
