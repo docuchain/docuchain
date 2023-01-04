@@ -7,6 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
 } from "recharts";
 import { dbService } from "../../../apis/firebase";
 
@@ -46,11 +47,13 @@ function TimePerTrans() {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
+        <Legend />
         <Area
           type="monotone"
           dataKey="transNum"
           stroke="#8884d8"
           fill="#8884d8"
+          key={Math.random()}
         />
       </AreaChart>
     </div>
