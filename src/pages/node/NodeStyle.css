@@ -1,0 +1,12 @@
+.nodeTabContainer {
+  display: flex;
+  width: 90%;
+  margin: 50px 50px;
+}
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  background-color: white;
+}
