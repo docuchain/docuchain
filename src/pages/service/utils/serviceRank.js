@@ -1,60 +1,50 @@
-import React from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import "../component/data";
-import { Data } from "../component/data";
-import { Chart } from "react-chartjs-2";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { dbService } from "../../../apis/firebase";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+function TimePerTrans() {
+  const serviceRef = collection(dbService, "serviceChart");
+  const [serviceChartData, setServiceChartData] = useState([]);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
+  useEffect(() => {
+    async function getService() {
+      const data = await getDocs(serviceRef);
+      console.log(data);
+      setServiceChartData(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+    }
 
-// map을 이용해서 데이터를 불러온다!
-const labels = Data.map((item) => item.label);
+    getService();
+  }, []);
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "누적 호출 상위 TOP5",
-      data: Data.map((data) => data.amount),
-      backgroundColor: "rgb(40,171,223)",
-    },
-  ],
-};
-
-const serviceRank = () => {
   return (
-    <>
-      {" "}
-      <Chart type="bar" data={data} />
-    </>
+    <div style={{ width: "600px" }}>
+      <h3>누적 호출 상위 Top5</h3>
+      <BarChart
+        width={600}
+        height={400}
+        data={serviceChartData}
+        margin={{
+          top: 10,
+          right: 30,
+          left: 0,
+          bottom: 0,
+        }}
+        // 배경화면 주는 컬러
+        style={{ backgroundColor: "#F4F4F4" }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="serviceName" />
+        <YAxis />
+        <Tooltip />
+        <Bar type="monotone" dataKey="serviceNum" fill="#0CE9A6" barSize={30} />
+      </BarChart>
+    </div>
   );
-};
+}
 
-export default serviceRank;
+export default TimePerTrans;
