@@ -19,5 +19,6 @@ const Node = () => {
     // </S.GlobalContainer>
   );
 };
+// 뭐지..
 
 export default Node;
