@@ -14,12 +14,8 @@ import {
   LineController,
   BarController,
 } from "chart.js";
-import { Data } from "../utils/data";
 import { AvgData } from "../utils/avgData";
 import { Chart } from "react-chartjs-2";
-import { blockServiceData } from "./blockServiceData";
-
-console.log(blockServiceData);
 
 ChartJS.register(
   CategoryScale,
