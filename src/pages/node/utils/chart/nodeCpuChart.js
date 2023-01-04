@@ -22,7 +22,7 @@ const data02 = [
   { name: "D2", value: 50 }
 ];
 
-export default function App() {
+export default function nodeCpuChart() {
   return (
     <PieChart width={400} height={400}>
       <Pie

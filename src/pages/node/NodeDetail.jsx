@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NodeCpuChart from './utils/chart/NodeCpuChart'
+import NodeCpuChart from './utils/chart/nodeCpuChart'
 
 const NodeDetail = () => {
     return (
