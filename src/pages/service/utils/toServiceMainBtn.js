@@ -1,11 +1,14 @@
 import React from "react";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-const toServiceMainBtn = () => {
+export default function toServiceMainBtn() {
   return (
-    <>
-      <button className="toServiceMainBtn">목록으로</button>
-    </>
+    <Stack spacing={2} direction="row">
+      <Link to="/service">
+        <Button variant="contained">목록으로</Button>
+      </Link>
+    </Stack>
   );
-};
-
-export default toServiceMainBtn;
+}
