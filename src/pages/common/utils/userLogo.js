@@ -4,10 +4,24 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { authService } from "../../../apis/firebase";
 import { logout } from "../../myinfo/components/LoginPage";
+import PersonIcon from "@mui/icons-material/Person";
+import { flexbox, style } from "@mui/system";
+import { useRecoilValue } from "recoil";
+import { getUserEmail } from "../../../recoil/selector";
 const UserLogo = () => {
+  const emailValue = useRecoilValue(getUserEmail);
+
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
+  const style = {
+    // float: "right",
+    // position: "absolute",
+    position: "fixed",
+    // width: "130px",
+    // height: "90px",
+    //
+  };
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
     setMenu((isOpen) => !isOpen);
@@ -16,7 +30,7 @@ const UserLogo = () => {
         if (user) {
           setToggleState(
             <ul>
-              <li>abc.aaa.com</li>
+              <li>{emailValue}</li>
               <li>
                 <Link to="/myinfo">나의 정보</Link>
               </li>
@@ -49,7 +63,7 @@ const UserLogo = () => {
   return (
     <div>
       <Button type="button" onClick={toggleChange}>
-        사용자버튼자리
+        <PersonIcon />
       </Button>
       {toggleState}
     </div>
