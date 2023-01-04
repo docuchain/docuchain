@@ -1,60 +1,48 @@
-import React from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import "../component/data";
-import { Data2 } from "../component/data";
-import { Chart } from "react-chartjs-2";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { dbService } from "../../../apis/firebase";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+function TimePerTrans() {
+  const serviceRef = collection(dbService, "serviceChart2");
+  const [transChartData, setTransChartData] = useState([]);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
+  useEffect(() => {
+    async function getService() {
+      const data = await getDocs(serviceRef);
+      console.log(data);
+      setTransChartData(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+    }
 
-// map을 이용해서 데이터를 불러온다!
-const labels = Data2.map((item) => item.label);
+    getService();
+  }, []);
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "API 호출 상위 TOP5",
-      data: Data2.map((data) => data.amount),
-      backgroundColor: "rgb(0,120,189)",
-    },
-  ],
-};
-
-const apiCallRank = () => {
   return (
-    <>
-      {" "}
-      <Chart type="bar" data={data} />
-    </>
+    <div style={{ width: "600px" }}>
+      <h3>API 호출 상위 Top5</h3>
+      <BarChart
+        width={600}
+        height={400}
+        data={transChartData}
+        margin={{
+          top: 10,
+          right: 30,
+          left: 0,
+          bottom: 0,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="API" />
+        <YAxis />
+        <Tooltip />
+        <Bar type="monotone" dataKey="APINum" fill="#8884d8" barSize={30} />
+      </BarChart>
+    </div>
   );
-};
+}
 
-export default apiCallRank;
+export default TimePerTrans;
