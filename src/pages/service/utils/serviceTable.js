@@ -66,7 +66,7 @@ export default function StickyHeadTable() {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell>
+                <TableCell key={column.id}>
                   {/* 테이블 메인 타이틀 */}
                   {column.label}
                 </TableCell>
