@@ -53,6 +53,7 @@ function AvgTransSize() {
           dataKey="transSize"
           stroke="#8884d8"
           fill="#8884d8"
+          key={Math.random()}
         />
       </AreaChart>
     </div>
