@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import NodeTable from "./components/NodeTable";
 import NodeTap from "../node/components/NodeTab";
-import NodeDetail from "./NodeDetail";
 
 const Node = () => {
   const [selectedTap, setSelectedTap] = useState("NODE_LIST");
@@ -14,7 +13,6 @@ const Node = () => {
       <p>전체 노드 x개</p>
       <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
       <NodeTable />
-      <NodeDetail />
     </>
     // </S.GlobalContainer>
   );
