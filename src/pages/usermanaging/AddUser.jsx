@@ -8,7 +8,7 @@ const AddUser = () => {
   const userData = collection(dbService, "user");
   const [newUser, setNewUser] = useState({});
   const [Info, setInfo] = useRecoilState(userInfo);
-  const [checked, setChecked] = useState([false, false, false, false, false]);
+  const [checked, setChecked] = useState(0);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -32,11 +32,11 @@ const AddUser = () => {
     setNewUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-      dashboard: checked[0],
-      block: checked[1],
-      trans: checked,
-      node: checked,
-      service: checked,
+      dashboard: e.target.checked,
+      block: e.target.checked,
+      trans: e.target.checked,
+      node: e.target.checked,
+      service: e.target.checked,
     }));
   }
 
