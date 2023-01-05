@@ -1,14 +1,16 @@
 import React from "react";
 
-import NodeCpuChart from "./utils/chart/nodeCpuChart";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
+import NodeRssChart from "./utils/chart/nodeRssChart";
+import NodeUsageChart from "./utils/chart/nodeUsageChart";
 
 const NodeDetail = () => {
   return (
     <div>
       <h1>node detail page</h1>
-      <NodeCpuChart />
       <NodeMemoryChart />
+      {/* <NodeRssChart />
+      <NodeUsageChart /> */}
     </div>
   );
 };
