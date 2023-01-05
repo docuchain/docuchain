@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { setDoc, doc, collection } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { setDoc, doc, collection, getDocs } from "firebase/firestore";
 import { dbService } from "../../apis/firebase";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userInfo } from "../../recoil/atom";
+import { getUserInfo } from "../../recoil/selector";
 const AddUser = () => {
   const userData = collection(dbService, "user");
   const [newUser, setNewUser] = useState({});
+  const [Info, setInfo] = useRecoilState(userInfo);
+  const [checked, setChecked] = useState([false, false, false, false, false]);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -27,9 +32,45 @@ const AddUser = () => {
     setNewUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+      dashboard: checked[0],
+      block: checked[1],
+      trans: checked,
+      node: checked,
+      service: checked,
     }));
   }
 
+  useEffect(() => {
+    async function getUsers() {
+      const data = await getDocs(userData);
+      console.log(data);
+      setInfo(
+        data.docs.map((item) => ({
+          ...item.data(),
+        }))
+      );
+
+      // data.forEach((item) => {
+      //   setName(item.id);
+      // });
+    }
+
+    getUsers();
+  }, []);
+
+  const userValue = useRecoilValue(getUserInfo);
+  console.log(userValue);
+  console.log(userValue[2].email);
+
+  //boolean
+  const checkHandler = (e) => {
+    if (e.target.checked == true) {
+      setChecked(1);
+    } else {
+      setChecked(0);
+    }
+  };
+  console.log(checked);
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -77,41 +118,31 @@ const AddUser = () => {
           <input
             type="checkbox"
             name="dashboard"
-            onChange={changeHandler}
-            true-value="yes"
-            false-value="no"
+            onChange={(e) => checkHandler(e)}
           />
           대시보드
           <input
             type="checkbox"
             name="block"
-            onChange={changeHandler}
-            true-value="yes"
-            false-value="no"
+            onChange={(e) => checkHandler(e)}
           />
           블록
           <input
             type="checkbox"
             name="trans"
-            onChange={changeHandler}
-            true-value="yes"
-            false-value="no"
+            onChange={(e) => checkHandler(e)}
           />
           트랜잭션
           <input
             type="checkbox"
             name="node"
-            onChange={changeHandler}
-            true-value="yes"
-            false-value="no"
+            onChange={(e) => checkHandler(e)}
           />
           노드
           <input
             type="checkbox"
             name="service"
-            onChange={changeHandler}
-            true-value="yes"
-            false-value="no"
+            onChange={(e) => checkHandler(e)}
           />
           서비스
         </label>
