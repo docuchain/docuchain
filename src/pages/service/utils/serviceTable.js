@@ -7,28 +7,45 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { Link } from "react-router-dom";
+
+const ConditionalLink = ({ children, condition, ...props }) => {
+  return !!condition && props.to ? (
+    <Link {...props}>{children}</Link>
+  ) : (
+    <>{children}</>
+  );
+};
 
 const columns = [
-  { id: "serviceName", label: "서비스명", minWidth: 10 },
-  { id: "date", label: "타임스탬프", minWidth: 10 },
-  { id: "ApiKinds", label: "API 종류", minWidth: 0 },
-  { id: "NodeName", label: "노드명", minWidth: 10, to: "/NodeDetail" },
-  { id: "TransNum", label: "트랜잭션번호", minWidth: 10, to: "/TransDetail" },
-  { id: "BlockNum", label: "블록번호", minWidth: 0, to: "/BlockDetail" },
+  {
+    id: "serviceName",
+    label: "서비스명",
+    minWidth: 10,
+    link: "service/serviceDetail",
+  },
+  {
+    id: "date",
+    label: "타임스탬프",
+    minWidth: 10,
+    link: "service/serviceDetail",
+  },
+  {
+    id: "ApiKinds",
+    label: "API 종류",
+    minWidth: 0,
+    link: "service/serviceDetail",
+  },
+  { id: "NodeName", label: "노드명", minWidth: 10, link: "node/nodeDetail" },
+  {
+    id: "TransNum",
+    label: "트랜잭션번호",
+    minWidth: 10,
+    link: "trans/transDetail",
+  },
+  { id: "BlockNum", label: "블록번호", minWidth: 0, link: "block/blockDetail" },
   { id: "state", label: "상태", minWidth: 0 },
 ];
-
-function createData(
-  ServiceName,
-  date,
-  ApiKinds,
-  NodeName,
-  TransNum,
-  BlockNum,
-  state
-) {
-  return { ServiceName, date, ApiKinds, NodeName, TransNum, BlockNum, state };
-}
 
 export default function StickyHeadTable() {
   const [data, setData] = React.useState([]);
@@ -48,6 +65,7 @@ export default function StickyHeadTable() {
   }, []);
 
   const [page, setPage] = React.useState(0);
+  //Rows per page 단위
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
@@ -60,7 +78,7 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: "1200px", overflow: "hidden" }}>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -76,21 +94,23 @@ export default function StickyHeadTable() {
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((element) => {
+              .map((row) => {
                 return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={element.code}
-                  >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
-                      const value = element[column.id];
+                      const value = row[column.id];
+                      //메인 테이블
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {/* condition (조건문) 일치하는 것만 링크 */}
+                          <ConditionalLink
+                            to={`/${column.link}`}
+                            condition={column.link !== undefined}
+                          >
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </ConditionalLink>
                         </TableCell>
                       );
                     })}
