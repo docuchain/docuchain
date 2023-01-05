@@ -9,6 +9,11 @@ const AddUser = () => {
   const [newUser, setNewUser] = useState({});
   const [Info, setInfo] = useRecoilState(userInfo);
   const [checked, setChecked] = useState(0);
+  const [dashboardChecked, setDashboardChecked] = useState(false);
+  const [blockChecked, setBlockChecked] = useState(false);
+  const [transChecked, setTransChecked] = useState(false);
+  const [nodeChecked, setNodeChecked] = useState(false);
+  const [serviceChecked, setServiceChecked] = useState(false);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -17,11 +22,12 @@ const AddUser = () => {
       name: newUser.name,
       email: newUser.email,
       team: newUser.team,
-      dashboard: newUser.dashboard,
-      block: newUser.block,
-      trans: newUser.trans,
-      node: newUser.node,
-      service: newUser.service,
+      //dashboard: newUser.dashboard,
+      dashboard: dashboardChecked,
+      block: blockChecked,
+      trans: transChecked,
+      node: nodeChecked,
+      service: serviceChecked,
       usingService: newUser.usingService,
     });
 
@@ -32,11 +38,16 @@ const AddUser = () => {
     setNewUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-      dashboard: e.target.checked,
-      block: e.target.checked,
-      trans: e.target.checked,
-      node: e.target.checked,
-      service: e.target.checked,
+      // role: e.target.value,
+      // name: e.target.value,
+      // email: e.target.value,
+      // team: e.target.value,
+      // usingService: e.target.value,
+      // dashboard: checkHandler(e),
+      // block: e.target.checked,
+      // trans: e.target.checked,
+      // node: e.target.checked,
+      // service: e.target.checked,
     }));
   }
 
@@ -59,18 +70,50 @@ const AddUser = () => {
   }, []);
 
   const userValue = useRecoilValue(getUserInfo);
-  console.log(userValue);
-  console.log(userValue[2].email);
+  //console.log(userValue);
+  //console.log(userValue[2].email);
 
   //boolean
-  const checkHandler = (e) => {
+  const dashboardCheckHandler = (e) => {
     if (e.target.checked == true) {
-      setChecked(1);
+      setDashboardChecked(true);
     } else {
-      setChecked(0);
+      setDashboardChecked(false);
     }
   };
-  console.log(checked);
+
+  const blockCheckHandler = (e) => {
+    if (e.target.checked == true) {
+      setBlockChecked(true);
+    } else {
+      setBlockChecked(false);
+    }
+  };
+
+  const transCheckHandler = (e) => {
+    if (e.target.checked == true) {
+      setTransChecked(true);
+    } else {
+      setTransChecked(false);
+    }
+  };
+
+  const nodeCheckHandler = (e) => {
+    if (e.target.checked == true) {
+      setNodeChecked(true);
+    } else {
+      setNodeChecked(false);
+    }
+  };
+
+  const serviceCheckHandler = (e) => {
+    if (e.target.checked == true) {
+      setServiceChecked(true);
+    } else {
+      setServiceChecked(false);
+    }
+  };
+  //console.log(checked);
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -118,31 +161,19 @@ const AddUser = () => {
           <input
             type="checkbox"
             name="dashboard"
-            onChange={(e) => checkHandler(e)}
+            onChange={dashboardCheckHandler}
           />
           대시보드
-          <input
-            type="checkbox"
-            name="block"
-            onChange={(e) => checkHandler(e)}
-          />
+          <input type="checkbox" name="block" onChange={blockCheckHandler} />
           블록
-          <input
-            type="checkbox"
-            name="trans"
-            onChange={(e) => checkHandler(e)}
-          />
+          <input type="checkbox" name="trans" onChange={transCheckHandler} />
           트랜잭션
-          <input
-            type="checkbox"
-            name="node"
-            onChange={(e) => checkHandler(e)}
-          />
+          <input type="checkbox" name="node" onChange={nodeCheckHandler} />
           노드
           <input
             type="checkbox"
             name="service"
-            onChange={(e) => checkHandler(e)}
+            onChange={serviceCheckHandler}
           />
           서비스
         </label>
