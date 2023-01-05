@@ -8,3 +8,9 @@ export const userEmail = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
+export const userInfo = atom({
+  key: "userInfo",
+  default: {},
+  effects_UNSTABLE: [persistAtom],
+});
