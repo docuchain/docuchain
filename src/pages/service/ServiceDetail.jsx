@@ -69,15 +69,15 @@ const ServiceDetail = () => {
 
   return (
     <div className="serviceDetail">
-      {/* <h2>서비스</h2>
-      <h3>| 상세정보</h3> */}
+      <h2>서비스</h2>
+      <h3>| 상세정보</h3>
 
       {/* 버튼(목록으로) */}
       {/* <ToServiceMainBtn />
       <h5>네트워크명 {serviceName}</h5>
       <h5>타임스탬프 {date}</h5>
       <h5>API 종류 {ApiKinds}</h5>
-      <h5 className="NodeName">노드명 {NodeName}</h5>
+      <h5 className="NodeName">노드명 {nodeName}</h5>
       <h5 className="TransName">
         {transNum}
         <span>
