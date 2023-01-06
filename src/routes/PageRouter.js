@@ -41,7 +41,7 @@ const PageRouter = () => {
         <Route path="/trans/:id" element={<TransDetail />}></Route>
         {/* node route */}
         <Route path="/node" element={<Node />}></Route>
-        <Route path="/node/detail" element={<NodeDetail />}></Route>
+        <Route path="/node/detail/:nodeName" element={<NodeDetail />}></Route>
         {/* service route */}
         <Route path="/service" element={<Service />}></Route>
         <Route path="/service/:id" element={<ServiceDetail />}></Route>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { colors } from "../../../lib/colors";
-import "../NodeStyle.css";
+import "../NodeStyle.scss";
 
 const NodeTap = ({ selectedTap, setSelectedTap }) => {
   return (

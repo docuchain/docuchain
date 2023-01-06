@@ -1,4 +1,4 @@
-import "../../NodeStyle.css";
+import "../../NodeStyle.scss";
 import React from "react";
 import { PieChart, Pie } from "recharts";
 
