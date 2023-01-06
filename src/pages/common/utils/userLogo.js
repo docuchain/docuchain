@@ -22,6 +22,10 @@ const UserLogo = () => {
     // height: "90px",
     //
   };
+  useEffect(() => {
+    toggleChange();
+  }, []);
+
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
     setMenu((isOpen) => !isOpen);
