@@ -81,25 +81,25 @@ const UserInfo = (props) => {
   }
 
   //업데이트
-  // async function updateData() {
-  //   await updateDoc(doc(userData, userName), {
-  //     name: name,
-  //     color: color,
-  //     taste: taste,
-  //     price: price,
-  //     count: count,
-  //   });
+  async function updateData() {
+    await updateDoc(doc(userData, userName), {
+      dashboard: userDashboard,
+      block: userBlock,
+      trans: userTrans,
+      node: userNode,
+      service: userService,
+    });
 
-  //   alert("수정완료");
-  //   navigate(`/product`);
-  // }
+    alert("수정완료");
+    navigate(`/usermanaging`);
+  }
 
-  // useEffect(() => {
-
-  //   setUserDashboard(userDashboard);
-  // }, []);
-
-  // 체크박스
+  //submithandler
+  function submitHandler(e) {
+    e.preventDefault();
+    updateData();
+  }
+  //checkbox state변경
   const changeDashboardHandler = (e) => {
     if (e.target.checked == true) {
       setUserDashboard(true);
@@ -107,7 +107,6 @@ const UserInfo = (props) => {
       setUserDashboard(false);
     }
   };
-  //console.log(userDashboard);
   const changeBlockHandler = (e) => {
     if (e.target.checked == true) {
       setUserBlock(true);
@@ -136,52 +135,66 @@ const UserInfo = (props) => {
       setUserService(false);
     }
   };
+  console.log(userTrans);
 
   return (
     <div>
-      <h1>사용자 정보</h1>
+      <form onSubmit={submitHandler}>
+        <h1>사용자 정보</h1>
 
-      <div>이름 {userName}</div>
-      <div>소속 {userTeam}</div>
-      <div>이메일(아이디) {userEmail}</div>
+        <div>이름 {userName}</div>
+        <div>소속 {userTeam}</div>
+        <div>이메일(아이디) {userEmail}</div>
 
-      <label>
-        <input
-          type="checkbox"
-          checked={userDashboard}
-          onChange={changeDashboardHandler}
-        />
-        대시보드
-        <input
-          type="checkbox"
-          checked={userBlock}
-          onChange={changeBlockHandler}
-        />
-        블록
-        <input
-          type="checkbox"
-          checked={userTrans}
-          onChange={changeTransHandler}
-        />
-        트랜잭션
-        <input
-          type="checkbox"
-          checked={userNode}
-          onChange={changeNodeHandler}
-        />
-        노드
-        <input
-          type="checkbox"
-          checked={userService}
-          onChange={changeServiceHandler}
-        />
-        서비스
-      </label>
-      <div>유형 {userRole}</div>
+        <label>
+          <input
+            type="checkbox"
+            checked={userDashboard}
+            onChange={changeDashboardHandler}
+            disabled
+          />
+          대시보드
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userBlock}
+            onChange={changeBlockHandler}
+            disabled
+          />
+          블록
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userTrans}
+            onChange={changeTransHandler}
+          />
+          트랜잭션
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userNode}
+            onChange={changeNodeHandler}
+          />
+          노드
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userService}
+            onChange={changeServiceHandler}
+          />
+          서비스
+        </label>
 
-      <button onClick={toUsers}>취소</button>
-      <button>정보 변경</button>
-      <button onClick={deleteData}>사용자 삭제</button>
+        <div>유형 {userRole}</div>
+
+        <button onClick={toUsers}>취소</button>
+        <button>정보 변경</button>
+        <button onClick={deleteData}>사용자 삭제</button>
+      </form>
     </div>
   );
 };
