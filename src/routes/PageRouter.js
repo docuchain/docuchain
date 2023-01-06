@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "../pages/common/components/Header";
@@ -19,10 +19,16 @@ import UserManaging from "../pages/usermanaging/UserManaging";
 import AddUser from "../pages/usermanaging/AddUser";
 import UserModify from "../pages/usermanaging/UserModify";
 import LoginPage from "../pages/myinfo/components/LoginPage";
+import NavBar from "../pages/common/components/NavBar";
+import { useRecoilValue } from "recoil";
+import { getUserUid } from "../recoil/selector";
 const PageRouter = () => {
+  const uidValue = useRecoilValue(getUserUid);
+
   return (
     <>
       <Header />
+      <NavBar />
       <Routes>
         {/* dashboard route */}
         <Route path="/" element={<Dashboard />}></Route>
@@ -41,9 +47,18 @@ const PageRouter = () => {
         <Route path="/service/:id" element={<ServiceDetail />}></Route>
         {/* myinfo route */}
         <Route path="/myinfo" element={<MyInfo />}></Route>
-        {/* usermanaging route */}
-        <Route path="/usermanaging" element={<UserManaging />}></Route>
-        <Route path="/usermanaging/adduser" element={<AddUser />}></Route>
+        {/* usermanaging route 관리자일때만 접근가능 */}
+        <Route
+          path="/usermanaging"
+          element={
+            uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+              <UserManaging />
+            ) : (
+              <LoginPage />
+            )
+          }
+        ></Route>
+        ;<Route path="/usermanaging/adduser" element={<AddUser />}></Route>
         <Route path="/usermanaging/:id" element={<UserModify />}></Route>
         {/* login route */}
         <Route path="/login" element={<LoginPage />}></Route>
