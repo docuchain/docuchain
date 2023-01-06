@@ -163,7 +163,9 @@ const TransTable = () => {
                 {data.serviceName}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {data.transNum}
+                <button value={data.transNum} onClick={toTransDetail}>
+                  {data.transNum}
+                </button>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {data.time}
