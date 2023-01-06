@@ -9,25 +9,38 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: "serviceName", label: "서비스명", minWidth: 10 },
-  { id: "date", label: "타임스탬프", minWidth: 10 },
-  { id: "ApiKinds", label: "API 종류", minWidth: 0 },
-  { id: "NodeName", label: "노드명", minWidth: 10 },
-  { id: "TransNum", label: "트랜잭션번호", minWidth: 10 },
-  { id: "BlockNum", label: "블록번호", minWidth: 0 },
+  { id: "serviceName", label: "서비스명", link: "service/serviceDetail" },
+  { id: "date", label: "타임스탬프", link: "service/serviceDetail" },
+  { id: "ApiKinds", label: "API 종류", link: "service/serviceDetail" },
+  { id: "NodeName", label: "노드명", minWidth: 10, link: "node/nodeDetail" },
+  { id: "TransNum", label: "트랜잭션번호", link: "trans/transDetail" },
+  { id: "TransHash", label: "트랜잭션해시", link: "trans/transDetail" },
+  { id: "BlockNum", label: "블록번호", minWidth: 0, link: "block/blockDetail" },
   { id: "state", label: "상태", minWidth: 0 },
 ];
 
 function createData(
+  id,
   ServiceName,
   date,
   ApiKinds,
   NodeNum,
   TransNum,
+  TransHash,
   BlockNum,
   state
 ) {
-  return { ServiceName, date, ApiKinds, NodeNum, TransNum, BlockNum, state };
+  return {
+    id,
+    ServiceName,
+    date,
+    ApiKinds,
+    NodeNum,
+    TransNum,
+    TransHash,
+    BlockNum,
+    state,
+  };
 }
 
 const ServiceDetail = () => {
@@ -47,43 +60,31 @@ const ServiceDetail = () => {
     fetchdata();
   }, []);
 
-  // useEffect(() => {
-  //   async function getTrans() {
-  //     const data = await query(transRef, where("transNum", "==", parseInt(id)));
-  //     const querySnapshot = await getDocs(data);
-
-  //     querySnapshot.forEach((item) => {
-  //       setTransNum(item.data().transNum);
-  //       setServiceName(item.data().serviceName);
-  //       setTime(item.data().time);
-  //       setTransHash(item.data().transHash);
-  //       setTransSize(item.data().transSize);
-  //       setBlockNum(item.data().blockNum);
-  //       console.log(item.transNum, " : ", item.data());
-  //     });
-  //   }
-  //   getTrans();
-  // }, []);
-
-  const [natworkName, setnatworkName] = useState();
-
   return (
     <div className="serviceDetail">
       <h2>서비스</h2>
       <h3>| 상세정보</h3>
 
       {/* 버튼(목록으로) */}
-      {/* <ToServiceMainBtn />
-      <h5>네트워크명 {serviceName}</h5>
+      <ToServiceMainBtn />
+
+      <div>
+        {columns.map((column) => (
+          <h5 key={column.id}>{column.label}</h5>
+        ))}
+      </div>
+
+      {/* <h5>네트워크명 {serviceName}</h5>
       <h5>타임스탬프 {date}</h5>
       <h5>API 종류 {ApiKinds}</h5>
       <h5 className="NodeName">노드명 {nodeName}</h5>
       <h5 className="TransName">
-        {transNum}
+        {transName}
         <span>
           <CopyBtn />
         </span>
       </h5>
+      <h5>트랜잭션해시 {transHash}</h5>
       <h5>블록번호 {BlockNum}</h5>
       <h5>상태 {state}</h5> */}
     </div>
