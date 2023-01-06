@@ -28,7 +28,7 @@ const transHash = (props) => {
   return (
     <div>
       <h5>
-        트랜잭션해시 : <Link to="/Trans/TransDetail">ddd</Link>
+        트랜잭션해시 : <Link to="/Trans/TransDetail">트랜잭션 해시</Link>
       </h5>
     </div>
   );
