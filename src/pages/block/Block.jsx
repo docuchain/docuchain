@@ -1,6 +1,8 @@
 import React from "react";
 import BlockChart from "./components/BlockChart";
+// import BlockTable from "./components/BlockTable";
 import BlockTable from "./components/BlockTable";
+// import BlockTableCopy  from "./components/BlockTableCopy";
 import "./BlockStyle.css";
 
 const block = () => {
@@ -13,6 +15,7 @@ const block = () => {
       <div className="block" style={{ border: "1px solid red" }}>
         <BlockChart />
         <BlockTable />
+        {/* <BlockTableCopy /> */}
       </div>
     </div>
   );
