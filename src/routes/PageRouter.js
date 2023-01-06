@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "../pages/common/components/Header";
@@ -46,7 +46,10 @@ const PageRouter = () => {
         <Route path="/service" element={<Service />}></Route>
         <Route path="/service/:id" element={<ServiceDetail />}></Route>
         {/* myinfo route */}
-        <Route path="/myinfo" element={<MyInfo />}></Route>
+        <Route
+          path="/myinfo"
+          element={uidValue !== "" ? <MyInfo /> : <LoginPage />}
+        ></Route>
         {/* usermanaging route 관리자일때만 접근가능 */}
         <Route
           path="/usermanaging"
@@ -58,7 +61,16 @@ const PageRouter = () => {
             )
           }
         ></Route>
-        ;<Route path="/usermanaging/adduser" element={<AddUser />}></Route>
+        <Route
+          path="/usermanaging/adduser"
+          element={
+            uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+              <AddUser />
+            ) : (
+              <LoginPage />
+            )
+          }
+        ></Route>
         <Route path="/usermanaging/:id" element={<UserModify />}></Route>
         {/* login route */}
         <Route path="/login" element={<LoginPage />}></Route>
