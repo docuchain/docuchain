@@ -1,75 +1,63 @@
 /* eslint-disable */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
   Legend,
-  ArcElement,
-  PointElement,
-  LineElement,
-  LineController,
-  BarController,
-} from "chart.js";
-import { Data } from "../utils/data";
-import { Chart } from "react-chartjs-2";
+} from "recharts";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  PointElement,
-  LineElement,
-  LineController,
-  BarController
-);
+  function TimePerBlock (){
+    const [data, setData] = useState([]);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js line Chart",
-    },
-  },
-};
-
-const labels = Data.map((item) => item.label);
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      type: "line",
-      label: "시간 당 블록 수(개)",
-      data: Data.map((data) => data.amount),
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-        "rgba(255, 205, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(201, 203, 207, 0.2)",
-      ],
-    },
-  ],
-};
-
-export default function TimeperBlock() {
-  return (
-    <div style={{ width: 600, heigth: 200 }}>
-      <Chart type="line" data={data} />
+    const fetchdata = async () => {
+      try {
+        const res = await fetch(
+          "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/block/avgBlock.json"
+        );
+        const result = await res.json();
+        setData([...result]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchdata();
+    }, []);
+      return (
+    <div style={{ width: "600px" }}>
+      <h3>시간 당 블록 수(개)</h3>
+      <AreaChart
+        width={600}
+        height={400}
+        data={data}
+        margin={{
+          top: 10,
+          right: 30,
+          left: 0,
+          bottom: 0,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="avgTime" />
+        <YAxis/>
+        <Tooltip />
+        <Legend />
+        <Area
+          type="monotone"
+          dataKey="timePerBlockData"
+          stroke="#8884d8"
+          fill="#8884d8"
+          key={Math.random()}
+        />
+      </AreaChart>
     </div>
   );
-}
+  };
+  
+  export default TimePerBlock;
+
