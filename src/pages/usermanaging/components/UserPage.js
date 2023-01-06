@@ -93,7 +93,7 @@ const UserPage = (props) => {
   const { userData } = props;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [name, setName] = useState();
+  // const [name, setName] = useState();
   const navigate = useNavigate();
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -101,16 +101,16 @@ const UserPage = (props) => {
   useEffect(() => {
     async function getUsers() {
       const data = await getDocs(userData);
-      console.log(data);
+      // console.log(data);
       setUsers(
         data.docs.map((item) => ({
           ...item.data(),
         }))
       );
 
-      data.forEach((item) => {
-        setName(item.id);
-      });
+      // data.forEach((item) => {
+      //   setName(item.id);
+      // });
     }
 
     getUsers();
@@ -137,17 +137,27 @@ const UserPage = (props) => {
     }
   };
 
-  //삭제
-  async function deleteData() {
-    if (window.confirm("정말 삭제합니까?")) {
-      await deleteDoc(doc(userData, name));
-      alert("삭제되었습니다.");
-      navigate(`/usermanaging`);
-    } else {
-      alert("취소합니다.");
-    }
-  }
+  // //삭제
+  // async function deleteData() {
+  //   if (window.confirm("정말 삭제합니까?")) {
+  //     await deleteDoc(doc(userData, name));
+  //     alert("삭제되었습니다.");
+  //   } else {
+  //     alert("취소합니다.");
+  //   }
+  // }
 
+  //toUsersDetail
+  const [usersId, setUsersId] = useState("");
+
+  const toUsersDetail = (e) => {
+    setUsersId(e.target.value);
+    console.log(e.target.value);
+  };
+
+  useEffect(() => {
+    navigate(`/usermanaging/${usersId}`);
+  }, [usersId]);
   return (
     <TableContainer component={Paper} style={{ width: "1200px" }}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -163,7 +173,7 @@ const UserPage = (props) => {
             <TableCell align="center">노드</TableCell>
             <TableCell align="center">서비스</TableCell>
             <TableCell align="center">이용중인 서비스</TableCell>
-            <TableCell align="center">삭제</TableCell>
+            <TableCell align="center">상세보기</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -208,8 +218,13 @@ const UserPage = (props) => {
                 {data.usingService}
               </TableCell>
 
-              <TableCell style={{ width: 160 }} align="center">
+              {/* <TableCell style={{ width: 160 }} align="center">
                 <button onClick={deleteData}>{"❌"}</button>
+              </TableCell> */}
+              <TableCell>
+                <button value={data.name} onClick={toUsersDetail}>
+                  상세보기
+                </button>
               </TableCell>
             </TableRow>
           ))}
