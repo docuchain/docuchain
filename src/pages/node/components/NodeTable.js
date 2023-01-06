@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 
 import StickyHeadTable from "./StickyHeader";
-import "../NodeStyle.css";
+import "../NodeStyle.scss";
 
 const NodeTable = () => {
   return (
