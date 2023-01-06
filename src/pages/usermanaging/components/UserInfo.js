@@ -37,11 +37,11 @@ const UserInfo = (props) => {
   const [userEmail, setUserEmail] = useState();
   const [userRole, setUserRole] = useState();
   //체크박스
-  const [userDashboard, setUserDashboard] = useState();
-  const [userBlock, setUserBlock] = useState();
-  const [userTrans, setUserTrans] = useState();
-  const [userNode, setUserNode] = useState();
-  const [userService, setUserService] = useState();
+  const [userDashboard, setUserDashboard] = useState("");
+  const [userBlock, setUserBlock] = useState("");
+  const [userTrans, setUserTrans] = useState("");
+  const [userNode, setUserNode] = useState("");
+  const [userService, setUserService] = useState("");
 
   // 이전 페이지 이동
   const navigate = useNavigate();
@@ -59,6 +59,10 @@ const UserInfo = (props) => {
         setUserTeam(item.data().team);
         setUserEmail(item.data().email);
         setUserDashboard(item.data().dashboard);
+        setUserBlock(item.data().block);
+        setUserTrans(item.data().trans);
+        setUserNode(item.data().node);
+        setUserService(item.data().service);
         setUserRole(item.data().role);
       });
     }
@@ -94,6 +98,45 @@ const UserInfo = (props) => {
 
   //   setUserDashboard(userDashboard);
   // }, []);
+
+  // 체크박스
+  const changeDashboardHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserDashboard(true);
+    } else {
+      setUserDashboard(false);
+    }
+  };
+  //console.log(userDashboard);
+  const changeBlockHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserBlock(true);
+    } else {
+      setUserBlock(false);
+    }
+  };
+  const changeTransHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserTrans(true);
+    } else {
+      setUserTrans(false);
+    }
+  };
+  const changeNodeHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserNode(true);
+    } else {
+      setUserNode(false);
+    }
+  };
+  const changeServiceHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserService(true);
+    } else {
+      setUserService(false);
+    }
+  };
+
   return (
     <div>
       <h1>사용자 정보</h1>
@@ -101,10 +144,39 @@ const UserInfo = (props) => {
       <div>이름 {userName}</div>
       <div>소속 {userTeam}</div>
       <div>이메일(아이디) {userEmail}</div>
-      <div>
-        <input type="checkbox" />
+
+      <label>
+        <input
+          type="checkbox"
+          checked={userDashboard}
+          onChange={changeDashboardHandler}
+        />
         대시보드
-      </div>
+        <input
+          type="checkbox"
+          checked={userBlock}
+          onChange={changeBlockHandler}
+        />
+        블록
+        <input
+          type="checkbox"
+          checked={userTrans}
+          onChange={changeTransHandler}
+        />
+        트랜잭션
+        <input
+          type="checkbox"
+          checked={userNode}
+          onChange={changeNodeHandler}
+        />
+        노드
+        <input
+          type="checkbox"
+          checked={userService}
+          onChange={changeServiceHandler}
+        />
+        서비스
+      </label>
       <div>유형 {userRole}</div>
 
       <button onClick={toUsers}>취소</button>
