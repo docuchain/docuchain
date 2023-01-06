@@ -8,8 +8,8 @@ const AllNode = () => {
   return (
     <div>
       <h2>전체노드 지원현황 페이지</h2>
-      {/* <NodeNetworkChart/>
-      <NodeTrafficChart/> */}
+      <NodeNetworkChart/>
+      <NodeTrafficChart/>
       <NodeCpuChart/>
     </div>
   );
