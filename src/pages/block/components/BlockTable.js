@@ -8,6 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useEffect, useState } from "react";
+// import { Link } from 'react-router-dom';
+// 
+import TableRowCompo from '../utils/TableRowCompo';
+
 
 // 테이블 헤더 데이터
 const columns = [
@@ -62,9 +66,6 @@ const fetchdata = async () => {
     fetchdata();
   }, []);
 
-  // 삭제 
-  // console.log(data);
-
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -100,28 +101,7 @@ const fetchdata = async () => {
             : data
           ).map((datael, idx) => {
                 return (
-                //  <TableRow  datael={datael} idx={idx}/>
-                  <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
-                    <TableCell component="th" scope="row">
-                      {datael.serviceName}
-                    </TableCell>
-                    <TableCell style={{ width: 160 }} align="left">
-                      {datael.blockNumber}
-                    </TableCell>
-                    <TableCell style={{ width: 160 }} align="left">
-                      {datael.timeStamp}
-                    </TableCell>
-                    <TableCell style={{ width: 160 }} align="left">
-                      {datael.blockHash}
-                    </TableCell>
-                    <TableCell style={{ width: 160 }} align="left">
-                      {datael.blockSize}
-                    </TableCell>
-                    <TableCell style={{ width: 160 }} align="left">
-                      {`0`} 
-                      {/* 임의값 0 설정, 추후에 데이터 다시 만들어서 넣을 예정 -> 목데이터 만들 때 빠짐  */}
-                    </TableCell>
-                  </TableRow>
+                 <TableRowCompo datael={datael} idx={idx} />
                 );
               })}
           </TableBody>
@@ -139,3 +119,21 @@ const fetchdata = async () => {
     </Paper>
   );
 }
+  /*
+  const ConditionalLink = ({ children, condition, ...props }) => {
+    return !!condition && props.to ? (
+      <Link {...props}>{children}</Link>
+    ) : (
+      <>{children}</>
+    );
+  };
+
+  <ConditionalLink
+    to={`/${column.link}`}
+    condition={column.link !== undefined}
+  >
+    {column.format && typeof value === "number"
+      ? column.format(value)
+      : value}
+  </ConditionalLink>
+  */ 

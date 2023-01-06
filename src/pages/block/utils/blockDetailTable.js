@@ -8,44 +8,64 @@ import Paper from "@mui/material/Paper";
 // btns
 import DetailBtn from "../utils/detailBtn";
 import CopyBtn from "./copyBtn";
+import { useState, useEffect } from "react";
+// 
 
-function createData(name, data, btn) {
-  return { name, data, btn };
-}
-
-const rows = [
-  createData("서비스명", "hihi"),
-  createData("블록번호", "hihihihihihihihi"),
-  createData("타임스탬프", "hihihihihihi"),
-  createData("블록해시", "hihihihi"),
-  createData("블록크기", "hihihihihihihihihihihihihihihihi"),
-  createData("트랜잭션 수", 5),
-];
 export default function BlockDetailTable() {
+// fetc h데이터 
+  const [data, setData] = useState([]);
+
+  // const fetchdata = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/block/service.json"
+  //     );
+  //     const result = await res.json();
+  //     setData([...result]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
+
+// table row
+  // function createData(name, contents) {
+  //   return { name, contents};
+  // }
+  
+  // const rows = [
+  //   createData("서비스명","서비스"),
+  //   createData("블록번호", "블록번호"),
+  //   createData("타임스탬프", "타임스탬프"),
+  //   createData("블록해시", "블록해시"),
+  //   createData("블록크기", "블록크기"),
+  //   createData("트랜잭션 수", 5),
+  // ];
+  console.log(data);
+
   return (
     <>
       <div className="blockDetailTable">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 600 }} aria-label="simple table">
             <TableBody>
-              {/* javascript */}
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row" style={{ width: 100 }}>
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="left">{row.data}</TableCell>
-                  {/* tableCell 마지막에 btn 추가해야 됨 */}
-                </TableRow>
-              ))}
+              <TableRow>
+                <TableCell>서비스명</TableCell>
+                <TableCell>data</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>블록번호</TableCell><TableCell>data</TableCell></TableRow>
+              <TableRow><TableCell>타임스탬프</TableCell><TableCell>data</TableCell></TableRow>
+              <TableRow><TableCell>블록해시</TableCell><TableCell>data</TableCell> <TableCell><CopyBtn /></TableCell>
+              </TableRow>
+              <TableRow><TableCell>블록크기</TableCell><TableCell>data</TableCell></TableRow>
+              <TableRow><TableCell>트랜잭션 수</TableCell><TableCell>data</TableCell><DetailBtn /></TableRow>
             </TableBody>
           </Table>
         </TableContainer>
-        <CopyBtn />
-        <DetailBtn />
       </div>
     </>
   );
