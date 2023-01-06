@@ -27,25 +27,45 @@ const UserLogo = () => {
     setMenu((isOpen) => !isOpen);
     if (isOpen) {
       authService.onAuthStateChanged((user) => {
+        //로그인 상태일때
         if (user) {
-          setToggleState(
-            <ul>
-              <li>{emailValue}</li>
-              <li>
-                <Link to="/myinfo">나의 정보</Link>
-              </li>
-              {/* 관리자 전용 클릭시 사용자관리 페이지로 넘어감 */}
-              <li>
-                <Link to="/usermanaging">사용자 관리</Link>
-              </li>
-              <li>
-                <Link to="/" onClick={logout}>
-                  로그아웃
-                </Link>
-              </li>
-            </ul>
-          );
+          //관리자 로그인 할 경우
+          if (user.uid === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2") {
+            setToggleState(
+              <ul>
+                {/* <li>{emailValue}</li> */}
+                <li>
+                  <Link to="/myinfo">나의 정보</Link>
+                </li>
+                {/* 관리자 전용 클릭시 사용자관리 페이지로 넘어감 */}
+                <li>
+                  <Link to="/usermanaging">사용자 관리</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={logout}>
+                    로그아웃
+                  </Link>
+                </li>
+              </ul>
+            );
+          } else {
+            //일반 사용자 로그인 할 경우
+            setToggleState(
+              <ul>
+                {/* <li>{emailValue}</li> */}
+                <li>
+                  <Link to="/myinfo">나의 정보</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={logout}>
+                    로그아웃
+                  </Link>
+                </li>
+              </ul>
+            );
+          }
         } else {
+          //로그 아웃 상태일때
           setToggleState(
             <ul>
               <li>

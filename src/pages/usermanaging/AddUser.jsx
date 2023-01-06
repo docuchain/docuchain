@@ -161,7 +161,6 @@ const AddUser = () => {
             name="email"
             onChange={changeHandler}
             placeholder="이메일을 입력해주세요."
-            pattern="/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/"
           />
         </label>
         <br />
