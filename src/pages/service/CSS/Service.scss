@@ -1,0 +1,34 @@
+//ServiceChart 부분
+.serviceMain_Center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  border: 1px solid red;
+  background-color: #f4f7ff;
+}
+.ServiceChart {
+  display: flex;
+  flex-direction: center;
+  //추후 변경 예정입니다.
+  font-size: 10px;
+  background-color: "#F4F4F4";
+}
+.serviceChart_Center {
+  position: relative;
+  width: 1200px;
+  flex-direction: center;
+  align-items: flex-start;
+  border: 1px solid blue;
+  // border: 1px solid red;
+}
+.serviceChart_Top5 {
+  width: 50%;
+  border-radius: 20px;
+}
+.Barchart_apiCallRank {
+  margin-left: 10px;
+}
+.serviceTable {
+  margin-top: 10px;
+}
