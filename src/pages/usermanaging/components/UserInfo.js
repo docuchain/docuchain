@@ -37,11 +37,11 @@ const UserInfo = (props) => {
   const [userEmail, setUserEmail] = useState();
   const [userRole, setUserRole] = useState();
   //체크박스
-  const [userDashboard, setUserDashboard] = useState();
-  const [userBlock, setUserBlock] = useState();
-  const [userTrans, setUserTrans] = useState();
-  const [userNode, setUserNode] = useState();
-  const [userService, setUserService] = useState();
+  const [userDashboard, setUserDashboard] = useState("");
+  const [userBlock, setUserBlock] = useState("");
+  const [userTrans, setUserTrans] = useState("");
+  const [userNode, setUserNode] = useState("");
+  const [userService, setUserService] = useState("");
 
   // 이전 페이지 이동
   const navigate = useNavigate();
@@ -59,6 +59,10 @@ const UserInfo = (props) => {
         setUserTeam(item.data().team);
         setUserEmail(item.data().email);
         setUserDashboard(item.data().dashboard);
+        setUserBlock(item.data().block);
+        setUserTrans(item.data().trans);
+        setUserNode(item.data().node);
+        setUserService(item.data().service);
         setUserRole(item.data().role);
       });
     }
@@ -77,39 +81,120 @@ const UserInfo = (props) => {
   }
 
   //업데이트
-  // async function updateData() {
-  //   await updateDoc(doc(userData, userName), {
-  //     name: name,
-  //     color: color,
-  //     taste: taste,
-  //     price: price,
-  //     count: count,
-  //   });
+  async function updateData() {
+    await updateDoc(doc(userData, userName), {
+      dashboard: userDashboard,
+      block: userBlock,
+      trans: userTrans,
+      node: userNode,
+      service: userService,
+    });
 
-  //   alert("수정완료");
-  //   navigate(`/product`);
-  // }
+    alert("수정완료");
+    navigate(`/usermanaging`);
+  }
 
-  // useEffect(() => {
+  //submithandler
+  function submitHandler(e) {
+    e.preventDefault();
+    updateData();
+  }
+  //checkbox state변경
+  const changeDashboardHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserDashboard(true);
+    } else {
+      setUserDashboard(false);
+    }
+  };
+  const changeBlockHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserBlock(true);
+    } else {
+      setUserBlock(false);
+    }
+  };
+  const changeTransHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserTrans(true);
+    } else {
+      setUserTrans(false);
+    }
+  };
+  const changeNodeHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserNode(true);
+    } else {
+      setUserNode(false);
+    }
+  };
+  const changeServiceHandler = (e) => {
+    if (e.target.checked == true) {
+      setUserService(true);
+    } else {
+      setUserService(false);
+    }
+  };
+  console.log(userTrans);
 
-  //   setUserDashboard(userDashboard);
-  // }, []);
   return (
     <div>
-      <h1>사용자 정보</h1>
+      <form onSubmit={submitHandler}>
+        <h1>사용자 정보</h1>
 
-      <div>이름 {userName}</div>
-      <div>소속 {userTeam}</div>
-      <div>이메일(아이디) {userEmail}</div>
-      <div>
-        <input type="checkbox" />
-        대시보드
-      </div>
-      <div>유형 {userRole}</div>
+        <div>이름 {userName}</div>
+        <div>소속 {userTeam}</div>
+        <div>이메일(아이디) {userEmail}</div>
 
-      <button onClick={toUsers}>취소</button>
-      <button>정보 변경</button>
-      <button onClick={deleteData}>사용자 삭제</button>
+        <label>
+          <input
+            type="checkbox"
+            checked={userDashboard}
+            onChange={changeDashboardHandler}
+            disabled
+          />
+          대시보드
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userBlock}
+            onChange={changeBlockHandler}
+            disabled
+          />
+          블록
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userTrans}
+            onChange={changeTransHandler}
+          />
+          트랜잭션
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userNode}
+            onChange={changeNodeHandler}
+          />
+          노드
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={userService}
+            onChange={changeServiceHandler}
+          />
+          서비스
+        </label>
+
+        <div>유형 {userRole}</div>
+
+        <button onClick={toUsers}>취소</button>
+        <button>정보 변경</button>
+        <button onClick={deleteData}>사용자 삭제</button>
+      </form>
     </div>
   );
 };
