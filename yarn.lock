@@ -72,11 +72,11 @@
     "@babel/code-frame" "^7.18.6"
     "@babel/generator" "^7.20.7"
     "@babel/helper-compilation-targets" "^7.20.7"
-    "@babel/helper-module-transforms" "^7.20.7"
+    "@babel/helper-module-transforms" "^7.20.11"
     "@babel/helpers" "^7.20.7"
     "@babel/parser" "^7.20.7"
     "@babel/template" "^7.20.7"
-    "@babel/traverse" "^7.20.7"
+    "@babel/traverse" "^7.20.12"
     "@babel/types" "^7.20.7"
     "convert-source-map" "^1.7.0"
     "debug" "^4.1.0"
@@ -164,6 +164,7 @@
     "@babel/helper-member-expression-to-functions" "^7.20.7"
     "@babel/helper-optimise-call-expression" "^7.18.6"
     "@babel/helper-replace-supers" "^7.20.7"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.20.0"
     "@babel/helper-split-export-declaration" "^7.18.6"
 
 "@babel/helper-create-regexp-features-plugin@^7.18.6", "@babel/helper-create-regexp-features-plugin@^7.20.5":
@@ -2067,10 +2068,10 @@
   dependencies:
     "@jest/types" "^28.1.3"
     "@types/node" "*"
-    "chalk" "^4.0.0"
-    "jest-message-util" "^28.1.3"
-    "jest-util" "^28.1.3"
-    "slash" "^3.0.0"
+    chalk "^4.0.0"
+    jest-message-util "^28.1.3"
+    jest-util "^28.1.3"
+    slash "^3.0.0"
 
 >>>>>>> 34436032847a666f19fa8bda7e92808bbdce0b1a
 "@jest/core@^27.5.1":
@@ -2418,7 +2419,7 @@
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@mui/base" "5.0.0-alpha.112"
-    "@mui/core-downloads-tracker" "^5.11.2"
+    "@mui/core-downloads-tracker" "^5.11.3"
     "@mui/system" "^5.11.2"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.2"
@@ -3286,7 +3287,7 @@
   resolved "https://registry.npmjs.org/@typescript-eslint/experimental-utils/-/experimental-utils-5.47.0.tgz"
   integrity sha512-DAP8xOaTAJLxouU0QrATiw8o/OHxxbUBXtkf9v+bCCU6tbJUn24xwB1dHFw3b5wYq4XvC1z5lYEN0g/Rx1sjzA==
   dependencies:
-    "@typescript-eslint/utils" "5.47.0"
+    "@typescript-eslint/utils" "5.48.0"
 
 "@typescript-eslint/parser@^5.0.0", "@typescript-eslint/parser@^5.5.0":
   version "5.47.0"
@@ -3303,8 +3304,8 @@
   resolved "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-5.47.0.tgz"
   integrity sha512-dvJab4bFf7JVvjPuh3sfBUWsiD73aiftKBpWSfi3sUkysDQ4W8x+ZcFpNp7Kgv0weldhpmMOZBjx1wKN8uWvAw==
   dependencies:
-    "@typescript-eslint/types" "5.47.0"
-    "@typescript-eslint/visitor-keys" "5.47.0"
+    "@typescript-eslint/types" "5.48.0"
+    "@typescript-eslint/visitor-keys" "5.48.0"
 
 "@typescript-eslint/type-utils@5.47.0":
   version "5.47.0"
@@ -5715,7 +5716,7 @@ eslint@*, "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^3 || ^4 
   resolved "https://registry.npmjs.org/eslint/-/eslint-8.30.0.tgz"
   integrity sha512-MGADB39QqYuzEGov+F/qb18r4i7DohCDOfatHaxI2iGlPuC65bwG2gxgO+7DkyL38dRFaRH7RaRAgU6JKL9rMQ==
   dependencies:
-    "@eslint/eslintrc" "^1.4.0"
+    "@eslint/eslintrc" "^1.4.1"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
@@ -9491,9 +9492,9 @@ pretty-format@^29.0.0, pretty-format@^29.3.1:
   "version" "28.1.3"
   dependencies:
     "@jest/schemas" "^28.1.3"
-    "ansi-regex" "^5.0.1"
-    "ansi-styles" "^5.0.0"
-    "react-is" "^18.0.0"
+    ansi-regex "^5.0.1"
+    ansi-styles "^5.0.0"
+    react-is "^18.0.0"
 
 >>>>>>> 34436032847a666f19fa8bda7e92808bbdce0b1a
 "pretty-format@^29.0.0", "pretty-format@^29.3.1":
@@ -9794,7 +9795,7 @@ react-router@6.5.0:
   resolved "https://registry.npmjs.org/react-router/-/react-router-6.5.0.tgz"
   integrity sha512-fqqUSU0NC0tSX0sZbyuxzuAzvGqbjiZItBQnyicWlOUmzhAU8YuLgRbaCL2hf3sJdtRy4LP/WBrWtARkMvdGPQ==
   dependencies:
-    "@remix-run/router" "1.1.0"
+    "@remix-run/router" "1.2.1"
 
 react-scripts@5.0.1:
   version "5.0.1"
