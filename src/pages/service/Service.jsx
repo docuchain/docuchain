@@ -5,12 +5,14 @@ import "./CSS/Service.scss";
 
 const service = () => {
   return (
-    <div className="serviceCenter">
-      <h1>서비스</h1>
+    <div className="serviceMain_Center">
+      <h1 className="serviceMain_Name">서비스</h1>
       <p>전체 발급 0.000건</p>
       <div className="serviceChart_Center">
         <ServiceChart />
-        <ServiceTable />
+        <div className="serviceTable">
+          <ServiceTable />
+        </div>
       </div>
     </div>
   );

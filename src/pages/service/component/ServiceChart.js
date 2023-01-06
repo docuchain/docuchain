@@ -5,9 +5,16 @@ import ApiCallRank from "../utils/apiCallRank";
 
 const ServiceChart = () => {
   return (
-    <div className="ServiceChart" style={{ backgroundColor: "#F4F4F4" }}>
-      <ServiceRank className="ServiceRank" />
-      <ApiCallRank />
+    <div className="ServiceChart">
+      <div className="serviceChart_Top5" style={{ backgroundColor: "#ffffff" }}>
+        <ServiceRank />
+      </div>
+      <div
+        className="serviceChart_Top5 Barchart_apiCallRank"
+        style={{ backgroundColor: "#ffffff" }}
+      >
+        <ApiCallRank />
+      </div>
     </div>
   );
 };

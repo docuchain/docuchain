@@ -1,4 +1,4 @@
-import { userEmail, userUid } from "./atom";
+import { userEmail, userUid, userInfo } from "./atom";
 import { selector } from "recoil";
 
 export const getUserEmail = selector({
@@ -14,5 +14,12 @@ export const getUserUid = selector({
   get: ({ get }) => {
     const uid = get(userUid);
     return uid;
+  },
+});
+export const getUserInfo = selector({
+  key: "getUserInfo",
+  get: ({ get }) => {
+    const info = get(userInfo);
+    return info;
   },
 });
