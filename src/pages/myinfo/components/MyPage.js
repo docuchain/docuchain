@@ -14,17 +14,25 @@ const MyPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [isPassword, setIsPassword] = useState();
-
+  const [isPassword, setIsPassword] = useState(); // 비밀번호, 비밀번호 재확인 같은지여부확인
+  //비밀번호 변경함수
   const onPasswordChange = (data) => {
     if (data.password !== data.passwordRepeat) {
       setIsPassword(<p>비밀번호 입력값을 같게해주세요</p>);
-      console.log("비밀번호 입력값을 같게해주세요");
       return;
     } else {
       setIsPassword(<p></p>);
+      let newPassword = data.password;
+      updatePassword(nowUser, newPassword)
+        .then(() => {
+          alert("success!! passwordchanged!");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     console.log(data);
+    console.log(nowUser);
   };
   const onError = (error) => {
     console.log(error);
@@ -36,19 +44,6 @@ const MyPage = () => {
     name: "홍길동",
     team: "디지털존",
   });
-
-  //비밀번호 변경 함수
-  // const changePassword = (e) => {
-  //   if (password.length < 1 || repeatPassword.length < 1) {
-  //     setChangePwRes("비밀번호를 입력해주십시오");
-  //   } else if (password === repeatPassword) {
-  //     setChangePwRes("비밀번호가 변경 되었습니다");
-  //   } else if (password !== repeatPassword) {
-  //     setChangePwRes("비밀번호가 일치하지 않습니다");
-  //   }
-  //   setPassword("");
-  //   setRepeatPassword("");
-  // };
 
   //오늘 날짜 저장
   const today = new Date();
@@ -96,7 +91,6 @@ const MyPage = () => {
         </label>
         <Button type="submit">변경</Button>
         {errors && <span>{errors?.password?.message}</span>}
-        {/* {errors && <span>{errors?.passwordRepeat?.message}</span>} */}
         {isPassword}
       </form>
       <h5 className="myinfo__detailauth">
