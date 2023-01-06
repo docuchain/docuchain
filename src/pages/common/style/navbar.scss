@@ -1,0 +1,54 @@
+// logo
+
+// avatar
+.avatar{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.avatarImg{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background: gray;
+}
+.avatarName{
+    margin: 28px 0 10px;
+    font-size: 1.6rem;
+    color:#fff;
+}
+.avatarJob{
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+}
+
+// navbarList
+a{
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+}
+.logo{
+    height: 150px;
+}
+.avatar{
+    height: 250px;
+}
+.navList ul{
+    padding: 0 20px;
+
+}
+.navList li{
+    text-align-last: left;
+    text-indent: 70px;
+    padding: 12px 0;
+    margin-bottom: 14px;
+}
+
+.navList li:hover{
+    background: #4e81ef;
+    border-radius: 12px;
+}
+.navList li:hover a{
+    color:white;
+}
