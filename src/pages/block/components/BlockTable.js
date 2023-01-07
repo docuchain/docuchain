@@ -1,3 +1,4 @@
+/*eslint-disable*/ 
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -7,9 +8,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { useEffect, useState } from "react";
-// import { Link } from 'react-router-dom';
-// 
+import { useEffect, useState, } from "react";
+// import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// row열로 분리
 import TableRowCompo from '../utils/TableRowCompo';
 
 
@@ -48,12 +50,10 @@ const columns = [
 
 export default function BlockTable() {
 
-// 데이터 fetch
+  // 데이터 fetch
 const [data, setData] = useState([]);
-
 const fetchdata = async () => {
-  try {
-    const res = await fetch(
+  try {const res = await fetch(
       "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/block/service.json"
     );
     const result = await res.json();
@@ -68,16 +68,20 @@ const fetchdata = async () => {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  
+  // blockDetailTable로 데이터 전달 && link
+  // const navigate = useNavigate();
 
+  // const sendBlockTableData = (e)=>{
+  //   console.log(e);
+  // }
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -101,7 +105,9 @@ const fetchdata = async () => {
             : data
           ).map((datael, idx) => {
                 return (
-                 <TableRowCompo datael={datael} idx={idx} />
+                  <Link to="/block/:id">
+                    <TableRowCompo datael={datael} idx={idx} />
+                  </Link>
                 );
               })}
           </TableBody>

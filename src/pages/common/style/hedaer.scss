@@ -1,6 +1,23 @@
-.header{
-    border: 1px solid red;
-    height: 116px;
-    display: flex;
-    justify-content: space-between;
+.Header {
+  border: 1px solid red;
+  // delete
+  background: #f4f7ff;
+  height: 116px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & .leftA {
+    margin-left: 60px;
+    & .headerTitle {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+  & .rightA {
+    margin-right: 60px;
+    & .searchBar {
+    }
+    & .userLogo {
+    }
+  }
 }
