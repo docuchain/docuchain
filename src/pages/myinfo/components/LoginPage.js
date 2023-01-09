@@ -8,19 +8,17 @@ import {
 } from "firebase/auth";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { userEmail } from "../../../recoil/atom";
+import { userEmail, userUid } from "../../../recoil/atom";
 import { useForm } from "react-hook-form";
 //로그아웃
 export const logout = async () => {
   await signOut(authService);
-  console.log(authService);
 };
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [userInfo, setUserInfo] = useRecoilState(userEmail);
+  const [userId, setUserId] = useRecoilState(userUid);
   const navigate = useNavigate();
   const {
     register,
@@ -31,9 +29,12 @@ const LoginPage = () => {
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        console.log(`${user.email}로그인 되었습니다`);
         setUserInfo(user.email);
+        setUserId(user.uid);
         navigate("/myinfo");
+      } else {
+        setUserInfo("");
+        setUserId("");
       }
     });
   });
@@ -63,7 +64,6 @@ const LoginPage = () => {
         data.email,
         data.password
       );
-      console.log(user);
     } catch (error) {
       console.log(error.message);
       setError(error.message);

@@ -22,7 +22,7 @@ const TransDetail = () => {
   useEffect(() => {
     async function getTransRef() {
       const data = await getDocs(transRef);
-      console.log(data);
+
       setTrans(
         data.docs.map((item) => ({
           ...item.data(),
@@ -46,10 +46,6 @@ const TransDetail = () => {
   const toTrans = () => {
     navigate(`/trans`);
   };
-  console.log(id);
-  console.log(typeof id); // string 나옴. -> 정수타입으로 바꿔줘야 함
-  console.log(transRef);
-  console.log(trans);
 
   useEffect(() => {
     async function getTrans() {
@@ -63,12 +59,27 @@ const TransDetail = () => {
         setTransHash(item.data().transHash);
         setTransSize(item.data().transSize);
         setBlockNum(item.data().blockNum);
-        console.log(item.transNum, " : ", item.data());
       });
     }
     getTrans();
   }, []);
 
+  //test
+  const test = [
+    { time: "2022-01-03 10:10:23" },
+    { time: "2022-01-03 10:10:53" },
+    { time: "2022-01-03 9:11:23" },
+    { time: "2022-01-03 11:10:23" },
+    { time: "2022-01-03 10:15:23" },
+  ];
+
+  let count = 0;
+  for (let i = 0; i < test.length; i++) {
+    if (test[i].time.includes(" 10:") == true) {
+      count++;
+    }
+  }
+  console.log(count);
   return (
     <div>
       <h1>트랜잭션</h1>
