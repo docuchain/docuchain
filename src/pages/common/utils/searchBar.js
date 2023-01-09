@@ -21,11 +21,10 @@ const SearchBar = () => {
 
       const blockResJson = await blockRes.json();
 
-      // setArrBlcok([...blockResJson.avgBlock]);
       console.log(blockResJson.service);
 
       blockResJson.service.forEach((ele) => {
-        if (ele.blockHash === input || ele.blockNumber) {
+        if (ele.blockHash === input || ele.blockNumber === input) {
           navigate(`/block/${ele.blockNumber}`);
         }
       });
