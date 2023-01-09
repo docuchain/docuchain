@@ -151,7 +151,3 @@ export default function StickyHeadTable(prpos) {
   );
 }
 
-// const handleClick = (e) => console.log(e.target.id);
-{
-  /* <ConditionalLink onClick={handleClick} */
-}
