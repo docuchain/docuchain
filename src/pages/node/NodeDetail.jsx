@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { nodeMockData } from "../node/utils/nodeMockData";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
 // import NodeRssChart from "./utils/chart/nodeRssChart";
@@ -17,12 +17,19 @@ const NodeDetail = () => {
 
   const NodeIP = nodeDetailInfo[0].IP;
 
+  // 노드 목록으로 이동
+  const navigate = useNavigate();
+  const toNode = () => {
+    navigate(`/node`);
+  };
+
   return (
     <div>
       <h1>상세정보</h1>
       <h3>
         {nodeName} : {NodeIP}
       </h3>
+      <button onClick={toNode}>목록으로</button>
 
       <NodeMemoryChart />
       {/* <NodeRssChart />
