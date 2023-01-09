@@ -38,7 +38,7 @@
   height: 400px;
 }
 /* blockDetailTable */
-.blockDetailTable{
+.blockDetailTable {
   border: 1px solid blue;
 }
 
@@ -59,4 +59,3 @@
   display: flex;
   align-items: center;
 }
-/* 모니터 기본 1920*1080 */
