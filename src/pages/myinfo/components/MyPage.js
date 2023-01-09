@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../common/components/Button";
-import { getUserEmail } from "../../../recoil/selector";
+import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 import { async } from "@firebase/util";
 import { useForm } from "react-hook-form";
 import { authService } from "../../../apis/firebase";
 import { updatePassword } from "firebase/auth";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { dbService } from "../../../apis/firebase";
+import swal from "sweetalert";
 const MyPage = () => {
   const emailValue = useRecoilValue(getUserEmail); //recoil 저장된 email 값 가져오기
+  const userValue = useRecoilValue(getUserInfo);
   const nowUser = authService.currentUser;
   const {
     register,
@@ -15,6 +19,18 @@ const MyPage = () => {
     formState: { errors },
   } = useForm();
   const [isPassword, setIsPassword] = useState(); // 비밀번호, 비밀번호 재확인 같은지여부확인
+  const userData = collection(dbService, "user");
+  //user state 저장
+  const [user, setUser] = useState({});
+  //오늘 날짜 저장
+  // const today = new Date();
+  // const getToday = `${today.getFullYear()}-${
+  //   today.getMonth() + 1
+  // }-${today.getDate()}`;
+
+  useEffect(() => {
+    getCurrentUserInfo();
+  }, []);
   //비밀번호 변경함수
   const onPasswordChange = (data) => {
     if (data.password !== data.passwordRepeat) {
@@ -25,7 +41,7 @@ const MyPage = () => {
       let newPassword = data.password;
       updatePassword(nowUser, newPassword)
         .then(() => {
-          alert("success!! passwordchanged!");
+          swal({ title: "비밀번호가 변경되었습니다", icon: "success" });
         })
         .catch((error) => {
           console.log(error);
@@ -34,29 +50,35 @@ const MyPage = () => {
     console.log(data);
     console.log(nowUser);
   };
+
+  //현재 로그인된 유저정보 저장
+  const getCurrentUserInfo = async () => {
+    // await userValue.forEach((ele) => {
+    //   if (ele.email === nowUser.email) {
+    //     console.log(ele);
+    //     setUser(ele);
+    //   } else {
+    //     console.log(ele.email);
+    //     console.log(nowUser.email);
+    //   }
+    // });
+    const data = query(userData, where("email", "==", nowUser.email));
+    const querySnapshot = await getDocs(data);
+    querySnapshot.forEach((item) => {
+      setUser(item.data());
+    });
+    console.log(user);
+  };
   const onError = (error) => {
     console.log(error);
   };
-
-  useEffect(() => {}, [emailValue]);
-  //user state 저장
-  const [user, setUser] = useState({
-    name: "홍길동",
-    team: "디지털존",
-  });
-
-  //오늘 날짜 저장
-  const today = new Date();
-  const getToday = `${today.getFullYear()}-${
-    today.getMonth() + 1
-  }-${today.getDate()}`;
 
   return (
     <div className="myinfo">
       <h2>나의 정보</h2>
       <h5>이름 : {user.name}</h5>
       <h5>소속 :{user.team}</h5>
-      <h5>이메일 : {emailValue}</h5>
+      <h5>이메일 : {user.email}</h5>
       <form onSubmit={handleSubmit(onPasswordChange, onError)}>
         <label>
           비밀번호 :{" "}
@@ -96,19 +118,23 @@ const MyPage = () => {
       <h5 className="myinfo__detailauth">
         상세정보 접근권한 :
         <label>
-          <input type={"checkbox"} /> 대시보드
+          <input type={"checkbox"} checked={user.dashboard || false} disabled />{" "}
+          대시보드
         </label>
         <label>
-          <input type={"checkbox"} /> 블록
+          <input type={"checkbox"} checked={user.block || false} disabled />{" "}
+          블록
         </label>
         <label>
-          <input type={"checkbox"} /> 트랜잭션
+          <input type={"checkbox"} checked={user.trans || false} disabled />{" "}
+          트랜잭션
         </label>
         <label>
-          <input type={"checkbox"} /> 노드
+          <input type={"checkbox"} checked={user.node || false} disabled /> 노드
         </label>
         <label>
-          <input type={"checkbox"} /> 서비스
+          <input type={"checkbox"} checked={user.service || false} disabled />{" "}
+          서비스
         </label>
       </h5>
       <h5 className="myinfo__activeservice">
@@ -120,8 +146,8 @@ const MyPage = () => {
           <input type={"checkbox"} /> B서비스
         </label>
       </h5>
-      <h5>유형 : 관리자</h5>
-      <h5>등록일자 : {getToday}</h5>
+      <h5>유형 : {user.role}</h5>
+      <h5>등록일자 : {nowUser.metadata.creationTime}</h5>
       <h5>상태 : 정상</h5>
     </div>
   );

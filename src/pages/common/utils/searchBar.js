@@ -11,19 +11,24 @@ const SearchBar = () => {
   const [arrBlock, setArrBlcok] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetchBlock();
+    fetchData();
   });
-  const fetchBlock = async () => {
+  const fetchData = async () => {
     try {
       const blockRes = await fetch(
         "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/block.json"
       );
+
       const blockResJson = await blockRes.json();
 
       // setArrBlcok([...blockResJson.avgBlock]);
-      console.log(blockResJson.avgBlock);
+      console.log(blockResJson.service);
 
-      // blockResJson.avgBlock.filter((ele) => console.log(ele));
+      blockResJson.service.forEach((ele) => {
+        if (ele.blockHash === input || ele.blockNumber) {
+          navigate(`/block/${ele.blockNumber}`);
+        }
+      });
     } catch (error) {
       console.log(error);
     }

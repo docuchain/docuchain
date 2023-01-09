@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { setDoc, doc, collection, getDocs } from "firebase/firestore";
-import { dbService } from "../../apis/firebase";
+import { dbService,authService } from "../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userInfo } from "../../recoil/atom";
 import { getUserInfo } from "../../recoil/selector";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const AddUser = () => {
   const userData = collection(dbService, "user");
@@ -34,8 +35,25 @@ const AddUser = () => {
       usingService: newUser.usingService,
     });
 
+    registerUser();
+
     alert("추가완료");
   }
+
+//회원가입
+  const registerUser = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        authService,
+        newUser.email,
+        newUser.password,
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 
   function changeHandler(e) {
     setNewUser((prevState) => ({
@@ -57,7 +75,7 @@ const AddUser = () => {
   const changeRoleHandler = (e) => {
     setRole(e.target.value);
   };
-
+  
   useEffect(() => {
     async function getUsers() {
       const data = await getDocs(userData);
@@ -72,14 +90,14 @@ const AddUser = () => {
       //   setName(item.id);
       // });
     }
-
+    
     getUsers();
-  }, []);
-
+  },[]);
+  
   const userValue = useRecoilValue(getUserInfo);
   //console.log(userValue);
   //console.log(userValue[2].email);
-
+  
   //boolean
   const dashboardCheckHandler = (e) => {
     if (e.target.checked == true) {

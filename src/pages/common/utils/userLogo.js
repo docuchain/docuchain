@@ -10,7 +10,7 @@ import { useRecoilValue } from "recoil";
 import { getUserEmail } from "../../../recoil/selector";
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
-
+  const nowUser = authService.currentUser;
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
@@ -24,7 +24,7 @@ const UserLogo = () => {
   };
   useEffect(() => {
     toggleChange();
-  }, []);
+  }, [nowUser]);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -37,7 +37,7 @@ const UserLogo = () => {
           if (user.uid === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2") {
             setToggleState(
               <ul>
-                {/* <li>{emailValue}</li> */}
+                <li>{nowUser.email}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>
@@ -56,7 +56,7 @@ const UserLogo = () => {
             //일반 사용자 로그인 할 경우
             setToggleState(
               <ul>
-                {/* <li>{emailValue}</li> */}
+                <li>{nowUser.email}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>

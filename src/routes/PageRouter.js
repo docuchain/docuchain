@@ -67,7 +67,7 @@ const PageRouter = () => {
             uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
               <AddUser />
             ) : (
-              <LoginPage />
+              <MyInfo />
             )
           }
         ></Route>

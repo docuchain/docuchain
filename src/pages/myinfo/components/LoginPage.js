@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Button from "../../common/components/Button";
 import { useNavigate } from "react-router-dom";
 import {
-  createUserWithEmailAndPassword, //회원생성기능
   signInWithEmailAndPassword, //로그인
   signOut, //로그아웃
 } from "firebase/auth";
@@ -39,6 +38,19 @@ const LoginPage = () => {
     });
   });
 
+  //로그인
+  const login = async (data) => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        authService,
+        data.email,
+        data.password
+      );
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
+  };
   //회원가입
   // const registerUser = async (data) => {
   //   try {
@@ -55,20 +67,6 @@ const LoginPage = () => {
   //   setEmail("");
   //   setPassword("");
   // };
-
-  //로그인
-  const login = async (data) => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        authService,
-        data.email,
-        data.password
-      );
-    } catch (error) {
-      console.log(error.message);
-      setError(error.message);
-    }
-  };
 
   return (
     <div>
