@@ -1,4 +1,5 @@
-import * as React from "react";
+// import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,7 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ServiceDetail from "../ServiceDetail";
 
 const ConditionalLink = ({ children, condition, ...props }) => {
   return !!condition && props.to ? (
@@ -22,13 +24,13 @@ const columns = [
     id: "serviceName",
     label: "서비스명",
     minWidth: 10,
-    link: "service/serviceDetail",
+    link: `service/ServiceDetail/`,
   },
   {
     id: "date",
     label: "타임스탬프",
     minWidth: 10,
-    link: "service/serviceDetail",
+    link: "service/serviceDetail/",
   },
   {
     id: "ApiKinds",
@@ -47,8 +49,10 @@ const columns = [
   { id: "state", label: "상태", minWidth: 0 },
 ];
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(prpos) {
+  // 데이터 담기
   const [data, setData] = React.useState([]);
+  //데이터 불러오기
   const fetchdata = async () => {
     try {
       const res = await fetch(
@@ -60,6 +64,7 @@ export default function StickyHeadTable() {
       console.log(error);
     }
   };
+  //fetchdata firebase data
   React.useEffect(() => {
     fetchdata();
   }, []);
@@ -76,6 +81,17 @@ export default function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const [serviceId, setServiceId] = useState("");
+  const navigate = useNavigate();
+  const toServiceDetail = (e) => {
+    console.log(e.target.value);
+    setServiceId(e.target.value);
+  };
+
+  useEffect(() => {
+    navigate(`/service/${serviceId}`);
+  }, [serviceId]);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -94,16 +110,17 @@ export default function StickyHeadTable() {
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       //메인 테이블
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {/* condition (조건문) 일치하는 것만 링크 */}
                           <ConditionalLink
+                            onclick={toServiceDetail}
                             to={`/${column.link}`}
                             condition={column.link !== undefined}
                           >
@@ -132,4 +149,9 @@ export default function StickyHeadTable() {
       />
     </Paper>
   );
+}
+
+// const handleClick = (e) => console.log(e.target.id);
+{
+  /* <ConditionalLink onClick={handleClick} */
 }
