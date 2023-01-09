@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../common/components/Button";
+import { userInfo } from "../../../recoil/atom";
 import { getUserEmail, getUserInfo } from "../../../recoil/selector";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { async } from "@firebase/util";
 import { useForm } from "react-hook-form";
 import { authService } from "../../../apis/firebase";
@@ -10,6 +11,8 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
 const MyPage = () => {
+  //user state 저장
+  const [user, setUser] = useRecoilState(userInfo);
   const emailValue = useRecoilValue(getUserEmail); //recoil 저장된 email 값 가져오기
   const userValue = useRecoilValue(getUserInfo);
   const nowUser = authService.currentUser;
@@ -20,8 +23,6 @@ const MyPage = () => {
   } = useForm();
   const [isPassword, setIsPassword] = useState(); // 비밀번호, 비밀번호 재확인 같은지여부확인
   const userData = collection(dbService, "user");
-  //user state 저장
-  const [user, setUser] = useState({});
   //오늘 날짜 저장
   // const today = new Date();
   // const getToday = `${today.getFullYear()}-${

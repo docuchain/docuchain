@@ -7,16 +7,17 @@ import {
 } from "firebase/auth";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { userEmail, userUid } from "../../../recoil/atom";
+import { userEmail, userUid, userInfo } from "../../../recoil/atom";
 import { useForm } from "react-hook-form";
-//로그아웃
-export const logout = async () => {
-  await signOut(authService);
-};
+// //로그아웃
+// export const logout = async () => {
+//   await signOut(authService);
+// };
 
 const LoginPage = () => {
   const [error, setError] = useState();
-  const [userInfo, setUserInfo] = useRecoilState(userEmail);
+  const [recoilEmail, setRecoilEmail] = useRecoilState(userEmail);
+  const [recoilUser, setRecoilUser] = useRecoilState(userInfo);
   const [userId, setUserId] = useRecoilState(userUid);
   const navigate = useNavigate();
   const {
@@ -28,11 +29,11 @@ const LoginPage = () => {
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setUserInfo(user.email);
+        setRecoilEmail(user.email);
         setUserId(user.uid);
         navigate("/myinfo");
       } else {
-        setUserInfo("");
+        setRecoilEmail("");
         setUserId("");
       }
     });

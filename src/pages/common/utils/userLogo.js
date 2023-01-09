@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import LoginPage from "../../myinfo/components/LoginPage";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { authService } from "../../../apis/firebase";
-import { logout } from "../../myinfo/components/LoginPage";
+import { logout } from "../../myinfo/utils/logout";
 import PersonIcon from "@mui/icons-material/Person";
 import { flexbox, style } from "@mui/system";
 import { useRecoilValue } from "recoil";
-import { getUserEmail } from "../../../recoil/selector";
+import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
+  const userValue = useRecoilValue(getUserInfo);
   const nowUser = authService.currentUser;
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
@@ -37,7 +37,7 @@ const UserLogo = () => {
           if (user.uid === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2") {
             setToggleState(
               <ul>
-                <li>{nowUser.email}</li>
+                <li>{emailValue || ""}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>
@@ -56,7 +56,7 @@ const UserLogo = () => {
             //일반 사용자 로그인 할 경우
             setToggleState(
               <ul>
-                <li>{nowUser.email}</li>
+                <li>{emailValue || ""}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>

@@ -80,11 +80,11 @@ const AddUser = () => {
     async function getUsers() {
       const data = await getDocs(userData);
       console.log(data);
-      setInfo(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
+      // setInfo(
+      //   data.docs.map((item) => ({
+      //     ...item.data(),
+      //   }))
+      // );
 
       // data.forEach((item) => {
       //   setName(item.id);
