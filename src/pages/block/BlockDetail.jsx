@@ -2,9 +2,10 @@ import React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import BlockDetailTable from "./utils/blockDetailTable";
-import TransDetailList from "./utils/transDetailList";
 import "./BlockStyle.css";
 import BlockDetailTitle from "./utils/blockDetailItitle";
+
+// import TransDetailList from "./utils/transDetailList";
 
 export default function BlockDetail() {
   return (
@@ -16,7 +17,7 @@ export default function BlockDetail() {
           <Pagination count={10} size="large" />
         </Stack>
         <BlockDetailTable />
-        <TransDetailList />
+        {/* <TransDetailList /> */}
       </div>
     </div>
   );
