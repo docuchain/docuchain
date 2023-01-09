@@ -6,8 +6,8 @@ import "./CSS/Service.scss";
 const service = () => {
   return (
     <div className="serviceMain_Center">
-      <h1 className="serviceMain_Name">서비스</h1>
-      <p>전체 발급 0.000건</p>
+      {/* <h1 className="serviceMain_Name">서비스</h1>
+      <p>전체 발급 0.000건</p> */}
       <div className="serviceChart_Center">
         <ServiceChart />
         <div className="serviceTable">

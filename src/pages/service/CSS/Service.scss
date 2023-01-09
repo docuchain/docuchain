@@ -3,8 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  border: 1px solid red;
   background-color: #f4f7ff;
 }
 .ServiceChart {
@@ -12,23 +10,48 @@
   flex-direction: center;
   //추후 변경 예정입니다.
   font-size: 10px;
+  margin: 10px;
   background-color: "#F4F4F4";
 }
 .serviceChart_Center {
   position: relative;
-  width: 1200px;
   flex-direction: center;
   align-items: flex-start;
-  border: 1px solid blue;
-  // border: 1px solid red;
+  width: 100%;
+  // border: 1px solid blue;
 }
 .serviceChart_Top5 {
   width: 50%;
   border-radius: 20px;
 }
 .Barchart_apiCallRank {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .serviceTable {
-  margin-top: 10px;
+  margin: 10px;
+}
+// navbarList
+// color 전체 적용 확인!
+a {
+  color: rgba(0, 0, 0, 0.87);
+}
+// 목록으로 버튼 ======================
+.serviceHome--Btn {
+  float: right;
+  margin: 10px;
+}
+//============================================== Service Detail
+.serviceDetail--box {
+  float: left;
+}
+.serviceDetail--title {
+  width: 48%;
+}
+.serviceDetail--main {
+  width: 48%;
+}
+.Tbody {
+  width: 100%;
+  height: 100%;
+  // border: 1px solid red;
 }

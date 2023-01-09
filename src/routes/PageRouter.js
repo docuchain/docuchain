@@ -22,63 +22,77 @@ import LoginPage from "../pages/myinfo/components/LoginPage";
 import NavBar from "../pages/common/components/NavBar";
 import { useRecoilValue } from "recoil";
 import { getUserUid } from "../recoil/selector";
+import "../pages/common/style/contents.scss";
+
 const PageRouter = () => {
   const uidValue = useRecoilValue(getUserUid);
 
   return (
-    <>
-      <Header />
-      <NavBar />
-      <Routes>
-        {/* dashboard route */}
-        <Route path="/" element={<Dashboard />}></Route>
-        {/* block route */}
-        <Route path="/block" element={<Block />}></Route>
-        <Route path="/block/:id" element={<BlockDetail />}></Route>
-        <Route path="/block/:id/:data" element={<BlockDetailData />}></Route>
-        {/* trans route */}
-        <Route path="/trans" element={<Trans />}></Route>
-        <Route path="/trans/:id" element={<TransDetail />}></Route>
-        {/* node route */}
-        <Route path="/node" element={<Node />}></Route>
-        <Route path="/node/detail/:nodeName" element={<NodeDetail />}></Route>
-        {/* service route */}
-        <Route path="/service" element={<Service />}></Route>
-        <Route path="/service/:id" element={<ServiceDetail />}></Route>
-        {/* myinfo route */}
-        <Route
-          path="/myinfo"
-          element={uidValue !== "" ? <MyInfo /> : <LoginPage />}
-        ></Route>
-        {/* usermanaging route 관리자일때만 접근가능 */}
-        <Route
-          path="/usermanaging"
-          element={
-            uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
-              <UserManaging />
-            ) : (
-              <LoginPage />
-            )
-          }
-        ></Route>
-        <Route
-          path="/usermanaging/adduser"
-          element={
-            uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
-              <AddUser />
-            ) : (
-              <MyInfo />
-            )
-          }
-        ></Route>
-        <Route path="/usermanaging/:id" element={<UserModify />}></Route>
-        {/* login route */}
-        <Route path="/login" element={<LoginPage />}></Route>
-        {/* exception */}
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-      <Footer />
-    </>
+    <div className="pageRouterWrap">
+      <div className="pageRouterWrap--left">
+        <NavBar />
+      </div>
+      <div className="pageRouterWrap--right">
+        <Header />
+        <div className="Contents">
+          <Routes>
+            {/* dashboard route */}
+            <Route path="/" element={<Dashboard />}></Route>
+            {/* block route */}
+            <Route path="/block" element={<Block />}></Route>
+            <Route path="/block/:id" element={<BlockDetail />}></Route>
+            <Route
+              path="/block/:id/:data"
+              element={<BlockDetailData />}
+            ></Route>
+            {/* trans route */}
+            <Route path="/trans" element={<Trans />}></Route>
+            <Route path="/trans/:id" element={<TransDetail />}></Route>
+            {/* node route */}
+            <Route path="/node" element={<Node />}></Route>
+            <Route
+              path="/node/detail/:nodeName"
+              element={<NodeDetail />}
+            ></Route>
+            {/* service route */}
+            <Route path="/service" element={<Service />}></Route>
+            <Route path="/service/:id" element={<ServiceDetail />}></Route>
+            {/* myinfo route */}
+            <Route
+              path="/myinfo"
+              element={uidValue !== "" ? <MyInfo /> : <LoginPage />}
+            ></Route>
+            {/* usermanaging route 관리자일때만 접근가능 */}
+            <Route
+              path="/usermanaging"
+              element={
+                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                  <UserManaging />
+                ) : (
+                  <LoginPage />
+                )
+              }
+            ></Route>
+            <Route
+              path="/usermanaging/adduser"
+              element={
+                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                  <AddUser />
+                ) : (
+                  <LoginPage />
+                )
+              }
+            ></Route>
+            <Route path="/usermanaging/:id" element={<UserModify />}></Route>
+            {/* login route */}
+            <Route path="/login" element={<LoginPage />}></Route>
+            {/* exception */}
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

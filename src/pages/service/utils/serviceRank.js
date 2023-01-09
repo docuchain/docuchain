@@ -23,10 +23,10 @@ function TimePerTrans() {
   }, []);
 
   return (
-    <div className="serviceRank_BarChart">
+    <div>
       <h3>누적 호출 상위 Top5</h3>
       <BarChart
-        width={590}
+        width={650}
         height={350}
         data={serviceChartData}
         margin={{
