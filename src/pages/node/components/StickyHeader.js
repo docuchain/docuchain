@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-
+import { useNavigate } from "react-router-dom";
 import { nodeMockData } from "../utils/nodeMockData";
 
 const columns = [
@@ -81,6 +81,11 @@ const columns = [
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const navigate = useNavigate();
+
+  // function goNodeDetail(){
+  //   navigate('/node/detail');
+  //   }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -95,6 +100,12 @@ export default function StickyHeadTable() {
     page > 0
       ? Math.max(0, (1 + page) * rowsPerPage - nodeMockData.nodeList.length)
       : 0;
+
+  const onClickNodeDetail = (nodeName) => {
+    console.log(nodeName);
+    alert("노드 세부페이지로 이동합니다");
+    navigate(`/node/detail/${nodeName}`);
+  };
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -120,12 +131,27 @@ export default function StickyHeadTable() {
               .map((node, index) => {
                 return (
                   <TableRow hover tabIndex={-1} key={node.nodeName}>
-                    <TableCell align="center">{node.serviceName}</TableCell>
-                    <TableCell align="center">{node.status}</TableCell>
-                    <TableCell align="center">{node.nodeName}</TableCell>
-                    <TableCell align="center">{node.type}</TableCell>
-                    <TableCell align="center">{node.serviceNameE}</TableCell>
-                    <TableCell align="center">{node.IP}</TableCell>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
+                      {node.serviceName}
+                    </TableCell>
+                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                      {node.status}
+                    </TableCell>
+                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                      {node.nodeName}
+                    </TableCell>
+                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                      {node.type}
+                    </TableCell>
+                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                      {node.serviceNameE}
+                    </TableCell>
+                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                      {node.IP}
+                    </TableCell>
                     <TableCell align="center">{node.newBlockNum}</TableCell>
                     <TableCell align="center">{node.newBlockTime}</TableCell>
                     <TableCell align="center">{node.TPS}</TableCell>

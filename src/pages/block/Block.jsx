@@ -15,7 +15,6 @@ const block = () => {
       <div className="block" style={{ border: "1px solid red" }}>
         <BlockChart />
         <BlockTable />
-        {/* <BlockTableCopy /> */}
       </div>
     </div>
   );

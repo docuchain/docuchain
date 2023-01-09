@@ -25,7 +25,7 @@ function TimePerTrans() {
     <div className="serviceRank_BarChart">
       <h3>API 호출 상위 Top5</h3>
       <BarChart
-        width={590}
+        width={650}
         height={400}
         data={transChartData}
         margin={{
