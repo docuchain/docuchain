@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 
 export default function toServiceMainBtn() {
   return (
-    <Stack spacing={2} direction="row">
-      <Link to="/service">
-        <Button variant="contained">목록으로</Button>
-      </Link>
-    </Stack>
+    <div className="serviceDetail--Btn">
+      <Stack spacing={2} direction="row">
+        <Link to="/service">
+          <Button variant="contained">목록으로</Button>
+        </Link>
+      </Stack>
+    </div>
   );
 }
