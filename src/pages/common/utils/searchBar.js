@@ -83,10 +83,10 @@ const SearchBar = () => {
             onChange={(e) => setInput(e.target.value)}
           ></input>
         </label>
+        <Button type="submit" className="searchIconBox">
+          <SearchIcon className="icon1" />
+        </Button>
       </form>
-      <Button onClick={searchResult}>
-        <SearchIcon />
-      </Button>
     </div>
   );
 };

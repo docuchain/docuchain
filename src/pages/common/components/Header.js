@@ -1,7 +1,9 @@
 import React from "react";
 import SearchBar from "../utils/searchBar";
 import UserLogo from "../utils/userLogo";
+import Appearance from "../utils/appearance";
 import "../style/hedaer.scss";
+
 const Header = () => {
   return (
     <>
@@ -12,6 +14,9 @@ const Header = () => {
         <div className="rightA">
           <div className="searchBar">
             <SearchBar />
+          </div>
+          <div className="appearance">
+            <Appearance />
           </div>
           <div className="userLogo">
             <UserLogo />

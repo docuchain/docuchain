@@ -103,7 +103,7 @@ const UserLogo = () => {
       <Button type="button" onClick={toggleChange}>
         <PersonIcon />
       </Button>
-      <ul>{toggleState}</ul>
+      {toggleState}
     </div>
   );
 };
