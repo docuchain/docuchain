@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 // test
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+// import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function appearance() {

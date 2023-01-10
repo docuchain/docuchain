@@ -5,7 +5,6 @@ import Button from "../components/Button";
 import { authService } from "../../../apis/firebase";
 import { logout } from "../../myinfo/components/LoginPage";
 import PersonIcon from "@mui/icons-material/Person";
-import { flexbox, style } from "@mui/system";
 import { useRecoilValue } from "recoil";
 import { getUserEmail } from "../../../recoil/selector";
 
