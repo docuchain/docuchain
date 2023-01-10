@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   & .leftA {
     margin-left: 60px;
     & .headerTitle {
@@ -15,9 +16,20 @@
   }
   & .rightA {
     margin-right: 60px;
+    display: flex;
     & .searchBar {
     }
     & .userLogo {
+      position: relative;
+
+      .toggleBox {
+        width: 100px;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+      }
     }
   }
 }

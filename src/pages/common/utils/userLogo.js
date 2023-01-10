@@ -82,7 +82,7 @@ const UserLogo = () => {
 
   return (
     <div>
-      <Button type="button" onClick={toggleChange}>
+      <Button type="button" onClick={toggleChange} id="navBtn">
         <PersonIcon />
       </Button>
       {toggleState}

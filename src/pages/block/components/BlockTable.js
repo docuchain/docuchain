@@ -54,7 +54,7 @@ export default function BlockTable() {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/block/service.json"
+        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
@@ -78,13 +78,13 @@ export default function BlockTable() {
   // 블록 상세 페이지로 이동
   const navigate = useNavigate();
 
-  const toTableRowdata = (e) => {
-    navigate("/block/:id");
-    // 선택된 td의 부모 노드=tablerow el을 가져옴 -> 어떤 td를 선택하던 해당 줄의 모든 row열을 가져올 수 있음
-    console.log(e.target.parentElement);
-    //넘겨주고 children데이터를 뽑아서 다음 테이블에 각각 넣어주면 될 듯
-    // console.log(e.target.parentElement.children);
-  };
+  // const toTableRowdata = (e) => {
+  //   navigate("/block/:id");
+  //   // 선택된 td의 부모 노드=tablerow el을 가져옴 -> 어떤 td를 선택하던 해당 줄의 모든 row열을 가져올 수 있음
+  //   console.log(e.target.parentElement);
+  //   //넘겨주고 children데이터를 뽑아서 다음 테이블에 각각 넣어주면 될 듯
+  //   // console.log(e.target.parentElement.children);
+  // };
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -112,13 +112,15 @@ export default function BlockTable() {
                 role="checkbox"
                 tabIndex={-1}
                 key={idx}
-                onClick={toTableRowdata}
+                // onClick={toTableRowdata}
               >
                 <TableCell component="th" scope="row">
                   {datael.serviceName}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  {datael.blockNumber}
+                  <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
+                    {datael.blockNumber}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
                   {datael.timeStamp}
@@ -130,7 +132,7 @@ export default function BlockTable() {
                   {datael.blockSize}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  {`0`}
+                  {datael.transCount}
                 </TableCell>
               </TableRow>
             ))}

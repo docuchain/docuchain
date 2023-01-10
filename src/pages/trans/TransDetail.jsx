@@ -1,37 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  doc,
-  getDocs,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  collection,
-} from "firebase/firestore";
-import { dbService } from "../../apis/firebase";
 
 const TransDetail = () => {
   //   const { transRef } = props;
+  const [data, setData] = useState([]);
 
-  // trans 데이터 담기
-  const [trans, setTrans] = useState([]);
-  // 데이터 불러오기
-  const transRef = collection(dbService, "trans");
+  const fetchdata = async () => {
+    try {
+      const res = await fetch(
+        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+      );
+      const result = await res.json();
+      setData([...result]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    async function getTransRef() {
-      const data = await getDocs(transRef);
-
-      setTrans(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
-
-    getTransRef();
+    fetchdata();
   }, []);
+
   const { id } = useParams();
 
   const [transNum, setTransNum] = useState();
@@ -40,7 +29,8 @@ const TransDetail = () => {
   const [transHash, setTransHash] = useState();
   const [transSize, setTransSize] = useState();
   const [blockNum, setBlockNum] = useState();
-
+  const [nodeName, setNodeName] = useState();
+  const [status, setStatus] = useState();
   // 이전 페이지 이동
   const navigate = useNavigate();
   const toTrans = () => {
@@ -49,37 +39,22 @@ const TransDetail = () => {
 
   useEffect(() => {
     async function getTrans() {
-      const data = await query(transRef, where("transNum", "==", parseInt(id)));
-      const querySnapshot = await getDocs(data);
+      const result3 = data.filter((item) => item.transNumber == parseInt(id));
 
-      querySnapshot.forEach((item) => {
-        setTransNum(item.data().transNum);
-        setServiceName(item.data().serviceName);
-        setTime(item.data().time);
-        setTransHash(item.data().transHash);
-        setTransSize(item.data().transSize);
-        setBlockNum(item.data().blockNum);
+      result3.forEach((item) => {
+        setTransNum(item.transNumber);
+        setServiceName(item.serviceName);
+        setTime(item.timeStamp);
+        setTransHash(item.transHash);
+        setTransSize(item.transSize);
+        setBlockNum(item.blockNumber);
+        setNodeName(item.nodeName);
+        setStatus(item.status);
       });
     }
     getTrans();
-  }, []);
+  });
 
-  //test
-  const test = [
-    { time: "2022-01-03 10:10:23" },
-    { time: "2022-01-03 10:10:53" },
-    { time: "2022-01-03 9:11:23" },
-    { time: "2022-01-03 11:10:23" },
-    { time: "2022-01-03 10:15:23" },
-  ];
-
-  let count = 0;
-  for (let i = 0; i < test.length; i++) {
-    if (test[i].time.includes(" 10:") == true) {
-      count++;
-    }
-  }
-  console.log(count);
   return (
     <div>
       <h1>트랜잭션</h1>
@@ -90,6 +65,8 @@ const TransDetail = () => {
       <div>트랜잭션해시 {transHash}</div>
       <div>트랜잭션크기 {transSize}</div>
       <div>블록번호 {blockNum}</div>
+      <div>노드명 {nodeName}</div>
+      <div>상태 {status}</div>
     </div>
   );
 };
