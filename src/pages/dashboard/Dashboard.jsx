@@ -12,17 +12,21 @@ import "../common/style/boxShadow.scss";
 
 const dashboard = () => {
   return (
-    <div className="dashboard">
-      <div className="box--shadow">
+    <div className="Dashboard">
+      <div className="maginB">
         <TotalBlockCnt />
+        <TotalTransCnt />
+        <ActiveNtwCnt />
+        <TotalServiceCnt />
       </div>
-      <TotalTransCnt />
-      <ActiveNtwCnt />
-      <TotalServiceCnt />
-      <NtwTransSpeed />
-      <NtwBlockTime />
-      <ServiceEnrollCnt />
-      <ActiveNtw />
+      <div className="maginB">
+        <NtwTransSpeed />
+        <NtwBlockTime />
+      </div>
+      <div className="maginB ">
+        <ServiceEnrollCnt />
+        <ActiveNtw />
+      </div>
     </div>
   );
 };

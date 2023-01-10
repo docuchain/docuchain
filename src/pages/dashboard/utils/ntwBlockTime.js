@@ -29,43 +29,45 @@ function NtwBlockTime() {
     getChart();
   }, []);
   return (
-    <LineChart width={600} height={400} data={chartInfo}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="label" padding={{ left: 30, right: 30 }} />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="networkA"
-        stroke="#0088FE"
-        activeDot={{ r: 8 }}
-        strokeWidth="3px"
-        key={Math.random()}
-      />
-      <Line
-        type="monotone"
-        dataKey="networkB"
-        stroke="#00C49F"
-        strokeWidth="3px"
-        key={Math.random()}
-      />
-      <Line
-        type="monotone"
-        dataKey="networkC"
-        stroke="#FFBB28"
-        activeDot={{ r: 8 }}
-        strokeWidth="3px"
-        key={Math.random()}
-      />
-      <Line
-        type="monotone"
-        dataKey="networkD"
-        stroke="#FF8042"
-        strokeWidth="3px"
-        key={Math.random()}
-      />
-    </LineChart>
+    <div className="boxShadow2">
+      <LineChart width={600} height={400} data={chartInfo}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="label" padding={{ left: 30, right: 30 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="networkA"
+          stroke="#0088FE"
+          activeDot={{ r: 8 }}
+          strokeWidth="3px"
+          key={Math.random()}
+        />
+        <Line
+          type="monotone"
+          dataKey="networkB"
+          stroke="#00C49F"
+          strokeWidth="3px"
+          key={Math.random()}
+        />
+        <Line
+          type="monotone"
+          dataKey="networkC"
+          stroke="#FFBB28"
+          activeDot={{ r: 8 }}
+          strokeWidth="3px"
+          key={Math.random()}
+        />
+        <Line
+          type="monotone"
+          dataKey="networkD"
+          stroke="#FF8042"
+          strokeWidth="3px"
+          key={Math.random()}
+        />
+      </LineChart>
+    </div>
   );
 }
 export default NtwBlockTime;

@@ -21,7 +21,7 @@ const TotalServiceCnt = () => {
   }, []);
   return (
     <div
-      className="TotalServiceCnt"
+      className="TotalServiceCnt boxShadow4"
       style={{ width: "300px", height: "400px" }}
     >
       <h3>TotalServiceCnt</h3>
