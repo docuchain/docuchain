@@ -49,24 +49,26 @@ function ActiveNtw() {
   }, []);
 
   return (
-    <PieChart width={600} height={400}>
-      <Tooltip />
-      <Legend />
-      <Pie
-        data={chartInfo}
-        cx={300}
-        cy={200}
-        labelLine={false}
-        label={renderCustomizedLabel}
-        outerRadius={150}
-        fill="#8884d8"
-        dataKey="serviceCnt"
-      >
-        {chartInfo.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
+    <div className="boxShadow">
+      <PieChart width={600} height={400}>
+        <Tooltip />
+        <Legend />
+        <Pie
+          data={chartInfo}
+          cx={300}
+          cy={200}
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={150}
+          fill="#8884d8"
+          dataKey="serviceCnt"
+        >
+          {chartInfo.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </div>
   );
 }
 export default ActiveNtw;

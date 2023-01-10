@@ -20,7 +20,10 @@ const ActiveNtwCnt = () => {
     getBlock();
   }, []);
   return (
-    <div className="ActiveNtwCnt" style={{ width: "300px", height: "400px" }}>
+    <div
+      className="ActiveNtwCnt boxShadow4"
+      style={{ width: "300px", height: "400px" }}
+    >
       <h3>ActiveNtwCnt</h3>
       <h3>{activeNtw.length}</h3>
     </div>
