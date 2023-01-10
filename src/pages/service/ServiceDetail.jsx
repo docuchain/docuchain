@@ -8,49 +8,24 @@ import Paper from "@mui/material/Paper";
 import CopyBtn from "../block/utils/copyBtn";
 import serviceTable from "./utils/serviceTable";
 import ToServiceMainBtn from "./utils/toServiceMainBtn";
-import { useLocation, Link } from "react-router-dom";
-import { getDocs } from "firebase/firestore";
-import { query } from "firebase/database";
+import { useLocation, Link, useParams } from "react-router-dom";
+import { query, getDocs } from "firebase/database";
 
 const columns = [
-  {
-    id: "serviceName",
-    label: "서비스명",
-    minWidth: 10,
-    link: "service/ServiceDetail",
-  },
-  {
-    id: "date",
-    label: "타임스탬프",
-    minWidth: 10,
-    link: "service/serviceDetail",
-  },
-  {
-    id: "ApiKinds",
-    label: "API 종류",
-    minWidth: 0,
-    link: "service/serviceDetail",
-  },
-  { id: "NodeName", label: "노드명", minWidth: 10, link: "node/nodeDetail" },
-  {
-    id: "TransNum",
-    label: "트랜잭션번호",
-    minWidth: 10,
-    link: "trans/transDetail",
-  },
-  {
-    id: "TransHash",
-    label: "블록번호",
-    minWidth: 0,
-    link: "block/blockDetail",
-  },
-  { id: "BlockNum", label: "블록번호", minWidth: 0, link: "block/blockDetail" },
-  { id: "state", label: "상태", minWidth: 0 },
+  { id: "serviceName", label: "서비스명" },
+  { id: "date", label: "타임스탬프" },
+  { id: "apiKinds", label: "API 종류" },
+  { id: "nodeName", label: "노드명" },
+  { id: "transNum", label: "트랜잭션번호" },
+  { id: "transHash", label: "트랜잭션해쉬" },
+  { id: "blockNum", label: "블록번호" },
+  { id: "state", label: "상태" },
 ];
 
 const ServiceDetail = () => {
   // 데이터 담기
-  const [data, setData] = React.useState([]);
+  const [data, setData] = useState([]);
+
   //데이터 불러오기
   const fetchdata = async () => {
     try {
@@ -63,15 +38,14 @@ const ServiceDetail = () => {
       console.log(error);
     }
   };
+
   //fetchdata firebase data
   React.useEffect(() => {
     fetchdata();
   }, []);
 
-  // ===============================================
-
   return (
-    <div className="blockDetailTable">
+    <div className="serviceDetailTable">
       <TableContainer component={Paper}>
         <div className="serviceHome--Btn">
           <ToServiceMainBtn />

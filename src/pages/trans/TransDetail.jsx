@@ -32,6 +32,7 @@ const TransDetail = () => {
 
     getTransRef();
   }, []);
+
   const { id } = useParams();
 
   const [transNum, setTransNum] = useState();
@@ -41,7 +42,7 @@ const TransDetail = () => {
   const [transSize, setTransSize] = useState();
   const [blockNum, setBlockNum] = useState();
 
-  // 이전 페이지 이동
+  // 이전 페이지 이동 ============================================
   const navigate = useNavigate();
   const toTrans = () => {
     navigate(`/trans`);
@@ -50,6 +51,8 @@ const TransDetail = () => {
   console.log(typeof id); // string 나옴. -> 정수타입으로 바꿔줘야 함
   console.log(transRef);
   console.log(trans);
+
+  //==============================================================
 
   useEffect(() => {
     async function getTrans() {
