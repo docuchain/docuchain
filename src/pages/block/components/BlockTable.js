@@ -10,7 +10,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // row열로 분리
 // import TableRowCompo from "../utils/TableRowCompo";
 import BlockDetailTable from "../utils/blockDetailTable";
@@ -94,107 +94,76 @@ export default function BlockTable() {
   const [blockId, setBlockId] = useState("");
   const navigate = useNavigate();
 
-  const toTableRowdata = (e) => {
-    console.log(e.target.value);
-    setBlockId(e.target.value);
-  };
-
-  useEffect(() => {
-    navigate(`/block/${blockId}`);
-  }, [blockId]);
-
+  // const toTableRowdata = (e) => {
+  //   navigate("/block/:id");
+  //   // 선택된 td의 부모 노드=tablerow el을 가져옴 -> 어떤 td를 선택하던 해당 줄의 모든 row열을 가져올 수 있음
+  //   console.log(e.target.parentElement);
+  //   //넘겨주고 children데이터를 뽑아서 다음 테이블에 각각 넣어주면 될 듯
+  //   // console.log(e.target.parentElement.children);
+  // };
   return (
-    <div>
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    sx={{ lineHeight: "2.5rem" }}
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {(rowsPerPage > 0
-                ? data.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : data
-              ).map((datael, idx) => (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  key={idx}
-                  // onClick={toTableRowdata}
-                  toTableRowdata={toTableRowdata}
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <TableContainer sx={{ maxHeight: 440 }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ minWidth: column.minWidth }}
                 >
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.serviceName}
-                  </TableCell>
-                  <TableCell
-                    style={{ width: 160 }}
-                    align="left"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.blockNumber}
-                  </TableCell>
-                  <TableCell
-                    style={{ width: 160 }}
-                    align="left"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.timeStamp}
-                  </TableCell>
-                  <TableCell
-                    style={{ width: 160 }}
-                    align="left"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.blockHash}
-                  </TableCell>
-                  <TableCell
-                    style={{ width: 160 }}
-                    align="left"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.blockSize}
-                  </TableCell>
-                  <TableCell
-                    style={{ width: 160 }}
-                    align="left"
-                    onClick={toTableRowdata}
-                  >
-                    {datael.transCount}
-                  </TableCell>
-                </TableRow>
+                  {column.label}
+                </TableCell>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </div>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((datael, idx) => (
+              <TableRow
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={idx}
+                // onClick={toTableRowdata}
+              >
+                <TableCell component="th" scope="row">
+                  {datael.serviceName}
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
+                    {datael.blockNumber}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  {datael.timeStamp}
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  {datael.blockHash}
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  {datael.blockSize}
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  {datael.transCount}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Paper>
   );
 }
