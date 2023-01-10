@@ -30,6 +30,7 @@ const MyPage = () => {
   // }-${today.getDate()}`;
 
   useEffect(() => {
+    console.log(nowUser.email);
     getCurrentUserInfo();
   }, []);
   //비밀번호 변경함수
