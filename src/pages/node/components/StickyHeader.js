@@ -171,8 +171,12 @@ export default function StickyHeadTable() {
                     </TableCell>
                     <TableCell align="center">{node.newBlockNum}</TableCell>
                     <TableCell align="center">{node.newBlockTime}</TableCell>
-                    <TableCell align="center">{node.TPS}</TableCell>
-                    <TableCell align="center">{node.Latency}</TableCell>
+                    {userValue.node && (
+                      <TableCell align="center">{node.TPS}</TableCell>
+                    )}
+                    {userValue.node && (
+                      <TableCell align="center">{node.Latency}</TableCell>
+                    )}
                   </TableRow>
                 );
               })}
