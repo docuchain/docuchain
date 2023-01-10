@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "../pages/common/components/Header";
@@ -21,11 +21,15 @@ import UserModify from "../pages/usermanaging/UserModify";
 import LoginPage from "../pages/myinfo/components/LoginPage";
 import NavBar from "../pages/common/components/NavBar";
 import { useRecoilValue } from "recoil";
-import { getUserUid } from "../recoil/selector";
+import { getUserUid, getUserInfo } from "../recoil/selector";
 import "../pages/common/style/contents.scss";
 
 const PageRouter = () => {
   const uidValue = useRecoilValue(getUserUid);
+  const userValue = useRecoilValue(getUserInfo);
+  useEffect(() => {
+    console.log(userValue);
+  });
 
   return (
     <div className="pageRouterWrap">
@@ -47,16 +51,22 @@ const PageRouter = () => {
             ></Route>
             {/* trans route */}
             <Route path="/trans" element={<Trans />}></Route>
-            <Route path="/trans/:id" element={<TransDetail />}></Route>
+            <Route
+              path="/trans/:id"
+              element={userValue.trans ? <TransDetail /> : <Trans />}
+            ></Route>
             {/* node route */}
             <Route path="/node" element={<Node />}></Route>
             <Route
               path="/node/detail/:nodeName"
-              element={<NodeDetail />}
+              element={userValue.node ? <NodeDetail /> : <Node />}
             ></Route>
             {/* service route */}
             <Route path="/service" element={<Service />}></Route>
-            <Route path="/service/:id" element={<ServiceDetail />}></Route>
+            <Route
+              path="/service/:id"
+              element={userValue.service ? <ServiceDetail /> : <Service />}
+            ></Route>
             {/* myinfo route */}
             <Route
               path="/myinfo"

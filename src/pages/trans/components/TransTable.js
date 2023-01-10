@@ -20,7 +20,8 @@ import { dbService } from "../../../apis/firebase";
 import { getDocs, collection } from "firebase/firestore";
 // 상세페이지 이동
 import { useNavigate, useParams } from "react-router-dom";
-
+import { getUserInfo } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
 function TablePaginationActions(props) {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
@@ -96,6 +97,7 @@ const TransTable = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   // trans 데이터 담기
   const [trans, setTrans] = useState([]);
+  const userValue = useRecoilValue(getUserInfo);
 
   // 데이터 불러오기
   const transData = collection(dbService, "trans");
@@ -173,13 +175,15 @@ const TransTable = () => {
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {data.transSize}
-                <button
-                  className="transDetailBtn"
-                  value={data.transNum}
-                  onClick={toTransDetail}
-                >
-                  트랜잭션상세
-                </button>
+                {userValue.trans && (
+                  <button
+                    className="transDetailBtn"
+                    value={data.transNum}
+                    onClick={toTransDetail}
+                  >
+                    트랜잭션상세
+                  </button>
+                )}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {data.blockNum}
