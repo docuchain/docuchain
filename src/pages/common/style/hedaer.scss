@@ -15,9 +15,24 @@
   }
   & .rightA {
     margin-right: 60px;
+    // 임시값
+    min-width: 600px;
+    border: 1px solid blue;
+    //
+    display: flex;
     & .searchBar {
+      width: 298px;
+      height: 44px;
     }
     & .userLogo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+    }
+    & .appearance {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
     }
   }
 }
