@@ -83,9 +83,7 @@ export default function StickyHeadTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const navigate = useNavigate();
 
-  // function goNodeDetail(){
-  //   navigate('/node/detail');
-  //   }
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -101,14 +99,14 @@ export default function StickyHeadTable() {
       ? Math.max(0, (1 + page) * rowsPerPage - nodeMockData.nodeList.length)
       : 0;
 
+
   const onClickNodeDetail = (nodeName) => {
-    console.log(nodeName);
     alert("노드 세부페이지로 이동합니다");
     navigate(`/node/detail/${nodeName}`);
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -151,7 +149,7 @@ export default function StickyHeadTable() {
                     </TableCell>
                     <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
                       {node.IP}
-                    </TableCell>
+                    </TableCell> 
                     <TableCell align="center">{node.newBlockNum}</TableCell>
                     <TableCell align="center">{node.newBlockTime}</TableCell>
                     <TableCell align="center">{node.TPS}</TableCell>

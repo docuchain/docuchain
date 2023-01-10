@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // row열로 분리
 // import TableRowCompo from "../utils/TableRowCompo";
+import BlockDetailTable from "../utils/blockDetailTable";
 
 // 테이블 헤더 데이터
 const columns = [
@@ -40,7 +41,7 @@ const columns = [
     format: (value) => value.toFixed(2),
   },
   {
-    id: "transnum",
+    id: "transCount",
     label: "트랜잭션 수",
     minWidth: 170,
     align: "left",
@@ -75,7 +76,22 @@ export default function BlockTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   // 블록 상세 페이지로 이동
+  // const navigate = useNavigate();
+
+  // const toTableRowdata = (e) => {
+  //   navigate("/block/:id");
+  //   const serviceName = e.target.parentElement.children[0].innerHTML;
+  //   const blockNumber = e.target.parentElement.children[1].innerHTML;
+  //   const timeStamp = e.target.parentElement.children[2].innerHTML;
+  //   const blockHash = e.target.parentElement.children[3].innerHTML;
+  //   const blockSize = e.target.parentElement.children[4].innerHTML;
+  //   const transCount = e.target.parentElement.children[5].innerHTML;
+  // };
+
+  // 상세페이지 이동 위한 navigate
+  const [blockId, setBlockId] = useState("");
   const navigate = useNavigate();
 
   // const toTableRowdata = (e) => {

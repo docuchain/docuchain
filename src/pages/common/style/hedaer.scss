@@ -1,35 +1,63 @@
 .Header {
-  border: 1px solid red;
-  // delete
   background: #f4f7ff;
   height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  border-bottom: 1px solid rgba(204, 204, 204, 0.4);
   & .leftA {
-    margin-left: 60px;
+    margin-left: 80px;
     & .headerTitle {
-      font-size: 2rem;
+      color: #2f2f2f;
+      font-size: 1.8rem;
       font-weight: 600;
     }
   }
   & .rightA {
-    margin-right: 60px;
+    margin-right: 80px;
+    min-width: 600px;
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
     & .searchBar {
-    }
-    & .userLogo {
-      position: relative;
-
-      .toggleBox {
-        width: 100px;
-        height: auto;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding: 0;
+      // border: 1px solid blue;
+      & input {
+        padding: none;
+        height: 32px;
+        width: 280px;
+        background: white;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0px 2px 6px 0px rgba(204, 204, 204, 0.7);
+        text-indent: 14px;
       }
+      & .icon1 {
+        color: #6d6d6d;
+        width: 20px;
+        height: 20px;
+        transform: translate(0, 2px);
+      }
+    }
+    & Button {
+      margin-left: 36px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: white;
+      border: none;
+      box-shadow: 0px 2px 6px 0px rgba(204, 204, 204, 0.7);
+
+      & .icon2,
+      & .icon3 {
+        color: #6d6d6d;
+        width: 20px;
+        height: 20px;
+        transform: translate(0.5px, 1.5px);
+      }
+    }
+    & .searchIconBox {
+      margin: 0 0 0 10px;
+      transform: translate(0, 3px);
     }
   }
 }

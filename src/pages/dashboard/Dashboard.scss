@@ -1,6 +1,60 @@
-.dashboard {
+// 대쉬보드
+.Dashboard {
   display: flex;
-  flex-flow: row wrap;
-  width: 1200px;
-  height: auto;
+  flex-direction: column;
+  padding: 40px;
+}
+.maginBw100 {
+  width: 100%;
+  border: 1px solid blue;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+// 파일 이동해주기
+
+.boxShadow {
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxLayout4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boxLayout2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.boxLayout1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boxShadow {
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.boxLayoutel4 {
+  width: 22%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.boxLayoutel2 {
+  width: 48%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

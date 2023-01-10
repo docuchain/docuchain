@@ -19,8 +19,12 @@ const TotalBlockCnt = () => {
 
     getBlock();
   }, []);
+
   return (
-    <div className="TotalBlockCnt" style={{ width: "300px", height: "400px" }}>
+    <div
+      className="TotalBlockCnt boxShadow boxLayoutel4"
+      style={{ height: "400px" }}
+    >
       <h3>TotalBlockCnt</h3>
       <h3>{totalBlock.length}</h3>
     </div>
