@@ -3,11 +3,12 @@ import AvgTransSize from "../utils/avgTransSize";
 import TimeperTrans from "../utils/timeperTrans";
 import "./TransChart.scss";
 
-const TransChart = () => {
+const TransChart = (props) => {
+  const { data, fetchdata } = props;
   return (
     <div className="TransChart">
-      <TimeperTrans />
-      <AvgTransSize />
+      <TimeperTrans data={data} fetchdata={fetchdata} />
+      <AvgTransSize data={data} fetchdata={fetchdata} />
     </div>
   );
 };

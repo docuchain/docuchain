@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import {
   AreaChart,
@@ -9,33 +9,71 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { dbService } from "../../../apis/firebase";
 
-function AvgTransSize() {
-  const transRef = collection(dbService, "transChart");
-  const [transChartData, setTransChartData] = useState([]);
+function AvgTransSize(props) {
+  const { data, fetchdata } = props;
 
   useEffect(() => {
-    async function getTrans() {
-      const data = await getDocs(transRef);
-      console.log(data);
-      setTransChartData(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
-
-    getTrans();
+    fetchdata();
   }, []);
+
+  const countFunc = (a) => {
+    // let count = 0;
+    // for (let i = 0; i < data.length; i++) {
+    //   if (data[i].timeStamp.includes(a) == true) {
+    //     count++;
+    //   }
+    // }
+    // return count;
+    const result1 = data.filter((user) => user.timeStamp.includes(a));
+    return result1.length;
+  };
+  console.log(countFunc(" 10:"));
+  const avgFunc = (a) => {
+    const result2 = data.filter((user) => user.timeStamp.includes(a));
+
+    const avgResult = result2
+      .map((item) => item.transSize)
+      .reduce((prev, curr) => prev + curr, 0);
+
+    return avgResult / result2.length;
+  };
+
+  const Data = [
+    {
+      time: "10:00",
+      TimePerTrans: countFunc(" 10:"),
+      transSize: avgFunc(" 10:"),
+    },
+    {
+      time: "11:00",
+      TimePerTrans: countFunc(" 11:"),
+      transSize: avgFunc(" 11:"),
+    },
+    {
+      time: "12:00",
+      TimePerTrans: countFunc(" 12:"),
+      transSize: avgFunc(" 12:"),
+    },
+    {
+      time: "13:00",
+      TimePerTrans: countFunc(" 13:"),
+      transSize: avgFunc(" 13:"),
+    },
+    {
+      time: "14:00",
+      TimePerTrans: countFunc(" 14:"),
+      transSize: avgFunc(" 14:"),
+    },
+  ];
 
   return (
     <div style={{ width: "600px" }}>
-      <h3>평균 트랜잭션 크기(KB)</h3>
+      <h3>시간 당 트랜잭션 크기(KB)</h3>
       <AreaChart
         width={600}
         height={400}
-        data={transChartData}
+        data={Data}
         margin={{
           top: 10,
           right: 30,

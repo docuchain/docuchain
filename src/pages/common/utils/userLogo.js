@@ -5,9 +5,9 @@ import Button from "../components/Button";
 import { authService } from "../../../apis/firebase";
 import { logout } from "../../myinfo/components/LoginPage";
 import PersonIcon from "@mui/icons-material/Person";
-import { flexbox, style } from "@mui/system";
 import { useRecoilValue } from "recoil";
 import { getUserEmail } from "../../../recoil/selector";
+
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
 
@@ -81,12 +81,14 @@ const UserLogo = () => {
   };
 
   return (
-    <div>
-      <Button type="button" onClick={toggleChange}>
-        <PersonIcon />
-      </Button>
-      {toggleState}
-    </div>
+    <>
+      <div className="userLogoBtn headerbtn">
+        <Button type="button" onClick={toggleChange}>
+          <PersonIcon className="icon3" />
+        </Button>
+        {toggleState}
+      </div>
+    </>
   );
 };
 
