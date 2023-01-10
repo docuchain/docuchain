@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import LoginPage from "../../myinfo/components/LoginPage";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { authService } from "../../../apis/firebase";
-import { logout } from "../../myinfo/components/LoginPage";
+import { logout } from "../../myinfo/utils/logout";
 import PersonIcon from "@mui/icons-material/Person";
-import { useRecoilValue } from "recoil";
-import { getUserEmail } from "../../../recoil/selector";
-
+import { flexbox, style } from "@mui/system";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { getUserEmail, getUserInfo } from "../../../recoil/selector";
+import { userInfo } from "../../../recoil/atom";
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
-
+  const userValue = useRecoilValue(getUserInfo);
+  const resetUser = useResetRecoilState(userInfo);
+  const nowUser = authService.currentUser;
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
@@ -22,6 +24,10 @@ const UserLogo = () => {
     // height: "90px",
     //
   };
+  useEffect(() => {
+    toggleChange();
+  }, [nowUser]);
+
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
     setMenu((isOpen) => !isOpen);
@@ -32,8 +38,8 @@ const UserLogo = () => {
           //관리자 로그인 할 경우
           if (user.uid === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2") {
             setToggleState(
-              <ul>
-                {/* <li>{emailValue}</li> */}
+              <>
+                <li>{emailValue || ""}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>
@@ -42,36 +48,48 @@ const UserLogo = () => {
                   <Link to="/usermanaging">사용자 관리</Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={logout}>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      logout();
+                      resetUser();
+                    }}
+                  >
                     로그아웃
                   </Link>
                 </li>
-              </ul>
+              </>
             );
           } else {
             //일반 사용자 로그인 할 경우
             setToggleState(
-              <ul>
-                {/* <li>{emailValue}</li> */}
+              <>
+                <li>{emailValue || ""}</li>
                 <li>
                   <Link to="/myinfo">나의 정보</Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={logout}>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      logout();
+                      resetUser();
+                    }}
+                  >
                     로그아웃
                   </Link>
                 </li>
-              </ul>
+              </>
             );
           }
         } else {
           //로그 아웃 상태일때
           setToggleState(
-            <ul>
+            <>
               <li>
                 <Link to="/login">로그인</Link>
               </li>
-            </ul>
+            </>
           );
         }
       });
@@ -81,14 +99,12 @@ const UserLogo = () => {
   };
 
   return (
-    <>
-      <div className="userLogoBtn headerbtn">
-        <Button type="button" onClick={toggleChange}>
-          <PersonIcon className="icon3" />
-        </Button>
-        {toggleState}
-      </div>
-    </>
+    <div>
+      <Button type="button" onClick={toggleChange}>
+        <PersonIcon />
+      </Button>
+      {toggleState}
+    </div>
   );
 };
 

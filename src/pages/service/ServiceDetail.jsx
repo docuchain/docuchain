@@ -29,20 +29,38 @@ const ServiceDetail = () => {
   };
 
   //fetchdata firebase data
-  React.useEffect(() => {
+  useEffect(() => {
     fetchdata();
   }, []);
 
   const { id } = useParams();
 
-  const [serviceName, setserviceName] = useState();
-  const [timeStamp, settimeStamp] = useState();
-  const [apiKinds, setapiKinds] = useState();
-  const [transHash, setTransHash] = useState();
-  const [transSize, setTransSize] = useState();
-  const [blockNum, setBlockNum] = useState();
+  const [serviceName, setServiceName] = useState();
+  const [timeStamp, setTimeStamp] = useState();
+  const [apiKinds, setApiKinds] = useState();
   const [nodeName, setNodeName] = useState();
+  const [transNumber, setTransNumber] = useState();
+  const [transHash, setTransHash] = useState();
+  const [blockNumber, setBlockNumber] = useState();
   const [status, setStatus] = useState();
+
+  useEffect(() => {
+    async function getService() {
+      const result2 = data.filter((item) => item.transNumber == parseInt(id));
+
+      result2.forEach((item) => {
+        setServiceName(item.serviceName);
+        setTimeStamp(item.timeStamp);
+        setApiKinds(item.apiKinds);
+        setNodeName(item.nodeName);
+        setTransNumber(item.transNumber);
+        setTransHash(item.transHash);
+        setBlockNumber(item.blockNumber);
+        setStatus(item.status);
+      });
+    }
+    getService();
+  });
 
   return (
     <div className="serviceDetailTable">
@@ -54,38 +72,38 @@ const ServiceDetail = () => {
           <TableBody>
             <TableRow>
               <TableCell>네트워크명</TableCell>
-              <TableCell></TableCell>
+              <TableCell>{serviceName}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>타임스탬프</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{timeStamp}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>API 종류</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{apiKinds}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>노드명</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{nodeName}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>트랜잭션번호</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{transNumber}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>트랜잭션해시</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{transHash}</TableCell>
               <TableCell>
                 <CopyBtn />
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>블록번호</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{blockNumber}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>상태</TableCell>
-              <TableCell>data</TableCell>
+              <TableCell>{status}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
