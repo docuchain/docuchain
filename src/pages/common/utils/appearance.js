@@ -1,17 +1,17 @@
 import React from "react";
-import {
-  MdLightMode,
-  MdNightlight,
-  MdOutlineLightMode,
-  MdOutlineNightlight,
-} from "react-icons/md";
-import "../style/appearance.scss";
+import Button from "../components/Button";
+// test
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function appearance() {
   return (
     <div className="Appearance">
-      <div className="appearanceBtn">
-        <MdLightMode className="mdLightMode" />
+      <div className="appearanceBtn headerbtn">
+        <Button>
+          {/* <DarkModeIcon /> */}
+          <LightModeIcon className="icon2" />
+        </Button>
       </div>
     </div>
   );

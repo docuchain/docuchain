@@ -21,8 +21,8 @@ const ActiveNtwCnt = () => {
   }, []);
   return (
     <div
-      className="ActiveNtwCnt boxShadow4"
-      style={{ width: "300px", height: "400px" }}
+      className="ActiveNtwCnt boxShadow boxLayoutel4"
+      style={{ height: "400px" }}
     >
       <h3>ActiveNtwCnt</h3>
       <h3>{activeNtw.length}</h3>

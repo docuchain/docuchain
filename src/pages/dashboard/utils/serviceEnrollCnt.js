@@ -29,7 +29,7 @@ function ServiceEnrollCnt() {
     getChart();
   }, []);
   return (
-    <div className="boxShadow4">
+    <div className="boxShadow boxLayoutel2">
       <AreaChart
         width={600}
         height={400}

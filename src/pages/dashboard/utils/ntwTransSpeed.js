@@ -29,7 +29,7 @@ function NtwTransSpeed() {
     getChart();
   }, []);
   return (
-    <div className="boxShadow2">
+    <div className="boxShadow boxLayoutel2">
       <BarChart
         width={600}
         height={400}

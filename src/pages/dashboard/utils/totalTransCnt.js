@@ -21,8 +21,8 @@ const TotalTransCnt = () => {
   }, []);
   return (
     <div
-      className="TotalTransCnt boxShadow4"
-      style={{ width: "300px", height: "400px" }}
+      className="TotalTransCnt boxShadow boxLayoutel4"
+      style={{ height: "400px" }}
     >
       <h3>TotalTransCnt</h3>
       <h3>{totalTrans.length}</h3>

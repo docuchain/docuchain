@@ -16,7 +16,6 @@ const Header = () => {
             <SearchBar />
           </div>
           <div className="appearance">
-            {/* darkMode lightMode compo */}
             <Appearance />
           </div>
           <div className="userLogo">

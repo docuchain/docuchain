@@ -49,7 +49,7 @@ function ActiveNtw() {
   }, []);
 
   return (
-    <div className="boxShadow">
+    <div className="boxShadow boxLayoutel2">
       <PieChart width={600} height={400}>
         <Tooltip />
         <Legend />
