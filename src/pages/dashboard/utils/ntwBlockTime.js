@@ -29,7 +29,7 @@ function NtwBlockTime() {
     getChart();
   }, []);
   return (
-    <div className="boxShadow2">
+    <div className="boxShadow boxLayoutel2">
       <LineChart width={600} height={400} data={chartInfo}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="label" padding={{ left: 30, right: 30 }} />

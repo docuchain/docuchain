@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useForm } from "react-hook-form";
 import { async } from "@firebase/util";
 import block from "../../block/Block";
+
 const SearchBar = () => {
   const { handleSubmit } = useForm();
   const [input, setInput] = useState("");
@@ -45,8 +46,8 @@ const SearchBar = () => {
             onChange={(e) => setInput(e.target.value)}
           ></input>
         </label>
-        <Button type="submit">
-          <SearchIcon />
+        <Button type="submit" className="searchIconBox">
+          <SearchIcon className="icon1" />
         </Button>
       </form>
     </div>

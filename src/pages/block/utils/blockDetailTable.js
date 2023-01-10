@@ -29,7 +29,6 @@ export default function BlockDetailTable() {
   // const handleCopy = () => {
   //   setCopied((prev) => !prev);
   // };
-
   //*  copyClipboard
   const handleCopy = async (text) => {
     setCopied((prev) => !prev);
