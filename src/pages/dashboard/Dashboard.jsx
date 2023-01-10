@@ -8,11 +8,14 @@ import NtwTransSpeed from "./utils/ntwTransSpeed";
 import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
 import ActiveNtw from "./utils/activeNtw";
+import "../common/style/boxShadow.scss";
 
 const dashboard = () => {
   return (
     <div className="dashboard">
-      <TotalBlockCnt />
+      <div className="box--shadow">
+        <TotalBlockCnt />
+      </div>
       <TotalTransCnt />
       <ActiveNtwCnt />
       <TotalServiceCnt />

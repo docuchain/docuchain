@@ -11,52 +11,24 @@ import TableRow from "@mui/material/TableRow";
 import { Link, useNavigate } from "react-router-dom";
 import ServiceDetail from "../ServiceDetail";
 
-const ConditionalLink = ({ children, condition, ...props }) => {
-  return !!condition && props.to ? (
-    <Link {...props}>{children}</Link>
-  ) : (
-    <>{children}</>
-  );
-};
-
 const columns = [
-  {
-    id: "serviceName",
-    label: "서비스명",
-    minWidth: 10,
-    link: `service/ServiceDetail/`,
-  },
-  {
-    id: "date",
-    label: "타임스탬프",
-    minWidth: 10,
-    link: "service/serviceDetail/",
-  },
-  {
-    id: "ApiKinds",
-    label: "API 종류",
-    minWidth: 0,
-    link: "service/serviceDetail",
-  },
-  { id: "NodeName", label: "노드명", minWidth: 10, link: "node/nodeDetail" },
-  {
-    id: "TransNum",
-    label: "트랜잭션번호",
-    minWidth: 10,
-    link: "trans/transDetail",
-  },
-  { id: "BlockNum", label: "블록번호", minWidth: 0, link: "block/blockDetail" },
-  { id: "state", label: "상태", minWidth: 0 },
+  { id: "serviceName", label: "서비스명" },
+  { id: "date", label: "타임스탬프" },
+  { id: "ApiKinds", label: "API 종류" },
+  { id: "NodeName", label: "노드명" },
+  { id: "TransNum", label: "트랜잭션번호" },
+  { id: "BlockNum", label: "블록번호" },
+  { id: "state", label: "상태" },
 ];
 
-export default function StickyHeadTable(prpos) {
+export default function StickyHeadTable() {
   // 데이터 담기
   const [data, setData] = React.useState([]);
   //데이터 불러오기
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/Service.json"
+        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
@@ -82,17 +54,6 @@ export default function StickyHeadTable(prpos) {
     setPage(0);
   };
 
-  const [serviceId, setServiceId] = useState("");
-  const navigate = useNavigate();
-  const toServiceDetail = (e) => {
-    console.log(e.target.value);
-    setServiceId(e.target.value);
-  };
-
-  useEffect(() => {
-    navigate(`/service/${serviceId}`);
-  }, [serviceId]);
-
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -112,25 +73,37 @@ export default function StickyHeadTable(prpos) {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
-                    {columns.map((column) => {
-                      const value = data[column.id];
-                      //메인 테이블
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {/* condition (조건문) 일치하는 것만 링크 */}
-                          <ConditionalLink
-                            onclick={toServiceDetail}
-                            to={`/${column.link}`}
-                            condition={column.link !== undefined}
-                          >
-                            {column.format && typeof value === "number"
-                              ? column.format(value)
-                              : value}
-                          </ConditionalLink>
-                        </TableCell>
-                      );
-                    })}
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={data.transCount}
+                  >
+                    <TableCell>
+                      <Link to={`${data.transCount}`} value={data.serviceName}>
+                        {data.serviceName}
+                      </Link>
+                    </TableCell>
+                    <TableCell>
+                      <Link to={`${data.transCount}`} value={data.serviceName}>
+                        {data.timeStamp}
+                      </Link>
+                    </TableCell>
+                    <TableCell>
+                      <Link to={`${data.transCount}`} value={data.serviceName}>
+                        {data.apiKinds}
+                      </Link>
+                    </TableCell>
+                    <TableCell>
+                      <Link to={"node/nodeDetail"}>{data.nodeName}</Link>
+                    </TableCell>
+                    <TableCell>
+                      <Link to={"/trans/transDetail"}>{data.transNumber}</Link>
+                    </TableCell>
+                    <TableCell>
+                      <Link to={"/block/blockDetail"}>{data.newBlockNum}</Link>
+                    </TableCell>
+                    <TableCell>{data.status}</TableCell>
                   </TableRow>
                 );
               })}
@@ -150,4 +123,3 @@ export default function StickyHeadTable(prpos) {
     </Paper>
   );
 }
-
