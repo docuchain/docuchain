@@ -74,7 +74,7 @@ const SearchBar = () => {
   };
   return (
     <div style={{ marginLeft: "auto" }}>
-      <form>
+      <form onSubmit={handleSubmit(searchResult)}>
         <label>
           <input
             type={"text"}

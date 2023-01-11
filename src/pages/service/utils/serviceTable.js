@@ -28,21 +28,21 @@ export default function StickyHeadTable() {
   //서비스 권한여부 판별
   const serviceAuth = (e) => {
     if (!userValue.service) {
-      swal("", "권한이 없습니다. 관리자에게 문의하십시오", "error");
+      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
       e.preventDefault();
     }
   };
   //노드 권한여부 판별
   const nodeAuth = (e) => {
     if (!userValue.node) {
-      swal("", "권한이 없습니다. 관리자에게 문의하십시오", "error");
+      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
       e.preventDefault();
     }
   };
   //트랜잭션 권한여부 판별
   const transAuth = (e) => {
     if (!userValue.trans) {
-      swal("", "권한이 없습니다. 관리자에게 문의하십시오", "error");
+      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
       e.preventDefault();
     }
   };
