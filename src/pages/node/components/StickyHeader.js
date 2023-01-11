@@ -105,10 +105,11 @@ export default function StickyHeadTable() {
       swal("노드 세부페이지로 이동합니다");
       navigate(`/node/detail/${nodeName}`);
     } else {
-      swal("", "권한이 없습니다. 관리자에게 문의하십시오.", "error");
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
     }
   };
   const tableHeadAuth = (column) => {
+    //관리자만 보이는 테이블 영역
     if (column.label === "처리속도" || column.label === "지연율") {
       //관리자일경우
       if (userValue.node) {
@@ -122,7 +123,7 @@ export default function StickyHeadTable() {
             {column.label}
           </TableCell>
         );
-        //관리자 아닐 경우
+        //관리자 아닐 경우 해당 부분 출력x
       }
       //처리속도나 지연율 아닌경우 == 모든 상황에서 보여지는 테이블
     } else {

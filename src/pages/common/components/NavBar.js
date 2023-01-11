@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../style/navbar.scss";
 
 const NavBar = () => {
+  const activeStyle = {
+    color: "red",
+  };
   return (
     <div className="Navbar">
       <div className="logo">
@@ -17,19 +20,44 @@ const NavBar = () => {
         <div className="nav">
           <ul className="navList">
             <li className="NavBar__link">
-              <Link to="/">대시보드</Link>
+              <NavLink
+                to="/"
+                style={({ isActive }) => (isActive ? activeStyle : {})}
+              >
+                대시보드
+              </NavLink>
             </li>
             <li className="NavBar__link">
-              <Link to="/block">블록</Link>
+              <NavLink
+                to="/block"
+                style={({ isActive }) => (isActive ? activeStyle : {})}
+              >
+                블록
+              </NavLink>
             </li>
             <li className="NavBar__link">
-              <Link to="/trans">트랜잭션</Link>
+              <NavLink
+                to="/trans"
+                style={({ isActive }) => (isActive ? activeStyle : {})}
+              >
+                트랜잭션
+              </NavLink>
             </li>
             <li className="NavBar__link">
-              <Link to="/node">노드</Link>
+              <NavLink
+                to="/node"
+                style={({ isActive }) => (isActive ? activeStyle : {})}
+              >
+                노드
+              </NavLink>
             </li>
             <li className="NavBar__link">
-              <Link to="/service">서비스</Link>
+              <NavLink
+                to="/service"
+                style={({ isActive }) => (isActive ? activeStyle : {})}
+              >
+                서비스
+              </NavLink>
             </li>
           </ul>
         </div>
