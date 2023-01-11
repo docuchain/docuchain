@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../style/navbar.scss";
-
+import { useNavigate } from "react-router-dom";
 const NavBar = () => {
+  const navigate = useNavigate();
   const activeStyle = {
     color: "red",
   };
   return (
     <div className="Navbar">
       <div className="logo">
-        <div className="img"></div>
+        <div className="img" onClick={() => navigate("/")}></div>
       </div>
       <div className="innerContainer">
         <div className="avatar">

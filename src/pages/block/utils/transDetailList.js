@@ -15,7 +15,8 @@ import "../style/Modal.scss";
 import { useParams } from "react-router-dom";
 import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
-
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 // 데이터 받아오면 목데이터 지울것 -----------
 
 // -----------------------------------
@@ -30,6 +31,8 @@ export default function TransDetailList(props) {
   const [transSize, setTransSize] = useState();
   const [transDataDetail, setTransDataDetail] = useState();
   const userValue = useRecoilValue(getUserInfo);
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchdata();
   }, []);
@@ -54,7 +57,19 @@ export default function TransDetailList(props) {
   });
 
   const openModal = () => {
-    setModalOpen(true);
+    //트랜잭션 권한 있을경우
+    if (userValue.trans) {
+      setModalOpen(true);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
+  };
+  const naviTransDetail = () => {
+    if (userValue.trans) {
+      navigate(`/trans/${transNum}`);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
   };
   const closeModal = () => {
     setModalOpen(false);
@@ -85,7 +100,7 @@ export default function TransDetailList(props) {
               <TableCell
                 className="selectableArea"
                 // 모달 오픈
-                onClick={openModal}
+                onClick={naviTransDetail}
                 align="right"
               >
                 {transHash}
