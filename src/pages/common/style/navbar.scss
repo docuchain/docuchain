@@ -58,6 +58,10 @@
             font-size: 1.3rem;
           }
         }
+        & li::before{
+          content: "";
+          
+        }
         & li:hover {
           background: #4e81ef;
           border-radius: 12px;
