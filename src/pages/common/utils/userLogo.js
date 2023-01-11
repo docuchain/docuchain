@@ -80,7 +80,9 @@ const UserLogo = () => {
           //로그 아웃 상태일때
           setToggleState(
             <>
-              {/* <li><Link to="/login">로그인</Link></li> */}
+              <li>
+                <Link to="/login">로그인</Link>
+              </li>
               <li onClick={Modal}></li>
             </>
           );
