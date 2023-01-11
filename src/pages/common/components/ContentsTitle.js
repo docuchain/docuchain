@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
-import BlockDetailTable from "./utils/blockDetailTable";
-import BlockDetailTitle from "./utils/blockDetailItitle";
 
-export default function BlockDetail() {
+export default function ContentsTitle() {
   const [data, setData] = useState([]);
 
   const fetchdata = async () => {
@@ -21,13 +18,12 @@ export default function BlockDetail() {
   useEffect(() => {
     fetchdata();
   }, []);
+
   return (
-    <div className="blockDetail">
-      <BlockDetailTitle />
-      <div className="blockdetailwrapper" style={{ border: "1px solid red" }}>
-        <Stack className="" spacing={2}></Stack>
-        <BlockDetailTable />
+    <>
+      <div>
+        <h4>전체 블록 {data.length}개</h4>
       </div>
-    </div>
+    </>
   );
 }

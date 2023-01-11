@@ -1,4 +1,13 @@
+/* common */
 @import "./pages/common/style/navbar.scss";
+@import "./pages/common/style/hedaer.scss";
+@import "./pages/common/style/footer.scss";
+@import "./pages/common/style/contents.scss";
+@import "./pages/common/style/boxShadow.scss";
+/* dash */
+@import "./pages/dashboard/Dashboard.scss";
+
+/* default + dashboard */
 
 .App {
   text-align: center;
@@ -19,12 +28,12 @@ li {
   display: flex;
 }
 .pageRouterWrap--left {
+  width: 18vw;
   font-size: 1.5rem;
   background: #1653da;
-  width: 360px;
 }
 .pageRouterWrap--right {
-  width: 100vw;
+  width: 82vw;
   border: 1px solid blue;
 }
 .pageRouterWrap--right--header {

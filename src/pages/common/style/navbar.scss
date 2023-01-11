@@ -57,7 +57,6 @@
           margin-bottom: 14px;
           margin: 7px 20px;
           & a {
-            border: 1px solid;
             display: inline-block;
             padding: 2px 20px;
             margin: 0 60px;
@@ -73,6 +72,9 @@
             height: 8px;
             border-radius: 5px;
             transform: translate(-16px, -2px);
+          }
+          & a:hover {
+            text-indent: -8px;
           }
         }
         & li::before{

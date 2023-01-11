@@ -30,13 +30,6 @@ function AvgBlockSize() {
   }, []);
 
   const countFunc = (a) => {
-    // let count = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].timeStamp.includes(a) == true) {
-    //     count++;
-    //   }
-    // }
-    // return count;
     const result1 = data.filter((user) => user.timeStamp.includes(a));
     return result1;
   };
@@ -79,7 +72,7 @@ function AvgBlockSize() {
     },
   ];
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxLayoutel2">
       <h3>평균 블록 크기(KB)</h3>
       <AreaChart
         width={550}

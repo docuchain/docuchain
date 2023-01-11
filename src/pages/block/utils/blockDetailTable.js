@@ -5,19 +5,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import "../style/BlockDetailTable.scss";
 //
+// import "../style/BlockDetailTable.scss";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { AiOutlineCopy } from "react-icons/ai";
-// btns
-// import DetailBtn from "../utils/detailBtn";
-// import Button from "@mui/material/Button";
-// import CopyBtn from "./copyBtn";
 import TransDetailList from "./transDetailList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Pagination } from "@mui/material";
+// import { Pagination } from "@mui/material";
 
 export default function BlockDetailTable() {
   // 자세히 버튼 toggle
@@ -28,9 +24,6 @@ export default function BlockDetailTable() {
   const [copy, setCopied] = useState(true);
   // * true일 때 copy가능하게 만들어주기 - clicpboard 사용하기
 
-  // const handleCopy = () => {
-  //   setCopied((prev) => !prev);
-  // };
   //*  copyClipboard
   const handleCopy = async (text) => {
     setCopied((prev) => !prev);
