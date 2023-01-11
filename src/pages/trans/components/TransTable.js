@@ -11,6 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { getUserInfo } from "../../../recoil/selector";
 
 // row열로 분리
 // import TableRowCompo from "../utils/TableRowCompo";
@@ -50,6 +52,7 @@ const columns = [
 ];
 
 export default function TransTable(props) {
+  const userValue = useRecoilValue(getUserInfo);
   const { data, fetchdata } = props;
   // 데이터 fetch
 
@@ -67,6 +70,13 @@ export default function TransTable(props) {
     setPage(0);
   };
 
+  //트랜잭션 권한여부 판별
+  const transAuth = (e) => {
+    if (!userValue.trans) {
+      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
+      e.preventDefault();
+    }
+  };
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -94,7 +104,11 @@ export default function TransTable(props) {
                   {datael.serviceName}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  <Link value={datael.transNumber} to={`${datael.transNumber}`}>
+                  <Link
+                    value={datael.transNumber}
+                    to={`${datael.transNumber}`}
+                    onClick={transAuth}
+                  >
                     {datael.transNumber}
                   </Link>
                 </TableCell>

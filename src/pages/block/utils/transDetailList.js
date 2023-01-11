@@ -13,6 +13,8 @@ import { AiOutlineDatabase } from "react-icons/ai";
 import Modal from "./Modal";
 import "../style/Modal.scss";
 import { useParams } from "react-router-dom";
+import { getUserInfo } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
 
 // 데이터 받아오면 목데이터 지울것 -----------
 
@@ -27,6 +29,7 @@ export default function TransDetailList(props) {
   const [transHash, setTransHash] = useState();
   const [transSize, setTransSize] = useState();
   const [transDataDetail, setTransDataDetail] = useState();
+  const userValue = useRecoilValue(getUserInfo);
   useEffect(() => {
     fetchdata();
   }, []);
@@ -67,7 +70,7 @@ export default function TransDetailList(props) {
               <TableCell align="right">타임스탬프</TableCell>
               <TableCell align="right">트랜잭션해시</TableCell>
               <TableCell align="right">트랜잭션크기</TableCell>
-              <TableCell align="right">데이터</TableCell>
+              {userValue.trans && <TableCell align="right">데이터</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody className="tableBody">
@@ -88,17 +91,19 @@ export default function TransDetailList(props) {
                 {transHash}
               </TableCell>
               <TableCell align="right">{transSize}</TableCell>
-              <TableCell
-                className="selectableArea"
-                align="right"
-                // 모달로 변경하고 라우터 없애도 될듯 -디테일 페이지를 라우터로 이동
-                // onClick={toTransHashDetailData}
+              {userValue.trans && (
+                <TableCell
+                  className="selectableArea"
+                  align="right"
+                  // 모달로 변경하고 라우터 없애도 될듯 -디테일 페이지를 라우터로 이동
+                  // onClick={toTransHashDetailData}
 
-                // 모달 -
-                onClick={openModal}
-              >
-                <AiOutlineDatabase />
-              </TableCell>
+                  // 모달 -
+                  onClick={openModal}
+                >
+                  <AiOutlineDatabase />
+                </TableCell>
+              )}
             </TableRow>
           </TableBody>
         </Table>
