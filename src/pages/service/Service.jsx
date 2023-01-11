@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ServiceChart from "./component/ServiceChart";
 import ServiceTable from "./utils/serviceTable";
+import ContentsTitle from "../common/components/ContentsTitle";
 import "./CSS/Service.scss";
 
 const Service = () => {
@@ -22,9 +23,8 @@ const Service = () => {
   }, []);
 
   return (
-    <div className="serviceMain_Center">
-      {/* <h1 className="serviceMain_Name">서비스</h1>
-      <p>전체 발급 0.000건</p> */}
+    <div className="Contents">
+      <ContentsTitle />
       <div className="serviceChart_Center">
         <ServiceChart data={data} fetchdata={fetchdata} />
         <div className="serviceTable">

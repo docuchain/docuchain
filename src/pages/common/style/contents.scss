@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 40px;
+
 }
 
 .maginBw100 {
@@ -27,6 +28,7 @@
   justify-content: center;
   align-items: center;
 }
+// 전체 레이아웃 ====================================
 .boxLayout4 {
   display: flex;
   justify-content: space-between;
@@ -45,6 +47,7 @@
   align-items: center;
 }
 
+// 각 파트별 레이아웃 ====================================
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
