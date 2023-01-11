@@ -139,6 +139,36 @@ export default function StickyHeadTable() {
       );
     }
   };
+  const tableHeadAuth = (column) => {
+    if (column.label === "처리속도" || column.label === "지연율") {
+      //관리자일경우
+      if (userValue.node) {
+        return (
+          <TableCell
+            sx={{ lineHeight: "2.5rem" }}
+            key={column.id}
+            align={column.align}
+            style={{ minWidth: column.minWidth }}
+          >
+            {column.label}
+          </TableCell>
+        );
+        //관리자 아닐 경우
+      }
+      //처리속도나 지연율 아닌경우 == 모든 상황에서 보여지는 테이블
+    } else {
+      return (
+        <TableCell
+          sx={{ lineHeight: "2.5rem" }}
+          key={column.id}
+          align={column.align}
+          style={{ minWidth: column.minWidth }}
+        >
+          {column.label}
+        </TableCell>
+      );
+    }
+  };
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
