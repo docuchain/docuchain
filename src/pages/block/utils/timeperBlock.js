@@ -80,7 +80,7 @@ function TimePerBlock() {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxLayoutel2">
       <h3>시간 당 블록 수(개)</h3>
       <AreaChart
         width={600}

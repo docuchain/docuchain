@@ -1,8 +1,13 @@
+/* common */
 @import "./pages/common/style/navbar.scss";
 @import "./pages/common/style/hedaer.scss";
 @import "./pages/common/style/footer.scss";
 @import "./pages/common/style/contents.scss";
 @import "./pages/common/style/boxShadow.scss";
+/* dash */
+@import "./pages/dashboard/Dashboard.scss";
+
+/* default + dashboard */
 
 .App {
   text-align: center;

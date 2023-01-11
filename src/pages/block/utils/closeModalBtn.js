@@ -1,15 +1,3 @@
-// import React from "react";
-// import { AiOutlineCloseCircle } from "react-icons/ai";
-// export default function CloseModalBtn() {
-//   return (
-//     <>
-//       <button>
-//         <AiOutlineCloseCircle />
-//       </button>
-//     </>
-//   );
-// }
-
 import React from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Stack from "@mui/material/Stack";
