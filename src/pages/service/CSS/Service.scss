@@ -1,7 +1,7 @@
 //ServiceChart 부분
 .serviceMain_Center {
-  display: flex;
-  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
   align-items: center;
   background-color: #f4f7ff;
 }
@@ -16,7 +16,6 @@
 .serviceChart_Center {
   position: relative;
   flex-direction: center;
-  align-items: flex-start;
   width: 100%;
   // border: 1px solid blue;
 }
@@ -41,6 +40,11 @@ a {
   margin: 10px;
 }
 //============================================== Service Detail
+.serviceDetailTable {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid red;
+}
 .serviceDetail--box {
   float: left;
 }

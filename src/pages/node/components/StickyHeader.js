@@ -9,7 +9,9 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
 import { nodeMockData } from "../utils/nodeMockData";
-
+import { getUserInfo } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
+import swal from "sweetalert";
 const columns = [
   {
     id: "serviceName",
@@ -82,8 +84,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const navigate = useNavigate();
-
-
+  const userValue = useRecoilValue(getUserInfo);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -99,28 +100,62 @@ export default function StickyHeadTable() {
       ? Math.max(0, (1 + page) * rowsPerPage - nodeMockData.nodeList.length)
       : 0;
 
-
   const onClickNodeDetail = (nodeName) => {
-    alert("노드 세부페이지로 이동합니다");
-    navigate(`/node/detail/${nodeName}`);
+    if (userValue.node) {
+      swal("노드 세부페이지로 이동합니다");
+      navigate(`/node/detail/${nodeName}`);
+    } else {
+      swal("", "권한이 없습니다. 관리자에게 문의하십시오.", "error");
+    }
+  };
+  const tableHeadAuth = (column) => {
+    if (column.label === "처리속도" || column.label === "지연율") {
+      //관리자일경우
+      if (userValue.node) {
+        return (
+          <TableCell
+            sx={{ lineHeight: "2.5rem" }}
+            key={column.id}
+            align={column.align}
+            style={{ minWidth: column.minWidth }}
+          >
+            {column.label}
+          </TableCell>
+        );
+        //관리자 아닐 경우
+      }
+      //처리속도나 지연율 아닌경우 == 모든 상황에서 보여지는 테이블
+    } else {
+      return (
+        <TableCell
+          sx={{ lineHeight: "2.5rem" }}
+          key={column.id}
+          align={column.align}
+          style={{ minWidth: column.minWidth }}
+        >
+          {column.label}
+        </TableCell>
+      );
+    }
   };
 
   return (
-        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  sx={{ lineHeight: "2.5rem" }}
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
+              {columns.map((column) =>
+                // <TableCell
+                //   sx={{ lineHeight: "2.5rem" }}
+                //   key={column.id}
+                //   align={column.align}
+                //   style={{ minWidth: column.minWidth }}
+                // >
+                //   {column.label}
+                // </TableCell>
+                tableHeadAuth(column)
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -135,25 +170,44 @@ export default function StickyHeadTable() {
                     >
                       {node.serviceName}
                     </TableCell>
-                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
                       {node.status}
                     </TableCell>
-                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
                       {node.nodeName}
                     </TableCell>
-                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
                       {node.type}
                     </TableCell>
-                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
                       {node.serviceNameE}
                     </TableCell>
-                    <TableCell align="center" onClick={() => onClickNodeDetail(node.nodeName)}>
+                    <TableCell
+                      align="center"
+                      onClick={() => onClickNodeDetail(node.nodeName)}
+                    >
                       {node.IP}
-                    </TableCell> 
+                    </TableCell>
                     <TableCell align="center">{node.newBlockNum}</TableCell>
                     <TableCell align="center">{node.newBlockTime}</TableCell>
-                    <TableCell align="center">{node.TPS}</TableCell>
-                    <TableCell align="center">{node.Latency}</TableCell>
+                    {userValue.node && (
+                      <TableCell align="center">{node.TPS}</TableCell>
+                    )}
+                    {userValue.node && (
+                      <TableCell align="center">{node.Latency}</TableCell>
+                    )}
                   </TableRow>
                 );
               })}

@@ -29,27 +29,29 @@ function NtwTransSpeed() {
     getChart();
   }, []);
   return (
-    <BarChart
-      width={600}
-      height={400}
-      data={chartInfo}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 0,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="label" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="networkA" fill="#0088FE" key={Math.random()} />
-      <Bar dataKey="networkB" fill="#00C49F" key={Math.random()} />
-      <Bar dataKey="networkC" fill="#FFBB28" key={Math.random()} />
-      <Bar dataKey="networkD" fill="#FF8042" key={Math.random()} />
-    </BarChart>
+    <div className="boxShadow boxLayoutel2">
+      <BarChart
+        width={600}
+        height={400}
+        data={chartInfo}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 0,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="label" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="networkA" fill="#0088FE" key={Math.random()} />
+        <Bar dataKey="networkB" fill="#00C49F" key={Math.random()} />
+        <Bar dataKey="networkC" fill="#FFBB28" key={Math.random()} />
+        <Bar dataKey="networkD" fill="#FF8042" key={Math.random()} />
+      </BarChart>
+    </div>
   );
 }
 export default NtwTransSpeed;
