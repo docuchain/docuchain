@@ -20,12 +20,13 @@ li {
 }
 
 .pageRouterWrap {
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
 }
 .pageRouterWrap--left {
-  width: 18vw;
+  width: 280px;
   font-size: 1.5rem;
   background: #1653da;
 }
