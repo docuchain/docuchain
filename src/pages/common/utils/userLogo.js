@@ -8,6 +8,8 @@ import { flexbox, style } from "@mui/system";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 import { userInfo } from "../../../recoil/atom";
+import Modal from "../../block/utils/Modal";
+
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
   const userValue = useRecoilValue(getUserInfo);
@@ -16,14 +18,6 @@ const UserLogo = () => {
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
-  const style = {
-    // float: "right",
-    // position: "absolute",
-    position: "fixed",
-    // width: "130px",
-    // height: "90px",
-    //
-  };
   useEffect(() => {
     toggleChange();
   }, [nowUser]);
@@ -86,9 +80,8 @@ const UserLogo = () => {
           //로그 아웃 상태일때
           setToggleState(
             <>
-              <li>
-                <Link to="/login">로그인</Link>
-              </li>
+              {/* <li><Link to="/login">로그인</Link></li> */}
+              <li onClick={Modal}></li>
             </>
           );
         }
@@ -101,7 +94,7 @@ const UserLogo = () => {
   return (
     <div>
       <Button type="button" onClick={toggleChange}>
-        <PersonIcon />
+        <PersonIcon className="icon3" />
       </Button>
       {toggleState}
     </div>

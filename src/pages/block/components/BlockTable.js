@@ -11,8 +11,6 @@ import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// row열로 분리
-// import TableRowCompo from "../utils/TableRowCompo";
 import BlockDetailTable from "../utils/blockDetailTable";
 
 // 테이블 헤더 데이터
@@ -77,30 +75,10 @@ export default function BlockTable() {
     setPage(0);
   };
 
-  // 블록 상세 페이지로 이동
-  // const navigate = useNavigate();
-
-  // const toTableRowdata = (e) => {
-  //   navigate("/block/:id");
-  //   const serviceName = e.target.parentElement.children[0].innerHTML;
-  //   const blockNumber = e.target.parentElement.children[1].innerHTML;
-  //   const timeStamp = e.target.parentElement.children[2].innerHTML;
-  //   const blockHash = e.target.parentElement.children[3].innerHTML;
-  //   const blockSize = e.target.parentElement.children[4].innerHTML;
-  //   const transCount = e.target.parentElement.children[5].innerHTML;
-  // };
-
   // 상세페이지 이동 위한 navigate
   const [blockId, setBlockId] = useState("");
   const navigate = useNavigate();
 
-  // const toTableRowdata = (e) => {
-  //   navigate("/block/:id");
-  //   // 선택된 td의 부모 노드=tablerow el을 가져옴 -> 어떤 td를 선택하던 해당 줄의 모든 row열을 가져올 수 있음
-  //   console.log(e.target.parentElement);
-  //   //넘겨주고 children데이터를 뽑아서 다음 테이블에 각각 넣어주면 될 듯
-  //   // console.log(e.target.parentElement.children);
-  // };
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -123,13 +101,7 @@ export default function BlockTable() {
               ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : data
             ).map((datael, idx) => (
-              <TableRow
-                hover
-                role="checkbox"
-                tabIndex={-1}
-                key={idx}
-                // onClick={toTableRowdata}
-              >
+              <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
                 <TableCell component="th" scope="row">
                   {datael.serviceName}
                 </TableCell>
@@ -156,7 +128,7 @@ export default function BlockTable() {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 20]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
