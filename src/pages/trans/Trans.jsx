@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TransChart from "./components/TransChart";
 import TransTable from "./components/TransTable";
-
+import "./TransStyle.css";
 const Trans = () => {
   const [data, setData] = useState([]);
 

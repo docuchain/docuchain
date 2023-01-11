@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import "../style/BlockDetailTable.scss";
+import "../style/TransDetailTable.scss";
 //
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -14,16 +14,12 @@ import { AiOutlineCopy } from "react-icons/ai";
 // import DetailBtn from "../utils/detailBtn";
 // import Button from "@mui/material/Button";
 // import CopyBtn from "./copyBtn";
-import TransDetailList from "./transDetailList";
+
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { Pagination } from "@mui/material";
-import copyBtn from "./copyBtn";
-export default function BlockDetailTable(props) {
+import { useNavigate, useParams } from "react-router-dom";
+
+export default function TransDetailTable(props) {
   const { data, fetchdata } = props;
-  // 자세히 버튼 toggle
-  const [toggle, setToggle] = useState(false);
-  const handleToggle = () => setToggle((prev) => !prev);
 
   // 복사 버튼
   const handleCopyClipBoard = async (text) => {
@@ -68,13 +64,20 @@ export default function BlockDetailTable(props) {
 
   //state에 데이터 저장
 
+  const [transNum, setTransNum] = useState();
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
-  const [blockHash, setBlockHash] = useState();
-  const [blockSize, setBlockSize] = useState();
+  const [transHash, setTransHash] = useState();
+  const [transSize, setTransSize] = useState();
   const [blockNum, setBlockNum] = useState();
-  const [transCount, setTransCount] = useState();
-  const [idx, setIdx] = useState(0);
+  const [nodeName, setNodeName] = useState();
+  const [status, setStatus] = useState();
+  const [apiKinds, setApiKinds] = useState();
+
+  const navigate = useNavigate();
+  const toTrans = () => {
+    navigate(`/trans`);
+  };
 
   // const [page, setPage] = React.useState(0);
   // const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -87,24 +90,26 @@ export default function BlockDetailTable(props) {
   // };
 
   useEffect(() => {
-    async function getBlocks() {
-      const result3 = data.filter((item) => item.blockNumber == parseInt(id));
+    async function getTrans() {
+      const result3 = data.filter((item) => item.transNumber == parseInt(id));
 
       result3.forEach((item) => {
+        setTransNum(item.transNumber);
         setServiceName(item.serviceName);
         setTime(item.timeStamp);
-        setBlockHash(item.blockHash);
-        setBlockSize(item.blockSize);
+        setTransHash(item.transHash);
+        setTransSize(item.transSize);
         setBlockNum(item.blockNumber);
-        setTransCount(item.transCount);
-        setIdx(item.id);
+        setNodeName(item.nodeName);
+        setStatus(item.status);
+        setApiKinds(item.apiKinds);
       });
     }
-    getBlocks();
+    getTrans();
   });
 
   return (
-    <div className="BlockDetailTable">
+    <div className="TransDetailTable">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 1200 }} aria-label="simple table">
           <TableBody>
@@ -113,43 +118,41 @@ export default function BlockDetailTable(props) {
               <TableCell>{serviceName}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>블록번호</TableCell>
-              <TableCell>{blockNum}</TableCell>
-            </TableRow>
-            <TableRow>
               <TableCell>타임스탬프</TableCell>
               <TableCell>{time}</TableCell>
             </TableRow>
-            <TableRow className="blockhashArea">
-              <TableCell>블록해시</TableCell>
-              <TableCell className="blockhashAreaData">
-                {blockHash}
-
+            <TableRow>
+              <TableCell>트랜잭션해시</TableCell>
+              <TableCell>
+                {transHash}
                 <Button
                   variant="contained"
                   disableElevation
-                  onClick={() => handleCopyClipBoard(blockHash)}
+                  onClick={() => handleCopyClipBoard(transHash)}
                 >
                   복사
                 </Button>
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>블록크기</TableCell>
-              <TableCell>{blockSize}</TableCell>
+              <TableCell>트랜잭션 크기</TableCell>
+              <TableCell>{transSize}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>트랜잭션 수</TableCell>
-              <TableCell>{transCount}</TableCell>
-              {/* <DetailBtn  /> */}
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={handleToggle}
-              >
-                자세히
-              </Button>
-              {/* <DetailBtn  /> */}
+              <TableCell>블록번호</TableCell>
+              <TableCell>{blockNum}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>API 종류</TableCell>
+              <TableCell>{apiKinds}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>노드명</TableCell>
+              <TableCell>{nodeName}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>상태</TableCell>
+              <TableCell>{status}</TableCell>
             </TableRow>
           </TableBody>
           {/* <Pagination
@@ -161,9 +164,6 @@ export default function BlockDetailTable(props) {
           /> */}
         </Table>
       </TableContainer>
-      {toggle === true ? (
-        <TransDetailList data={data} fetchdata={fetchdata} />
-      ) : null}
     </div>
   );
 }

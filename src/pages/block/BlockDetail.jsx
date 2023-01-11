@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import BlockDetailTable from "./utils/blockDetailTable";
 import "./BlockStyle.css";
@@ -33,7 +32,7 @@ export default function BlockDetail() {
         <Stack className="" spacing={2}>
           {/* <Pagination count={200} size="large" /> */}
         </Stack>
-        <BlockDetailTable />
+        <BlockDetailTable data={data} fetchdata={fetchdata} />
         {/* <TransDetailList /> */}
       </div>
     </div>

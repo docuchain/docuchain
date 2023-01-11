@@ -53,10 +53,6 @@ export default function TransTable(props) {
   const { data, fetchdata } = props;
   // 데이터 fetch
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (event, newPage) => {

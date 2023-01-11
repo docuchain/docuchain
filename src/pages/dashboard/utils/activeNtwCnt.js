@@ -1,31 +1,27 @@
-import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { dbService } from "../../../apis/firebase";
+import Timer from "./timer";
 
-const ActiveNtwCnt = () => {
-  const ntwData = collection(dbService, "ntwData");
-  const [activeNtw, setActiveNtw] = useState([]);
+const ActiveNtwCnt = (props) => {
+  const { data, fetchdata } = props;
 
-  useEffect(() => {
-    async function getBlock() {
-      const data = await getDocs(ntwData);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
-      setActiveNtw(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
+  //네트워크 개수
 
-    getBlock();
-  }, []);
+  const netWorkKinds = data.filter(
+    (v, i) => data.findIndex((x) => x.network === v.network) === i
+  );
+
   return (
     <div
       className="ActiveNtwCnt boxShadow boxLayoutel4"
       style={{ height: "400px" }}
     >
-      <h3>ActiveNtwCnt</h3>
-      <h3>{activeNtw.length}</h3>
+      <h3>활성 네트워크 수</h3>
+      <h3>{netWorkKinds.length}</h3>
+      <Timer />
     </div>
   );
 };

@@ -30,8 +30,8 @@ const Block = () => {
         <h4>전체 블록 {data.length}개</h4>
       </div>
       <div className="block" style={{ border: "1px solid red" }}>
-        <BlockChart />
-        <BlockTable />
+        <BlockChart data={data} fetchdata={fetchdata} />
+        <BlockTable data={data} fetchdata={fetchdata} />
       </div>
     </div>
   );
