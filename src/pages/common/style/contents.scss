@@ -1,6 +1,7 @@
 // 블록, 트랜잭션, 서비스
-
 .Contents {
+  min-width: 1200px;
+  border: 1px solid green;
   background: #f4f7ff;
   height: 86vh;
   overflow: scroll;
@@ -8,14 +9,15 @@
   display: flex;
   flex-direction: column;
   padding: 0 40px;
-
 }
 
 .ContentsTitle {
+  line-height: 0;
   display: flex;
   justify-content: flex-start;
-  margin-left: 40px;
+  margin: 0 0 0 40px;
 }
+
 .Dashboard {
   display: flex;
   flex-direction: column;
@@ -39,7 +41,6 @@
   justify-content: center;
   align-items: center;
 }
-// 전체 레이아웃 ====================================
 .boxLayout4 {
   display: flex;
   justify-content: space-between;
@@ -47,7 +48,6 @@
 }
 
 .boxLayout2 {
-  border: 1px solid green;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +58,6 @@
   align-items: center;
 }
 
-// 각 파트별 레이아웃 ====================================
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);

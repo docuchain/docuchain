@@ -20,17 +20,18 @@ li {
 }
 
 .pageRouterWrap {
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
 }
 .pageRouterWrap--left {
-  width: 18vw;
+  min-width: 280px;
   font-size: 1.5rem;
   background: #1653da;
 }
 .pageRouterWrap--right {
-  width: 82vw;
+  width: 86vw;
   border: 1px solid blue;
 }
 .pageRouterWrap--right--header {
