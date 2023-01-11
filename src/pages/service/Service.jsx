@@ -24,8 +24,8 @@ const Service = () => {
 
   return (
     <div className="Contents">
-      <ContentsTitle />
       <div className="serviceChart_Center">
+        <ContentsTitle />
         <ServiceChart data={data} fetchdata={fetchdata} />
         <div className="serviceTable">
           <ServiceTable data={data} fetchdata={fetchdata} />
