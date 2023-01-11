@@ -16,14 +16,6 @@ const UserLogo = () => {
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
-  const style = {
-    // float: "right",
-    // position: "absolute",
-    position: "fixed",
-    // width: "130px",
-    // height: "90px",
-    //
-  };
   useEffect(() => {
     toggleChange();
   }, [nowUser]);
@@ -101,7 +93,7 @@ const UserLogo = () => {
   return (
     <div>
       <Button type="button" onClick={toggleChange}>
-        <PersonIcon />
+        <PersonIcon className="icon3" />
       </Button>
       {toggleState}
     </div>

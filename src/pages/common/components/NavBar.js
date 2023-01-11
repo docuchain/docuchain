@@ -5,9 +5,11 @@ import "../style/navbar.scss";
 const NavBar = () => {
   return (
     <div className="Navbar">
+      {/* 영역 1 */}
       <div className="logo">
         <div className="img"></div>
       </div>
+      {/* 영역 2 */}
       <div className="innerContainer">
         <div className="avatar">
           <div className="img"></div>
