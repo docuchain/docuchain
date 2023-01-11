@@ -19,8 +19,8 @@ const SearchBar = () => {
   const nowUser = authService.currentUser;
   const userValue = useRecoilValue(getUserInfo);
   useEffect(() => {
-    fetchData();
-  }, [input]);
+    // fetchData();
+  }, []);
   const fetchData = async () => {
     try {
       const blockRes = await fetch(
@@ -33,23 +33,20 @@ const SearchBar = () => {
       console.log(data);
 
       data.filter((ele) => {
-        //블록해시 검색시
         if (ele.blockHash === input) {
-          setUrl(`/block/${ele.blockNumber}`);
-          navigate(url);
-          //블록번호 검색시
+          //블록해시 검색시
+          navigate(`/block/${ele.blockNumber}`);
         } else if (ele.blockNumber === Number(input)) {
-          setUrl(`/block/${ele.blockNumber}`);
-          navigate(url);
-          //트랜잭션 해시일때
+          //블록번호 검색시
+          navigate(`/block/${ele.blockNumber}`);
         } else if (ele.transHash === input) {
-          //트랜잭션 권한 있을때
+          //트랜잭션 해시일때
           if (userValue.trans) {
-            setUrl(`/trans/${ele.transHash}`);
-            navigate(url);
-            //트랜잭션권한없을때
+            //트랜잭션 권한 있을때
+            navigate(`/trans/${ele.transNumber}`);
           } else {
-            setIsTrans((isTrans) => !isTrans);
+            //트랜잭션권한없을때
+            transAlert();
           }
         }
       });
@@ -67,14 +64,11 @@ const SearchBar = () => {
 
   const searchResult = async () => {
     await fetchData();
-    if (isTrans) {
-      transAlert();
-    }
     setInput("");
   };
   return (
     <div style={{ marginLeft: "auto" }}>
-      <form>
+      <form onSubmit={handleSubmit(searchResult)}>
         <label>
           <input
             type={"text"}

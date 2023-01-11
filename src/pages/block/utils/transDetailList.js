@@ -13,7 +13,10 @@ import { AiOutlineDatabase } from "react-icons/ai";
 import Modal from "./Modal";
 import "../style/Modal.scss";
 import { useParams } from "react-router-dom";
-
+import { getUserInfo } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 // 데이터 받아오면 목데이터 지울것 -----------
 
 // -----------------------------------
@@ -27,6 +30,9 @@ export default function TransDetailList(props) {
   const [transHash, setTransHash] = useState();
   const [transSize, setTransSize] = useState();
   const [transDataDetail, setTransDataDetail] = useState();
+  const userValue = useRecoilValue(getUserInfo);
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchdata();
   }, []);
@@ -51,7 +57,19 @@ export default function TransDetailList(props) {
   });
 
   const openModal = () => {
-    setModalOpen(true);
+    //트랜잭션 권한 있을경우
+    if (userValue.trans) {
+      setModalOpen(true);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
+  };
+  const naviTransDetail = () => {
+    if (userValue.trans) {
+      navigate(`/trans/${transNum}`);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
   };
   const closeModal = () => {
     setModalOpen(false);
@@ -67,7 +85,7 @@ export default function TransDetailList(props) {
               <TableCell align="right">타임스탬프</TableCell>
               <TableCell align="right">트랜잭션해시</TableCell>
               <TableCell align="right">트랜잭션크기</TableCell>
-              <TableCell align="right">데이터</TableCell>
+              {userValue.trans && <TableCell align="right">데이터</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody className="tableBody">
@@ -82,19 +100,25 @@ export default function TransDetailList(props) {
               <TableCell
                 className="selectableArea"
                 // 모달 오픈
-                onClick={openModal}
+                onClick={naviTransDetail}
                 align="right"
               >
                 {transHash}
               </TableCell>
               <TableCell align="right">{transSize}</TableCell>
-              <TableCell
-                className="selectableArea"
-                align="right"
-                onClick={openModal}
-              >
-                <AiOutlineDatabase />
-              </TableCell>
+              {userValue.trans && (
+                <TableCell
+                  className="selectableArea"
+                  align="right"
+                  // 모달로 변경하고 라우터 없애도 될듯 -디테일 페이지를 라우터로 이동
+                  // onClick={toTransHashDetailData}
+
+                  // 모달 -
+                  onClick={openModal}
+                >
+                  <AiOutlineDatabase />
+                </TableCell>
+              )}
             </TableRow>
           </TableBody>
         </Table>
