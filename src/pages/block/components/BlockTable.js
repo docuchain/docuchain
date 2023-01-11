@@ -47,23 +47,8 @@ const columns = [
   },
 ];
 
-export default function BlockTable() {
-  // 데이터 fetch
-  const [data, setData] = useState([]);
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchdata();
-  }, []);
+export default function BlockTable(props) {
+  const { data, fetchdata } = props;
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

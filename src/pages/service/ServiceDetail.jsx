@@ -19,7 +19,7 @@ const ServiceDetail = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/Service.json"
+        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
@@ -33,33 +33,37 @@ const ServiceDetail = () => {
     fetchdata();
   }, []);
 
-  const { id } = useParams();
-
+  //state에 저장
   const [serviceName, setServiceName] = useState();
-  const [timeStamp, setTimeStamp] = useState();
+  const [time, setTime] = useState();
   const [apiKinds, setApiKinds] = useState();
   const [nodeName, setNodeName] = useState();
-  const [transNumber, setTransNumber] = useState();
+  const [transNum, setTransNum] = useState();
   const [transHash, setTransHash] = useState();
-  const [blockNumber, setBlockNumber] = useState();
+  const [blockNum, setBlockNum] = useState();
   const [status, setStatus] = useState();
 
-  useEffect(() => {
-    async function getService() {
-      const result2 = data.filter((item) => item.transNumber == parseInt(id));
+  //
+  //useParams
+  const { id } = useParams();
 
-      result2.forEach((item) => {
+  //state에 데이터 저장
+  useEffect(() => {
+    async function getTrans() {
+      const result3 = data.filter((item) => item.id == parseInt(id));
+
+      result3.forEach((item) => {
         setServiceName(item.serviceName);
-        setTimeStamp(item.timeStamp);
+        setTransNum(item.transNumber);
+        setTime(item.timeStamp);
+        setTransHash(item.transHash);
         setApiKinds(item.apiKinds);
         setNodeName(item.nodeName);
-        setTransNumber(item.transNumber);
-        setTransHash(item.transHash);
-        setBlockNumber(item.blockNumber);
+        setBlockNum(item.blockNumber);
         setStatus(item.status);
       });
     }
-    getService();
+    getTrans();
   });
 
   return (
@@ -76,7 +80,7 @@ const ServiceDetail = () => {
             </TableRow>
             <TableRow>
               <TableCell>타임스탬프</TableCell>
-              <TableCell>{timeStamp}</TableCell>
+              <TableCell>{time}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>API 종류</TableCell>
@@ -88,7 +92,7 @@ const ServiceDetail = () => {
             </TableRow>
             <TableRow>
               <TableCell>트랜잭션번호</TableCell>
-              <TableCell>{transNumber}</TableCell>
+              <TableCell>{transNum}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>트랜잭션해시</TableCell>
@@ -99,7 +103,7 @@ const ServiceDetail = () => {
             </TableRow>
             <TableRow>
               <TableCell>블록번호</TableCell>
-              <TableCell>{blockNumber}</TableCell>
+              <TableCell>{blockNum}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>상태</TableCell>

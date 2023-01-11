@@ -25,8 +25,11 @@ export default function BlockDetail() {
     <div className="blockDetail">
       <BlockDetailTitle />
       <div className="blockdetailwrapper" style={{ border: "1px solid red" }}>
-        <Stack className="" spacing={2}></Stack>
-        <BlockDetailTable />
+        <Stack className="" spacing={2}>
+          {/* <Pagination count={200} size="large" /> */}
+        </Stack>
+        <BlockDetailTable data={data} fetchdata={fetchdata} />
+        {/* <TransDetailList /> */}
       </div>
     </div>
   );

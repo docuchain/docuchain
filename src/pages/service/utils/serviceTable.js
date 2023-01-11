@@ -23,7 +23,7 @@ const columns = [
   { id: "state", label: "상태" },
 ];
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(props) {
   const userValue = useRecoilValue(getUserInfo);
   //서비스 권한여부 판별
   const serviceAuth = (e) => {
@@ -46,22 +46,11 @@ export default function StickyHeadTable() {
       e.preventDefault();
     }
   };
+  const { data, fetchdata } = props;
   // 데이터 담기
-  const [data, setData] = React.useState([]);
-  //데이터 불러오기
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   //fetchdata firebase data
-  React.useEffect(() => {
+  useEffect(() => {
     fetchdata();
   }, []);
 
@@ -95,60 +84,60 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((data) => {
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={data.transCount}
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((datael, idx) => (
+              <TableRow
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={idx}
+                // onClick={toTableRowdata}
+              >
+                <TableCell component="th" scope="row">
+                  <Link
+                    to={`/service/${datael.id}`}
+                    value={datael.id}
+                    onClick={serviceAuth}
                   >
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.serviceName}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.timeStamp}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.apiKinds}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"node/nodeDetail"} onClick={nodeAuth}>
-                        {data.nodeName}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"/trans/transDetail"} onClick={transAuth}>
-                        {data.transNumber}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"/block/blockDetail"}>{data.newBlockNum}</Link>
-                    </TableCell>
-                    <TableCell>{data.status}</TableCell>
-                  </TableRow>
-                );
-              })}
+                    {datael.serviceName}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  {/* onClick={serviceAuth} */}
+                  {datael.timeStamp}
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  {/* onClick={serviceAuth} */}
+                  {datael.apiKinds}
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  {/* onClick={nodeAuth} */}
+                  {datael.nodeName}
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  <Link
+                    to={`/trans/${datael.transNumber}`}
+                    value={datael.transNumber}
+                    onClick={transAuth}
+                  >
+                    {datael.transNumber}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  <Link
+                    to={`/block/${datael.blockNumber}`}
+                    value={datael.blockNumber}
+                  >
+                    {datael.blockNumber}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  {datael.status}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

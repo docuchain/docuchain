@@ -1,31 +1,21 @@
-import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { dbService } from "../../../apis/firebase";
+import Timer from "./timer";
 
-const TotalServiceCnt = () => {
-  const serviceData = collection(dbService, "serviceData");
-  const [totalService, setTotalService] = useState([]);
+const TotalServiceCnt = (props) => {
+  const { data, fetchdata } = props;
 
-  useEffect(() => {
-    async function getBlock() {
-      const data = await getDocs(serviceData);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
-      setTotalService(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
-
-    getBlock();
-  }, []);
   return (
     <div
       className="TotalServiceCnt boxShadow boxLayoutel4"
       style={{ height: "400px" }}
     >
-      <h3>TotalServiceCnt</h3>
-      <h3>{totalService.length}</h3>
+      <h3>전체 서비스 등록 건수</h3>
+      <h3>{data.length}</h3>
+      <Timer />
     </div>
   );
 };
