@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TransChart from "./components/TransChart";
-import TransTable from "./components/TransTable";
-import "./TransStyle.css";
-const Trans = () => {
+
+export default function ContentsTitle() {
   const [data, setData] = useState([]);
 
   const fetchdata = async () => {
@@ -20,14 +18,12 @@ const Trans = () => {
   useEffect(() => {
     fetchdata();
   }, []);
-  return (
-    <div>
-      <h2>트랜잭션</h2>
-      <p>전체 트랜잭션 {data.length}개</p>
-      <TransChart data={data} fetchdata={fetchdata} />
-      <TransTable data={data} fetchdata={fetchdata} />
-    </div>
-  );
-};
 
-export default Trans;
+  return (
+    <>
+      <div className="ContentsTitle">
+        <h4>전체 블록 {data.length}개</h4>
+      </div>
+    </>
+  );
+}

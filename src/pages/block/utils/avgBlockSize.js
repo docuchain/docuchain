@@ -10,33 +10,10 @@ import {
   Legend,
 } from "recharts";
 
-function AvgBlockSize() {
-  const [data, setData] = useState([]);
-
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      // console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
+function AvgBlockSize(props) {
+  const { data, fetchdata } = props;
 
   const countFunc = (a) => {
-    // let count = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].timeStamp.includes(a) == true) {
-    //     count++;
-    //   }
-    // }
-    // return count;
     const result1 = data.filter((user) => user.timeStamp.includes(a));
     return result1;
   };
@@ -79,7 +56,7 @@ function AvgBlockSize() {
     },
   ];
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxLayoutel2">
       <h3>평균 블록 크기(KB)</h3>
       <AreaChart
         width={550}

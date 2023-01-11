@@ -13,10 +13,6 @@ import {
 function AvgTransSize(props) {
   const { data, fetchdata } = props;
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const countFunc = (a) => {
     // let count = 0;
     // for (let i = 0; i < data.length; i++) {

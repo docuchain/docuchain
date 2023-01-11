@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlockChart from "./components/BlockChart";
-// import BlockTable from "./components/BlockTable";
 import BlockTable from "./components/BlockTable";
-// import BlockTableCopy  from "./components/BlockTableCopy";
-import "./BlockStyle.css";
+import ContentsTitle from "../common/components/ContentsTitle.js";
 
 const Block = () => {
   const [data, setData] = useState([]);
@@ -24,14 +22,13 @@ const Block = () => {
     fetchdata();
   }, []);
   return (
-    <div className="blockContainer">
-      <div className="blockTitle">
-        <h2>블록</h2>
-        <h4>전체 블록 {data.length}개</h4>
+    <div>
+      <ContentsTitle />
+      <div className="maginBw100">
+        <BlockChart data={data} fetchdata={fetchdata} />
       </div>
-      <div className="block" style={{ border: "1px solid red" }}>
-        <BlockChart />
-        <BlockTable />
+      <div className="maginBw100">
+        <BlockTable data={data} fetchdata={fetchdata} />
       </div>
     </div>
   );
