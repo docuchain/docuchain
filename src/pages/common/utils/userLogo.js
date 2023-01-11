@@ -8,6 +8,8 @@ import { flexbox, style } from "@mui/system";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 import { userInfo } from "../../../recoil/atom";
+import Modal from "../../block/utils/Modal";
+
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
   const userValue = useRecoilValue(getUserInfo);
@@ -78,9 +80,8 @@ const UserLogo = () => {
           //로그 아웃 상태일때
           setToggleState(
             <>
-              <li>
-                <Link to="/login">로그인</Link>
-              </li>
+              {/* <li><Link to="/login">로그인</Link></li> */}
+              <li onClick={Modal}></li>
             </>
           );
         }
