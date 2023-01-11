@@ -21,7 +21,7 @@ export default function ContentsTitle() {
 
   return (
     <>
-      <div>
+      <div className="ContentsTitle">
         <h4>전체 블록 {data.length}개</h4>
       </div>
     </>

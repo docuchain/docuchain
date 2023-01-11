@@ -1,13 +1,25 @@
 // 블록, 트랜잭션, 서비스
+
 .Contents {
   background: #f4f7ff;
   height: 86vh;
-  overflow-x: hidden;
   overflow: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   padding: 0 40px;
 
+}
+
+.ContentsTitle {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+}
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
 }
 
 .maginBw100 {
@@ -19,7 +31,6 @@
 }
 
 // 파일 이동해주기
-
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);

@@ -3,7 +3,7 @@ import ActiveNtwCnt from "./utils/activeNtwCnt";
 import TotalBlockCnt from "./utils/totalBlockCnt";
 import TotalServiceCnt from "./utils/totalServiceCnt";
 import TotalTransCnt from "./utils/totalTransCnt";
-import "./Dashboard.scss";
+import "../common/style/contents.scss";
 import NtwTransSpeed from "./utils/ntwTransSpeed";
 import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
