@@ -21,8 +21,8 @@ const TotalServiceCnt = () => {
   }, []);
   return (
     <div
-      className="TotalServiceCnt"
-      style={{ width: "300px", height: "400px" }}
+      className="TotalServiceCnt boxShadow boxLayoutel4"
+      style={{ height: "400px" }}
     >
       <h3>TotalServiceCnt</h3>
       <h3>{totalService.length}</h3>

@@ -1,16 +1,27 @@
 import React from "react";
 import SearchBar from "../utils/searchBar";
 import UserLogo from "../utils/userLogo";
+import Appearance from "../utils/appearance";
+import "../style/hedaer.scss";
+
 const Header = () => {
-  const style = {
-    display: "flex",
-    justifyContent: "space-between",
-  };
   return (
     <>
-      <div style={style}>
-        <SearchBar />
-        <UserLogo />
+      <div className="Header">
+        <div className="leftA">
+          <div className="headerTitle">대시보드</div>
+        </div>
+        <div className="rightA">
+          <div className="searchBar">
+            <SearchBar />
+          </div>
+          <div className="appearance">
+            <Appearance />
+          </div>
+          <div className="userLogo">
+            <UserLogo />
+          </div>
+        </div>
       </div>
     </>
   );

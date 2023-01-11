@@ -12,11 +12,3 @@ export default function ToBlockMainBtn() {
     </Stack>
   );
 }
-
-/*
-
-  <Link to="/about">
-          <button>Click</button>
-        </Link>
-
-*/ 
