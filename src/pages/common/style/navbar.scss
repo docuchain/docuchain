@@ -2,13 +2,10 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   & .logo {
-    width: 290px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100px;
+    width: 100%;
+    height: 95px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -22,18 +19,19 @@
   }
 
   & .innerContainer {
+    margin-top: 60px;
     & .avatar {
       display: flex;
       flex-direction: column;
       align-items: center;
       & .img {
-        width: 110px;
-        height: 110px;
+        width: 90px;
+        height: 90px;
         border-radius: 60px;
         background: gray;
       }
       & .name {
-        margin: 28px 0 10px;
+        margin: 20px 0 10px;
         font-size: 1.4rem;
         color: #fff;
       }
@@ -44,14 +42,16 @@
       }
     }
     & .nav {
+      margin-top: 60px;
       & .navList {
-        padding: 0 20px;
+        padding: 0 30px;
         & li {
           text-align-last: left;
-          text-indent: 70px;
-          padding: 12px 0;
+          text-indent: 50px;
+          padding: 4px 0;
           margin-bottom: 14px;
           & a {
+            padding: 6px 20px;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
             font-size: 1.3rem;
