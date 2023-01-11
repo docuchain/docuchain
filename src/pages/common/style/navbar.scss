@@ -20,7 +20,10 @@
   }
 
   & .innerContainer {
-    margin-top: 60px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     & .avatar {
       display: flex;
       flex-direction: column;
@@ -45,17 +48,31 @@
     & .nav {
       margin-top: 60px;
       & .navList {
+        transform: translate(14px);
         padding: 0px;
         & li {
           text-align-last: left;
-          text-indent: 50px;
+          transform: translate(-20px);
           padding: 4px 0;
           margin-bottom: 14px;
+          margin: 7px 20px;
           & a {
-            padding: 6px 0;
+            border: 1px solid;
+            display: inline-block;
+            padding: 2px 20px;
+            margin: 0 60px;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
             font-size: 1.3rem;
+          }
+          & a:hover::before {
+            content: " ";
+            display: inline-block;
+            background: red;
+            width: 8px;
+            height: 8px;
+            border-radius: 5px;
+            transform: translate(-16px, -2px);
           }
         }
         & li:hover {
