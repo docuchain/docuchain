@@ -8,7 +8,7 @@ export default function ContentsTitle() {
   let location = useLocation();
   let blockMatch = useMatch("/block/:id");
   let transMatch = useMatch("/trans/:id");
-  let nodeMatch = useMatch("/node/:id/:id");
+  let nodeMatch = useMatch("/node/:id");
   let serviceMatch = useMatch("/service/:id");
   const fetchdata = async () => {
     try {
