@@ -81,7 +81,12 @@ export default function TransTable(props) {
             <TableRow>
               {columns.map((column) => (
                 <TableCell
-                  sx={{ lineHeight: "2.5rem", textIndent: 30 }}
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    lineHeight: "2.5rem",
+                    textIndent: 30,
+                  }}
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}

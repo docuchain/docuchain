@@ -4,6 +4,7 @@ import UserLogo from "../utils/userLogo";
 import Appearance from "../utils/appearance";
 import "../style/hedaer.scss";
 import { useLocation } from "react-router-dom";
+import ContentsTitle from "./ContentsTitle";
 const Header = () => {
   const [headerName, setHeaderName] = useState();
   let location = useLocation();
@@ -34,6 +35,7 @@ const Header = () => {
       <div className="Header">
         <div className="leftA">
           <div className="headerTitle">{headerName}</div>
+          <ContentsTitle />
         </div>
         <div className="rightA">
           <div className="searchBar">

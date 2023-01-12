@@ -16,8 +16,8 @@ const TotalBlockCnt = (props) => {
         ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
       }
     >
-      <h1>전체 블록 수</h1>
-      <h3>{data.length}</h3>
+      <h3>전체 블록 수</h3>
+      <h1 className="DashboardCntNum">{data.length}</h1>
       {/* <Timer /> */}
     </div>
   );
