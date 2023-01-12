@@ -59,21 +59,21 @@ function ApiCallRank(props) {
     {
       time: "14:00",
       serviceName: "E서비스",
-      apiKinds: "DID DOCUMENT 등록",
+      apiKinds: "DID DOCUMENT",
       topFiveService: countFunc("E서비스"),
-      topFiveApi: avgFunc("DID DOCUMENT 등록"),
+      topFiveApi: avgFunc("DID DOCUMENT"),
     },
   ];
   return (
-    <div>
-      <h3>API 호출 상위 Top5</h3>
+    <div className="ServiceChart">
+      <h3 className="servicechart_trans_title">API 호출 상위 Top5</h3>
       <BarChart
         width={580}
         height={400}
         data={Data}
         margin={{
           top: 10,
-          right: 30,
+          right: 0,
           left: 0,
           bottom: 0,
         }}
