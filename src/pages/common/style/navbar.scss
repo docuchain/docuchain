@@ -67,9 +67,7 @@
           margin: 7px 20px;
           & a {
             display: inline-block;
-            width: 200px;
-            padding: 2px 20px;
-
+            margin: 0 60px;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
             font-size: 1.3rem;
@@ -81,7 +79,7 @@
             width: 8px;
             height: 8px;
             border-radius: 5px;
-            transform: translate(-16px, -2px);
+            transform: translate(-16px, -4px);
           }
           & a:hover {
             text-indent: -8px;

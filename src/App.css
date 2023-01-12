@@ -11,8 +11,6 @@
 }
 
 .App {
-  text-align: center;
-  width: 100vw;
 }
 
 /* pageRouterApp */
@@ -25,21 +23,20 @@ li {
 }
 
 .pageRouterWrap {
-  width: 1480px;
   height: 100vh;
   overflow: hidden;
   display: flex;
 }
 .pageRouterWrap--left {
   width: 280px;
+  min-width: 280px;
   font-size: 1.5rem;
   background: #1653da;
 }
 .pageRouterWrap--right {
-  width: 1200px;
+  width: 86%;
   border: 1px solid blue;
 }
 .pageRouterWrap--right--header {
-  /* height: 116px; */
   height: 8vh;
 }

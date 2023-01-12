@@ -23,13 +23,13 @@ const Service = () => {
   }, []);
 
   return (
-    <div className="Contents">
+    <div>
       <ContentsTitle />
-      <div className="serviceChart_Center">
+      <div className="maginBw100">
         <ServiceChart data={data} fetchdata={fetchdata} />
-        <div className="serviceTable">
-          <ServiceTable data={data} fetchdata={fetchdata} />
-        </div>
+      </div>
+      <div className="maginBw100">
+        <ServiceTable data={data} fetchdata={fetchdata} />
       </div>
     </div>
   );

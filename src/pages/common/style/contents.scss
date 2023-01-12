@@ -1,13 +1,13 @@
 // 블록, 트랜잭션, 서비스
 .Contents {
-  width: 1200px;
-  border: 1px solid green;
+  min-width: 1200px;
   background: #f4f7ff;
   height: 86vh;
   overflow: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  padding: 40px;
 }
 
 .ContentsTitle {
@@ -25,7 +25,6 @@
 }
 
 .maginBw100 {
-  border: 1px solid blue;
   width: 100%;
   margin-bottom: 20px;
   display: flex;
@@ -33,7 +32,7 @@
   margin: 0 auto;
 }
 
-// 파일 이동해주기
+// 여기가 작업해줄 곳
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
@@ -42,20 +41,23 @@
   justify-content: center;
   align-items: center;
 }
+
 .boxLayout4 {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .boxLayout2 {
+  width: 100%;
   display: flex;
   width: 90%;
   justify-content: space-between;
   align-items: center;
 }
 .boxLayout1 {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,9 +76,13 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .boxLayoutel2 {
   width: 47.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.ListBth {
 }
