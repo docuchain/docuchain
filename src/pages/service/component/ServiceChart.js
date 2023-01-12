@@ -15,11 +15,7 @@ const ServiceChart = (props) => {
         <ServiceRank data={data} fetchdata={fetchdata} />
       </div>
       <div className="boxLayoutel2 boxShadowNonePadding">
-        <ApiCallRank
-          className="ServiceChart"
-          data={data}
-          fetchdata={fetchdata}
-        />
+        <ApiCallRank className="Car" data={data} fetchdata={fetchdata} />
       </div>
     </div>
   );

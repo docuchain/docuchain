@@ -56,10 +56,10 @@ function AvgBlockSize(props) {
     },
   ];
   return (
-    <div>
-      <h3>평균 블록 크기(KB)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">평균 블록 크기(KB)</h3>
       <AreaChart
-        width={560}
+        width={580}
         height={400}
         data={Data}
         margin={{
