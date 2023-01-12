@@ -64,10 +64,10 @@ function TimePerBlock(props) {
   ];
 
   return (
-    <div>
-      <h3>시간 당 블록 수(개)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 블록 수(개)</h3>
       <AreaChart
-        width={560}
+        width={580}
         height={400}
         data={Data}
         margin={{
