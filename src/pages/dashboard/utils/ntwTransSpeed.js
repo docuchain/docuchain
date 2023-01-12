@@ -1,3 +1,4 @@
+import { width } from "@mui/system";
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
@@ -123,14 +124,14 @@ function NtwTransSpeed(props) {
         <Bar dataKey="ntwDPerTPS" fill="#FF8042" key={Math.random()} />
       </BarChart> */}
       <ComposedChart
-        width={600}
+        width={500}
         height={400}
         data={Data}
         margin={{
           top: 20,
-          right: 20,
+          right: 0,
           bottom: 20,
-          left: 20,
+          left: -20,
         }}
       >
         <CartesianGrid stroke="#f5f5f5" />

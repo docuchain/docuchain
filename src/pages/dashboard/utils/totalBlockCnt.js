@@ -12,13 +12,13 @@ const TotalBlockCnt = (props) => {
   return (
     <div
       className="TotalBlockCnt boxShadow boxLayoutel4"
-      style={
-        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
-      }
+      style={{ height: "400px" }}
     >
-      <h1>전체 블록 수</h1>
-      <h3>{data.length}</h3>
-      <Timer />
+      <div>
+        <h1>전체 블록 수</h1>
+        <h3>{data.length}</h3>
+        <Timer />
+      </div>
     </div>
   );
 };

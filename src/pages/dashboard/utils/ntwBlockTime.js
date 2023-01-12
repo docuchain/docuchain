@@ -116,7 +116,17 @@ function NtwBlockTime(props) {
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 블록생성시간(분)</h3>
-      <LineChart width={600} height={400} data={Data}>
+      <LineChart
+        width={500}
+        height={400}
+        data={Data}
+        margin={{
+          top: 20,
+          right: 0,
+          bottom: 20,
+          left: -20,
+        }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" padding={{ left: 30, right: 30 }} />
         <YAxis />

@@ -122,13 +122,13 @@ function ServiceEnrollCnt(props) {
     >
       <h3>시간당 서비스 등록 건수(건)</h3>
       <AreaChart
-        width={600}
+        width={500}
         height={400}
         data={Data}
         margin={{
           top: 20,
-          right: 20,
-          left: 20,
+          right: 0,
+          left: -20,
           bottom: 20,
         }}
       >

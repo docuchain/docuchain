@@ -157,7 +157,16 @@ function ActiveNtw(props) {
       >
         <h3>서비스별 네트워크 활동 비율</h3>
 
-        <PieChart width={600} height={400}>
+        <PieChart
+          width={500}
+          height={400}
+          margin={{
+            top: 20,
+            right: 0,
+            left: -20,
+            bottom: 20,
+          }}
+        >
           <Legend />
           <Tooltip content="d" />
           <Pie
