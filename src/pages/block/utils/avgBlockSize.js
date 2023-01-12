@@ -25,7 +25,7 @@ function AvgBlockSize(props) {
       .map((item) => item.blockSize)
       .reduce((prev, curr) => prev + curr, 0);
 
-    return avgResult / result2.length;
+    return (avgResult / result2.length).toFixed(2);
   };
 
   const Data = [
@@ -73,7 +73,7 @@ function AvgBlockSize(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="blockSize"

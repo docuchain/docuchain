@@ -15,7 +15,7 @@ const TotalServiceCnt = (props) => {
     >
       <h3>전체 서비스 등록 건수</h3>
       <h3>{data.length}</h3>
-      <Timer />
+      {/* <Timer /> */}
     </div>
   );
 };

@@ -27,7 +27,7 @@ function NtwTransSpeed(props) {
       .map((item) => item.TPS)
       .reduce((prev, curr) => prev + curr, 0);
 
-    return avgResult / filterNetWork.length;
+    return (avgResult / filterNetWork.length).toFixed(2);
   };
   console.log(countFunc(" 10:", "A"));
 
@@ -142,7 +142,6 @@ function NtwTransSpeed(props) {
           dataKey="ntwAPerTPS"
           fill="#0088FE"
           key={Math.random()}
-          legendType="circle"
           name="A네트워크"
         />
         <Bar

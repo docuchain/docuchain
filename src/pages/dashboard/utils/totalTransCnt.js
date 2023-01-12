@@ -15,7 +15,7 @@ const TotalTransCnt = (props) => {
     >
       <h3>전체 트랜잭션 수</h3>
       <h3>{data.length}</h3>
-      <Timer />
+      {/* <Timer /> */}
     </div>
   );
 };

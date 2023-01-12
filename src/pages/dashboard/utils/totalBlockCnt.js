@@ -18,7 +18,7 @@ const TotalBlockCnt = (props) => {
     >
       <h1>전체 블록 수</h1>
       <h3>{data.length}</h3>
-      <Timer />
+      {/* <Timer /> */}
     </div>
   );
 };
