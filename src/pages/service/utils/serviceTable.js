@@ -50,11 +50,6 @@ export default function StickyHeadTable(props) {
   const { data, fetchdata } = props;
   // 데이터 담기
 
-  //fetchdata firebase data
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   //==================================================
 
   const [page, setPage] = React.useState(0);
