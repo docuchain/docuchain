@@ -109,8 +109,8 @@ export default function TransDetailTable(props) {
   });
 
   return (
-    <div className="TransDetailTable">
-      <TableContainer component={Paper}>
+    <div className="boxLayout1 boxShadow">
+      <TableContainer>
         <Table sx={{ minWidth: 1200 }} aria-label="simple table">
           <TableBody>
             <TableRow>
@@ -150,7 +150,7 @@ export default function TransDetailTable(props) {
               <TableCell>노드명</TableCell>
               <TableCell>{nodeName}</TableCell>
             </TableRow>
-            <TableRow>
+            <TableRow sx={{ borderBottom: "hidden" }}>
               <TableCell>상태</TableCell>
               <TableCell>{status}</TableCell>
             </TableRow>

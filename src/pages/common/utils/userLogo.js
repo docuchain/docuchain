@@ -22,7 +22,7 @@ const UserLogo = () => {
 
   useEffect(() => {
     toggleChange();
-  }, [nowUser]);
+  }, []);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -97,10 +97,12 @@ const UserLogo = () => {
 
   return (
     <div>
-      <Button type="button" onClick={toggleChange}>
-        <PersonIcon className="icon3" />
-      </Button>
-      {toggleState}
+      <div>
+        <Button type="button" onClick={toggleChange}>
+          <PersonIcon className="icon3" />
+        </Button>
+      </div>
+      <div className="logoListToogle">{toggleState}</div>
     </div>
   );
 };

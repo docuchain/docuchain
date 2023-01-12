@@ -11,11 +11,13 @@ const TotalTransCnt = (props) => {
   return (
     <div
       className="TotalTransCnt boxShadow boxLayoutel4"
-      style={{ height: "400px" }}
+      style={
+        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
+      }
     >
       <h3>전체 트랜잭션 수</h3>
-      <h3>{data.length}</h3>
-      <Timer />
+      <h1 className="DashboardCntNum">{data.length}</h1>
+      {/* <Timer /> */}
     </div>
   );
 };
