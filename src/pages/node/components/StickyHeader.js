@@ -57,7 +57,7 @@ export default function StickyHeadTable() {
       if (userValue.node) {
         return (
           <TableCell
-            sx={{ lineHeight: "2.5rem" }}
+            sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600"}}
             key={column.id}
             align={column.align}
             style={{ minWidth: column.minWidth }}
@@ -71,7 +71,7 @@ export default function StickyHeadTable() {
     } else {
       return (
         <TableCell
-          sx={{ lineHeight: "2.5rem" }}
+          sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600" }}
           key={column.id}
           align={column.align}
           style={{ minWidth: column.minWidth }}
@@ -106,13 +106,13 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
 
-          <TableBody>
+          <TableBody sx={{ lineHeight: "2.5rem", fontSize: "0.9rem"}}>
             {nodeTableDataList
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((node) => {
                 return (
                   <TableRow hover tabIndex={-1} key={node.nodeName}>
-                    <TableCell
+                    <TableCell 
                       align="center"
                       onClick={() => onClickNodeDetail(node.nodeName)}
                     >

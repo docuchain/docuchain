@@ -1,13 +1,12 @@
-// 블록, 트랜잭션, 서비스
 .Contents {
   min-width: 1200px;
   background: #f4f7ff;
-  height: 78vh;
+  height: 86vh;
   overflow: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  padding: 40px 40px;
+  padding: 0 40px;
 }
 
 .ContentsTitle {
@@ -30,7 +29,6 @@
   flex-direction: row;
 }
 
-// 여기가 작업해줄 곳
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
@@ -53,6 +51,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .boxLayout1 {
   width: 100%;
   display: flex;
@@ -90,8 +89,8 @@
 .Chart {
   font-size: 12px;
   padding: 0px;
-  & .chart_trans_title {
-    text-align: center;
-    font-size: 1.4rem;
-  }
+}
+.Chart .chart_trans_title {
+  text-align: center;
+  font-size: 1.4rem;
 }
