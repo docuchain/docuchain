@@ -64,8 +64,8 @@ function TimePerTrans(props) {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
-      <h3>시간 당 트랜잭션 수(개)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 트랜잭션 수(개)</h3>
       <AreaChart
         width={600}
         height={400}

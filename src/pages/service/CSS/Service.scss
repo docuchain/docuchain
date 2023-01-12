@@ -1,56 +1,15 @@
-//ServiceChart 부분
-
-.ServiceChart {
-  display: flex;
-  flex-direction: center;
-  //추후 변경 예정입니다.
-  font-size: 10px;
-  margin: 10px;
-  background-color: "#F4F4F4";
-}
-.serviceChart_Center {
-  position: relative;
-  flex-direction: center;
-  width: 100%;
-  // border: 1px solid blue;
-}
-.serviceChart_Top5 {
-  width: 50%;
+.boxShadowNonePadding {
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
   border-radius: 20px;
+  padding: 8px 0;
 }
-.Barchart_apiCallRank {
-  margin-left: 20px;
-}
-.serviceTable {
-  margin: 10px;
-}
-// navbarList
-// color 전체 적용 확인!
-a {
-  color: rgba(0, 0, 0, 0.87);
-}
-// 목록으로 버튼 ======================
-.serviceHome--Btn {
-  float: right;
-  margin: 10px;
-}
-//============================================== Service Detail
-.serviceDetailTable {
-  width: 90%;
-  margin: 0 auto;
-  border: 1px solid red;
-}
-.serviceDetail--box {
-  float: left;
-}
-.serviceDetail--title {
-  width: 48%;
-}
-.serviceDetail--main {
-  width: 48%;
-}
-.Tbody {
-  width: 100%;
-  height: 100%;
-  // border: 1px solid red;
+
+.Chart {
+  font-size: 12px;
+  padding: 0px;
+  & .chart_trans_title {
+    text-align: center;
+    font-size: 1.4rem;
+  }
 }

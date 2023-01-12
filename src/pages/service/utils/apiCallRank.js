@@ -5,10 +5,6 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 function ApiCallRank(props) {
   const { data, fetchdata } = props;
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const countFunc = (a) => {
     // let count = 0;
     // for (let i = 0; i < data.length; i++) {
@@ -45,9 +41,9 @@ function ApiCallRank(props) {
     {
       time: "12:00",
       serviceName: "C서비스",
-      apiKinds: "디지털 콘텐츠 등록",
+      apiKinds: "디지털 콘텐츠",
       topFiveService: countFunc("C서비스"),
-      topFiveApi: avgFunc("디지털 콘텐츠 등록"),
+      topFiveApi: avgFunc("디지털 콘텐츠"),
     },
     {
       time: "13:00",
@@ -59,21 +55,21 @@ function ApiCallRank(props) {
     {
       time: "14:00",
       serviceName: "E서비스",
-      apiKinds: "DID DOCUMENT 등록",
+      apiKinds: "DID DOCUMENT",
       topFiveService: countFunc("E서비스"),
-      topFiveApi: avgFunc("DID DOCUMENT 등록"),
+      topFiveApi: avgFunc("DID DOCUMENT"),
     },
   ];
   return (
-    <div className="serviceRank_BarChart">
-      <h3>API 호출 상위 Top5</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">API 호출 상위 Top5</h3>
       <BarChart
-        width={600}
+        width={590}
         height={400}
         data={Data}
         margin={{
           top: 10,
-          right: 30,
+          right: 0,
           left: 0,
           bottom: 0,
         }}

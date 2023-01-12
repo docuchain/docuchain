@@ -58,7 +58,6 @@
           margin: 7px 20px;
           & a {
             display: inline-block;
-            padding: 2px 20px;
             margin: 0 60px;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
@@ -71,15 +70,14 @@
             width: 8px;
             height: 8px;
             border-radius: 5px;
-            transform: translate(-16px, -2px);
+            transform: translate(-16px, -4px);
           }
           & a:hover {
             text-indent: -8px;
           }
         }
-        & li::before{
+        & li::before {
           content: "";
-          
         }
         & li:hover {
           background: #4e81ef;
