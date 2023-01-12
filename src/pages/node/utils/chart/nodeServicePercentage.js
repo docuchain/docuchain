@@ -53,7 +53,8 @@ const NodeServicePercentage = () => {
   };
 
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxShadow boxLayoutel2"
+    style={({ display: "flex" }, { flexDirection: "column" })}>
       <h3>노드 서비스 점유율</h3>
       <PieChart width={400} height={400}>
         <Pie
