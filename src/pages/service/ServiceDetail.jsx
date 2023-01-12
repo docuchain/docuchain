@@ -9,6 +9,7 @@ import ToServiceMainBtn from "./utils/toServiceMainBtn";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { query, getDocs } from "firebase/database";
 import Button from "@mui/material/Button";
+import FolderCopyIcon from "@mui/icons-material/FolderCopy";
 
 const ServiceDetail = () => {
   // 데이터 담기
@@ -104,15 +105,13 @@ const ServiceDetail = () => {
             </TableRow>
             <TableRow>
               <TableCell>트랜잭션해시</TableCell>
-              <TableCell>{transHash}</TableCell>
               <TableCell>
-                <Button
+                {transHash}{" "}
+                <FolderCopyIcon
                   variant="contained"
                   disableElevation
                   onClick={() => handleCopyClipBoard(transHash)}
-                >
-                  복사
-                </Button>
+                ></FolderCopyIcon>
               </TableCell>
             </TableRow>
             <TableRow>

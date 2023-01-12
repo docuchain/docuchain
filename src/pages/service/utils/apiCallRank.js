@@ -68,7 +68,7 @@ function ApiCallRank(props) {
     <div>
       <h3>API 호출 상위 Top5</h3>
       <BarChart
-        width={560}
+        width={580}
         height={400}
         data={Data}
         margin={{

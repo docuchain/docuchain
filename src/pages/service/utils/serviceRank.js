@@ -70,7 +70,7 @@ function ServiceRank(props) {
     <div>
       <h3>누적 호출 상위 Top5</h3>
       <BarChart
-        width={560}
+        width={580}
         height={400}
         data={Data}
         margin={{
@@ -89,6 +89,7 @@ function ServiceRank(props) {
           dataKey="topFiveService"
           fill="#2563EB"
           barSize={30}
+          key={Math.random()}
         />
       </BarChart>
     </div>
