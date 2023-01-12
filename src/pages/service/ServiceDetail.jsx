@@ -5,11 +5,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import CopyBtn from "../block/utils/copyBtn";
-import serviceTable from "./utils/serviceTable";
 import ToServiceMainBtn from "./utils/toServiceMainBtn";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { query, getDocs } from "firebase/database";
+import Button from "@mui/material/Button";
 
 const ServiceDetail = () => {
   // 데이터 담기
@@ -33,6 +32,15 @@ const ServiceDetail = () => {
     fetchdata();
   }, []);
 
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+
+      alert("복사 성공!");
+    } catch (error) {
+      alert("복사 실패!");
+    }
+  };
   //state에 저장
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
@@ -98,7 +106,13 @@ const ServiceDetail = () => {
               <TableCell>트랜잭션해시</TableCell>
               <TableCell>{transHash}</TableCell>
               <TableCell>
-                <CopyBtn />
+                <Button
+                  variant="contained"
+                  disableElevation
+                  onClick={() => handleCopyClipBoard(transHash)}
+                >
+                  복사
+                </Button>
               </TableCell>
             </TableRow>
             <TableRow>
