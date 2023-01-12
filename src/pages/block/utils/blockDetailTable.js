@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import copyBtn from "./copyBtn";
+import styled from "@emotion/styled";
 export default function BlockDetailTable(props) {
   const { data, fetchdata } = props;
   // 자세히 버튼 toggle
@@ -31,39 +32,11 @@ export default function BlockDetailTable(props) {
       alert("복사 실패!");
     }
   };
-  // const [copy, setCopied] = useState(true);
-  // // * true일 때 copy가능하게 만들어주기 - clicpboard 사용하기
-
-  // // const handleCopy = () => {
-  // //   setCopied((prev) => !prev);
-  // // };
-  // //*  copyClipboard
-  // const handleCopy = async (text) => {
-  //   setCopied((prev) => !prev);
-  //   try {
-  //     await navigator.clipboard.writeText(text);
-  //     alert("블록해쉬가 복사됐습니다.");
-  //   } catch (e) {
-  //     alert("블록해쉬 복사에 실패했습니다");
-  //   }
-  //   console.log(`text : ${text}`);
-  // };
-
-  // let content = document.getElementById("textArea").innerHTML;
-  // navigator.clipboard
-  //   .writeText(content)
-  //   .then(() => {
-  //     console.log("Text copied to clipboard...");
-  //   })
-  //   .catch((err) => {
-  //     console.log("Something went wrong", err);
-  //   });
 
   //useParams
   const { id } = useParams();
 
   //state에 데이터 저장
-
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
   const [blockHash, setBlockHash] = useState();
@@ -71,16 +44,6 @@ export default function BlockDetailTable(props) {
   const [blockNum, setBlockNum] = useState();
   const [transCount, setTransCount] = useState();
   const [idx, setIdx] = useState(0);
-
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const handleChangePage = (event, newPage) => {
-  //   setIdx(newPage);
-  // };
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setIdx(0);
-  // };
 
   useEffect(() => {
     async function getBlocks() {
@@ -99,12 +62,20 @@ export default function BlockDetailTable(props) {
     getBlocks();
   });
 
+  // const style = {
+  //   border: "1px solid red",
+  //   padding: "40px",
+  // };
+
   return (
-    <div className="BlockDetailTable">
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 1200 }} aria-label="simple table">
+    <div className="boxLayout1 boxShadow">
+      <TableContainer>
+        <Table
+          sx={{ minWidth: 1200, border: "none" }}
+          aria-label="simple table"
+        >
           <TableBody>
-            <TableRow>
+            <TableRow className="deleteLastBorderLine">
               <TableCell>서비스명</TableCell>
               <TableCell>{serviceName}</TableCell>
             </TableRow>
@@ -120,7 +91,7 @@ export default function BlockDetailTable(props) {
               <TableCell>블록해시</TableCell>
               <TableCell className="blockhashAreaData">
                 {blockHash}
-
+                {/* 복사 btn */}
                 <Button
                   variant="contained"
                   disableElevation
@@ -134,10 +105,10 @@ export default function BlockDetailTable(props) {
               <TableCell>블록크기</TableCell>
               <TableCell>{blockSize}</TableCell>
             </TableRow>
-            <TableRow>
+            <TableRow sx={{ borderBottom: "hidden" }}>
               <TableCell>트랜잭션 수</TableCell>
               <TableCell>{transCount}</TableCell>
-              {/* <DetailBtn  /> */}
+              {/* 자세히 btn */}
               <Button
                 variant="contained"
                 disableElevation
@@ -145,7 +116,6 @@ export default function BlockDetailTable(props) {
               >
                 자세히
               </Button>
-              {/* <DetailBtn  /> */}
             </TableRow>
           </TableBody>
           {/* <Pagination
