@@ -1,11 +1,21 @@
 .logoList {
-    background-color: white;
-    border-radius: 5px;
-    width: 150px;
-    z-index: 2;
-    // position: absolute;
+  width: 150px;
+  z-index: 2;
+  text-align: center;
 }
-
+// .logoList:hover {
+//   background-color: #1653da;
+//   color: white;
+// }
 // .icon3 {
 //     position: absolute;
 // }
+
+.logoListToogle {
+  background: white;
+  position: absolute;
+  padding: 0;
+  margin: 23px -60px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.5);
+}
