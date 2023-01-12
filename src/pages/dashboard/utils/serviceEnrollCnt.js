@@ -136,13 +136,14 @@ function ServiceEnrollCnt(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="timePerService"
           stroke="#8884d8"
           fill="#8884d8"
           key={Math.random()}
+          name="시간당 서비스 등록"
         />
       </AreaChart>
     </div>

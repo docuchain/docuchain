@@ -23,7 +23,7 @@ function NtwBlockTime(props) {
     //   .map((item) => item.TPS)
     //   .reduce((prev, curr) => prev + curr, 0);
 
-    return 60 / filterNetWork.length;
+    return (60 / filterNetWork.length).toFixed(2);
   };
   console.log(countFunc(" 10:", "A"));
 
@@ -116,7 +116,17 @@ function NtwBlockTime(props) {
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 블록생성시간(분)</h3>
-      <LineChart width={600} height={400} data={Data}>
+      <LineChart
+        width={600}
+        height={400}
+        data={Data}
+        margin={{
+          top: 20,
+          right: 20,
+          bottom: 20,
+          left: 20,
+        }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" padding={{ left: 30, right: 30 }} />
         <YAxis />
@@ -129,6 +139,7 @@ function NtwBlockTime(props) {
           activeDot={{ r: 8 }}
           strokeWidth="3px"
           key={Math.random()}
+          name="A네트워크"
         />
         <Line
           type="monotone"
@@ -137,6 +148,7 @@ function NtwBlockTime(props) {
           activeDot={{ r: 8 }}
           strokeWidth="3px"
           key={Math.random()}
+          name="B네트워크"
         />
         <Line
           type="monotone"
@@ -145,6 +157,7 @@ function NtwBlockTime(props) {
           activeDot={{ r: 8 }}
           strokeWidth="3px"
           key={Math.random()}
+          name="C네트워크"
         />
         <Line
           type="monotone"
@@ -153,6 +166,7 @@ function NtwBlockTime(props) {
           activeDot={{ r: 8 }}
           strokeWidth="3px"
           key={Math.random()}
+          name="D네트워크"
         />
       </LineChart>
     </div>

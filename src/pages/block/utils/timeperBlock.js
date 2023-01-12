@@ -81,7 +81,7 @@ function TimePerBlock(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="timePerBlock"
