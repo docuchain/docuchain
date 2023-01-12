@@ -10,6 +10,7 @@ import { updatePassword } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
+import { Input } from "@mui/material";
 const MyPage = () => {
   //user state 저장
   const [user, setUser] = useRecoilState(userInfo);
@@ -84,7 +85,7 @@ const MyPage = () => {
       <form onSubmit={handleSubmit(onPasswordChange, onError)}>
         <label>
           비밀번호 :{" "}
-          <input
+          <Input
             type={"password"}
             {...register("password", {
               required: true,
@@ -100,7 +101,7 @@ const MyPage = () => {
         <br />
         <label>
           비밀번호 재확인 :{" "}
-          <input
+          <Input
             type={"password"}
             {...register("passwordRepeat", {
               required: true,

@@ -142,12 +142,16 @@ export default function StickyHeadTable() {
                     >
                       {node.serviceNameE}
                     </TableCell>
-                    <TableCell
-                      align="center"
-                      onClick={() => onClickNodeDetail(node.nodeName)}
-                    >
-                      {node.IP}
-                    </TableCell>
+                    {userValue.node ? (
+                      <TableCell
+                        align="center"
+                        onClick={() => onClickNodeDetail(node.nodeName)}
+                      >
+                        {node.IP}
+                      </TableCell>
+                    ) : (
+                      <TableCell align="center">www.xxx.xxx</TableCell>
+                    )}
                     <TableCell
                       align="center"
                       onClick={() => onClickBlockDetail(node.blockNumber)}
