@@ -67,8 +67,8 @@ function ServiceRank(props) {
   ];
 
   return (
-    <div>
-      <h3>누적 호출 상위 Top5</h3>
+    <div className="ServiceChart">
+      <h3 className="servicechart_trans_title">누적 호출 상위 Top5</h3>
       <BarChart
         width={580}
         height={400}
@@ -79,7 +79,6 @@ function ServiceRank(props) {
           left: 0,
           bottom: 0,
         }}
-        style={{ fontSize: 10 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="serviceName" />

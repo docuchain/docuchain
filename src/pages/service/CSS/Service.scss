@@ -1,3 +1,16 @@
-.ChartTitle {
-  text-align: center;
+.boxShadowNonePadding {
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
+  border-radius: 20px;
+  padding: 10px 0;
+}
+
+.ServiceChart {
+  font-size: 12px;
+  padding: 0px;
+  & .servicechart_trans_title {
+    text-align: center;
+    font-size: 1.4rem;
+    transform: translate(30px);
+  }
 }
