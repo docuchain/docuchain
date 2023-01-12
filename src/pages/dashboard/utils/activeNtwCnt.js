@@ -17,10 +17,12 @@ const ActiveNtwCnt = (props) => {
   return (
     <div
       className="ActiveNtwCnt boxShadow boxLayoutel4"
-      style={{ height: "400px" }}
+      style={
+        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
+      }
     >
       <h3>활성 네트워크 수</h3>
-      <h3>{netWorkKinds.length}</h3>
+      <h1 className="DashboardCntNum">{netWorkKinds.length}</h1>
       <Timer />
     </div>
   );
