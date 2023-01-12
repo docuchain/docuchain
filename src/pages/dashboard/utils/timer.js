@@ -20,7 +20,7 @@ const Timer = () => {
   };
 
   startTimer();
-  return <div>{timer}</div>;
+  return <div className="DashboardTimeBox">{timer}</div>;
 };
 
 export default Timer;

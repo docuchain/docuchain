@@ -24,14 +24,12 @@ li {
   display: flex;
 }
 .pageRouterWrap--left {
-  width: 280px;
   min-width: 280px;
   font-size: 1.5rem;
   background: #1653da;
 }
 .pageRouterWrap--right {
   width: 86%;
-  border: 1px solid blue;
 }
 .pageRouterWrap--right--header {
   height: 8vh;

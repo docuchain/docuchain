@@ -11,10 +11,12 @@ const TotalServiceCnt = (props) => {
   return (
     <div
       className="TotalServiceCnt boxShadow boxLayoutel4"
-      style={{ height: "400px" }}
+      style={
+        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
+      }
     >
       <h3>전체 서비스 등록 건수</h3>
-      <h3>{data.length}</h3>
+      <h1 className="DashboardCntNum">{data.length}</h1>
       <Timer />
     </div>
   );
