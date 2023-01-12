@@ -59,9 +59,9 @@ function ApiCallRank(props) {
     {
       time: "14:00",
       serviceName: "E서비스",
-      apiKinds: "DID DOCUMENT 등록",
+      apiKinds: "DID DOCUMENT",
       topFiveService: countFunc("E서비스"),
-      topFiveApi: avgFunc("DID DOCUMENT 등록"),
+      topFiveApi: avgFunc("DID DOCUMENT"),
     },
   ];
   return (
