@@ -31,7 +31,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="Dashboard">
+    <div>
       <div className="maginBw100 boxLayout4">
         <TotalBlockCnt data={data} fetchdata={fetchdata} />
         <TotalTransCnt data={data} fetchdata={fetchdata} />

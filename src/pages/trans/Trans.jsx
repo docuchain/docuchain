@@ -22,10 +22,14 @@ const Trans = () => {
   }, []);
   return (
     <div>
-      <h2>트랜잭션</h2>
-      <p>전체 트랜잭션 {data.length}개</p>
-      <TransChart data={data} fetchdata={fetchdata} />
-      <TransTable data={data} fetchdata={fetchdata} />
+      {/* <h2>트랜잭션</h2>
+      <p>전체 트랜잭션 {data.length}개</p> */}
+      <div className="maginBw100">
+        <TransChart data={data} fetchdata={fetchdata} />
+      </div>
+      <div className="maginBw100">
+        <TransTable data={data} fetchdata={fetchdata} />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../CSS/Service.scss";
 import ServiceRank from "../utils/serviceRank";
 import ApiCallRank from "../utils/apiCallRank";
 
@@ -11,14 +10,11 @@ const ServiceChart = (props) => {
   }, []);
 
   return (
-    <div className="ServiceChart">
-      <div className="serviceChart_Top5" style={{ backgroundColor: "#ffffff" }}>
+    <div className="boxLayout2">
+      <div className="boxLayoutel2 boxShadow">
         <ServiceRank data={data} fetchdata={fetchdata} />
       </div>
-      <div
-        className="serviceChart_Top5 Barchart_apiCallRank"
-        style={{ backgroundColor: "#ffffff" }}
-      >
+      <div className="boxLayoutel2 boxShadow">
         <ApiCallRank data={data} fetchdata={fetchdata} />
       </div>
     </div>

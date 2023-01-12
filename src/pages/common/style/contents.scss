@@ -1,21 +1,22 @@
 // 블록, 트랜잭션, 서비스
-
 .Contents {
+  min-width: 1200px;
   background: #f4f7ff;
   height: 86vh;
   overflow: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
-
+  padding: 40px;
 }
 
 .ContentsTitle {
+  line-height: 0;
   display: flex;
   justify-content: flex-start;
-  margin-left: 40px;
+  margin: 0 0 0 40px;
 }
+
 .Dashboard {
   display: flex;
   flex-direction: column;
@@ -23,14 +24,13 @@
 }
 
 .maginBw100 {
-  border: 1px solid blue;
   width: 100%;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
 }
 
-// 파일 이동해주기
+// 여기가 작업해줄 곳
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
@@ -39,26 +39,27 @@
   justify-content: center;
   align-items: center;
 }
-// 전체 레이아웃 ====================================
+
 .boxLayout4 {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .boxLayout2 {
-  border: 1px solid green;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .boxLayout1 {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-// 각 파트별 레이아웃 ====================================
 .boxShadow {
   background-color: white;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
@@ -72,9 +73,15 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .boxLayoutel2 {
   width: 48%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+
+.ListBth {
+  
 }

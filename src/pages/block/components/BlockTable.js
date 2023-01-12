@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BlockDetailTable from "../utils/blockDetailTable";
+import { lineHeight } from "@mui/system";
 
 // 테이블 헤더 데이터
 const columns = [
@@ -72,6 +73,7 @@ export default function BlockTable(props) {
             <TableRow>
               {columns.map((column) => (
                 <TableCell
+                  sx={{ lineHeight: "2.5rem", textIndent: 30 }}
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
@@ -87,24 +89,28 @@ export default function BlockTable(props) {
               : data
             ).map((datael, idx) => (
               <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
-                <TableCell component="th" scope="row">
+                <TableCell
+                  component="th"
+                  scope="row"
+                  style={{ width: 130, textIndent: 30 }}
+                >
                   {datael.serviceName}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
                   <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
                     {datael.blockNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
                   {datael.timeStamp}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
                   {datael.blockHash}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
                   {datael.blockSize}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
                   {datael.transCount}
                 </TableCell>
               </TableRow>

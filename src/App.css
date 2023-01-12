@@ -7,7 +7,6 @@
 /* dash */
 
 .App {
-  text-align: center;
 }
 
 /* pageRouterApp */
@@ -25,15 +24,15 @@ li {
   display: flex;
 }
 .pageRouterWrap--left {
-  width: 18vw;
+  width: 280px;
+  min-width: 280px;
   font-size: 1.5rem;
   background: #1653da;
 }
 .pageRouterWrap--right {
-  width: 82vw;
+  width: 86%;
   border: 1px solid blue;
 }
 .pageRouterWrap--right--header {
-  /* height: 116px; */
   height: 8vh;
 }
