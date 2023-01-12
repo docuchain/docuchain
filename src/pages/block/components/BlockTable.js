@@ -73,7 +73,12 @@ export default function BlockTable(props) {
             <TableRow>
               {columns.map((column) => (
                 <TableCell
-                  sx={{ lineHeight: "2.5rem", textIndent: 30 }}
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    lineHeight: "2.5rem",
+                    textIndent: 30,
+                  }}
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
@@ -92,7 +97,7 @@ export default function BlockTable(props) {
                 <TableCell
                   component="th"
                   scope="row"
-                  style={{ width: 130, textIndent: 30 }}
+                  style={{ color: "#6d6d6d", width: 130, textIndent: 30 }}
                 >
                   {datael.serviceName}
                 </TableCell>
