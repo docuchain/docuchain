@@ -64,8 +64,8 @@ function AvgTransSize(props) {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
-      <h3>시간 당 트랜잭션 크기(KB)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 트랜잭션 크기(KB)</h3>
       <AreaChart
         width={600}
         height={400}
