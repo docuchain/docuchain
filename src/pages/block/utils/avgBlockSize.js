@@ -56,10 +56,10 @@ function AvgBlockSize(props) {
     },
   ];
   return (
-    <div className="boxLayoutel2">
+    <div>
       <h3>평균 블록 크기(KB)</h3>
       <AreaChart
-        width={550}
+        width={560}
         height={400}
         data={Data}
         margin={{

@@ -6,9 +6,13 @@ import AvgBlock from "../utils/avgBlockSize";
 export default function BlockChart(props) {
   const { data, fetchdata } = props;
   return (
-    <div>
-      <TimeperBlock data={data} fetchdata={fetchdata} />
-      <AvgBlock data={data} fetchdata={fetchdata} />
+    <div className="boxLayout2">
+      <div className="boxLayoutel2 boxShadow">
+        <TimeperBlock data={data} fetchdata={fetchdata} />
+      </div>
+      <div className="boxLayoutel2 boxShadow">
+        <AvgBlock data={data} fetchdata={fetchdata} />
+      </div>
     </div>
   );
 }

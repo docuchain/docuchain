@@ -7,7 +7,6 @@
 /* dash */
 
 .App {
-  text-align: center;
 }
 
 /* pageRouterApp */
@@ -26,6 +25,7 @@ li {
   display: flex;
 }
 .pageRouterWrap--left {
+  width: 280px;
   min-width: 280px;
   font-size: 1.5rem;
   background: #1653da;
