@@ -108,8 +108,8 @@ const AddUser = () => {
       //   setName(item.id);
       // });
     }
-     isEmailCheck();
-     isPasswordCheck();
+    //  isEmailCheck();
+    //  isPasswordCheck();
     //  submitHandler();
      console.log(isEmail);
      console.log(isPassword);

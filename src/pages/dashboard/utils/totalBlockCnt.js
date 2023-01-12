@@ -1,32 +1,24 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { dbService } from "../../../apis/firebase";
+import { display } from "@mui/system";
+import React, { useEffect } from "react";
+import Timer from "./timer";
 
-const TotalBlockCnt = () => {
-  const blockData = collection(dbService, "blockData");
-  const [totalBlock, setTotalBlock] = useState([]);
+const TotalBlockCnt = (props) => {
+  const { data, fetchdata } = props;
 
-  useEffect(() => {
-    async function getBlock() {
-      const data = await getDocs(blockData);
-
-      setTotalBlock(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
-
-    getBlock();
-  }, []);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
   return (
     <div
       className="TotalBlockCnt boxShadow boxLayoutel4"
-      style={{ height: "400px" }}
+      style={
+        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
+      }
     >
-      <h3>TotalBlockCnt</h3>
-      <h3>{totalBlock.length}</h3>
+      <h1>전체 블록 수</h1>
+      <h3>{data.length}</h3>
+      <Timer />
     </div>
   );
 };

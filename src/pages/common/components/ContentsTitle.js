@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import BlockChart from "./components/BlockChart";
-import BlockTable from "./components/BlockTable";
-import ContentsTitle from "../common/components/ContentsTitle.js";
 
-const Block = () => {
+export default function ContentsTitle() {
   const [data, setData] = useState([]);
 
   const fetchdata = async () => {
@@ -21,17 +18,12 @@ const Block = () => {
   useEffect(() => {
     fetchdata();
   }, []);
-  return (
-    <div>
-      {/* <ContentsTitle /> */}
-      <div className="maginBw100">
-        <BlockChart data={data} fetchdata={fetchdata} />
-      </div>
-      <div className="maginBw100">
-        <BlockTable data={data} fetchdata={fetchdata} />
-      </div>
-    </div>
-  );
-};
 
-export default Block;
+  return (
+    <>
+      <div className="ContentsTitle">
+        <h4>전체 블록 {data.length}개</h4>
+      </div>
+    </>
+  );
+}
