@@ -32,7 +32,7 @@ function AvgTransSize(props) {
       .map((item) => item.transSize)
       .reduce((prev, curr) => prev + curr, 0);
 
-    return avgResult / result2.length;
+    return (avgResult / result2.length).toFixed(2);
   };
 
   const Data = [
@@ -81,7 +81,7 @@ function AvgTransSize(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="transSize"
