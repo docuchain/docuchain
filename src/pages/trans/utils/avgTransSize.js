@@ -13,10 +13,6 @@ import {
 function AvgTransSize(props) {
   const { data, fetchdata } = props;
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const countFunc = (a) => {
     // let count = 0;
     // for (let i = 0; i < data.length; i++) {
@@ -36,7 +32,7 @@ function AvgTransSize(props) {
       .map((item) => item.transSize)
       .reduce((prev, curr) => prev + curr, 0);
 
-    return avgResult / result2.length;
+    return (avgResult / result2.length).toFixed(2);
   };
 
   const Data = [
@@ -68,8 +64,8 @@ function AvgTransSize(props) {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
-      <h3>시간 당 트랜잭션 크기(KB)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 트랜잭션 크기(KB)</h3>
       <AreaChart
         width={600}
         height={400}
@@ -85,7 +81,7 @@ function AvgTransSize(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="transSize"

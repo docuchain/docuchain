@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { nodeMockData } from "../node/utils/nodeMockData";
+import { NodeFirebase } from "../node/utils/nodeMockData";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
 import NodeRssChart from "./utils/chart/nodeRssChart";
 // import NodeUsageChart from "./utils/chart/nodeUsageChart";
 
 const NodeDetail = () => {
   const { nodeName } = useParams();
+  const [nodeIp, setNodeIp] = useState("");
+  const nodeTableData = NodeFirebase();
 
-  const nodeDetailInfo = nodeMockData.nodeList.filter((node, index) => {
-    if (node.nodeName === nodeName) {
-      return node;
+  useEffect(() => {
+    if (nodeTableData.length > 0) {
+      nodeTableData.filter((node) => {
+        if (node.nodeName === nodeName) {
+          console.log(node);
+          setNodeIp(node.IP);
+        }
+      });
+    } else {
+      console.log("nodeTableData length : 0");
     }
-  });
-
-  const NodeIP = nodeDetailInfo[0].IP;
+  }, [nodeTableData]);
 
   // 노드 목록으로 이동
   const navigate = useNavigate();
@@ -27,7 +34,7 @@ const NodeDetail = () => {
     <div>
       <h1>상세정보</h1>
       <h3>
-        {nodeName} : {NodeIP}
+        {nodeName} : {nodeIp}
       </h3>
       <button onClick={toNode}>목록으로</button>
       {/* https://speed.cloudflare.com/

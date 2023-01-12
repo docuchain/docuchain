@@ -46,7 +46,6 @@ export default function Modal(props) {
           </header>
           <main>
             <h3>method : {transDataDetail.method}</h3>
-
             <ul>
               <h3>params : </h3>
               <li>cr_download : {transDataDetail.params.cr_download}</li>

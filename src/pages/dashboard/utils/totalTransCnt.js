@@ -1,31 +1,23 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { dbService } from "../../../apis/firebase";
+import React, { useEffect } from "react";
+import Timer from "./timer";
 
-const TotalTransCnt = () => {
-  const transData = collection(dbService, "transData");
-  const [totalTrans, setTotalTrans] = useState([]);
+const TotalTransCnt = (props) => {
+  const { data, fetchdata } = props;
 
-  useEffect(() => {
-    async function getBlock() {
-      const data = await getDocs(transData);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
-      setTotalTrans(
-        data.docs.map((item) => ({
-          ...item.data(),
-        }))
-      );
-    }
-
-    getBlock();
-  }, []);
   return (
     <div
       className="TotalTransCnt boxShadow boxLayoutel4"
-      style={{ height: "400px" }}
+      style={
+        ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
+      }
     >
-      <h3>TotalTransCnt</h3>
-      <h3>{totalTrans.length}</h3>
+      <h3>전체 트랜잭션 수</h3>
+      <h1 className="DashboardCntNum">{data.length}</h1>
+      {/* <Timer /> */}
     </div>
   );
 };

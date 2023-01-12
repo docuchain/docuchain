@@ -4,18 +4,19 @@ import NodeTable from "./components/NodeTable";
 import NodeTap from "../node/components/NodeTab";
 import AllNode from "./components/AllNode";
 
+import { NodeFirebase } from "./utils/nodeMockData";
+
 const Node = () => {
   const [selectedTap, setSelectedTap] = useState("NODE_LIST");
-  // NODE_LIST || ALL_NODE_STATE 상태관리
+  const nodeTableData = NodeFirebase(); 
+
   return (
-    // <S.GlobalContainer>
     <>
       <h1>노드</h1>
-      <p>전체 노드 x개</p>
+      <p>노드 갯수 : {nodeTableData.length}개</p>
       <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
       {selectedTap === "NODE_LIST" ? <NodeTable /> : <AllNode />}
     </>
-    // </S.GlobalContainer>
   );
 };
 

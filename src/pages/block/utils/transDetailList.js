@@ -15,6 +15,8 @@ import "../style/Modal.scss";
 import { useParams } from "react-router-dom";
 import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 // 데이터 받아오면 목데이터 지울것 -----------
 
@@ -30,6 +32,8 @@ export default function TransDetailList(props) {
   const [transSize, setTransSize] = useState();
   const [transDataDetail, setTransDataDetail] = useState();
   const userValue = useRecoilValue(getUserInfo);
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchdata();
   }, []);
@@ -54,7 +58,19 @@ export default function TransDetailList(props) {
   });
 
   const openModal = () => {
-    setModalOpen(true);
+    //트랜잭션 권한 있을경우
+    if (userValue.trans) {
+      setModalOpen(true);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
+  };
+  const naviTransDetail = () => {
+    if (userValue.trans) {
+      navigate(`/trans/${transNum}`);
+    } else {
+      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+    }
   };
   const closeModal = () => {
     setModalOpen(false);
@@ -85,7 +101,7 @@ export default function TransDetailList(props) {
               <TableCell
                 className="selectableArea"
                 // 모달 오픈
-                onClick={openModal}
+                onClick={naviTransDetail}
                 align="right"
               >
                 {transHash}
@@ -108,9 +124,7 @@ export default function TransDetailList(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* modal test -> 라우터로 이동하면 기존 설계도같이 배경에 데이터가 안보여서 모달로 하는 게 더 나을 것 같음 */}
       <div>
-        {/* <button onClick={openModal}>모달팝업</button> */}
         <Modal
           open={modalOpen}
           close={closeModal}
@@ -119,27 +133,9 @@ export default function TransDetailList(props) {
           fetchdata={fetchdata}
         >
           <h2>method : </h2>
-
           <div className="tranDetailDataArea"></div>
         </Modal>
       </div>
     </div>
   );
 }
-
-/*
-export default function TransDetailList() {
-  * 상세페이지 이동
-  const navigate = useNavigate();
-  const toTransHashDetailData = (e) => {
-    navigate("/block/:id/data");
-      console.log(e.target); //td tableCell에 접근이 가능함
-      * 부모요소노드에 접근하기
-      console.log(e.target.parentElement.id);  //일반적으로 해당 태그에 id값이 있다면 이런식으로 접근이 가능하나
-    console.log(e.target.parentElement); //이렇게 되면 테이블의 row에 접근이 가능함 -> 내가 필요한건 table내에 row값
-  };
-  * 상세페이지 alert로 보여주기
-  const toTransHashDetailData = () => {
-    alert("트랜스 디테일 데이터 영역임");
-  };
-*/
