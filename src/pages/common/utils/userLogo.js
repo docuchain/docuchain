@@ -8,6 +8,10 @@ import { flexbox, style } from "@mui/system";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 import { userInfo } from "../../../recoil/atom";
+import { List } from "@mui/material";
+import Modal from "../../block/utils/Modal";
+import "../style/userlogo.scss";
+
 const UserLogo = () => {
   const emailValue = useRecoilValue(getUserEmail);
   const userValue = useRecoilValue(getUserInfo);
@@ -16,17 +20,9 @@ const UserLogo = () => {
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
 
-  const style = {
-    // float: "right",
-    // position: "absolute",
-    position: "fixed",
-    // width: "130px",
-    // height: "90px",
-    //
-  };
   useEffect(() => {
     toggleChange();
-  }, [nowUser]);
+  }, []);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -39,15 +35,15 @@ const UserLogo = () => {
           if (user.uid === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2") {
             setToggleState(
               <>
-                <li>{emailValue || ""}</li>
-                <li>
+                <List className="logoList">{emailValue || ""}</List>
+                <List className="logoList">
                   <Link to="/myinfo">나의 정보</Link>
-                </li>
+                </List>
                 {/* 관리자 전용 클릭시 사용자관리 페이지로 넘어감 */}
-                <li>
+                <List className="logoList">
                   <Link to="/usermanaging">사용자 관리</Link>
-                </li>
-                <li>
+                </List>
+                <List className="logoList">
                   <Link
                     to="/"
                     onClick={() => {
@@ -57,18 +53,18 @@ const UserLogo = () => {
                   >
                     로그아웃
                   </Link>
-                </li>
+                </List>
               </>
             );
           } else {
             //일반 사용자 로그인 할 경우
             setToggleState(
               <>
-                <li>{emailValue || ""}</li>
-                <li>
+                <List className="logoList">{emailValue || ""}</List>
+                <List className="logoList">
                   <Link to="/myinfo">나의 정보</Link>
-                </li>
-                <li>
+                </List>
+                <List className="logoList">
                   <Link
                     to="/"
                     onClick={() => {
@@ -78,7 +74,7 @@ const UserLogo = () => {
                   >
                     로그아웃
                   </Link>
-                </li>
+                </List>
               </>
             );
           }
@@ -86,9 +82,10 @@ const UserLogo = () => {
           //로그 아웃 상태일때
           setToggleState(
             <>
-              <li>
+              <List className="logoList">
                 <Link to="/login">로그인</Link>
-              </li>
+              </List>
+              {/* <List className="logoList" onClick={Modal}></List> */}
             </>
           );
         }
@@ -100,10 +97,12 @@ const UserLogo = () => {
 
   return (
     <div>
-      <Button type="button" onClick={toggleChange}>
-        <PersonIcon />
-      </Button>
-      {toggleState}
+      <div>
+        <Button type="button" onClick={toggleChange}>
+          <PersonIcon className="icon3" />
+        </Button>
+      </div>
+      <div className="logoListToogle">{toggleState}</div>
     </div>
   );
 };

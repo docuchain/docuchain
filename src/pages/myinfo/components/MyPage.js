@@ -10,6 +10,7 @@ import { updatePassword } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
+import { Input } from "@mui/material";
 const MyPage = () => {
   //user state 저장
   const [user, setUser] = useRecoilState(userInfo);
@@ -76,7 +77,7 @@ const MyPage = () => {
   };
 
   return (
-    <div className="myinfo">
+    <div className="Myinfo">
       <h2>나의 정보</h2>
       <h5>이름 : {user.name}</h5>
       <h5>소속 :{user.team}</h5>
@@ -84,7 +85,7 @@ const MyPage = () => {
       <form onSubmit={handleSubmit(onPasswordChange, onError)}>
         <label>
           비밀번호 :{" "}
-          <input
+          <Input
             type={"password"}
             {...register("password", {
               required: true,
@@ -100,7 +101,7 @@ const MyPage = () => {
         <br />
         <label>
           비밀번호 재확인 :{" "}
-          <input
+          <Input
             type={"password"}
             {...register("passwordRepeat", {
               required: true,
@@ -142,10 +143,20 @@ const MyPage = () => {
       <h5 className="myinfo__activeservice">
         이용중인 서비스 :
         <label>
-          <input type={"checkbox"} /> A서비스
+          <input
+            type={"checkbox"}
+            checked={user.usingServiceA || false}
+            disabled
+          />{" "}
+          A서비스
         </label>
         <label>
-          <input type={"checkbox"} /> B서비스
+          <input
+            type={"checkbox"}
+            checked={user.usingServiceB || false}
+            disabled
+          />{" "}
+          B서비스
         </label>
       </h5>
       <h5>유형 : {user.role}</h5>

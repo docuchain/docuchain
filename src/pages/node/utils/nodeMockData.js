@@ -1,55 +1,74 @@
-export const nodeMockHeader = [
-  {
-    id: "serviceName",
-    disablePadding: true,
-    label: "서비스명",
-  },
-  {
-    id: "status",
-    disablePadding: false,
-    label: "상태",
-  },
-  {
-    id: "nodeName",
-    disablePadding: false,
-    label: "노드명",
-  },
-  {
-    id: "type",
-    disablePadding: false,
-    label: "유형",
-  },
-  {
-    id: "serviceNameE",
-    disablePadding: false,
-    label: "서비스명",
-  },
-  {
-    id: "IP",
-    disablePadding: false,
-    label: "IP",
-  },
-  {
-    id: "newBlockNum",
-    disablePadding: false,
-    label: "최신블록번호",
-  },
-  {
-    id: "newBlockTime",
-    disablePadding: false,
-    label: "최신블록시간",
-  },
-  {
-    id: "TPS",
-    disablePadding: false,
-    label: "처리속도",
-  },
-  {
-    id: "Latency",
-    disablePadding: false,
-    label: "지연율",
-  },
-];
+import React, { useEffect, useState } from "react";
+
+export const nodeData = {
+  nodeHeader: [
+    {
+      id: "serviceName",
+      label: "서비스명",
+      hight: 50,
+      minWidth: 70,
+      align: "center",
+      lineHeight: 50,
+    },
+    { id: "status", label: "상태", minWidth: 70, align: "center" },
+    {
+      id: "nodeName",
+      label: "노드명",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toLocaleString("en-US"),
+    },
+    {
+      id: "type",
+      label: "유형",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toLocaleString("en-US"),
+    },
+    {
+      id: "serviceNameE",
+      label: "서비스명",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: "IP",
+      label: "IP",
+      minWidth: 140,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: "newBlockNum",
+      label: "최신블록번호",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: "newBlockTime",
+      label: "최신블록시간",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: "TPS",
+      label: "처리속도",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: "Latency",
+      label: "지연율",
+      minWidth: 70,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+  ],
+};
 
 export const nodeMockData = {
   nodeList: [
@@ -175,3 +194,27 @@ export const nodeMockData = {
     },
   ],
 };
+
+export const NodeFirebase = () => {
+  const [data, setData] = useState([]);
+
+  const fetchdata = async () => {
+    try {
+      const res = await fetch(
+        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+      );
+      const result = await res.json();
+      setData([...result]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  return data;
+};
+
+export default NodeFirebase;

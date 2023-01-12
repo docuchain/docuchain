@@ -1,5 +1,10 @@
+import { Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./TransStyle.css";
+import TransDetailTitle from "./utils/transDetailItitle";
+
+import TransDetailTable from "./utils/transDetailTable";
 
 const TransDetail = () => {
   //   const { transRef } = props;
@@ -56,17 +61,16 @@ const TransDetail = () => {
   });
 
   return (
-    <div>
-      <h1>트랜잭션</h1>
-      <h3>| 상세정보</h3>
-      <button onClick={toTrans}>목록으로</button>
-      <div>서비스명 {serviceName}</div>
-      <div>타임스탬프 {time}</div>
-      <div>트랜잭션해시 {transHash}</div>
-      <div>트랜잭션크기 {transSize}</div>
-      <div>블록번호 {blockNum}</div>
-      <div>노드명 {nodeName}</div>
-      <div>상태 {status}</div>
+    <div className="transDetail">
+      <TransDetailTitle />
+      {/* Pagination 일단 끌어옴*/}
+      <div className="transdetailwrapper">
+        <Stack className="" spacing={2}>
+          {/* <Pagination count={200} size="large" /> */}
+        </Stack>
+        <TransDetailTable data={data} fetchdata={fetchdata} />
+        {/* <TransDetailList /> */}
+      </div>
     </div>
   );
 };

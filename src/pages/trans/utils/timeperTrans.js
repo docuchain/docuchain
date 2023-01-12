@@ -13,10 +13,6 @@ import {
 function TimePerTrans(props) {
   const { data, fetchdata } = props;
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const countFunc = (a) => {
     // let count = 0;
     // for (let i = 0; i < data.length; i++) {
@@ -68,8 +64,8 @@ function TimePerTrans(props) {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
-      <h3>시간 당 트랜잭션 수(개)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 트랜잭션 수(개)</h3>
       <AreaChart
         width={600}
         height={400}
@@ -85,7 +81,7 @@ function TimePerTrans(props) {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="TimePerTrans"

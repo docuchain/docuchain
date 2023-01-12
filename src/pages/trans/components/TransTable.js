@@ -56,10 +56,6 @@ export default function TransTable(props) {
   const { data, fetchdata } = props;
   // 데이터 fetch
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (event, newPage) => {
@@ -85,6 +81,12 @@ export default function TransTable(props) {
             <TableRow>
               {columns.map((column) => (
                 <TableCell
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    lineHeight: "2.5rem",
+                    textIndent: 30,
+                  }}
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
@@ -99,11 +101,15 @@ export default function TransTable(props) {
               ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : data
             ).map((datael, idx) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
-                <TableCell component="th" scope="row">
+              <TableRow hover role="checkbox" tabIndex={0} key={idx}>
+                <TableCell
+                  style={{ width: 70, textIndent: 30 }}
+                  component="th"
+                  scope="row"
+                >
                   {datael.serviceName}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 70, textIndent: 30 }} align="left">
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -112,17 +118,17 @@ export default function TransTable(props) {
                     {datael.transNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 200, textIndent: 30 }} align="left">
                   {datael.timeStamp}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 240, textIndent: 30 }} align="left">
                   {datael.transHash}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
                   {datael.transSize}
                 </TableCell>
 
-                <TableCell style={{ width: 160 }} align="left">
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
                   <Link
                     value={datael.blockNumber}
                     to={`/block/${datael.blockNumber}`}
@@ -136,7 +142,7 @@ export default function TransTable(props) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 20]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}

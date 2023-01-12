@@ -1,33 +1,40 @@
+/* common */
 @import "./pages/common/style/navbar.scss";
+@import "./pages/common/style/hedaer.scss";
+@import "./pages/common/style/footer.scss";
+@import "./pages/common/style/contents.scss";
+@import "./pages/common/style/boxShadow.scss";
+/* dash */
 
 .App {
-  text-align: center;
 }
 
 /* pageRouterApp */
-a{
+a {
   color: black;
   text-decoration: none;
 }
-li{
-list-style: none;
+li {
+  list-style: none;
 }
 
-.pageRouterWrap{
+.pageRouterWrap {
   height: 100vh;
   overflow: hidden;
   display: flex;
 }
-.pageRouterWrap--left{
+.pageRouterWrap--left {
+  min-width: 280px;
   font-size: 1.5rem;
-  background: #1653DA;
-  width: 360px;
+  background: #1653da;
 }
-.pageRouterWrap--right{
-  width: 100vw;
-  border: 1px solid blue;
+.pageRouterWrap--right {
+  width: 86%;
 }
-.pageRouterWrap--right--header{
-  /* height: 116px; */
+.pageRouterWrap--right--header {
+  height: 8vh;
+}
+
+.pageRouterWrap--right--footer {
   height: 8vh;
 }

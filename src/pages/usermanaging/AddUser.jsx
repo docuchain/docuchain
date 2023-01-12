@@ -18,6 +18,8 @@ const AddUser = () => {
   const [transChecked, setTransChecked] = useState(false);
   const [nodeChecked, setNodeChecked] = useState(false);
   const [serviceChecked, setServiceChecked] = useState(false);
+  const [usingAserviceChecked, setUsingAServiceChecked] = useState(false);
+  const [usingBserviceChecked, setUsingBServiceChecked] = useState(false);
   const [role, setRole] = useState("");
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
@@ -36,6 +38,11 @@ const AddUser = () => {
       e.preventDefault();
       return;
     }
+    if (newUser.password !== newUser.passwordCheck) {
+      swal("", "비밀번호와 비밀번호 재확인이 다릅니다.", "error");
+      e.preventDefault();
+      return;
+    }
     await setDoc(doc(userData, newUser.name), {
       role: role,
       name: newUser.name,
@@ -49,7 +56,8 @@ const AddUser = () => {
       trans: transChecked,
       node: nodeChecked,
       service: serviceChecked,
-      usingService: newUser.usingService,
+      usingServiceA: usingAserviceChecked,
+      usingServiceB: usingBserviceChecked,
     });
 
     registerUser();
@@ -106,8 +114,8 @@ const AddUser = () => {
       //   setName(item.id);
       // });
     }
-    isEmailCheck();
-    isPasswordCheck();
+    //  isEmailCheck();
+    //  isPasswordCheck();
     //  submitHandler();
     console.log(isEmail);
     console.log(isPassword);
@@ -156,6 +164,21 @@ const AddUser = () => {
       setServiceChecked(true);
     } else {
       setServiceChecked(false);
+    }
+  };
+
+  const usingAserviceHandler = (e) => {
+    if (e.target.checked == true) {
+      setUsingAServiceChecked(true);
+    } else {
+      setUsingAServiceChecked(false);
+    }
+  };
+  const usingBserviceHandler = (e) => {
+    if (e.target.checked == true) {
+      setUsingBServiceChecked(true);
+    } else {
+      setUsingBServiceChecked(false);
     }
   };
 
@@ -255,9 +278,24 @@ const AddUser = () => {
           서비스
         </label>
         <br />
-        <label>
+        {/* <label>
           이용중인 서비스
           <input type="text" name="usingService" onChange={changeHandler} />
+        </label> */}
+        <label>
+          이용중인 서비스
+          <input
+            type="checkbox"
+            name="serviceA"
+            onChange={usingAserviceHandler}
+          />
+          A서비스
+          <input
+            type="checkbox"
+            name="serviceB"
+            onChange={usingBserviceHandler}
+          />
+          B서비스
         </label>
         <br />
         <button className="addBtn">추가</button>

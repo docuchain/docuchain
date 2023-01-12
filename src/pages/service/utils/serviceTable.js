@@ -13,6 +13,7 @@ import ServiceDetail from "../ServiceDetail";
 import { useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
 import swal from "sweetalert";
+import { margin } from "@mui/system";
 const columns = [
   { id: "serviceName", label: "서비스명" },
   { id: "date", label: "타임스탬프" },
@@ -23,7 +24,7 @@ const columns = [
   { id: "state", label: "상태" },
 ];
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(props) {
   const userValue = useRecoilValue(getUserInfo);
   //서비스 권한여부 판별
   const serviceAuth = (e) => {
@@ -46,28 +47,14 @@ export default function StickyHeadTable() {
       e.preventDefault();
     }
   };
+  const { data, fetchdata } = props;
   // 데이터 담기
-  const [data, setData] = React.useState([]);
-  //데이터 불러오기
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //fetchdata firebase data
-  React.useEffect(() => {
-    fetchdata();
-  }, []);
+
+  //==================================================
 
   const [page, setPage] = React.useState(0);
   //Rows per page 단위
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -85,7 +72,11 @@ export default function StickyHeadTable() {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id}>
+                <TableCell
+                  key={column.id}
+                  sx={{ lineHeight: "2.5rem" }}
+                  style={{ width: 130, textIndent: 30 }}
+                >
                   {/* 테이블 메인 타이틀 */}
                   {column.label}
                 </TableCell>
@@ -93,65 +84,69 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((data) => {
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={data.transCount}
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((datael, idx) => (
+              <TableRow
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={idx}
+                // onClick={toTableRowdata}
+              >
+                <TableCell
+                  style={{ width: 130, textIndent: 30 }}
+                  component="th"
+                  scope="row"
+                >
+                  <Link
+                    to={`/service/${datael.id}`}
+                    value={datael.id}
+                    onClick={serviceAuth}
                   >
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.serviceName}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.timeStamp}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        to={`${data.transCount}`}
-                        value={data.serviceName}
-                        onClick={serviceAuth}
-                      >
-                        {data.apiKinds}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"node/nodeDetail"} onClick={nodeAuth}>
-                        {data.nodeName}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"/trans/transDetail"} onClick={transAuth}>
-                        {data.transNumber}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link to={"/block/blockDetail"}>{data.newBlockNum}</Link>
-                    </TableCell>
-                    <TableCell>{data.status}</TableCell>
-                  </TableRow>
-                );
-              })}
+                    {datael.serviceName}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 200, textIndent: 30 }} align="left">
+                  {/* onClick={serviceAuth} */}
+                  {datael.timeStamp}
+                </TableCell>
+                <TableCell style={{ width: 200, textIndent: 30 }} align="left">
+                  {/* onClick={serviceAuth} */}
+                  {datael.apiKinds}
+                </TableCell>
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                  {/* onClick={nodeAuth} */}
+                  {datael.nodeName}
+                </TableCell>
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                  <Link
+                    to={`/trans/${datael.transNumber}`}
+                    value={datael.transNumber}
+                    onClick={transAuth}
+                  >
+                    {datael.transNumber}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                  <Link
+                    to={`/block/${datael.blockNumber}`}
+                    value={datael.blockNumber}
+                  >
+                    {datael.blockNumber}
+                  </Link>
+                </TableCell>
+                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                  {datael.status}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 20]}
         component="div"
         // 카운트 개수
         count={data.length}

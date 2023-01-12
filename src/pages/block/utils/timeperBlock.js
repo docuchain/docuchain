@@ -10,24 +10,8 @@ import {
   Legend,
 } from "recharts";
 
-function TimePerBlock() {
-  const [data, setData] = useState([]);
-
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
+function TimePerBlock(props) {
+  const { data, fetchdata } = props;
 
   const countFunc = (a) => {
     // let count = 0;
@@ -80,10 +64,10 @@ function TimePerBlock() {
   ];
 
   return (
-    <div style={{ width: "600px" }}>
-      <h3>시간 당 블록 수(개)</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">시간 당 블록 수(개)</h3>
       <AreaChart
-        width={600}
+        width={580}
         height={400}
         data={Data}
         margin={{
@@ -97,7 +81,7 @@ function TimePerBlock() {
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
-        <Legend />
+
         <Area
           type="monotone"
           dataKey="timePerBlock"
