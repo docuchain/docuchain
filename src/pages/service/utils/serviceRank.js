@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
-import "../CSS/Service.scss";
+// import "../CSS/Service.scss";
 
 function ServiceRank(props) {
   const { data, fetchdata } = props;
@@ -60,17 +60,17 @@ function ServiceRank(props) {
     {
       time: "14:00",
       serviceName: "E서비스",
-      apiKinds: "DID DOCUMENT 등록",
+      apiKinds: "DID DOCUMENT",
       topFiveService: countFunc("E서비스"),
-      topFiveApi: avgFunc("DID DOCUMENT 등록"),
+      topFiveApi: avgFunc("DID DOCUMENT"),
     },
   ];
 
   return (
-    <div>
-      <h3>누적 호출 상위 Top5</h3>
+    <div className="Chart">
+      <h3 className="chart_trans_title">누적 호출 상위 Top5</h3>
       <BarChart
-        width={580}
+        width={590}
         height={400}
         data={Data}
         margin={{
