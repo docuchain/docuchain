@@ -65,15 +65,15 @@ function ApiCallRank(props) {
     },
   ];
   return (
-    <div>
-      <h3>API 호출 상위 Top5</h3>
+    <div className="ServiceChart">
+      <h3 className="servicechart_trans_title">API 호출 상위 Top5</h3>
       <BarChart
         width={580}
         height={400}
         data={Data}
         margin={{
           top: 10,
-          right: 30,
+          right: 0,
           left: 0,
           bottom: 0,
         }}
