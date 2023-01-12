@@ -24,7 +24,6 @@ const Service = () => {
 
   return (
     <div>
-      <ContentsTitle />
       <div className="maginBw100">
         <ServiceChart data={data} fetchdata={fetchdata} />
       </div>
