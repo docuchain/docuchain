@@ -1,18 +1,22 @@
 import "./App.css";
 import PageRouter from "./routes/PageRouter";
 import { dbService } from "./apis/firebase";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
+import { ThemeContext } from "./ThemeContext";
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
   useEffect(() => {
     console.log(dbService);
   });
 
   return (
     <div className="App">
-      <RecoilRoot>
-        <PageRouter />
-      </RecoilRoot>
+      <ThemeContext.Provider>
+        <RecoilRoot>
+          <PageRouter />
+        </RecoilRoot>
+      </ThemeContext.Provider>
     </div>
   );
 }
