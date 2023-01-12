@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,16 +9,18 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
-import { nodeData, nodeMockData, NodeFirebase } from "../utils/nodeMockData";
+import { nodeData, NodeFirebase } from "../utils/nodeMockData";
 import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 import swal from "sweetalert";
 
 export default function StickyHeadTable() {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const navigate = useNavigate();
   const userValue = useRecoilValue(getUserInfo);
+
+  const [nodeTableDataList, setNodeTableDataList] = useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -30,13 +33,13 @@ export default function StickyHeadTable() {
 
   const emptyRows =
     page > 0
-      ? Math.max(0, (1 + page) * rowsPerPage - nodeMockData.nodeList.length)
+      ? Math.max(0, (1 + page) * rowsPerPage - nodeTableDataList.length)
       : 0;
 
   const onClickNodeDetail = (nodeName) => {
     if (userValue.node) {
       swal("노드 세부페이지로 이동합니다");
-      navigate(`/node/detail/${nodeName}`);
+      navigate(`/node/${nodeName}`);
     } else {
       swal("", "권한이 없습니다. 관리자에게 문의하십시오.", "error");
     }
@@ -44,7 +47,7 @@ export default function StickyHeadTable() {
 
   const onClickBlockDetail = (blockNumber) => {
     alert("블록 세부페이지로 이동합니다");
-    navigate(`/block/detail/${blockNumber}`);
+    navigate(`/block/${blockNumber}`);
   };
 
   const tableHeadAuth = (column) => {
@@ -78,23 +81,32 @@ export default function StickyHeadTable() {
     }
   };
 
-  const nodeTableData = NodeFirebase(); 
-  // console.log(test[0]);
- 
+  const nodeTableData = NodeFirebase();
+  // console.log(nodeTableData[0]);
+
+  console.log("sss: ", nodeTableData.length);
+
+  useEffect(() => {
+    if (nodeTableData.length > 0) {
+      setNodeTableDataList(nodeTableData);
+    } else {
+      console.log("nodeTableData length : 0");
+    }
+  }, [nodeTableData]);
+
+  console.log(nodeTableDataList);
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {nodeData.nodeHeader.map((column) =>
-                tableHeadAuth(column)
-              )}
+              {nodeData.nodeHeader.map((column) => tableHeadAuth(column))}
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {nodeTableData
+            {nodeTableDataList
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((node) => {
                 return (
@@ -151,7 +163,7 @@ export default function StickyHeadTable() {
                       <TableCell align="center">{node.TPS}</TableCell>
                     )}
                     {userValue.node && (
-                      <TableCell align="center">{node.Latency}</TableCell>
+                      <TableCell align="center">{node.latency}</TableCell>
                     )}
                   </TableRow>
                 );
@@ -171,7 +183,7 @@ export default function StickyHeadTable() {
       <TablePagination
         rowsPerPageOptions={[5, 10, 20]}
         component="div"
-        count={nodeMockData.nodeList.length}
+        count={nodeTableDataList.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
