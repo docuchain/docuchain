@@ -79,6 +79,7 @@ function ServiceRank(props) {
           left: 0,
           bottom: 0,
         }}
+        style={{ fontSize: 10 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="serviceName" />

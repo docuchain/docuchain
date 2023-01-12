@@ -65,7 +65,7 @@ function ApiCallRank(props) {
     },
   ];
   return (
-    <div>
+    <div className="ChartTitle">
       <h3>API 호출 상위 Top5</h3>
       <BarChart
         width={580}
@@ -77,6 +77,7 @@ function ApiCallRank(props) {
           left: 0,
           bottom: 0,
         }}
+        style={{ fontSize: 13 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="apiKinds" />
