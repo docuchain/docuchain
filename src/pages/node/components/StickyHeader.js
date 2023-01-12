@@ -83,9 +83,6 @@ export default function StickyHeadTable() {
   };
 
   const nodeTableData = NodeFirebase();
-  // console.log(nodeTableData[0]);
-
-  console.log("sss: ", nodeTableData.length);
 
   useEffect(() => {
     if (nodeTableData.length > 0) {
@@ -95,7 +92,6 @@ export default function StickyHeadTable() {
     }
   }, [nodeTableData]);
 
-  console.log(nodeTableDataList);
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>

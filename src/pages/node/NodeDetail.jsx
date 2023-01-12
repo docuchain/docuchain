@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { NodeFirebase } from "../node/utils/nodeMockData";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
 import NodeRssChart from "./utils/chart/nodeRssChart";
-// import NodeUsageChart from "./utils/chart/nodeUsageChart";
+import NodeUsageChart from "./utils/chart/nodeUsageChart";
 
 const NodeDetail = () => {
   const { nodeName } = useParams();
@@ -43,7 +43,7 @@ const NodeDetail = () => {
 
       <NodeMemoryChart />
       <NodeRssChart />
-      {/* <NodeUsageChart /> */}
+      <NodeUsageChart />
     </div>
   );
 };
