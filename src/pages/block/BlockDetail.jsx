@@ -22,12 +22,12 @@ export default function BlockDetail() {
     fetchdata();
   }, []);
   return (
-    <div className="blockDetail">
+    <div>
       <BlockDetailTitle />
-      <div className="blockdetailwrapper" style={{ border: "1px solid red" }}>
-        <Stack className="" spacing={2}>
-          {/* <Pagination count={200} size="large" /> */}
-        </Stack>
+      <div>
+        {/* <Stack spacing={2}>
+          <Pagination count={200} size="large" /> 
+        </Stack> */}
         <BlockDetailTable data={data} fetchdata={fetchdata} />
         {/* <TransDetailList /> */}
       </div>

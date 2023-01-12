@@ -64,7 +64,7 @@ const TransDetail = () => {
     <div className="transDetail">
       <TransDetailTitle />
       {/* Pagination 일단 끌어옴*/}
-      <div className="transdetailwrapper" style={{ border: "1px solid red" }}>
+      <div className="transdetailwrapper">
         <Stack className="" spacing={2}>
           {/* <Pagination count={200} size="large" /> */}
         </Stack>
