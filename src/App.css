@@ -36,3 +36,7 @@ li {
 .pageRouterWrap--right--header {
   height: 8vh;
 }
+
+.pageRouterWrap--right--footer {
+  height: 8vh;
+}

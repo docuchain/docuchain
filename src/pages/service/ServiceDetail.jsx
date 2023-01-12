@@ -76,56 +76,58 @@ const ServiceDetail = () => {
   });
 
   return (
-    <div className="serviceDetailTable">
-      <TableContainer component={Paper}>
-        <div className="serviceHome--Btn">
-          <ToServiceMainBtn />
-        </div>
-        <Table sx={{ minWidth: 600 }} aria-label="simple table">
-          <TableBody>
-            <TableRow>
-              <TableCell>네트워크명</TableCell>
-              <TableCell>{serviceName}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>타임스탬프</TableCell>
-              <TableCell>{time}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>API 종류</TableCell>
-              <TableCell>{apiKinds}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>노드명</TableCell>
-              <TableCell>{nodeName}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>트랜잭션번호</TableCell>
-              <TableCell>{transNum}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>트랜잭션해시</TableCell>
-              <TableCell>
-                {transHash}{" "}
-                <FolderCopyIcon
-                  variant="contained"
-                  disableElevation
-                  onClick={() => handleCopyClipBoard(transHash)}
-                ></FolderCopyIcon>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>블록번호</TableCell>
-              <TableCell>{blockNum}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>상태</TableCell>
-              <TableCell>{status}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+    <>
+      <div>
+        <ToServiceMainBtn />
+      </div>
+      <div className="boxLayout1 boxShadow">
+        <TableContainer>
+          <Table sx={{ minWidth: 600 }} aria-label="simple table">
+            <TableBody>
+              <TableRow>
+                <TableCell>네트워크명</TableCell>
+                <TableCell>{serviceName}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>타임스탬프</TableCell>
+                <TableCell>{time}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>API 종류</TableCell>
+                <TableCell>{apiKinds}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>노드명</TableCell>
+                <TableCell>{nodeName}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>트랜잭션번호</TableCell>
+                <TableCell>{transNum}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>트랜잭션해시</TableCell>
+                <TableCell>
+                  {transHash}{" "}
+                  <FolderCopyIcon
+                    variant="contained"
+                    disableElevation
+                    onClick={() => handleCopyClipBoard(transHash)}
+                  ></FolderCopyIcon>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>블록번호</TableCell>
+                <TableCell>{blockNum}</TableCell>
+              </TableRow>
+              <TableRow sx={{ borderBottom: "hidden" }}>
+                <TableCell>상태</TableCell>
+                <TableCell>{status}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </>
   );
 };
 
