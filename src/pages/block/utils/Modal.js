@@ -46,12 +46,12 @@ export default function Modal(props) {
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
         <section>
-          <header>
+          {/* <header>
             {header}
             <button className="close" onClick={close}>
               &times;
             </button>
-          </header>
+          </header> */}
           <main>
             <h3>method : {transDataDetail.method}</h3>
             <div className="boxLayout1 boxShadow">
@@ -82,14 +82,16 @@ export default function Modal(props) {
                     </TableRow>
                   </TableBody>
                 </Table>
+                <Button
+                  className="close"
+                  onClick={close}
+                  style={{ border: "1px solid #1976d2" }}
+                >
+                  닫기 x
+                </Button>
               </TableContainer>
             </div>
           </main>
-          <footer>
-            <Button className="close" onClick={close}>
-              닫기
-            </Button>
-          </footer>
         </section>
       ) : null}
     </div>
