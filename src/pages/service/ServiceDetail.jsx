@@ -10,6 +10,7 @@ import { useLocation, Link, useParams } from "react-router-dom";
 import { query, getDocs } from "firebase/database";
 import Button from "@mui/material/Button";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
+import CopyBtn from "../block/utils/copyBtn";
 
 const ServiceDetail = () => {
   // 데이터 담기
@@ -81,7 +82,7 @@ const ServiceDetail = () => {
         <ToServiceMainBtn />
       </div>
       <div className="boxLayout1 boxShadow">
-        <TableContainer>
+        <TableContainer className="detailTableInner">
           <Table sx={{ minWidth: 600 }} aria-label="simple table">
             <TableBody>
               <TableRow>

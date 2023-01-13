@@ -117,8 +117,13 @@ export default function StickyHeadTable(props) {
                   {datael.apiKinds}
                 </TableCell>
                 <TableCell style={{ width: 90, textIndent: 30 }} align="left">
-                  {/* onClick={nodeAuth} */}
-                  {datael.nodeName}
+                  <Link
+                    to={`/node/${datael.nodeName}`}
+                    value={datael.transNumber}
+                    onClick={nodeAuth}
+                  >
+                    {datael.nodeName}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 90, textIndent: 30 }} align="left">
                   <Link

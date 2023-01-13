@@ -7,6 +7,7 @@ import { getUserInfo } from "../../recoil/selector";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
+import { Input } from "@mui/material";
 
 const AddUser = () => {
   const userData = collection(dbService, "user");
@@ -199,107 +200,126 @@ const AddUser = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(submitHandler)}>
-        {/* <label>
-          유형
-          <input
-            type="text"
-            name="role"
-            // value="사용자"
-            onChange={changeHandler}
-          />
-        </label> */}
-        <label>
-          유형
-          <select name="role" value={role} onChange={changeRoleHandler}>
-            <option value="none">선택하세요</option>
-            <option value="사용자">사용자</option>
-            <option value="관리자">관리자</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          이름
-          <input type="text" name="name" onChange={changeHandler} />
-        </label>
-        <br />
-        <label>
-          소속
-          <input type="text" name="team" onChange={changeHandler} />
-        </label>
-        <br />
-        <label>
-          이메일(아이디)
-          <input
-            type="text"
-            name="email"
-            onChange={changeHandler}
-            placeholder="이메일을 입력해주세요."
-          />
-        </label>
-        <br />
-        <label>
-          비밀번호
-          <input
-            type="text"
-            name="password"
-            onChange={changeHandler}
-            placeholder="비밀번호를 입력해주세요"
-          />
-        </label>
-        <br />
-        <label>
-          비밀번호 재확인
-          <input type="text" name="passwordCheck" onChange={changeHandler} />
-          <span></span>
-          <br />
-          <span>
-            ※ 비밀번호는 최소 8자리 이상으로 영어대문자, 소문자, 숫자, 특수문자
-            중 3종류 이상 입력 필수
-          </span>
-        </label>
-        <br />
-        <label>
-          상세정보 접근권한
-          <input type="checkbox" name="dashboard" defaultChecked disabled />
-          대시보드
-          <input type="checkbox" name="block" defaultChecked disabled />
-          블록
-          <input type="checkbox" name="trans" onChange={transCheckHandler} />
-          트랜잭션
-          <input type="checkbox" name="node" onChange={nodeCheckHandler} />
-          노드
-          <input
-            type="checkbox"
-            name="service"
-            onChange={serviceCheckHandler}
-          />
-          서비스
-        </label>
-        <br />
-        {/* <label>
+    <div className="boxLayout1 boxShadow">
+      <div className="Myinfo">
+        <h2>ADD USER</h2>
+        <form onSubmit={handleSubmit(submitHandler)}>
+          <label>
+            <h5>
+              유형 :
+              <select name="role" value={role} onChange={changeRoleHandler}>
+                <option value="none">선택하세요</option>
+                <option value="사용자">사용자</option>
+                <option value="관리자">관리자</option>
+              </select>
+            </h5>
+          </label>
+
+          <label>
+            <h5>
+              이름 :
+              <Input type="text" name="name" onChange={changeHandler} />
+            </h5>
+          </label>
+
+          <label>
+            <h5>
+              소속 :
+              <Input type="text" name="team" onChange={changeHandler} />
+            </h5>
+          </label>
+
+          <label>
+            <h5>
+              이메일(아이디) :
+              <Input
+                type="text"
+                name="email"
+                onChange={changeHandler}
+                placeholder="이메일을 입력해주세요."
+              />
+            </h5>
+          </label>
+
+          <label>
+            <h5>
+              비밀번호 :
+              <Input
+                type="text"
+                name="password"
+                onChange={changeHandler}
+                placeholder="비밀번호를 입력해주세요"
+              />
+            </h5>
+          </label>
+
+          <label>
+            <h5>
+              비밀번호 재확인 :
+              <Input
+                type="text"
+                name="passwordCheck"
+                onChange={changeHandler}
+              />
+            </h5>
+            <span></span>
+            <span>
+              <h5>
+                ※ 비밀번호는 최소 8자리 이상으로 영어대문자, 소문자, 숫자,
+                특수문자 중 3종류 이상 입력 필수
+              </h5>
+            </span>
+          </label>
+
+          <label>
+            <h5 className="myinfo__detailauth">
+              상세정보 접근권한 :
+              <input type="checkbox" name="dashboard" defaultChecked disabled />
+              대시보드
+              <input type="checkbox" name="block" defaultChecked disabled />
+              블록
+              <input
+                type="checkbox"
+                name="trans"
+                onChange={transCheckHandler}
+              />
+              트랜잭션
+              <input type="checkbox" name="node" onChange={nodeCheckHandler} />
+              노드
+              <input
+                type="checkbox"
+                name="service"
+                onChange={serviceCheckHandler}
+              />
+              서비스
+            </h5>
+          </label>
+
+          {/* <label>
           이용중인 서비스
           <input type="text" name="usingService" onChange={changeHandler} />
         </label> */}
-        <label>
-          이용중인 서비스
-          <input
-            type="checkbox"
-            name="serviceA"
-            onChange={usingAserviceHandler}
-          />
-          A서비스
-          <input
-            type="checkbox"
-            name="serviceB"
-            onChange={usingBserviceHandler}
-          />
-          B서비스
-        </label>
-        <br />
-        <button className="addBtn">추가</button>
-      </form>
+          <label>
+            <h5 className="myinfo__activeservice">
+              이용중인 서비스 :
+              <input
+                type="checkbox"
+                name="serviceA"
+                onChange={usingAserviceHandler}
+              />
+              A서비스
+              <input
+                type="checkbox"
+                name="serviceB"
+                onChange={usingBserviceHandler}
+              />
+              B서비스
+            </h5>
+          </label>
+
+          <button className="addBtn">추가</button>
+        </form>
+      </div>
     </div>
   );
 };
