@@ -59,11 +59,6 @@ const NodeNetworkChartStatus = () => {
     }
   }, [nodeChartData]);
 
-  // const nodeChartServiceName = 
-  // console.log(nodeChartDataList)
-  // 1. nodeChartDataList 안에 있는 서비스A~F 찾기
-  // 2. 그것들의 평균 상태(처리속도, 지연율 등)
-
   return (
     <div className="boxShadow boxLayoutel2"
     style={({ display: "flex" }, { flexDirection: "column" })}>

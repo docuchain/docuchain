@@ -1,7 +1,7 @@
 import React from "react";
 
-import NodeServicePercentage from "../utils/chart/nodeServicePercentage";
-import NodeServiceActivation from "../utils/chart/nodeServiceActivation";
+import NodeServicePercentageChart from "../utils/chart/nodeServicePercentageChart";
+import NodeServiceActivationChart from "../utils/chart/nodeServiceActivationChart";
 import NodeNetworkSpeedChart from "../utils/chart/nodeNetworkSpeedChart";
 import NodeNetworkStateChart from "../utils/chart/nodeNetworkStatusChart";
 
@@ -10,9 +10,9 @@ const AllNode = () => {
     <div>
       <h2>전체노드 지원현황 페이지</h2>
       <div className="boxLayout2 maginBw100">
-        <NodeServicePercentage />
+        <NodeServicePercentageChart />
         {/* 노드 서비스 점유율 */}
-        <NodeServiceActivation />
+        <NodeServiceActivationChart />
         {/* 노드 서비스 활성화/비활성화 */}
       </div>
       <div className="boxLayout2 maginBw100">

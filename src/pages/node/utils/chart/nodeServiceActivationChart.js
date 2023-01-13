@@ -10,7 +10,7 @@ const data = [
   { name: "Group B", value: 300 },
 ];
 
-const COLORS = ["#00C49F", "#FFBB28"];
+const COLORS = ["#f57f8b", "#FFBB28"];
 // const COLORS = ["#c782e5", "#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f57f8b"];
 
 const RADIAN = Math.PI / 180;
