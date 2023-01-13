@@ -10,7 +10,8 @@ const NavBar = () => {
   const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
   const activeStyle = {
-    color: "red",
+    background: "#4e81ef",
+    color: "yellow",
   };
 
   return (
