@@ -5,13 +5,16 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(204, 204, 204, 0.6);
+
   & .leftA {
+    width: 600px;
     margin-left: 80px;
 
     & .headerTitle {
       color: #2f2f2f;
       font-size: 1.8rem;
       font-weight: 600;
+      float: left;
     }
   }
   & .rightA {

@@ -34,16 +34,16 @@ const AddUser = () => {
     await isPasswordCheck();
 
     if (isEmail === false || isPassword === false) {
-      swal("", "다시 입력해주세요", "error");
+      swal("", "다시 입력해주세요", "");
       e.preventDefault();
       return;
     }
-    if(newUser.password!==newUser.passwordCheck) {
-      swal("","비밀번호와 비밀번호 재확인이 다릅니다.","error");
+    if (newUser.password !== newUser.passwordCheck) {
+      swal("", "비밀번호와 비밀번호 재확인이 다릅니다.", "error");
       e.preventDefault();
       return;
     }
-      await setDoc(doc(userData, newUser.name), {
+    await setDoc(doc(userData, newUser.name), {
       role: role,
       name: newUser.name,
       email: newUser.email,
@@ -284,11 +284,18 @@ const AddUser = () => {
         </label> */}
         <label>
           이용중인 서비스
-          <input type="checkbox" name="serviceA" onChange={usingAserviceHandler} />
+          <input
+            type="checkbox"
+            name="serviceA"
+            onChange={usingAserviceHandler}
+          />
           A서비스
-          <input type="checkbox" name="serviceB" onChange={usingBserviceHandler} />
+          <input
+            type="checkbox"
+            name="serviceB"
+            onChange={usingBserviceHandler}
+          />
           B서비스
-
         </label>
         <br />
         <button className="addBtn">추가</button>

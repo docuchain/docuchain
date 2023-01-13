@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../style/navbar.scss";
 import { useNavigate } from "react-router-dom";
+import { authService } from "../../../apis/firebase";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { getUserInfo } from "../../../recoil/selector";
 const NavBar = () => {
+  const nowUser = authService.currentUser;
+  const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
   const activeStyle = {
     color: "red",
   };
+
   return (
     <div className="Navbar">
       {/* 영역 1 */}
@@ -17,7 +23,7 @@ const NavBar = () => {
       <div className="innerContainer">
         <div className="avatar">
           <div className="img"></div>
-          <p className="name">Docu chain</p>
+          <p className="name">{userValue.email}</p>
           <p className="position">FE Developer</p>
         </div>
         <div className="nav">
