@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import UserPage from "./UserPage";
 import { dbService } from "../../../apis/firebase";
 import { collection } from "firebase/firestore";
+import Button from "../../common/components/Button";
 
 const UserManage = () => {
   const userData = collection(dbService, "user");
@@ -10,9 +11,9 @@ const UserManage = () => {
   //삭제
   return (
     <div>
-      <button>
+      <Button>
         <Link to="/usermanaging/adduser">사용자 추가</Link>
-      </button>
+      </Button>
       <UserPage userData={userData} />
     </div>
   );
