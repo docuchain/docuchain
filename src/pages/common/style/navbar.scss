@@ -50,6 +50,12 @@
       & .navList {
         transform: translate(14px);
         padding: 0px;
+      & .navlinkClicked {
+          color:lawngreen;
+        }
+      & .navlinkDefault {
+          color:peachpuff;
+        }
         & li {
           text-align-last: left;
           transform: translate(-20px);
@@ -90,4 +96,10 @@
       }
     }
   }
+}
+.redbull {
+  color:red;
+}
+.kamill {
+  color:green;
 }

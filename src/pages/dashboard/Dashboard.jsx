@@ -9,7 +9,8 @@ import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
 import ActiveNtw from "./utils/activeNtw";
 import "../common/style/boxShadow.scss";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const Dashboard = () => {
   //데이터 받아와서 props로 뿌려주기
   const [data, setData] = useState([]);

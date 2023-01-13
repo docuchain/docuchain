@@ -1,17 +1,24 @@
 import { display } from "@mui/system";
 import React, { useEffect } from "react";
 import Timer from "./timer";
-
+import { getTheme } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const TotalBlockCnt = (props) => {
-  const { data, fetchdata } = props;
+  const isDark = useRecoilValue(getTheme);
+  const dark = "";
 
+  const { data, fetchdata } = props;
   // useEffect(() => {
   //   fetchdata();
   // }, []);
 
   return (
     <div
-      className="TotalBlockCnt boxShadow boxLayoutel4"
+      className={
+        isDark
+          ? "TotalBlockCnt boxShadowBlack boxLayoutel4"
+          : "TotalBlockCnt boxShadow boxLayoutel4"
+      }
       style={
         ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
       }
