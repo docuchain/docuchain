@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import copyBtn from "./copyBtn";
 import styled from "@emotion/styled";
+import { fontSize } from "@mui/system";
 export default function BlockDetailTable(props) {
   const { data, fetchdata } = props;
   // 자세히 버튼 toggle
