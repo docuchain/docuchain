@@ -22,7 +22,7 @@ const UserLogo = () => {
 
   useEffect(() => {
     toggleChange();
-  }, [nowUser]);
+  }, []);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
