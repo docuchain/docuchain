@@ -82,7 +82,7 @@ const ServiceDetail = () => {
         <ToServiceMainBtn />
       </div>
       <div className="boxLayout1 boxShadow">
-        <TableContainer>
+        <TableContainer className="detailTableInner">
           <Table sx={{ minWidth: 600 }} aria-label="simple table">
             <TableBody>
               <TableRow>
@@ -108,12 +108,12 @@ const ServiceDetail = () => {
               <TableRow>
                 <TableCell>트랜잭션해시</TableCell>
                 <TableCell>
-                  {transHash}
-                  <CopyBtn
+                  {transHash}{" "}
+                  <FolderCopyIcon
                     variant="contained"
                     disableElevation
                     onClick={() => handleCopyClipBoard(transHash)}
-                  ></CopyBtn>
+                  ></FolderCopyIcon>
                 </TableCell>
               </TableRow>
               <TableRow>

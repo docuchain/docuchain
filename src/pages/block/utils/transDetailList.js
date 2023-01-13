@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import "../style/TransDetailList.scss";
 // import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -17,6 +17,7 @@ import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 // 데이터 받아오면 목데이터 지울것 -----------
 
@@ -77,19 +78,19 @@ export default function TransDetailList(props) {
   };
   //  ------------------------------
   return (
-    <div className="TransDetailList">
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <div className="boxLayout1 boxShadow mt20">
+      <TableContainer className="detailTableInner">
+        <Table sx={{ minWidth: 1000 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>트랜잭션번호</TableCell>
-              <TableCell align="right">타임스탬프</TableCell>
-              <TableCell align="right">트랜잭션해시</TableCell>
-              <TableCell align="right">트랜잭션크기</TableCell>
-              {userValue.trans && <TableCell align="right">데이터</TableCell>}
+              <TableCell align="left">타임스탬프</TableCell>
+              <TableCell align="left">트랜잭션해시</TableCell>
+              <TableCell align="left">트랜잭션크기</TableCell>
+              {userValue.trans && <TableCell align="left">데이터</TableCell>}
             </TableRow>
           </TableHead>
-          <TableBody className="tableBody">
+          <TableBody>
             <TableRow
               className="tableRow"
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -97,27 +98,26 @@ export default function TransDetailList(props) {
               <TableCell component="th" scope="row">
                 {transNum}
               </TableCell>
-              <TableCell align="right">{time}</TableCell>
+              <TableCell align="left">{time}</TableCell>
               <TableCell
                 className="selectableArea"
                 // 모달 오픈
                 onClick={naviTransDetail}
-                align="right"
+                align="left"
               >
-                {transHash}
+                <Button>{transHash}</Button>
               </TableCell>
-              <TableCell align="right">{transSize}</TableCell>
+              <TableCell align="left">{transSize}</TableCell>
               {userValue.trans && (
                 <TableCell
                   className="selectableArea"
-                  align="right"
-                  // 모달로 변경하고 라우터 없애도 될듯 -디테일 페이지를 라우터로 이동
-                  // onClick={toTransHashDetailData}
-
+                  align="left"
                   // 모달 -
                   onClick={openModal}
                 >
-                  <AiOutlineDatabase />
+                  <Button>
+                    <AiOutlineDatabase />
+                  </Button>
                 </TableCell>
               )}
             </TableRow>
@@ -126,9 +126,10 @@ export default function TransDetailList(props) {
       </TableContainer>
       <div>
         <Modal
+          style={{ textAlign: "center" }}
           open={modalOpen}
           close={closeModal}
-          header="모달창임"
+          header="트랜잭션 데이터 상세"
           data={data}
           fetchdata={fetchdata}
         >

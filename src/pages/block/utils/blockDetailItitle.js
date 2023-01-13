@@ -2,14 +2,10 @@ import React from "react";
 import ToBlockMainBtn from "../utils/toBlockMainBtn";
 
 export default function BlockDetailTitle() {
-  const style = {
-    float: "right",
-    marginBottom: "20px",
-  };
   return (
     <div>
       <div>
-        <div style={style}>
+        <div className="toMainBtnLayout">
           <ToBlockMainBtn />
         </div>
       </div>

@@ -8,7 +8,6 @@ import NtwTransSpeed from "./utils/ntwTransSpeed";
 import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
 import ActiveNtw from "./utils/activeNtw";
-import "../common/style/boxShadow.scss";
 import { getTheme } from "../../recoil/selector";
 import { useRecoilValue } from "recoil";
 const Dashboard = () => {

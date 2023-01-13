@@ -31,39 +31,11 @@ export default function TransDetailTable(props) {
       alert("복사 실패!");
     }
   };
-  // const [copy, setCopied] = useState(true);
-  // // * true일 때 copy가능하게 만들어주기 - clicpboard 사용하기
-
-  // // const handleCopy = () => {
-  // //   setCopied((prev) => !prev);
-  // // };
-  // //*  copyClipboard
-  // const handleCopy = async (text) => {
-  //   setCopied((prev) => !prev);
-  //   try {
-  //     await navigator.clipboard.writeText(text);
-  //     alert("블록해쉬가 복사됐습니다.");
-  //   } catch (e) {
-  //     alert("블록해쉬 복사에 실패했습니다");
-  //   }
-  //   console.log(`text : ${text}`);
-  // };
-
-  // let content = document.getElementById("textArea").innerHTML;
-  // navigator.clipboard
-  //   .writeText(content)
-  //   .then(() => {
-  //     console.log("Text copied to clipboard...");
-  //   })
-  //   .catch((err) => {
-  //     console.log("Something went wrong", err);
-  //   });
 
   //useParams
   const { id } = useParams();
 
   //state에 데이터 저장
-
   const [transNum, setTransNum] = useState();
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
@@ -110,7 +82,7 @@ export default function TransDetailTable(props) {
 
   return (
     <div className="boxLayout1 boxShadow">
-      <TableContainer>
+      <TableContainer className="detailTableInner">
         <Table sx={{ minWidth: 1200 }} aria-label="simple table">
           <TableBody>
             <TableRow>
@@ -126,6 +98,7 @@ export default function TransDetailTable(props) {
               <TableCell>
                 {transHash}
                 <Button
+                  className="btnLayout"
                   variant="contained"
                   disableElevation
                   onClick={() => handleCopyClipBoard(transHash)}
