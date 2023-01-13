@@ -1,18 +1,38 @@
 .logoList {
-  width: 150px;
   z-index: 2;
   text-align: center;
+
+  & span:hover {
+    font-weight: bold;
+    color: #1653da;
+    border-bottom: 1px solid #1653da;
+  }
 }
 
-// .icon3 {
-//     position: absolute;
-// }
-
 .logoListToogle {
+  z-index: 2;
   background: white;
   position: absolute;
-  padding: 0;
-  margin: 23px -60px;
+  width: 150px;
+  margin: 20px -60px;
   border-radius: 5px;
   box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.5);
+}
+
+.Myinfo {
+  width: 100%;
+  margin-left: 60px;
+  font-size: 17px;
+
+  & input {
+    margin-left: 20px;
+  }
+
+  & button {
+    margin-left: 20px;
+    background-color: rgb(204, 204, 204);
+    border-radius: 3px;
+    color: #ffffff;
+    border-style: none;
+  }
 }

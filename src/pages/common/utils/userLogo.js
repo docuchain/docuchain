@@ -37,11 +37,16 @@ const UserLogo = () => {
               <>
                 <List className="logoList">{emailValue || ""}</List>
                 <List className="logoList">
-                  <Link to="/myinfo">나의 정보</Link>
+                  <Link to="/myinfo">
+                    <span>나의 정보</span>
+                  </Link>
                 </List>
                 {/* 관리자 전용 클릭시 사용자관리 페이지로 넘어감 */}
                 <List className="logoList">
-                  <Link to="/usermanaging">사용자 관리</Link>
+                  <Link to="/usermanaging">
+                    {" "}
+                    <span>사용자 관리</span>
+                  </Link>
                 </List>
                 <List className="logoList">
                   <Link
@@ -51,7 +56,7 @@ const UserLogo = () => {
                       resetUser();
                     }}
                   >
-                    로그아웃
+                    <span>로그아웃</span>
                   </Link>
                 </List>
               </>
@@ -62,7 +67,9 @@ const UserLogo = () => {
               <>
                 <List className="logoList">{emailValue || ""}</List>
                 <List className="logoList">
-                  <Link to="/myinfo">나의 정보</Link>
+                  <Link to="/myinfo">
+                    <span>나의 정보</span>
+                  </Link>
                 </List>
                 <List className="logoList">
                   <Link
@@ -83,7 +90,9 @@ const UserLogo = () => {
           setToggleState(
             <>
               <List className="logoList">
-                <Link to="/login">로그인</Link>
+                <Link to="/login">
+                  <span>로그인</span>
+                </Link>
               </List>
               {/* <List className="logoList" onClick={Modal}></List> */}
             </>
