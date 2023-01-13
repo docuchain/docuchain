@@ -38,7 +38,7 @@ export default function StickyHeadTable() {
 
   const onClickNodeDetail = (nodeName) => {
     if (userValue.node) {
-      swal("노드 세부페이지로 이동합니다");
+      // swal("노드 세부페이지로 이동합니다");
       navigate(`/node/${nodeName}`);
     } else {
       swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
@@ -57,7 +57,7 @@ export default function StickyHeadTable() {
       if (userValue.node) {
         return (
           <TableCell
-            sx={{ lineHeight: "2.5rem" }}
+            sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600" }}
             key={column.id}
             align={column.align}
             style={{ minWidth: column.minWidth }}
@@ -71,7 +71,7 @@ export default function StickyHeadTable() {
     } else {
       return (
         <TableCell
-          sx={{ lineHeight: "2.5rem" }}
+          sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600" }}
           key={column.id}
           align={column.align}
           style={{ minWidth: column.minWidth }}
@@ -83,9 +83,6 @@ export default function StickyHeadTable() {
   };
 
   const nodeTableData = NodeFirebase();
-  // console.log(nodeTableData[0]);
-
-  console.log("sss: ", nodeTableData.length);
 
   useEffect(() => {
     if (nodeTableData.length > 0) {
@@ -95,7 +92,6 @@ export default function StickyHeadTable() {
     }
   }, [nodeTableData]);
 
-  console.log(nodeTableDataList);
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -106,7 +102,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
 
-          <TableBody>
+          <TableBody sx={{ lineHeight: "2.5rem", fontSize: "0.9rem" }}>
             {nodeTableDataList
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((node) => {
