@@ -33,18 +33,18 @@ const Dashboard = () => {
   return (
     <div>
       <div className="maginBw100 boxLayout4">
-        {/* <TotalBlockCnt data={data} fetchdata={fetchdata} />
+        <TotalBlockCnt data={data} fetchdata={fetchdata} />
         <TotalTransCnt data={data} fetchdata={fetchdata} />
         <ActiveNtwCnt data={data} fetchdata={fetchdata} />
-        <TotalServiceCnt data={data} fetchdata={fetchdata} /> */}
+        <TotalServiceCnt data={data} fetchdata={fetchdata} />
       </div>
       <div className="maginBw100 boxLayout2">
-        {/* <NtwTransSpeed data={data} fetchdata={fetchdata} />
-        <NtwBlockTime data={data} fetchdata={fetchdata} /> */}
+        <NtwTransSpeed data={data} fetchdata={fetchdata} />
+        <NtwBlockTime data={data} fetchdata={fetchdata} />
       </div>
       <div className="maginBw100 boxLayout2">
-        {/* <ServiceEnrollCnt data={data} fetchdata={fetchdata} />
-        <ActiveNtw data={data} fetchdata={fetchdata} /> */}
+        <ServiceEnrollCnt data={data} fetchdata={fetchdata} />
+        <ActiveNtw data={data} fetchdata={fetchdata} />
       </div>
     </div>
   );

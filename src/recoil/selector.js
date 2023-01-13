@@ -1,4 +1,4 @@
-import { userEmail, userUid, userInfo } from "./atom";
+import { userEmail, userUid, userInfo, theme } from "./atom";
 import { selector } from "recoil";
 
 export const getUserEmail = selector({
@@ -21,5 +21,13 @@ export const getUserInfo = selector({
   get: ({ get }) => {
     const info = get(userInfo);
     return info;
+  },
+});
+
+export const getTheme = selector({
+  key: "getTheme",
+  get: ({ get }) => {
+    const darkTheme = get(theme);
+    return darkTheme;
   },
 });
