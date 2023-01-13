@@ -79,7 +79,7 @@ const MyPage = () => {
   return (
     <div className="boxLayout1 boxShadow">
       <div className="Myinfo">
-        <h2>나의 정보</h2>
+        <h2>My Info</h2>
         <h5>이름 : {user.name}</h5>
         <h5>소속 : {user.team}</h5>
         <h5>이메일 : {user.email}</h5>
