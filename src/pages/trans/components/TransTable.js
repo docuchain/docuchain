@@ -17,7 +17,7 @@ import { getUserInfo } from "../../../recoil/selector";
 // 테이블 헤더 데이터
 const columns = [
   { id: "serviceName", label: "서비스 명", minWidth: 170, align: "left" },
-  { id: "blockNumber", label: "트랜잭션번호", minWidth: 100, align: "left" },
+  { id: "blockNumber", label: "트랜잭션번호", minWidth: 170, align: "left" },
   {
     id: "timeStamp",
     label: "타임스탬프",
@@ -42,7 +42,7 @@ const columns = [
   {
     id: "transnum",
     label: "블록번호",
-    minWidth: 170,
+    minWidth: 100,
     align: "left",
     format: (value) => value.toFixed(2),
   },
