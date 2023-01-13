@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { NodeFirebase } from "../node/utils/nodeMockData";
+import NodeTPSChart from "./utils/chart/nodeTPSChart";
+import NodeLatencyChart from "./utils/chart/nodeLatencyChart";
+import NodePowerUsageChart from "./utils/chart/nodePowerUsageChart";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
-import NodeRssChart from "./utils/chart/nodeRssChart";
-import NodeUsageChart from "./utils/chart/nodeUsageChart";
 
 const NodeDetail = () => {
   const { nodeName } = useParams();
@@ -41,9 +42,14 @@ const NodeDetail = () => {
       사이트에 접속하는 것만으로 측정
       통신 지연 이나 IP나 서버 정보, 용량별 다운로드 속도 등 상세한 정보 제공 */}
 
-      <NodeMemoryChart />
-      <NodeRssChart />
-      <NodeUsageChart />
+      <div className="boxLayout2 maginBw100">
+        <NodeTPSChart />
+        <NodeLatencyChart />
+      </div>
+      <div className="boxLayout2 maginBw100">
+        <NodePowerUsageChart />
+        <NodeMemoryChart />
+      </div>
     </div>
   );
 };
