@@ -48,7 +48,8 @@ export default function ContentsTitle() {
           <h4> | 상세정보</h4>
         ) : location.pathname === "/" ||
           location.pathname === "/myinfo" ||
-          location.pathname === "/usermanaging/" ? (
+          location.pathname === "/usermanaging/" ||
+          location.pathname === "/usermanaging/adduser" ? (
           <div></div>
         ) : (
           <h4>
