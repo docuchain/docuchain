@@ -20,6 +20,7 @@ export default function BlockDetailTable(props) {
   const { data, fetchdata } = props;
   // 자세히 버튼 toggle
   const [toggle, setToggle] = useState(false);
+
   const handleToggle = () => setToggle((prev) => !prev);
 
   // 복사 버튼
@@ -68,68 +69,65 @@ export default function BlockDetailTable(props) {
   // };
 
   return (
-    <div className="boxLayout1 boxShadow">
-      <TableContainer>
-        <Table
-          sx={{ minWidth: 1200, border: "none" }}
-          aria-label="simple table"
-        >
-          <TableBody>
-            <TableRow className="deleteLastBorderLine">
-              <TableCell>서비스명</TableCell>
-              <TableCell>{serviceName}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>블록번호</TableCell>
-              <TableCell>{blockNum}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>타임스탬프</TableCell>
-              <TableCell>{time}</TableCell>
-            </TableRow>
-            <TableRow className="blockhashArea">
-              <TableCell>블록해시</TableCell>
-              <TableCell className="blockhashAreaData">
-                {blockHash}
-                {/* 복사 btn */}
-                <Button
-                  variant="contained"
-                  disableElevation
-                  onClick={() => handleCopyClipBoard(blockHash)}
-                >
-                  복사
-                </Button>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>블록크기</TableCell>
-              <TableCell>{blockSize}</TableCell>
-            </TableRow>
-            <TableRow sx={{ borderBottom: "hidden" }}>
-              <TableCell>트랜잭션 수</TableCell>
-              <TableCell>{transCount}</TableCell>
-              {/* 자세히 btn */}
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={handleToggle}
-              >
-                자세히
-              </Button>
-            </TableRow>
-          </TableBody>
-          {/* <Pagination
-            count={data.length}
-            rowsPerPage={rowsPerPage}
-            idx={idx}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          /> */}
-        </Table>
-      </TableContainer>
+    <>
+      <div className="boxLayout1 boxShadow">
+        <TableContainer className="detailTableInner">
+          <Table sx={{ minWidth: 1000 }} aria-label="simple table">
+            <TableBody>
+              <TableRow className="deleteLastBorderLine">
+                <TableCell>서비스명</TableCell>
+                <TableCell>{serviceName}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>블록번호</TableCell>
+                <TableCell>{blockNum}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>타임스탬프</TableCell>
+                <TableCell>{time}</TableCell>
+              </TableRow>
+              <TableRow className="blockhashArea">
+                <TableCell>블록해시</TableCell>
+                <TableCell>
+                  {blockHash}
+                  {/* 복사 btn */}
+                  <Button
+                    className="btnLayout"
+                    variant="contained"
+                    disableElevation
+                    onClick={() => handleCopyClipBoard(blockHash)}
+                  >
+                    복사
+                  </Button>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>블록크기</TableCell>
+                <TableCell>{blockSize}</TableCell>
+              </TableRow>
+              <TableRow sx={{ borderBottom: "hidden" }}>
+                <TableCell>트랜잭션 수</TableCell>
+                <TableCell>
+                  {transCount}
+                  <Button
+                    className="btnLayout"
+                    variant="contained"
+                    disableElevation
+                    onClick={handleToggle}
+                  >
+                    자세히
+                  </Button>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
       {toggle === true ? (
-        <TransDetailList data={data} fetchdata={fetchdata} />
+        <div>
+          <TransDetailList data={data} fetchdata={fetchdata} />
+        </div>
       ) : null}
-    </div>
+    </>
   );
 }

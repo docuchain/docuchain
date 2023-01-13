@@ -23,7 +23,7 @@ const Block = () => {
   }, []);
   return (
     <div>
-      {/* <ContentsTitle /> */}
+      <ContentsTitle />
       <div className="maginBw100">
         <BlockChart data={data} fetchdata={fetchdata} />
       </div>
