@@ -23,7 +23,7 @@ const ActiveNtwCnt = (props) => {
     >
       <h3>활성 네트워크 수</h3>
       <h1 className="DashboardCntNum">{netWorkKinds.length}</h1>
-      {/* <Timer /> */}
+      <Timer />
     </div>
   );
 };
