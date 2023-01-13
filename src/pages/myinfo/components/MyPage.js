@@ -142,22 +142,26 @@ const MyPage = () => {
       </h5>
       <h5 className="myinfo__activeservice">
         이용중인 서비스 :
-        <label>
-          <input
-            type={"checkbox"}
-            checked={user.usingServiceA || false}
-            disabled
-          />{" "}
-          A서비스
-        </label>
-        <label>
-          <input
-            type={"checkbox"}
-            checked={user.usingServiceB || false}
-            disabled
-          />{" "}
-          B서비스
-        </label>
+        {user.usingServiceA && (
+          <label>
+            <input
+              type={"checkbox"}
+              checked={user.usingServiceA || false}
+              disabled
+            />{" "}
+            A서비스
+          </label>
+        )}
+        {user.usingServiceB && (
+          <label>
+            <input
+              type={"checkbox"}
+              checked={user.usingServiceB || false}
+              disabled
+            />{" "}
+            B서비스
+          </label>
+        )}
       </h5>
       <h5>유형 : {user.role}</h5>
       <h5>등록일자 : {nowUser.metadata.creationTime}</h5>
