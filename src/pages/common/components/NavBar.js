@@ -10,7 +10,8 @@ const NavBar = () => {
   const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
   const activeStyle = {
-    color: "red",
+    background: "#4e81ef",
+    color: "yellow",
   };
 
   return (
@@ -31,7 +32,9 @@ const NavBar = () => {
             <li className="NavBar__link">
               <NavLink
                 to="/"
-                style={({ isActive }) => (isActive ? activeStyle : {})}
+                className={({ isActive }) =>
+                  isActive ? "navlinkClicked" : "navlinkDefault"
+                }
               >
                 대시보드
               </NavLink>
@@ -39,7 +42,9 @@ const NavBar = () => {
             <li className="NavBar__link">
               <NavLink
                 to="/block"
-                style={({ isActive }) => (isActive ? activeStyle : {})}
+                className={({ isActive }) =>
+                  isActive ? "navlinkClicked" : "navlinkDefault"
+                }
               >
                 블록
               </NavLink>
@@ -47,7 +52,9 @@ const NavBar = () => {
             <li className="NavBar__link">
               <NavLink
                 to="/trans"
-                style={({ isActive }) => (isActive ? activeStyle : {})}
+                className={({ isActive }) =>
+                  isActive ? "navlinkClicked" : "navlinkDefault"
+                }
               >
                 트랜잭션
               </NavLink>
@@ -55,7 +62,9 @@ const NavBar = () => {
             <li className="NavBar__link">
               <NavLink
                 to="/node"
-                style={({ isActive }) => (isActive ? activeStyle : {})}
+                className={({ isActive }) =>
+                  isActive ? "navlinkClicked" : "navlinkDefault"
+                }
               >
                 노드
               </NavLink>
@@ -63,7 +72,9 @@ const NavBar = () => {
             <li className="NavBar__link">
               <NavLink
                 to="/service"
-                style={({ isActive }) => (isActive ? activeStyle : {})}
+                className={({ isActive }) =>
+                  isActive ? "navlinkClicked" : "navlinkDefault"
+                }
               >
                 서비스
               </NavLink>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function toServiceMainBtn() {
   return (
-    <div className="serviceDetail--Btn">
+    <div className="toMainBtnLayout">
       <Stack spacing={2} direction="row">
         <Link to="/service">
           <Button variant="contained">목록으로</Button>

@@ -7,8 +7,7 @@ import { getUserInfo } from "../../recoil/selector";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import { Button, Input, Stack } from "@mui/material";
-import { AiOutlineCopy } from "react-icons/ai";
+import { Input } from "@mui/material";
 
 const AddUser = () => {
   const userData = collection(dbService, "user");
@@ -200,10 +199,6 @@ const AddUser = () => {
     }
   };
 
-  const [copy, setCopy] = useState(true);
-  const copyBtn = () => {
-    setCopy(!copy);
-  };
   return (
     <div className="boxLayout1 boxShadow">
       <div className="Myinfo">
@@ -324,19 +319,6 @@ const AddUser = () => {
 
           <button className="addBtn">추가</button>
         </form>
-        <Stack spacing={2} direction="row">
-          {copy === true ? (
-            <Button variant="outlined" onClick={copyBtn}>
-              Copy
-              <AiOutlineCopy />
-            </Button>
-          ) : (
-            <Button variant="contained" onClick={copyBtn}>
-              Copied
-              <AiOutlineCopy />
-            </Button>
-          )}
-        </Stack>
       </div>
     </div>
   );
