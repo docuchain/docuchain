@@ -126,9 +126,10 @@ export default function TransDetailList(props) {
       </TableContainer>
       <div>
         <Modal
+          style={{ textAlign: "center" }}
           open={modalOpen}
           close={closeModal}
-          header="모달창임"
+          header="트랜잭션 데이터 상세"
           data={data}
           fetchdata={fetchdata}
         >
