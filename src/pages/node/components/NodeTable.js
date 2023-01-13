@@ -10,14 +10,10 @@ import "../NodeStyle.scss";
 
 const NodeTable = () => {
   return (
-    <Box sx={{ width: "90%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
+    <Box>
+      <Paper>
         <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            size={"medium"}
-          >
+          <Table className="boxLayout1">
             <StickyHeadTable />
           </Table>
         </TableContainer>

@@ -32,7 +32,8 @@ const NodeNetworkChartSpeed = () => {
   }, []);
 
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxShadow boxLayoutel2"
+    style={({ display: "flex" }, { flexDirection: "column" })}>
       <h3>노드 네트워크 속도</h3>
       <AreaChart
         width={600}
