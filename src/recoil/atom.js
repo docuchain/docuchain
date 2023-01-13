@@ -18,3 +18,9 @@ export const userInfo = atom({
   default: {},
   effects_UNSTABLE: [persistAtom],
 });
+
+export const theme = atom({
+  key: "theme",
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});

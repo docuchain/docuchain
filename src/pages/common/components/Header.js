@@ -5,6 +5,10 @@ import Appearance from "../utils/appearance";
 import "../style/hedaer.scss";
 import { useLocation } from "react-router-dom";
 import ContentsTitle from "./ContentsTitle";
+import { theme } from "../../../recoil/atom";
+import { getTheme } from "../../../recoil/selector";
+import { useRecoilState, useRecoilValue } from "recoil";
+
 const Header = () => {
   const [headerName, setHeaderName] = useState();
   let location = useLocation();
@@ -12,6 +16,16 @@ const Header = () => {
     console.log(location);
     headerNameChange();
   });
+
+  const dark = {
+    color: "black",
+  };
+
+  const [themeMode, setThemeMode] = useRecoilState(theme);
+  const themeModeHandler = () => {
+    console.log(themeMode);
+    setThemeMode((prev) => !prev);
+  };
 
   const headerNameChange = () => {
     if (location.pathname === "/") {
@@ -41,8 +55,8 @@ const Header = () => {
           <div className="searchBar">
             <SearchBar />
           </div>
-          <div className="appearance">
-            <Appearance />
+          <div className="appearance" onClick={themeModeHandler}>
+            <Appearance style={themeMode ? { dark } : {}} />
           </div>
           <div className="userLogo">
             <UserLogo />

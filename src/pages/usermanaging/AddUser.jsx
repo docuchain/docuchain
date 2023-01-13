@@ -34,7 +34,7 @@ const AddUser = () => {
     await isPasswordCheck();
 
     if (isEmail === false || isPassword === false) {
-      swal("", "다시 입력해주세요", "error");
+      swal("", "다시 입력해주세요", "");
       e.preventDefault();
       return;
     }
