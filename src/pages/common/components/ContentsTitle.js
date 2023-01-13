@@ -45,14 +45,14 @@ export default function ContentsTitle() {
     <>
       <div className="ContentsTitle">
         {transMatch || blockMatch || nodeMatch || serviceMatch ? (
-          <h4>상세정보</h4>
+          <h4> | 상세정보</h4>
         ) : location.pathname === "/" ||
           location.pathname === "/myinfo" ||
           location.pathname === "/usermanaging/" ? (
           <div></div>
         ) : (
           <h4>
-            전체 {name} {data.length}개
+            | 전체 {name} {data.length}개
           </h4>
         )}
       </div>

@@ -11,10 +11,11 @@
 }
 
 .ContentsTitle {
+  position: relative;
+  left: 20px;
   line-height: 0;
   display: flex;
   justify-content: flex-start;
-  margin: 0 0 0 40px;
 }
 
 .Dashboard {

@@ -77,72 +77,78 @@ const MyPage = () => {
   };
 
   return (
-    <div className="Myinfo">
-      <h2>나의 정보</h2>
-      <h5>이름 : {user.name}</h5>
-      <h5>소속 :{user.team}</h5>
-      <h5>이메일 : {user.email}</h5>
-      <form onSubmit={handleSubmit(onPasswordChange, onError)}>
-        <label>
-          비밀번호 :{" "}
-          <Input
-            type={"password"}
-            {...register("password", {
-              required: true,
-              pattern: {
-                value:
-                  /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8}$/,
-                message:
-                  "비밀번호를 8자 이상으로 영문 대소문자, 숫자, 특수기호를 조합해서 사용하세요. ",
-              },
-            })}
-          />{" "}
-        </label>
-        <br />
-        <label>
-          비밀번호 재확인 :{" "}
-          <Input
-            type={"password"}
-            {...register("passwordRepeat", {
-              required: true,
-              pattern: {
-                value:
-                  /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8}$/,
-                message:
-                  "비밀번호를 8자 이상으로 영문 대소문자, 숫자, 특수기호를 조합해서 사용하세요. ",
-              },
-            })}
-          />
-        </label>
-        <Button type="submit">변경</Button>
-        {errors && <span>{errors?.password?.message}</span>}
-        {isPassword}
-      </form>
-      <h5 className="myinfo__detailauth">
-        상세정보 접근권한 :
-        <label>
-          <input type={"checkbox"} checked={user.dashboard || false} disabled />{" "}
-          대시보드
-        </label>
-        <label>
-          <input type={"checkbox"} checked={user.block || false} disabled />{" "}
-          블록
-        </label>
-        <label>
-          <input type={"checkbox"} checked={user.trans || false} disabled />{" "}
-          트랜잭션
-        </label>
-        <label>
-          <input type={"checkbox"} checked={user.node || false} disabled /> 노드
-        </label>
-        <label>
-          <input type={"checkbox"} checked={user.service || false} disabled />{" "}
-          서비스
-        </label>
-      </h5>
-      <h5 className="myinfo__activeservice">
-        이용중인 서비스 :
-        {user.usingServiceA && (
+    <div className="boxLayout1 boxShadow">
+      <div className="Myinfo">
+        <h2>나의 정보</h2>
+        <h5>이름 : {user.name}</h5>
+        <h5>소속 : {user.team}</h5>
+        <h5>이메일 : {user.email}</h5>
+        <form onSubmit={handleSubmit(onPasswordChange, onError)}>
+          <label>
+            비밀번호 :{" "}
+            <Input
+              type={"password"}
+              {...register("password", {
+                required: true,
+                pattern: {
+                  value:
+                    /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8}$/,
+                  message:
+                    "비밀번호를 8자 이상으로 영문 대소문자, 숫자, 특수기호를 조합해서 사용하세요. ",
+                },
+              })}
+            />{" "}
+          </label>
+          <br />
+          <br />
+          <label>
+            비밀번호 재확인 :{" "}
+            <Input
+              type={"password"}
+              {...register("passwordRepeat", {
+                required: true,
+                pattern: {
+                  value:
+                    /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8}$/,
+                  message:
+                    "비밀번호를 8자 이상으로 영문 대소문자, 숫자, 특수기호를 조합해서 사용하세요. ",
+                },
+              })}
+            />
+          </label>
+          <Button type="submit">변경</Button>
+          {errors && <span>{errors?.password?.message}</span>}
+          {isPassword}
+        </form>
+        <h5 className="myinfo__detailauth">
+          상세정보 접근권한 :
+          <label>
+            <input
+              type={"checkbox"}
+              checked={user.dashboard || false}
+              disabled
+            />{" "}
+            대시보드
+          </label>
+          <label>
+            <input type={"checkbox"} checked={user.block || false} disabled />{" "}
+            블록
+          </label>
+          <label>
+            <input type={"checkbox"} checked={user.trans || false} disabled />{" "}
+            트랜잭션
+          </label>
+          <label>
+            <input type={"checkbox"} checked={user.node || false} disabled />{" "}
+            노드
+          </label>
+          <label>
+            <input type={"checkbox"} checked={user.service || false} disabled />{" "}
+            서비스
+          </label>
+        </h5>
+        <h5 className="myinfo__activeservice">
+          이용중인 서비스 :
           <label>
             <input
               type={"checkbox"}
@@ -151,8 +157,6 @@ const MyPage = () => {
             />{" "}
             A서비스
           </label>
-        )}
-        {user.usingServiceB && (
           <label>
             <input
               type={"checkbox"}
@@ -161,11 +165,11 @@ const MyPage = () => {
             />{" "}
             B서비스
           </label>
-        )}
-      </h5>
-      <h5>유형 : {user.role}</h5>
-      <h5>등록일자 : {nowUser.metadata.creationTime}</h5>
-      <h5>상태 : 정상</h5>
+        </h5>
+        <h5>유형 : {user.role}</h5>
+        <h5>등록일자 : {nowUser.metadata.creationTime}</h5>
+        <h5>상태 : 정상</h5>
+      </div>
     </div>
   );
 };
