@@ -30,13 +30,13 @@ const Header = () => {
   const headerNameChange = () => {
     if (location.pathname === "/") {
       setHeaderName("대시보드");
-    } else if (location.pathname === "/block") {
+    } else if (location.pathname.includes("/block") === true) {
       setHeaderName("블록");
-    } else if (location.pathname === "/trans") {
+    } else if (location.pathname.includes("/trans") === true) {
       setHeaderName("트랜잭션");
     } else if (location.pathname === "/node") {
       setHeaderName("노드");
-    } else if (location.pathname === "/service") {
+    } else if (location.pathname.includes("/service") === true) {
       setHeaderName("서비스");
     } else if (location.pathname === "/myinfo") {
       setHeaderName("나의 정보");
