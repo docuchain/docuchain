@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
 import BlockDetailTable from "./utils/blockDetailTable";
 import BlockDetailTitle from "./utils/blockDetailItitle";
 
@@ -25,11 +25,7 @@ export default function BlockDetail() {
     <div>
       <BlockDetailTitle />
       <div>
-        {/* <Stack spacing={2}>
-          <Pagination count={200} size="large" /> 
-        </Stack> */}
         <BlockDetailTable data={data} fetchdata={fetchdata} />
-        {/* <TransDetailList /> */}
       </div>
     </div>
   );

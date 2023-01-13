@@ -8,7 +8,6 @@ import NtwTransSpeed from "./utils/ntwTransSpeed";
 import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
 import ActiveNtw from "./utils/activeNtw";
-import "../common/style/boxShadow.scss";
 
 const Dashboard = () => {
   //데이터 받아와서 props로 뿌려주기

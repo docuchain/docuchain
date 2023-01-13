@@ -8,7 +8,7 @@ import { NodeFirebase } from "./utils/nodeMockData";
 
 const Node = () => {
   const [selectedTap, setSelectedTap] = useState("NODE_LIST");
-  const nodeTableData = NodeFirebase(); 
+  const nodeTableData = NodeFirebase();
 
   return (
     <>
