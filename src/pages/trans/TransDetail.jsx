@@ -1,4 +1,3 @@
-import { Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./TransStyle.css";
@@ -61,13 +60,9 @@ const TransDetail = () => {
   });
 
   return (
-    <div className="transDetail">
-      <TransDetailTitle />
-      {/* Pagination 일단 끌어옴*/}
-      <div className="transdetailwrapper">
-        <Stack className="" spacing={2}>
-          {/* <Pagination count={200} size="large" /> */}
-        </Stack>
+    <div>
+      {/* <TransDetailTitle /> */}
+      <div>
         <TransDetailTable data={data} fetchdata={fetchdata} />
         {/* <TransDetailList /> */}
       </div>

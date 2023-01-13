@@ -58,7 +58,7 @@ const PageRouter = () => {
             {/* node route */}
             <Route path="/node" element={<Node />}></Route>
             <Route
-              path="/node/detail/:nodeName"
+              path="/node/:nodeName"
               element={userValue.node ? <NodeDetail /> : <Node />}
             ></Route>
             {/* service route */}

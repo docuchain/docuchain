@@ -10,25 +10,28 @@ import {
   CartesianGrid,
   Tooltip
 } from "recharts";
+import { NodeFirebase } from "../../utils/nodeMockData";
+
 
 const NodeNetworkChartStatus = () => {
   const [data, setData] = useState([]);
+  const [nodeChartDataList, setNodeChartDataList] = useState([]);
 
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchdata = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  //     );
+  //     const result = await res.json();
+  //     setData([...result]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
   const gradientOffset = () => {
     const dataMax = Math.max(...data.map((i) => i.uv));
@@ -46,13 +49,24 @@ const NodeNetworkChartStatus = () => {
   
   const off = gradientOffset();
 
+  const nodeChartData = NodeFirebase();
+
+  useEffect(() => {
+    if (nodeChartData.length > 0) {
+      setNodeChartDataList(nodeChartData);
+    } else {
+      console.log("nodeChartData length : 0");
+    }
+  }, [nodeChartData]);
+
   return (
-    <div style={{ width: "600px" }}>
+    <div className="boxShadow boxLayoutel2"
+    style={({ display: "flex" }, { flexDirection: "column" })}>
       <h3>노드 네트워크 상태</h3>
       <AreaChart
-      width={500}
+      width={600}
       height={400}
-      data={data}
+      data={nodeChartDataList}
       margin={{
         top: 10,
         right: 30,

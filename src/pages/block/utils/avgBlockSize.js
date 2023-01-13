@@ -78,7 +78,7 @@ function AvgBlockSize(props) {
           type="monotone"
           dataKey="blockSize"
           stroke="#8884d8"
-          fill="#8884d8"
+          fill="rgba(0,136,254,0.7)"
           key={Math.random()}
         />
       </AreaChart>

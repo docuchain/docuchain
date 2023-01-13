@@ -14,9 +14,6 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
 
-// row열로 분리
-// import TableRowCompo from "../utils/TableRowCompo";
-
 // 테이블 헤더 데이터
 const columns = [
   { id: "serviceName", label: "서비스 명", minWidth: 170, align: "left" },
@@ -109,7 +106,7 @@ export default function TransTable(props) {
                 >
                   {datael.serviceName}
                 </TableCell>
-                <TableCell style={{ width: 70, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 160, textIndent: 30 }} align="left">
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -118,17 +115,17 @@ export default function TransTable(props) {
                     {datael.transNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 200, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 220, textIndent: 30 }} align="left">
                   {datael.timeStamp}
                 </TableCell>
-                <TableCell style={{ width: 240, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 280, textIndent: 30 }} align="left">
                   {datael.transHash}
                 </TableCell>
-                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {datael.transSize}
                 </TableCell>
 
-                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   <Link
                     value={datael.blockNumber}
                     to={`/block/${datael.blockNumber}`}

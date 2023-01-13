@@ -5,13 +5,13 @@ import "../NodeStyle.scss";
 
 const NodeTap = ({ selectedTap, setSelectedTap }) => {
   return (
-    <div className="nodeTabContainer">
+    <div className="nodeTabContainer" >
       <div
         className="tab"
         style={{
           flex: 1,
           borderBottom:
-            selectedTap === "NODE_LIST" && `2px solid ${colors.blue}`,
+            selectedTap === "NODE_LIST" && `3px solid ${colors.blue}`,
         }}
         onClick={() => {
           setSelectedTap("NODE_LIST");
@@ -24,7 +24,7 @@ const NodeTap = ({ selectedTap, setSelectedTap }) => {
         style={{
           flex: 1,
           borderBottom:
-            selectedTap === "ALL_NODE_STATE" && `2px solid ${colors.blue}`,
+            selectedTap === "ALL_NODE_STATE" && `3px solid ${colors.blue}`,
         }}
         onClick={() => {
           setSelectedTap("ALL_NODE_STATE");
