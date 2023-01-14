@@ -171,15 +171,18 @@
   line-height: 20px;
 }
 
+//Black
+.boxShadowBlack {
+  background-color: black;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-
-
-//Black 
-  .boxShadowBlack {
-    background-color: black;
-    box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.iconWidth {
+  & path {
+    width: 32px;
   }
+}
