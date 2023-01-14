@@ -13,8 +13,8 @@ import { useParams } from "react-router-dom";
 import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 // swal 임포트
-import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
 //
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";

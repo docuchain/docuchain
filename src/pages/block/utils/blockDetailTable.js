@@ -12,7 +12,8 @@ import { AiOutlineCopy } from "react-icons/ai";
 import TransDetailList from "./transDetailList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import swal from "sweetalert";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
 
 // 토글버튼
 // import { Toggle } from "./toggle";
