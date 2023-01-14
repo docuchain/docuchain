@@ -15,6 +15,8 @@ import { useRecoilValue } from "recoil";
 // swal 임포트
 // import Swal from "sweetalert2/dist/sweetalert2.js";
 // import "sweetalert2/src/sweetalert2.scss";
+import swal from "sweetalert";
+
 //
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -60,18 +62,18 @@ export default function TransDetailList(props) {
 
   const openModal = () => {
     //트랜잭션 권한 있을경우
-    //   if (userValue.trans) {
-    //     setModalOpen(true);
-    //   } else {
-    //     Swal.fire("권한이 없습니다.", "관리자에게 문의하세요", "error");
-    //   }
+    if (userValue.trans) {
+      setModalOpen(true);
+    } else {
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
+    }
   };
   const naviTransDetail = () => {
-    //   if (userValue.trans) {
-    //     navigate(`/trans/${transNum}`);
-    //   } else {
-    //     Swal.fire("권한이 없습니다.", "관리자에게 문의하세요", "error");
-    //   }
+    if (userValue.trans) {
+      navigate(`/trans/${transNum}`);
+    } else {
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
+    }
   };
   const closeModal = () => {
     setModalOpen(false);

@@ -12,9 +12,9 @@ import { AiOutlineCopy } from "react-icons/ai";
 import TransDetailList from "./transDetailList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import swal from "sweetalert";
 // import Swal from "sweetalert2/dist/sweetalert2.js";
-// import Swal from "sweetalert2";
+// import "sweetalert2/src/sweetalert2.scss";
+import swal from "sweetalert";
 // 토글버튼
 // import { Toggle } from "./toggle";
 
@@ -32,13 +32,13 @@ export default function BlockDetailTable(props) {
   // 복사 버튼
   const [copy, copied] = useState(false);
   const handleCopyClipBoard = async (text) => {
-    // try {
-    //   await navigator.clipboard.writeText(text);
-    //   copied(!copy);
-    //   Swal.fire("복사 성공!", "복사가 완료됐습니다!", "success");
-    // } catch (error) {
-    //   Swal.fire("복사 실패!", "다시 시도해주세요!", "error");
-    // }
+    try {
+      await navigator.clipboard.writeText(text);
+      copied(!copy);
+      swal("복사 성공!", "복사가 완료됐습니다!", "success");
+    } catch (error) {
+      swal("복사 실패!", "다시 시도해주세요!", "error");
+    }
   };
 
   //useParams
@@ -53,9 +53,10 @@ export default function BlockDetailTable(props) {
   const [transCount, setTransCount] = useState();
   const [idx, setIdx] = useState(0);
 
+  // ===
   useEffect(() => {
     async function getBlocks() {
-      const result3 = data.filter((item) => item.blockNumber == parseInt(id));
+      const result3 = data.filter((item) => item.blockNumber === parseInt(id));
 
       result3.forEach((item) => {
         setServiceName(item.serviceName);
@@ -107,7 +108,7 @@ export default function BlockDetailTable(props) {
                     ) : (
                       <Button
                         variant="outlined"
-                        // onClick={() => handleCopyClipBoard(blockHash)}
+                        onClick={() => handleCopyClipBoard(blockHash)}
                       >
                         Copy&nbsp;
                         <AiOutlineCopy />
