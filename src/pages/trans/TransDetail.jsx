@@ -61,7 +61,7 @@ const TransDetail = () => {
 
   return (
     <div>
-      {/* <TransDetailTitle /> */}
+      <TransDetailTitle />
       <div>
         <TransDetailTable data={data} fetchdata={fetchdata} />
         {/* <TransDetailList /> */}
