@@ -9,8 +9,9 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // swal 임포트
-import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+// import "sweetalert2/src/sweetalert2.scss";
+import swal from "sweetalert";
 
 export default function TransDetailTable(props) {
   const { data, fetchdata } = props;
@@ -19,9 +20,9 @@ export default function TransDetailTable(props) {
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-      Swal.fire("복사 성공!", "복사가 완료됐습니다!", "success");
+      swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
-      Swal.fire("복사 실패!", "다시 시도해주세요!", "error");
+      swal("복사 실패!", "다시 시도해주세요!", "error");
     }
   };
 

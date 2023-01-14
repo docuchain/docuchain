@@ -26,7 +26,6 @@
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.5",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -52,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack": "^5.75.0"
   }
 }
