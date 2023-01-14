@@ -4,19 +4,13 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import "../style/TransDetailTable.scss";
-//
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { AiOutlineCopy } from "react-icons/ai";
-// btns
-// import DetailBtn from "../utils/detailBtn";
-// import Button from "@mui/material/Button";
-// import CopyBtn from "./copyBtn";
-
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+// swal 임포트
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 export default function TransDetailTable(props) {
   const { data, fetchdata } = props;
@@ -25,10 +19,9 @@ export default function TransDetailTable(props) {
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-
-      alert("복사 성공!");
+      Swal.fire("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
-      alert("복사 실패!");
+      Swal.fire("복사 실패!", "다시 시도해주세요!", "error");
     }
   };
 

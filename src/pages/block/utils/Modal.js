@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// table
+// inner table
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
 export default function Modal(props) {
@@ -54,31 +52,34 @@ export default function Modal(props) {
           </header> */}
           <main>
             <h3>method : {transDataDetail.method}</h3>
-            <div className="boxLayout1 boxShadow">
-              <TableContainer
-                className="detailTableInner"
-                sx={{ paddingRight: "24px" }}
-              >
-                <Table sx={{ minWidth: 400 }} aria-label="simple table">
-                  <TableBody>
+            <div className="boxShadow">
+              <TableContainer className="detailTableInner">
+                <Table sx={{ minWidth: 340 }} aria-label="simple table">
+                  <TableBody style={{ fontSize: "1.2rem" }}>
                     <h3>params : </h3>
                     <TableRow>
                       <TableCell>cr_download</TableCell>
                       <TableCell>
-                        : {transDataDetail.params.cr_download}
+                        : &nbsp;{transDataDetail.params.cr_download}
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>cr_hash</TableCell>
-                      <TableCell>: {transDataDetail.params.cr_hash}</TableCell>
+                      <TableCell>
+                        : &nbsp;{transDataDetail.params.cr_hash}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>cr_id</TableCell>
-                      <TableCell>: {transDataDetail.params.cr_id}</TableCell>
+                      <TableCell>
+                        : &nbsp;{transDataDetail.params.cr_id}
+                      </TableCell>
                     </TableRow>
                     <TableRow sx={{ borderBottom: "hidden" }}>
                       <TableCell>cr_live</TableCell>
-                      <TableCell>: {transDataDetail.params.cr_live}</TableCell>
+                      <TableCell>
+                        : &nbsp;{transDataDetail.params.cr_live}
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>

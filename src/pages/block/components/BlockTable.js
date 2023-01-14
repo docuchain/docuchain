@@ -97,25 +97,40 @@ export default function BlockTable(props) {
                 <TableCell
                   component="th"
                   scope="row"
-                  style={{ color: "#6d6d6d", width: 130, textIndent: 30 }}
+                  style={{ color: "#323846", width: 130, textIndent: 30 }}
                 >
                   {datael.serviceName}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ fontWeight: 500, width: 130, textIndent: 30 }}
+                  align="left"
+                >
                   <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
                     {datael.blockNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ color: "#323846", width: 130, textIndent: 30 }}
+                  align="left"
+                >
                   {datael.timeStamp}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ color: "#323846", width: 130, textIndent: 30 }}
+                  align="left"
+                >
                   {datael.blockHash}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ color: "#323846", width: 130, textIndent: 30 }}
+                  align="left"
+                >
                   {datael.blockSize}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ color: "#323846", width: 130, textIndent: 30 }}
+                  align="left"
+                >
                   {datael.transCount}
                 </TableCell>
               </TableRow>
