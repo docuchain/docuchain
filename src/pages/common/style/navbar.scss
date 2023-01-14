@@ -74,7 +74,7 @@
           transform: translate(-20px);
           padding: 4px 0;
           margin-bottom: 14px;
-          margin: 7px 20px;
+          margin: 14px 20px;
 
           & a {
             display: inline-block;
@@ -82,6 +82,7 @@
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
             font-size: 1.3rem;
+            width: 100px;
           }
         }
       }

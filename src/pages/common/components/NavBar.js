@@ -33,35 +33,30 @@ const NavBar = () => {
         </div>
         <div className="nav">
           <ul className="navList">
-            <li
-              className={`li ${tab === "dash" ? "navlinkClicked" : ""}`}
-              onClick={() => setTab("dash")}
-            >
-              <NavLink to="/">대시보드</NavLink>
+            <li className={`li ${tab === "dash" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/" onClick={() => setTab("dash")}>
+                대시보드
+              </NavLink>
             </li>
-            <li
-              className={`li ${tab === "block" ? "navlinkClicked" : ""}`}
-              onClick={() => setTab("block")}
-            >
-              <NavLink to="/block">블록</NavLink>
+            <li className={`li ${tab === "block" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/block" onClick={() => setTab("block")}>
+                블록
+              </NavLink>
             </li>
-            <li
-              className={`li ${tab === "trans" ? "navlinkClicked" : ""}`}
-              onClick={() => setTab("trans")}
-            >
-              <NavLink to="/trans">트랜잭션</NavLink>
+            <li className={`li ${tab === "trans" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/trans" onClick={() => setTab("trans")}>
+                트랜잭션
+              </NavLink>
             </li>
-            <li
-              className={`li ${tab === "node" ? "navlinkClicked" : ""}`}
-              onClick={() => setTab("node")}
-            >
-              <NavLink to="/node">노드</NavLink>
+            <li className={`li ${tab === "node" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/node" onClick={() => setTab("node")}>
+                노드
+              </NavLink>
             </li>
-            <li
-              className={`li ${tab === "service" ? "navlinkClicked" : ""}`}
-              onClick={() => setTab("service")}
-            >
-              <NavLink to="/service">서비스</NavLink>
+            <li className={`li ${tab === "service" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/service" onClick={() => setTab("service")}>
+                서비스
+              </NavLink>
             </li>
           </ul>
         </div>
