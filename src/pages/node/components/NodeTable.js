@@ -52,7 +52,7 @@ const NodeTable = () => {
   };
 
   const onClickBlockDetail = (blockNumber) => {
-    alert("블록 세부페이지로 이동합니다");
+    swal("블록 세부페이지로 이동합니다");
     navigate(`/block/${blockNumber}`);
   };
 
@@ -73,7 +73,6 @@ const NodeTable = () => {
               <TableContainer sx={{ maxHeight: 440 }}>
                 <Table stickyHeader aria-label="sticky table">
                   <StickyHeadTable />
-
                   <TableBody sx={{ lineHeight: "2.5rem", fontSize: "0.9rem" }}>
                     {nodeTableDataList
                       .slice(
@@ -84,30 +83,35 @@ const NodeTable = () => {
                         return (
                           <TableRow hover tabIndex={-1} key={node.nodeName}>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
                             >
                               {node.serviceName}
                             </TableCell>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
                             >
                               {node.status}
                             </TableCell>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
                             >
                               {node.nodeName}
                             </TableCell>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
                             >
                               {node.type}
                             </TableCell>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
                             >
@@ -115,6 +119,7 @@ const NodeTable = () => {
                             </TableCell>
                             {userValue.node ? (
                               <TableCell
+                                className="selectableArea"
                                 align="center"
                                 onClick={() => onClickNodeDetail(node.nodeName)}
                               >
@@ -124,6 +129,7 @@ const NodeTable = () => {
                               <TableCell align="center">www.xxx.xxx</TableCell>
                             )}
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() =>
                                 onClickBlockDetail(node.blockNumber)
@@ -132,6 +138,7 @@ const NodeTable = () => {
                               {node.newBlockNum}
                             </TableCell>
                             <TableCell
+                              className="selectableArea"
                               align="center"
                               onClick={() =>
                                 onClickBlockDetail(node.blockNumber)

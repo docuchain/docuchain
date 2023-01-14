@@ -3,6 +3,7 @@
   width: 100%;
   line-height: 3rem;
 }
+
 .tab {
   display: flex;
   justify-content: center;
@@ -11,4 +12,9 @@
   font-weight: 500;
   padding: 15px 0;
   background-color: white;
+}
+
+.selectableArea:hover {
+  cursor: pointer;
+  font-weight: 400;
 }

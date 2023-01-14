@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const nodeData = {
   nodeHeader: [
@@ -35,7 +35,7 @@ export const nodeData = {
     {
       id: "IP",
       label: "IP",
-      minWidth: 130,
+      minWidth: 135,
       align: "center",
       format: (value) => value.toFixed(2),
     },

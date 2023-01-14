@@ -1,7 +1,5 @@
-// 노드 네트워크 속도
-import "../../NodeStyle.scss";
-
 import React, { useEffect, useState } from "react";
+
 import {
   AreaChart,
   Area,
@@ -9,36 +7,57 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
+import { NodeFirebase } from "../../utils/nodeMockData";
 
 const NodeNetworkChartSpeed = () => {
-  const [data, setData] = useState([]);
+  const [nodeChartDataList, setNodeChartDataList] = useState([]);
 
-  const fetchdata = async () => {
-    try {
-      const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-      );
-      const result = await res.json();
-      setData([...result]);
-    } catch (error) {
-      console.log(error);
-    }
+  const nodeChartData = NodeFirebase();
+
+  const getAverage = (serviceName) => {
+    let sum = 0;
+    const serviceDataLength = nodeChartDataList.filter(
+      (data) => data.serviceName === serviceName
+    ).length;
+    nodeChartDataList.filter((data) => {
+      if (data.serviceName === serviceName) {
+        sum += data.latency
+        ;
+      }
+    });
+
+    return {
+      serviceName: serviceName,
+      average: sum / serviceDataLength,
+    };
   };
 
+  const average = [
+    getAverage("A서비스"),
+    getAverage("B서비스"),
+    getAverage("C서비스"),
+    getAverage("D서비스"),
+    getAverage("E서비스"),
+  ];
+
   useEffect(() => {
-    fetchdata();
-  }, []);
+    if (nodeChartData.length > 0) {
+      setNodeChartDataList(nodeChartData);
+    } else {
+      console.log("nodeChartData length : 0");
+    }
+  }, [nodeChartData]);
+
 
   return (
     <div className="boxShadow boxLayoutel2"
     style={({ display: "flex" }, { flexDirection: "column" })}>
-      <h3>노드 네트워크 속도</h3>
+      <h3>노드 네트워크 평균 속도</h3>
       <AreaChart
         width={600}
         height={400}
-        data={data}
+        data={average}
         margin={{
           top: 10,
           right: 30,
@@ -47,15 +66,14 @@ const NodeNetworkChartSpeed = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="nodeName" />
+        <XAxis dataKey="serviceName" />
         <YAxis/>
         <Tooltip />
-        <Legend />
         <Area
           type="monotone"
-          dataKey="latency"
-          stroke="#8884d8"
-          fill="#8884d8"
+          dataKey="average"
+          stroke="#4E944F"
+          fill="#B4E197"
           key={Math.random()}
         />
       </AreaChart>

@@ -1,17 +1,14 @@
-// 노드 서비스 활성화/비활성화
+import React from "react";
+import { colors } from "../../../../lib/colors";
+import { PieChart, Pie, Cell, Legend, } from "recharts";
 
-import "../../NodeStyle.scss";
-
-import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Cell } from "recharts";
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
+  { serviceName: "활성화", value: 159 },
+  { serviceName: "비활성화", value: 83 },
 ];
 
-const COLORS = ["#f57f8b", "#FFBB28"];
-// const COLORS = ["#c782e5", "#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f57f8b"];
+const COLORS = [colors.chart_orange, colors.chart_yellow];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -47,20 +44,23 @@ export default function App() {
     >
       <h3>노드 서비스 활성화/비활성화</h3>
       <PieChart width={400} height={400}>
+      <Legend/>
         <Pie
           data={data}
-          cx={200}
-          cy={200}
+          cx="50%"
+          cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={120}
           fill="#8884d8"
           dataKey="value"
+          nameKey="serviceName"
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
+        
       </PieChart>
     </div>
   );

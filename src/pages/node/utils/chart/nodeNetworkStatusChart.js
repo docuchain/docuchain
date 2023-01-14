@@ -1,6 +1,3 @@
-// 노드 네트워크 상태
-import "../../NodeStyle.scss";
-
 import React, { useEffect, useState } from "react";
 import {
   AreaChart,
@@ -15,22 +12,6 @@ import { NodeFirebase } from "../../utils/nodeMockData";
 const NodeNetworkChartStatus = () => {
   const [data, setData] = useState([]);
   const [nodeChartDataList, setNodeChartDataList] = useState([]);
-
-  // const fetchdata = async () => {
-  //   try {
-  //     const res = await fetch(
-  //       "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-  //     );
-  //     const result = await res.json();
-  //     setData([...result]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   const gradientOffset = () => {
     const dataMax = Math.max(...data.map((i) => i.uv));
@@ -74,29 +55,6 @@ const NodeNetworkChartStatus = () => {
     getAverage("D서비스"),
     getAverage("E서비스"),
   ];
-  console.log(average);
-  // const sum = [];
-  // const result = nodeChartDataList.filter((data) => {
-  //   data.serviceName
-  //   // [1]
-  //   // console.log(curr);
-  //   const { serviceName } = curr; // [2]
-  //   if (acc[serviceName]) {
-  //     acc[serviceName].push(curr);
-  //     sum[serviceName] += Number(curr.TPS);
-  //   } // [3]
-  //   else {
-  //     acc[serviceName] = [curr];
-  //     sum[serviceName] = Number(curr.TPS);
-  //   } // [4]
-  //   return acc; // [5]
-  // }, {}); // [6]
-
-  // const avg = sum.forEach((element) => {
-  //   const { serviceName } = element;
-  //   console.log(element);
-  //   return sum[serviceName] / result.serviceName.length;
-  // });
 
   useEffect(() => {
     if (nodeChartData.length > 0) {
@@ -111,7 +69,7 @@ const NodeNetworkChartStatus = () => {
       className="boxShadow boxLayoutel2"
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
-      <h3>노드 네트워크 상태</h3>
+      <h3>노드 네트워크 평균 상태</h3>
       <AreaChart
         width={600}
         height={400}
@@ -136,8 +94,8 @@ const NodeNetworkChartStatus = () => {
         <Area
           type="monotone"
           dataKey="average"
-          stroke="#000"
-          fill="url(#splitColor)"
+          stroke="#0F3460"
+          fill="#8DCBE6"
         />
       </AreaChart>
     </div>

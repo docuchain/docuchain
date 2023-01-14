@@ -1,5 +1,4 @@
 export const colors = {
-  // 추후 가능하다면 적용해보기
   white: "#ffffff",
   gray: "#D0D0D0",
   black: "#000000",
@@ -17,12 +16,12 @@ export const colors = {
   light_blue: "#B9E0FF",
   light_purple: "#9BA3EB",
   
-  a: "#FF8C8C",
-  b: "#FFB562",
-  c: "#FFEF82",
-  d: "#C7D36F",
-  e: "#B4CDE6",
-  f: "#947EC3",
+  area_red: "#FF8C8C",
+  area_orange: "#FFB562",
+  area_yellow: "#FFEF82",
+  area_green: "#C7D36F",
+  area_blue: "#B4CDE6",
+  area_purple: "#947EC3",
 
   chart_red: "#FF4A4A",
   chart_orange: "#FF7F3F",
