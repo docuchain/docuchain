@@ -12,9 +12,9 @@ import { AiOutlineCopy } from "react-icons/ai";
 import TransDetailList from "./transDetailList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import "sweetalert2/src/sweetalert2.scss";
-import Swal from "sweetalert2";
-
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+// import "sweetalert2/src/sweetalert2.scss";
+import swal from "sweetalert";
 // 토글버튼
 // import { Toggle } from "./toggle";
 
@@ -27,7 +27,7 @@ export default function BlockDetailTable(props) {
   const handleDetailBtn = () => setToggle((prev) => !prev);
 
   // sweet alert사용
-  const Swal = require("sweetalert2");
+  // const Swal = require("sweetalert2");
 
   // 복사 버튼
   const [copy, copied] = useState(false);
@@ -35,9 +35,9 @@ export default function BlockDetailTable(props) {
     try {
       await navigator.clipboard.writeText(text);
       copied(!copy);
-      Swal.fire("복사 성공!", "복사가 완료됐습니다!", "success");
+      swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
-      Swal.fire("복사 실패!", "다시 시도해주세요!", "error");
+      swal("복사 실패!", "다시 시도해주세요!", "error");
     }
   };
 
@@ -53,9 +53,10 @@ export default function BlockDetailTable(props) {
   const [transCount, setTransCount] = useState();
   const [idx, setIdx] = useState(0);
 
+  // ===
   useEffect(() => {
     async function getBlocks() {
-      const result3 = data.filter((item) => item.blockNumber == parseInt(id));
+      const result3 = data.filter((item) => item.blockNumber === parseInt(id));
 
       result3.forEach((item) => {
         setServiceName(item.serviceName);
