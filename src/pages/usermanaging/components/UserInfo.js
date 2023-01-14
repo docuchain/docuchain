@@ -9,11 +9,12 @@ import {
   where,
   collection,
 } from "firebase/firestore";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { dbService } from "../../../apis/firebase";
 import { useRecoilValue } from "recoil";
 import { getTheme } from "../../../recoil/selector";
 import swal from "sweetalert";
+// import Swal from "sweetalert2";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -93,31 +94,27 @@ const UserInfo = (props) => {
     //     }
     //   }
     // );
-
-    await Swal.fire({
-      title: "정말로 그렇게 하시겠습니까?",
-      text: "다시 되돌릴 수 없습니다. 신중하세요.",
-      icon: "warning",
-
-      showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-      confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
-      cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
-      confirmButtonText: "삭제", // confirm 버튼 텍스트 지정
-      cancelButtonText: "취소", // cancel 버튼 텍스트 지정
-
-      reverseButtons: true, // 버튼 순서 거꾸로
-    }).then((result) => {
-      // 만약 Promise리턴을 받으면,
-      if (result.isConfirmed) {
-        // 만약 모달창에서 confirm 버튼을 눌렀다면
-        deleteDoc(doc(userData, userName));
-
-        Swal.fire("", "삭제되었습니다.", "success");
-        navigate(`/usermanaging`);
-      } else {
-        Swal.fire("취소되었습니다");
-      }
-    });
+    // await Swal.fire({
+    //   title: "정말로 그렇게 하시겠습니까?",
+    //   text: "다시 되돌릴 수 없습니다. 신중하세요.",
+    //   icon: "warning",
+    //   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+    //   confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+    //   cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+    //   confirmButtonText: "삭제", // confirm 버튼 텍스트 지정
+    //   cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+    //   reverseButtons: true, // 버튼 순서 거꾸로
+    // }).then((result) => {
+    //   // 만약 Promise리턴을 받으면,
+    //   if (result.isConfirmed) {
+    //     // 만약 모달창에서 confirm 버튼을 눌렀다면
+    //     deleteDoc(doc(userData, userName));
+    //     Swal.fire("", "삭제되었습니다.", "success");
+    //     navigate(`/usermanaging`);
+    //   } else {
+    //     Swal.fire("취소되었습니다");
+    //   }
+    // });
   }
 
   //업데이트

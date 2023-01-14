@@ -4,32 +4,26 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import "../style/TransDetailTable.scss";
-//
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { AiOutlineCopy } from "react-icons/ai";
-// btns
-// import DetailBtn from "../utils/detailBtn";
-// import Button from "@mui/material/Button";
-// import CopyBtn from "./copyBtn";
-
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+// swal 임포트
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+// import Swal from "sweetalert2";
+// import "sweetalert2/src/sweetalert2.scss";
 
 export default function TransDetailTable(props) {
   const { data, fetchdata } = props;
 
   // 복사 버튼
   const handleCopyClipBoard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-
-      alert("복사 성공!");
-    } catch (error) {
-      alert("복사 실패!");
-    }
+    // try {
+    //   await navigator.clipboard.writeText(text);
+    //   Swal.fire("복사 성공!", "복사가 완료됐습니다!", "success");
+    // } catch (error) {
+    //   Swal.fire("복사 실패!", "다시 시도해주세요!", "error");
+    // }
   };
 
   //useParams
@@ -101,7 +95,7 @@ export default function TransDetailTable(props) {
                   className="btnLayout"
                   variant="contained"
                   disableElevation
-                  onClick={() => handleCopyClipBoard(transHash)}
+                  // onClick={() => handleCopyClipBoard(transHash)}
                 >
                   복사
                 </Button>
