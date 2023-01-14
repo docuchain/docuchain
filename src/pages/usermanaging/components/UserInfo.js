@@ -9,8 +9,11 @@ import {
   where,
   collection,
 } from "firebase/firestore";
+import Swal from "sweetalert2";
 import { dbService } from "../../../apis/firebase";
-
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
+import swal from "sweetalert";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -71,13 +74,50 @@ const UserInfo = (props) => {
 
   //삭제
   async function deleteData() {
-    if (window.confirm("정말 삭제합니까?")) {
-      await deleteDoc(doc(userData, userName));
-      alert("삭제되었습니다.");
-      navigate(`/usermanaging`);
-    } else {
-      alert("취소합니다.");
-    }
+    // if (window.confirm("정말 삭제합니까?")) {
+    //   await deleteDoc(doc(userData, userName));
+    //   swal("삭제되었습니다.");
+    //   navigate(`/usermanaging`);
+    // } else {
+    //   swal("취소합니다.");
+    // }
+    // await swal({ text: "삭제하시겠습니까?", buttons: ["확인", "취소"] }).then(
+    //   (isConfirm) => {
+    //     console.log(isConfirm.buttons);
+    //     if (isConfirm) {
+    //       deleteDoc(doc(userData, userName));
+    //       swal("삭제되었습니다.");
+    //       navigate(`/usermanaging`);
+    //     } else {
+    //       swal("취소합니다.");
+    //     }
+    //   }
+    // );
+
+    await Swal.fire({
+      title: "정말로 그렇게 하시겠습니까?",
+      text: "다시 되돌릴 수 없습니다. 신중하세요.",
+      icon: "warning",
+
+      showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+      confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+      cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+      confirmButtonText: "삭제", // confirm 버튼 텍스트 지정
+      cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+
+      reverseButtons: true, // 버튼 순서 거꾸로
+    }).then((result) => {
+      // 만약 Promise리턴을 받으면,
+      if (result.isConfirmed) {
+        // 만약 모달창에서 confirm 버튼을 눌렀다면
+        deleteDoc(doc(userData, userName));
+
+        Swal.fire("", "삭제되었습니다.", "success");
+        navigate(`/usermanaging`);
+      } else {
+        Swal.fire("취소되었습니다");
+      }
+    });
   }
 
   //업데이트
@@ -90,7 +130,7 @@ const UserInfo = (props) => {
       service: userService,
     });
 
-    alert("수정완료");
+    swal("", "수정완료", "success");
     navigate(`/usermanaging`);
   }
 
@@ -193,7 +233,9 @@ const UserInfo = (props) => {
 
         <button onClick={toUsers}>취소</button>
         <button>정보 변경</button>
-        <button onClick={deleteData}>사용자 삭제</button>
+        <button type="button" onClick={deleteData}>
+          사용자 삭제
+        </button>
       </form>
     </div>
   );

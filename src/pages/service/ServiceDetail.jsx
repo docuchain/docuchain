@@ -11,7 +11,8 @@ import { query, getDocs } from "firebase/database";
 import Button from "@mui/material/Button";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
 import CopyBtn from "../block/utils/copyBtn";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const ServiceDetail = () => {
   // 데이터 담기
   const [data, setData] = useState([]);

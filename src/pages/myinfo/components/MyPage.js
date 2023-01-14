@@ -11,6 +11,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
 import { Input } from "@mui/material";
+import { getTheme } from "../../../recoil/selector";
 const MyPage = () => {
   //user state 저장
   const [user, setUser] = useRecoilState(userInfo);

@@ -6,7 +6,8 @@ import NodeTPSChart from "./utils/chart/nodeTPSChart";
 import NodeLatencyChart from "./utils/chart/nodeLatencyChart";
 import NodePowerUsageChart from "./utils/chart/nodePowerUsageChart";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const NodeDetail = () => {
   const { nodeName } = useParams();
   const [nodeIp, setNodeIp] = useState("");

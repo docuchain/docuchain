@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TransChart from "./components/TransChart";
 import TransTable from "./components/TransTable";
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 import "./TransStyle.css";
 const Trans = () => {
   const [data, setData] = useState([]);

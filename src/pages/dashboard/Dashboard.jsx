@@ -13,7 +13,7 @@ import { useRecoilValue } from "recoil";
 const Dashboard = () => {
   //데이터 받아와서 props로 뿌려주기
   const [data, setData] = useState([]);
-
+  const isDark = useRecoilValue(getTheme);
   const fetchdata = async () => {
     try {
       const res = await fetch(
