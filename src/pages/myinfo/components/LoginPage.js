@@ -80,7 +80,7 @@ const LoginPage = () => {
         <form className="login100--form" onSubmit={handleSubmit(login)}>
           {/* 이메일 ========== */}
           <label>
-            <p>
+            <p className="alignText">
               <EmailIcon /> <span>Email</span>
             </p>
             <div>
@@ -98,7 +98,7 @@ const LoginPage = () => {
             </div>
           </label>
           <label>
-            <p>
+            <p className="alignText">
               <VpnKeyIcon />
               <span>Password</span>
             </p>

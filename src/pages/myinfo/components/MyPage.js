@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../common/components/Button";
 import { userInfo } from "../../../recoil/atom";
 import { getUserEmail, getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue, useRecoilState } from "recoil";
@@ -11,6 +10,8 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
 import { Input } from "@mui/material";
+import Button from "@mui/material/Button";
+
 const MyPage = () => {
   //user state 저장
   const [user, setUser] = useRecoilState(userInfo);
@@ -87,6 +88,7 @@ const MyPage = () => {
           <label>
             비밀번호 :{" "}
             <Input
+              className="passwordInput"
               type={"password"}
               {...register("password", {
                 required: true,
@@ -97,13 +99,14 @@ const MyPage = () => {
                     "비밀번호를 8자 이상으로 영문 대소문자, 숫자, 특수기호를 조합해서 사용하세요. ",
                 },
               })}
-            />{" "}
+            />
           </label>
           <br />
           <br />
           <label>
             비밀번호 재확인 :{" "}
             <Input
+              className="passwordInput"
               type={"password"}
               {...register("passwordRepeat", {
                 required: true,
@@ -116,11 +119,15 @@ const MyPage = () => {
               })}
             />
           </label>
-          <Button type="submit">변경</Button>
-          {errors && <span>{errors?.password?.message}</span>}
+          <Button type="submit" variant="contained">
+            변경
+          </Button>
+          {errors && (
+            <span className="passwordError">{errors?.password?.message}</span>
+          )}
           {isPassword}
         </form>
-        <h5 className="myinfo__detailauth">
+        <h5 className="myinfoInput">
           상세정보 접근권한 :
           <label>
             <input
@@ -147,7 +154,7 @@ const MyPage = () => {
             서비스
           </label>
         </h5>
-        <h5 className="myinfo__activeservice">
+        <h5 className="myinfoInput">
           이용중인 서비스 :
           <label>
             <input
