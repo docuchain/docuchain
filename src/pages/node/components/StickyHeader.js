@@ -11,9 +11,7 @@ export default function StickyHeadTable() {
   const userValue = useRecoilValue(getUserInfo);
 
   const tableHeadAuth = (column) => {
-    //관리자만 보이는 테이블 영역
     if (column.label === "처리속도" || column.label === "지연율") {
-      //관리자일경우
       if (userValue.node) {
         return (
           <TableCell
@@ -25,9 +23,7 @@ export default function StickyHeadTable() {
             {column.label}
           </TableCell>
         );
-        //관리자 아닐 경우 해당 부분 출력x
       }
-      //처리속도나 지연율 아닌경우 == 모든 상황에서 보여지는 테이블
     } else {
       return (
         <TableCell
