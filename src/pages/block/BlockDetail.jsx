@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Stack from "@mui/material/Stack";
 import BlockDetailTable from "./utils/blockDetailTable";
 import BlockDetailTitle from "./utils/blockDetailItitle";
 import { getTheme } from "../../recoil/selector";

@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+
 const NavBar = () => {
   const nowUser = authService.currentUser;
   const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
+
   const activeStyle = {
     background: "#4e81ef",
     color: "yellow",
@@ -23,9 +26,15 @@ const NavBar = () => {
       {/* 영역 2 */}
       <div className="innerContainer">
         <div className="avatar">
-          <div className="img"></div>
+          <div className="img">
+            <PersonOutlineIcon className="icon" />
+          </div>
+          <div className="img_wrap">
+            <div className="circle top"></div>
+            <div className="circle bottom"></div>
+          </div>
           <p className="name">{userValue.email}</p>
-          <p className="position">FE Developer</p>
+          <p className="position">직책(권한)</p>
         </div>
         <div className="nav">
           <ul className="navList">

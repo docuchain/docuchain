@@ -12,12 +12,7 @@ import "../style/Modal.scss";
 import { useParams } from "react-router-dom";
 import { getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
-// swal 임포트
-// import Swal from "sweetalert2/dist/sweetalert2.js";
-// import "sweetalert2/src/sweetalert2.scss";
 import swal from "sweetalert";
-
-//
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
@@ -38,13 +33,8 @@ export default function TransDetailList(props) {
     fetchdata();
   }, []);
 
-  // sweet alert사용
-  // const Swal = require("sweetalert2");
-
-  //useParams
   const { id } = useParams();
 
-  //state에 데이터 저장
   useEffect(() => {
     async function getTrans() {
       const result3 = data.filter((item) => item.blockNumber == parseInt(id));
@@ -61,7 +51,6 @@ export default function TransDetailList(props) {
   });
 
   const openModal = () => {
-    //트랜잭션 권한 있을경우
     if (userValue.trans) {
       setModalOpen(true);
     } else {
@@ -78,7 +67,6 @@ export default function TransDetailList(props) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  //  ------------------------------
   return (
     <div className="boxLayout1 boxShadow mt20">
       <TableContainer className="detailTableInner">
@@ -103,7 +91,6 @@ export default function TransDetailList(props) {
               <TableCell align="left">{time}</TableCell>
               <TableCell
                 className="selectableArea"
-                // 모달 오픈
                 onClick={naviTransDetail}
                 align="left"
               >
@@ -117,7 +104,6 @@ export default function TransDetailList(props) {
                 <TableCell
                   className="selectableArea"
                   align="left"
-                  // 모달 -
                   onClick={openModal}
                 >
                   <Button style={{ fontWeight: 600, padding: "4px" }}>

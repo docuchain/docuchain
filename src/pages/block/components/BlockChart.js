@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from "react";
 import TimeperBlock from "../utils/timeperBlock";
 import AvgBlock from "../utils/avgBlockSize";
