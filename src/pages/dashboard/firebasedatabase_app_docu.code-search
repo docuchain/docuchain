@@ -1,0 +1,64 @@
+# Query: firebasedatabase.app/docu
+# ContextLines: 1
+
+12개 결과 - 12 파일
+
+docuchain/src/pages/block/Block.jsx:
+  11        const res = await fetch(
+  12:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  13        );
+
+docuchain/src/pages/block/BlockDetail.jsx:
+  11        const res = await fetch(
+  12:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  13        );
+
+docuchain/src/pages/common/components/ContentsTitle.js:
+  15        const res = await fetch(
+  16:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  17        );
+
+docuchain/src/pages/common/utils/searchBar.js:
+  26        const blockRes = await fetch(
+  27:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  28        );
+
+docuchain/src/pages/dashboard/Dashboard.jsx:
+  19        const res = await fetch(
+  20:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  21        );
+
+docuchain/src/pages/node/utils/nodeMockData.js:
+  203        const res = await fetch(
+  204:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  205        );
+
+docuchain/src/pages/node/utils/chart/nodeNetworkSpeedChart.js:
+  20        const res = await fetch(
+  21:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  22        );
+
+docuchain/src/pages/node/utils/chart/nodeNetworkStatusChart.js:
+  21    //     const res = await fetch(
+  22:   //       "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  23    //     );
+
+docuchain/src/pages/service/Service.jsx:
+  12        const res = await fetch(
+  13:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  14        );
+
+docuchain/src/pages/service/ServiceDetail.jsx:
+  22        const res = await fetch(
+  23:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  24        );
+
+docuchain/src/pages/trans/Trans.jsx:
+  10        const res = await fetch(
+  11:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  12        );
+
+docuchain/src/pages/trans/TransDetail.jsx:
+  14        const res = await fetch(
+  15:         "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+  16        );

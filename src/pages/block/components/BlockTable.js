@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -8,13 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import BlockDetailTable from "../utils/blockDetailTable";
-import { lineHeight } from "@mui/system";
+import { useState } from "react";
 
-// 테이블 헤더 데이터
 const columns = [
   { id: "serviceName", label: "서비스 명", minWidth: 170, align: "left" },
   { id: "blockNumber", label: "블록번호", minWidth: 100, align: "left" },
@@ -60,10 +55,6 @@ export default function BlockTable(props) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  // 상세페이지 이동 위한 navigate
-  const [blockId, setBlockId] = useState("");
-  const navigate = useNavigate();
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>

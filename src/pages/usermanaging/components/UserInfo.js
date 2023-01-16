@@ -149,54 +149,50 @@ const UserInfo = (props) => {
       <form onSubmit={submitHandler}>
         <h1>사용자 정보</h1>
 
-        <div>이름 {userName}</div>
-        <div>소속 {userTeam}</div>
-        <div>이메일(아이디) {userEmail}</div>
-
         <label>
-          <input
-            type="checkbox"
-            checked={userDashboard}
-            onChange={changeDashboardHandler}
-            disabled
-          />
-          대시보드
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={userBlock}
-            onChange={changeBlockHandler}
-            disabled
-          />
-          블록
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={userTrans}
-            onChange={changeTransHandler}
-          />
-          트랜잭션
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={userNode}
-            onChange={changeNodeHandler}
-          />
-          노드
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={userService}
-            onChange={changeServiceHandler}
-          />
-          서비스
+          <h5>이메일(아이디) : {userEmail}</h5>
         </label>
 
-        <div>유형 {userRole}</div>
+        <label>
+          <h5 className="myinfo__detailauth">
+            <input
+              type="checkbox"
+              checked={userDashboard}
+              onChange={changeDashboardHandler}
+              disabled
+            />
+            대시보드
+            <input
+              type="checkbox"
+              checked={userBlock}
+              onChange={changeBlockHandler}
+              disabled
+            />
+            블록
+            <input
+              type="checkbox"
+              checked={userTrans}
+              onChange={changeTransHandler}
+            />
+            트랜잭션
+            <input
+              type="checkbox"
+              checked={userNode}
+              onChange={changeNodeHandler}
+            />
+            노드
+            <input
+              type="checkbox"
+              checked={userService}
+              onChange={changeServiceHandler}
+            />
+            서비스
+          </h5>
+        </label>
+
+        <label>
+          <h5>유형 : {userRole}</h5>
+        </label>
 
         <button onClick={toUsers}>취소</button>
         <button>정보 변경</button>

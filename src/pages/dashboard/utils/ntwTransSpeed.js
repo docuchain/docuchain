@@ -10,8 +10,12 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { dbService } from "../../../apis/firebase";
+import { getTheme } from "../../../recoil/selector";
 
 function NtwTransSpeed(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   const countFunc = (a, b) => {
@@ -91,7 +95,9 @@ function NtwTransSpeed(props) {
 
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 트랜잭션처리속도 (TPS)</h3>

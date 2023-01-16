@@ -8,6 +8,9 @@ import "../style/TransDetailTable.scss";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import { AiOutlineCopy } from "react-icons/ai";
+
 // swal 임포트
 // import Swal from "sweetalert2/dist/sweetalert2.js";
 // import "sweetalert2/src/sweetalert2.scss";
@@ -17,9 +20,11 @@ export default function TransDetailTable(props) {
   const { data, fetchdata } = props;
 
   // 복사 버튼
+  const [copy, copied] = useState(false);
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
+      copied(!copy);
       swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
       swal("복사 실패!", "다시 시도해주세요!", "error");
@@ -91,14 +96,30 @@ export default function TransDetailTable(props) {
               <TableCell>트랜잭션해시</TableCell>
               <TableCell>
                 {transHash}
-                <Button
+                {/* <Button
                   className="btnLayout"
                   variant="contained"
                   disableElevation
                   onClick={() => handleCopyClipBoard(transHash)}
                 >
                   복사
-                </Button>
+                </Button> */}
+                <Stack spacing={2} direction="row" className="btnLayout">
+                  {copy === true ? (
+                    <Button variant="contained">
+                      Copied&nbsp;
+                      <AiOutlineCopy />
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleCopyClipBoard(transHash)}
+                    >
+                      Copy&nbsp;
+                      <AiOutlineCopy />
+                    </Button>
+                  )}
+                </Stack>
               </TableCell>
             </TableRow>
             <TableRow>
