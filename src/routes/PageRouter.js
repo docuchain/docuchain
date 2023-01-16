@@ -21,10 +21,11 @@ import UserModify from "../pages/usermanaging/UserModify";
 import LoginPage from "../pages/myinfo/components/LoginPage";
 import NavBar from "../pages/common/components/NavBar";
 import { useRecoilValue } from "recoil";
-import { getUserUid, getUserInfo } from "../recoil/selector";
+import { getUserUid, getUserInfo, getTheme } from "../recoil/selector";
 import "../pages/common/style/contents.scss";
 
 const PageRouter = () => {
+  const isDark = useRecoilValue(getTheme);
   const uidValue = useRecoilValue(getUserUid);
   const userValue = useRecoilValue(getUserInfo);
   useEffect(() => {
@@ -38,7 +39,7 @@ const PageRouter = () => {
       </div>
       <div className="pageRouterWrap--right">
         <Header />
-        <div className="Contents">
+        <div className={isDark ? "ContentsBlack" : "Contents"}>
           <Routes>
             {/* dashboard route */}
             <Route path="/" element={<Dashboard />}></Route>
