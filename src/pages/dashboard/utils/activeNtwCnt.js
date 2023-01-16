@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 import Timer from "./timer";
 
 const ActiveNtwCnt = (props) => {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   // useEffect(() => {
@@ -16,7 +19,11 @@ const ActiveNtwCnt = (props) => {
 
   return (
     <div
-      className="ActiveNtwCnt boxShadow boxLayoutel4"
+      className={
+        isDark
+          ? "ActiveNtwCnt boxShadowBlack boxLayoutel4"
+          : "ActiveNtwCnt boxShadow boxLayoutel4"
+      }
       style={
         ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
       }

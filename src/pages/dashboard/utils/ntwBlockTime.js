@@ -8,8 +8,11 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
 function NtwBlockTime(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   // useEffect(() => {
@@ -112,7 +115,9 @@ function NtwBlockTime(props) {
   ];
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 블록생성시간(분)</h3>
