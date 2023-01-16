@@ -7,12 +7,6 @@ const ActiveNtwCnt = (props) => {
   const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
-  //네트워크 개수
-
   const netWorkKinds = data.filter(
     (v, i) => data.findIndex((x) => x.network === v.network) === i
   );

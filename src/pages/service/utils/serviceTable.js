@@ -1,4 +1,3 @@
-// import * as React from "react";
 import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -8,14 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { Link, useNavigate } from "react-router-dom";
-import ServiceDetail from "../ServiceDetail";
+import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
 import swal from "sweetalert";
-import { margin } from "@mui/system";
+
 const columns = [
-  { id: "serviceName", label: "서비스명" },
+  { id: "serviceName", label: "서비스 명" },
   { id: "date", label: "타임스탬프" },
   { id: "ApiKinds", label: "API 종류" },
   { id: "NodeName", label: "노드명" },
@@ -54,7 +52,7 @@ export default function StickyHeadTable(props) {
 
   const [page, setPage] = React.useState(0);
   //Rows per page 단위
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -74,7 +72,12 @@ export default function StickyHeadTable(props) {
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  sx={{ lineHeight: "2.5rem" }}
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    lineHeight: "2.5rem",
+                    textIndent: 30,
+                  }}
                   style={{ width: 130, textIndent: 30 }}
                 >
                   {/* 테이블 메인 타이틀 */}
@@ -88,13 +91,7 @@ export default function StickyHeadTable(props) {
               ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : data
             ).map((datael, idx) => (
-              <TableRow
-                hover
-                role="checkbox"
-                tabIndex={-1}
-                key={idx}
-                // onClick={toTableRowdata}
-              >
+              <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
                 <TableCell
                   style={{ width: 130, textIndent: 30 }}
                   component="th"
@@ -109,12 +106,22 @@ export default function StickyHeadTable(props) {
                   </Link>
                 </TableCell>
                 <TableCell style={{ width: 200, textIndent: 30 }} align="left">
-                  {/* onClick={serviceAuth} */}
-                  {datael.timeStamp}
+                  <Link
+                    to={`/service/${datael.id}`}
+                    value={datael.id}
+                    onClick={serviceAuth}
+                  >
+                    {datael.timeStamp}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 200, textIndent: 30 }} align="left">
-                  {/* onClick={serviceAuth} */}
-                  {datael.apiKinds}
+                  <Link
+                    to={`/service/${datael.id}`}
+                    value={datael.id}
+                    onClick={serviceAuth}
+                  >
+                    {datael.apiKinds}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 90, textIndent: 30 }} align="left">
                   <Link

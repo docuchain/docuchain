@@ -8,10 +8,6 @@ const TotalTransCnt = (props) => {
 
   const { data, fetchdata } = props;
 
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
   return (
     <div
       className={
