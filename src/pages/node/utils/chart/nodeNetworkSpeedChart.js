@@ -22,8 +22,7 @@ const NodeNetworkChartSpeed = () => {
     ).length;
     nodeChartDataList.filter((data) => {
       if (data.serviceName === serviceName) {
-        sum += data.latency
-        ;
+        sum += data.latency;
       }
     });
 
@@ -49,10 +48,11 @@ const NodeNetworkChartSpeed = () => {
     }
   }, [nodeChartData]);
 
-
   return (
-    <div className="boxShadow boxLayoutel2"
-    style={({ display: "flex" }, { flexDirection: "column" })}>
+    <div
+      className="boxShadow boxLayoutel2"
+      style={({ display: "flex" }, { flexDirection: "column" })}
+    >
       <h3>노드 네트워크 평균 속도</h3>
       <AreaChart
         width={600}
@@ -67,7 +67,7 @@ const NodeNetworkChartSpeed = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="serviceName" />
-        <YAxis/>
+        <YAxis />
         <Tooltip />
         <Area
           type="monotone"
@@ -79,6 +79,6 @@ const NodeNetworkChartSpeed = () => {
       </AreaChart>
     </div>
   );
-  };
-  
-  export default NodeNetworkChartSpeed;
+};
+
+export default NodeNetworkChartSpeed;

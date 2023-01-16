@@ -56,7 +56,7 @@ export const nodeData = {
     {
       id: "TPS",
       label: "처리속도",
-      minWidth:60,
+      minWidth: 60,
       align: "center",
       format: (value) => value.toFixed(2),
     },
