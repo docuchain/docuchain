@@ -1,5 +1,5 @@
-import "../../NodeStyle.scss";
 import React from "react";
+
 import {
   AreaChart,
   Area,
@@ -11,46 +11,46 @@ import {
 
 const data = [
   {
-    name: "2022.07",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
+    date: "2022.07",
+    uv: 300,
+    kWh: 139,
+    kW: 221
   },
   {
-    name: "2022.08",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
+    date: "2022.08",
+    uv: 200,
+    kWh: 980,
+    kW: 229
   },
   {
-    name: "2022.09",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
+    date: "2022.09",
+    uv: 278,
+    kWh: 390,
+    kW: 200
   },
   {
-    name: "2022.10",
-    uv: 2990,
-    pv: 4800,
-    amt: 2181
+    date: "2022.10",
+    uv: 299,
+    kWh: 480,
+    kW: 218
   },
   {
-    name: "2022.11",
-    uv: 2290,
-    pv: 3800,
-    amt: 2500
+    date: "2022.11",
+    uv: 229,
+    kWh: 380,
+    kW: 250
   },
   {
-    name: "2022.12",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
+    date: "2022.12",
+    uv: 349,
+    kWh: 430,
+    kW: 210
   },
   {
-    name: "2023.01",
-    uv: 1200,
-    pv: 2341,
-    amt: 1890
+    date: "2023.01",
+    uv: 120,
+    kWh: 234,
+    kW: 189
   },
 ];
 
@@ -60,7 +60,7 @@ export default function App() {
       className="boxShadow boxLayoutel2"
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
-      <h3>전력 사용량</h3>
+      <h3>전력 사용량(kWH)</h3>
       <AreaChart
       width={500}
       height={360}
@@ -73,7 +73,7 @@ export default function App() {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="date" />
       <YAxis />
       <Tooltip />
       <Area
@@ -85,14 +85,14 @@ export default function App() {
       />
       <Area
         type="monotone"
-        dataKey="pv"
+        dataKey="kWh"
         stackId="1"
         stroke="#82ca9d"
         fill="#82ca9d"
       />
       <Area
         type="monotone"
-        dataKey="amt"
+        dataKey="kW"
         stackId="1"
         stroke="#ffc658"
         fill="#ffc658"

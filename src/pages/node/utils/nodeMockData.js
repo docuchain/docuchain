@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const nodeData = {
   nodeHeader: [
@@ -35,7 +35,7 @@ export const nodeData = {
     {
       id: "IP",
       label: "IP",
-      minWidth: 130,
+      minWidth: 135,
       align: "center",
       format: (value) => value.toFixed(2),
     },
@@ -201,7 +201,7 @@ export const NodeFirebase = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);

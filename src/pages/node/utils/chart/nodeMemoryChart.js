@@ -1,4 +1,3 @@
-import "../../NodeStyle.scss";
 import React from "react";
 import {
   Radar,
