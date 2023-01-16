@@ -7,11 +7,8 @@ import {
   deleteDoc,
   query,
   where,
-  collection,
 } from "firebase/firestore";
-import { dbService } from "../../../apis/firebase";
-import { Button } from "@mui/material";
-
+import swal from "sweetalert";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -72,13 +69,22 @@ const UserInfo = (props) => {
 
   //삭제
   async function deleteData() {
-    if (window.confirm("정말 삭제합니까?")) {
-      await deleteDoc(doc(userData, userName));
-      alert("삭제되었습니다.");
-      navigate(`/usermanaging`);
-    } else {
-      alert("취소합니다.");
-    }
+    swal({
+      text: "삭제하시겠습니까?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteDoc(doc(userData, userName));
+        swal("삭제되었습니다", {
+          icon: "success",
+        });
+        navigate(`/usermanaging`);
+      } else {
+        swal("취소하였습니다");
+      }
+    });
   }
 
   //업데이트
@@ -91,7 +97,7 @@ const UserInfo = (props) => {
       service: userService,
     });
 
-    alert("수정완료");
+    swal("", "수정완료", "success");
     navigate(`/usermanaging`);
   }
 
@@ -139,126 +145,61 @@ const UserInfo = (props) => {
   console.log(userTrans);
 
   return (
-    // <div>
-    //   <form onSubmit={submitHandler}>
-    //     <h1>사용자 정보</h1>
+    <div>
+      <form onSubmit={submitHandler}>
+        <h1>사용자 정보</h1>
 
-    //     <div>이름 {userName}</div>
-    //     <div>소속 {userTeam}</div>
-    //     <div>이메일(아이디) {userEmail}</div>
+        <label>
+          <h5>이메일(아이디) : {userEmail}</h5>
+        </label>
 
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userDashboard}
-    //         onChange={changeDashboardHandler}
-    //         disabled
-    //       />
-    //       대시보드
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userBlock}
-    //         onChange={changeBlockHandler}
-    //         disabled
-    //       />
-    //       블록
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userTrans}
-    //         onChange={changeTransHandler}
-    //       />
-    //       트랜잭션
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userNode}
-    //         onChange={changeNodeHandler}
-    //       />
-    //       노드
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userService}
-    //         onChange={changeServiceHandler}
-    //       />
-    //       서비스
-    //     </label>
+        <label>
+          <h5 className="myinfo__detailauth">
+            <input
+              type="checkbox"
+              checked={userDashboard}
+              onChange={changeDashboardHandler}
+              disabled
+            />
+            대시보드
+            <input
+              type="checkbox"
+              checked={userBlock}
+              onChange={changeBlockHandler}
+              disabled
+            />
+            블록
+            <input
+              type="checkbox"
+              checked={userTrans}
+              onChange={changeTransHandler}
+            />
+            트랜잭션
+            <input
+              type="checkbox"
+              checked={userNode}
+              onChange={changeNodeHandler}
+            />
+            노드
+            <input
+              type="checkbox"
+              checked={userService}
+              onChange={changeServiceHandler}
+            />
+            서비스
+          </h5>
+        </label>
 
-    //     <div>유형 {userRole}</div>
+        <label>
+          <h5>유형 : {userRole}</h5>
+        </label>
 
-    //     <button onClick={toUsers}>취소</button>
-    //     <button >정보 변경</button>
-    //     <button onClick={deleteData}>사용자 삭제</button>
-    //   </form>
-    // </div>
-    <div className="boxLayout1 boxShadow">
-      <div className="Myinfo">
-        <h2>USER INFO</h2>
-        <form onSubmit={submitHandler}>
-          <label>
-            <h5>이름 : {userName}</h5>
-          </label>
-
-          <label>
-            <h5>소속 : {userTeam}</h5>
-          </label>
-
-          <label>
-            <h5>이메일(아이디) : {userEmail}</h5>
-          </label>
-
-          <label>
-            <h5 className="myinfo__detailauth">
-              <input
-                type="checkbox"
-                checked={userDashboard}
-                onChange={changeDashboardHandler}
-                disabled
-              />
-              대시보드
-              <input
-                type="checkbox"
-                checked={userBlock}
-                onChange={changeBlockHandler}
-                disabled
-              />
-              블록
-              <input
-                type="checkbox"
-                checked={userTrans}
-                onChange={changeTransHandler}
-              />
-              트랜잭션
-              <input
-                type="checkbox"
-                checked={userNode}
-                onChange={changeNodeHandler}
-              />
-              노드
-              <input
-                type="checkbox"
-                checked={userService}
-                onChange={changeServiceHandler}
-              />
-              서비스
-            </h5>
-          </label>
-
-          <label>
-            <h5>유형 : {userRole}</h5>
-          </label>
-
-          <Button onClick={toUsers}>취소</Button>
-          <Button onClick={updateData}>정보 변경</Button>
-          <Button onClick={deleteData}>사용자 삭제</Button>
-        </form>
-      </div>
+        <button onClick={toUsers}>취소</button>
+        <button>정보 변경</button>
+        <button type="button" onClick={deleteData}>
+          사용자 삭제
+        </button>
+      </form>
     </div>
   );
 };

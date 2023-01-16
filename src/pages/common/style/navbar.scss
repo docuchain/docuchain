@@ -44,7 +44,6 @@
         // background: url("../../asset/imgs/manager.jpeg");
         background-size: contain;
       }
-      // 아바타 로그인시 동작 될 애니메이션 ---------
       .img_wrap {
         position: absolute;
         left: 150px;
@@ -87,7 +86,6 @@
         to {
           transform: rotate(265deg);
         }
-        // 아바타 로그인시 동작 될 애니메이션 ---------
       }
       .circle.top:after {
         border-top-color: mediumblue;
@@ -162,10 +160,4 @@
       }
     }
   }
-}
-.redbull {
-  color: red;
-}
-.kamill {
-  color: green;
 }

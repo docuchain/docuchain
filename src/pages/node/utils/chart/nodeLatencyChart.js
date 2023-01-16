@@ -1,58 +1,51 @@
-import "../../NodeStyle.scss";
 import React from "react";
+
 import {
-  ComposedChart,
+  LineChart,
   Line,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  Legend
 } from "recharts";
 
 const data = [
   {
     name: "서비스A",
-    uv: 590,
-    pv: 800,
-    amt: 1400,
-    cnt: 490,
+    지연율: 4.2,
+    전체: 2800,
+    amt: 2400
   },
   {
     name: "서비스B",
-    uv: 868,
-    pv: 967,
-    amt: 1506,
-    cnt: 590,
+    지연율: 2.9,
+    전체: 4698,
+    amt: 2210
   },
   {
     name: "서비스C",
-    uv: 1397,
-    pv: 1098,
-    amt: 989,
-    cnt: 350,
+    지연율:2.1,
+    전체: 8900,
+    amt: 2290
   },
   {
     name: "서비스D",
-    uv: 1480,
-    pv: 1200,
-    amt: 1228,
-    cnt: 480,
+    지연율: 2.5,
+    전체: 5908,
+    amt: 2000
   },
   {
     name: "서비스E",
-    uv: 1520,
-    pv: 1108,
-    amt: 1100,
-    cnt: 460,
+    지연율: 5.4,
+    전체: 3810,
+    amt: 2181
   },
   {
     name: "서비스F",
-    uv: 1400,
-    pv: 680,
-    amt: 1700,
-    cnt: 380,
+    지연율: 3.7,
+    전체: 7800,
+    amt: 2500
   },
 ];
 
@@ -63,25 +56,32 @@ export default function App() {
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>지연율(Latency)</h3>
-      <ComposedChart
-        width={500}
-        height={360}
-        data={data}
-        margin={{
-          top: 20,
-          right: 20,
-          bottom: 20,
-          left: 20,
-        }}
-      >
-        <CartesianGrid stroke="#f5f5f5" />
-        <XAxis dataKey="name" scale="band" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="uv" barSize={20} fill="#413ea0" />
-        <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-      </ComposedChart>
+      <LineChart
+      width={500}
+      height={360}
+      data={data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis yAxisId="left" />
+      <YAxis yAxisId="right" orientation="right" />
+      <Tooltip />
+      <Legend />
+      <Line
+        yAxisId="left"
+        type="monotone"
+        dataKey="전체"
+        stroke="#8884d8"
+        activeDot={{ r: 8 }}
+      />
+      <Line yAxisId="right" type="monotone" dataKey="지연율" stroke="#82ca9d" />
+    </LineChart>
     </div>
   );
 }

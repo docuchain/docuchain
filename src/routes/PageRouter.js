@@ -77,7 +77,7 @@ const PageRouter = () => {
             <Route
               path="/usermanaging"
               element={
-                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                userValue.email === "test@test.com" ? (
                   <UserManaging />
                 ) : (
                   <LoginPage />
@@ -87,7 +87,7 @@ const PageRouter = () => {
             <Route
               path="/usermanaging/adduser"
               element={
-                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                userValue.email === "test@test.com" ? (
                   <AddUser />
                 ) : (
                   <LoginPage />

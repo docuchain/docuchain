@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BlockDetailTable from "./utils/blockDetailTable";
 import BlockDetailTitle from "./utils/blockDetailItitle";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 export default function BlockDetail() {
   const [data, setData] = useState([]);
-
+  const isDark =useRecoilValue(getTheme);
   const fetchdata = async () => {
     try {
       const res = await fetch(

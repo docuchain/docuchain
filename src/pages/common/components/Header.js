@@ -16,12 +16,12 @@ const Header = () => {
     console.log(location);
     headerNameChange();
   });
+  const [themeMode, setThemeMode] = useRecoilState(theme);
   const darkTheme = useRecoilValue(getTheme);
   const dark = {
     color: "black",
   };
 
-  const [themeMode, setThemeMode] = useRecoilState(theme);
   const themeModeHandler = () => {
     console.log(themeMode);
     setThemeMode((prev) => !prev);
