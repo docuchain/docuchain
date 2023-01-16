@@ -13,8 +13,6 @@ const Node = () => {
 
   return (
     <>
-      {/* <h1>노드</h1>
-      <p>노드 갯수 : {nodeTableData.length}개</p> */}
       <div className="boxLayout1">
       <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
       </div>
