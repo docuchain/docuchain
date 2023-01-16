@@ -6,22 +6,13 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 function ServiceEnrollCnt(props) {
   const { data, fetchdata } = props;
 
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
   const countFunc = (a) => {
     const filterTime = data.filter((user) => user.timeStamp.includes(a));
-    // const filterNetWork = filterTime.filter((user) => user.network.includes(b));
-    // const avgResult = filterNetWork
-    //   .map((item) => item.TPS)
-    //   .reduce((prev, curr) => prev + curr, 0);
 
     return filterTime.length;
   };

@@ -1,4 +1,3 @@
-// import * as React from "react";
 import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -8,12 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { Link, useNavigate } from "react-router-dom";
-import ServiceDetail from "../ServiceDetail";
+import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
 import swal from "sweetalert";
-import { margin } from "@mui/system";
+
 const columns = [
   { id: "serviceName", label: "서비스 명" },
   { id: "date", label: "타임스탬프" },

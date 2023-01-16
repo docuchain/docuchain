@@ -1,5 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import {
   ComposedChart,
@@ -11,14 +10,9 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { dbService } from "../../../apis/firebase";
 
 function NtwTransSpeed(props) {
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   const countFunc = (a, b) => {
     const filterTime = data.filter((user) => user.timeStamp.includes(a));
@@ -101,27 +95,7 @@ function NtwTransSpeed(props) {
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 트랜잭션처리속도 (TPS)</h3>
-      {/* <ComposedChart
-        width={600}
-        height={400}
-        data={Data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 0,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" />
-        <YAxis domain={[0, 400]} />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="ntwAPerTPS" fill="#0088FE" key={Math.random()} />
-        <Bar dataKey="ntwBPerTPS" fill="#00C49F" key={Math.random()} />
-        <Bar dataKey="ntwCPerTPS" fill="#FFBB28" key={Math.random()} />
-        <Bar dataKey="ntwDPerTPS" fill="#FF8042" key={Math.random()} />
-      </BarChart> */}
+
       <ComposedChart
         width={600}
         height={400}

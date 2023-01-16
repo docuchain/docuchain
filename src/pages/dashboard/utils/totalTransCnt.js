@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Timer from "./timer";
 
 const TotalTransCnt = (props) => {
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   return (
     <div

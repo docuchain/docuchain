@@ -8,8 +8,6 @@ import NtwTransSpeed from "./utils/ntwTransSpeed";
 import NtwBlockTime from "./utils/ntwBlockTime";
 import ServiceEnrollCnt from "./utils/serviceEnrollCnt";
 import ActiveNtw from "./utils/activeNtw";
-import { getTheme } from "../../recoil/selector";
-import { useRecoilValue } from "recoil";
 const Dashboard = () => {
   //데이터 받아와서 props로 뿌려주기
   const [data, setData] = useState([]);
@@ -17,7 +15,7 @@ const Dashboard = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);

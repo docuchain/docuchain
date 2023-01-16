@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Timer from "./timer";
 
 const ActiveNtwCnt = (props) => {
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
-  //네트워크 개수
 
   const netWorkKinds = data.filter(
     (v, i) => data.findIndex((x) => x.network === v.network) === i

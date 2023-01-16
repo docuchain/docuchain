@@ -54,22 +54,6 @@ const LoginPage = () => {
       setError(error.message);
     }
   };
-  //회원가입
-  // const registerUser = async (data) => {
-  //   try {
-  //     const user = await createUserWithEmailAndPassword(
-  //       authService,
-  //       data.email,
-  //       data.password
-  //     );
-  //     console.log(user);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     setError(error.message);
-  //   }
-  //   setEmail("");
-  //   setPassword("");
-  // };
 
   return (
     <div className="LoginPage">

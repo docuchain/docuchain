@@ -1,5 +1,5 @@
 import { display } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import Timer from "./timer";
 import { getTheme } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
@@ -8,9 +8,6 @@ const TotalBlockCnt = (props) => {
   const dark = "";
 
   const { data, fetchdata } = props;
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   return (
     <div

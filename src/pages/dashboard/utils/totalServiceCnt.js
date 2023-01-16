@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Timer from "./timer";
 
 const TotalServiceCnt = (props) => {
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   return (
     <div

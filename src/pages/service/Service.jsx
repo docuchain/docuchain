@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ServiceChart from "./component/ServiceChart";
 import ServiceTable from "./utils/serviceTable";
-import ContentsTitle from "../common/components/ContentsTitle";
 import "./CSS/Service.scss";
 
 const Service = () => {
@@ -10,7 +9,7 @@ const Service = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);

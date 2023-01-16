@@ -6,12 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ToServiceMainBtn from "./utils/toServiceMainBtn";
-import { useLocation, Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { AiOutlineCopy } from "react-icons/ai";
-import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import CopyBtn from "../block/utils/copyBtn";
 import swal from "sweetalert";
 
 const ServiceDetail = () => {
@@ -22,7 +20,7 @@ const ServiceDetail = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
@@ -31,7 +29,6 @@ const ServiceDetail = () => {
     }
   };
 
-  //fetchdata firebase data
   useEffect(() => {
     fetchdata();
   }, []);

@@ -1,26 +1,11 @@
-import React, { useState } from "react";
-import {
-  PieChart,
-  Pie,
-  Legend,
-  Sector,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import React from "react";
+import { PieChart, Pie, Legend, Cell, Tooltip } from "recharts";
 
 function ActiveNtw(props) {
   const { data, fetchdata } = props;
 
   const countFunc = (a, b) => {
     const filterService = data.filter((user) => user.serviceName.includes(a));
-    // const filterNetWork = filterService.filter((user) =>
-    //   user.network.includes(b)
-    // );
-    // const ntwPerService = filterNetWork.length;
-    // const avgResult = filterNetWork
-    //   .map((item) => item.TPS)
-    //   .reduce((prev, curr) => prev + curr, 0);
 
     return filterService.length;
   };

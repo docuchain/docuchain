@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ServiceRank from "../utils/serviceRank";
 import ApiCallRank from "../utils/apiCallRank";
 import "../CSS/Service.scss";
