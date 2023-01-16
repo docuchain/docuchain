@@ -10,7 +10,6 @@ import { useLocation, Link, useParams } from "react-router-dom";
 import { query, getDocs } from "firebase/database";
 import Button from "@mui/material/Button";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import CopyBtn from "../block/utils/copyBtn";
 
 const ServiceDetail = () => {
   // 데이터 담기
@@ -20,7 +19,7 @@ const ServiceDetail = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
