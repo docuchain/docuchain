@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { Input } from "@mui/material";
+import { getTheme } from "../../recoil/selector";
 import Button from "@mui/material/Button";
 
 const AddUser = () => {
@@ -130,7 +131,7 @@ const AddUser = () => {
 
   //boolean
   const dashboardCheckHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setDashboardChecked(true);
     } else {
       setDashboardChecked(false);
@@ -138,7 +139,7 @@ const AddUser = () => {
   };
 
   const blockCheckHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setBlockChecked(true);
     } else {
       setBlockChecked(false);
@@ -146,7 +147,7 @@ const AddUser = () => {
   };
 
   const transCheckHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setTransChecked(true);
     } else {
       setTransChecked(false);
@@ -154,7 +155,7 @@ const AddUser = () => {
   };
 
   const nodeCheckHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setNodeChecked(true);
     } else {
       setNodeChecked(false);
@@ -162,7 +163,7 @@ const AddUser = () => {
   };
 
   const serviceCheckHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setServiceChecked(true);
     } else {
       setServiceChecked(false);
@@ -170,14 +171,14 @@ const AddUser = () => {
   };
 
   const usingAserviceHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setUsingAServiceChecked(true);
     } else {
       setUsingAServiceChecked(false);
     }
   };
   const usingBserviceHandler = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setUsingBServiceChecked(true);
     } else {
       setUsingBServiceChecked(false);

@@ -4,6 +4,8 @@ import "./TransStyle.css";
 import TransDetailTitle from "./utils/transDetailItitle";
 
 import TransDetailTable from "./utils/transDetailTable";
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 
 const TransDetail = () => {
   //   const { transRef } = props;

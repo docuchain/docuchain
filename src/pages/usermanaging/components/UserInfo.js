@@ -7,10 +7,8 @@ import {
   deleteDoc,
   query,
   where,
-  collection,
 } from "firebase/firestore";
-import { dbService } from "../../../apis/firebase";
-
+import swal from "sweetalert";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -71,13 +69,22 @@ const UserInfo = (props) => {
 
   //삭제
   async function deleteData() {
-    if (window.confirm("정말 삭제합니까?")) {
-      await deleteDoc(doc(userData, userName));
-      alert("삭제되었습니다.");
-      navigate(`/usermanaging`);
-    } else {
-      alert("취소합니다.");
-    }
+    swal({
+      text: "삭제하시겠습니까?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteDoc(doc(userData, userName));
+        swal("삭제되었습니다", {
+          icon: "success",
+        });
+        navigate(`/usermanaging`);
+      } else {
+        swal("취소하였습니다");
+      }
+    });
   }
 
   //업데이트
@@ -90,7 +97,7 @@ const UserInfo = (props) => {
       service: userService,
     });
 
-    alert("수정완료");
+    swal("", "수정완료", "success");
     navigate(`/usermanaging`);
   }
 
@@ -193,7 +200,9 @@ const UserInfo = (props) => {
 
         <button onClick={toUsers}>취소</button>
         <button>정보 변경</button>
-        <button onClick={deleteData}>사용자 삭제</button>
+        <button type="button" onClick={deleteData}>
+          사용자 삭제
+        </button>
       </form>
     </div>
   );

@@ -11,6 +11,7 @@ import { dbService } from "../../../apis/firebase";
 import swal from "sweetalert";
 import { Input } from "@mui/material";
 import Button from "@mui/material/Button";
+import { getTheme } from "../../../recoil/selector";
 
 const MyPage = () => {
   //user state 저장

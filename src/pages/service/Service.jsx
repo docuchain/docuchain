@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import ServiceChart from "./component/ServiceChart";
 import ServiceTable from "./utils/serviceTable";
 import "./CSS/Service.scss";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const Service = () => {
   //데이터 받아오기
   const [data, setData] = useState([]);

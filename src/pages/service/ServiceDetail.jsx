@@ -11,7 +11,8 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { AiOutlineCopy } from "react-icons/ai";
 import swal from "sweetalert";
-
+import { getTheme } from "../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const ServiceDetail = () => {
   // 데이터 담기
   const [data, setData] = useState([]);

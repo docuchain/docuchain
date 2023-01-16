@@ -3,7 +3,6 @@ import Button from "../../common/components/Button";
 import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword, //로그인
-  signOut, //로그아웃
 } from "firebase/auth";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -11,10 +10,6 @@ import { userEmail, userUid, userInfo } from "../../../recoil/atom";
 import { useForm } from "react-hook-form";
 import EmailIcon from "@mui/icons-material/Email";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
-// //로그아웃
-// export const logout = async () => {
-//   await signOut(authService);
-// };
 
 const LoginPage = () => {
   const [error, setError] = useState();
