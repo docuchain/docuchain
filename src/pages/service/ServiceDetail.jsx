@@ -6,11 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ToServiceMainBtn from "./utils/toServiceMainBtn";
-import { useLocation, Link, useParams } from "react-router-dom";
-import { query, getDocs } from "firebase/database";
+import { useParams } from "react-router-dom";
+import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import CopyBtn from "../block/utils/copyBtn";
+import { AiOutlineCopy } from "react-icons/ai";
+import swal from "sweetalert";
 import { getTheme } from "../../recoil/selector";
 import { useRecoilValue } from "recoil";
 const ServiceDetail = () => {
@@ -30,20 +30,22 @@ const ServiceDetail = () => {
     }
   };
 
-  //fetchdata firebase data
   useEffect(() => {
     fetchdata();
   }, []);
 
+  // 복사 버튼
+  const [copy, copied] = useState(false);
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-
-      alert("복사 성공!");
+      copied(!copy);
+      swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
-      alert("복사 실패!");
+      swal("복사 실패!", "다시 시도해주세요!", "error");
     }
   };
+
   //state에 저장
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
@@ -54,7 +56,6 @@ const ServiceDetail = () => {
   const [blockNum, setBlockNum] = useState();
   const [status, setStatus] = useState();
 
-  //
   //useParams
   const { id } = useParams();
 
@@ -109,12 +110,25 @@ const ServiceDetail = () => {
               <TableRow>
                 <TableCell>트랜잭션해시</TableCell>
                 <TableCell>
-                  {transHash}{" "}
-                  <FolderCopyIcon
-                    variant="contained"
-                    disableElevation
-                    onClick={() => handleCopyClipBoard(transHash)}
-                  ></FolderCopyIcon>
+                  {transHash}
+
+                  {/* 복사 btn */}
+                  <Stack spacing={2} direction="row" className="btnLayout">
+                    {copy === true ? (
+                      <Button variant="contained">
+                        Copied&nbsp;
+                        <AiOutlineCopy />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        onClick={() => handleCopyClipBoard(transHash)}
+                      >
+                        Copy&nbsp;
+                        <AiOutlineCopy />
+                      </Button>
+                    )}
+                  </Stack>
                 </TableCell>
               </TableRow>
               <TableRow>

@@ -6,13 +6,6 @@ function ApiCallRank(props) {
   const { data, fetchdata } = props;
 
   const countFunc = (a) => {
-    // let count = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].timeStamp.includes(a) == true) {
-    //     count++;
-    //   }
-    // }
-    // return count;
     const result1 = data.filter((user) => user.serviceName.includes(a));
     return result1.length;
   };

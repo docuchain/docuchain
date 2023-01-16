@@ -7,10 +7,6 @@ const TotalServiceCnt = (props) => {
   const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
   return (
     <div
       className={

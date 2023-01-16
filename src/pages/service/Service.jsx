@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ServiceChart from "./component/ServiceChart";
 import ServiceTable from "./utils/serviceTable";
-import ContentsTitle from "../common/components/ContentsTitle";
 import "./CSS/Service.scss";
 import { getTheme } from "../../recoil/selector";
 import { useRecoilValue } from "recoil";

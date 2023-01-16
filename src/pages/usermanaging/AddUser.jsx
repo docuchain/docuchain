@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { Input } from "@mui/material";
 import { getTheme } from "../../recoil/selector";
+import Button from "@mui/material/Button";
+
 const AddUser = () => {
   const userData = collection(dbService, "user");
   const [newUser, setNewUser] = useState({});
@@ -207,7 +209,12 @@ const AddUser = () => {
           <label>
             <h5>
               유형 :
-              <select name="role" value={role} onChange={changeRoleHandler}>
+              <select
+                name="role"
+                value={role}
+                onChange={changeRoleHandler}
+                className="userInput"
+              >
                 <option value="none">선택하세요</option>
                 <option value="사용자">사용자</option>
                 <option value="관리자">관리자</option>
@@ -218,14 +225,26 @@ const AddUser = () => {
           <label>
             <h5>
               이름 :
-              <Input type="text" name="name" onChange={changeHandler} />
+              <Input
+                type="text"
+                name="name"
+                onChange={changeHandler}
+                className="userInput"
+                placeholder="이름을 입력해주세요."
+              />
             </h5>
           </label>
 
           <label>
             <h5>
               소속 :
-              <Input type="text" name="team" onChange={changeHandler} />
+              <Input
+                type="text"
+                name="team"
+                onChange={changeHandler}
+                className="userInput"
+                placeholder="소속을 입력해주세요."
+              />
             </h5>
           </label>
 
@@ -237,6 +256,7 @@ const AddUser = () => {
                 name="email"
                 onChange={changeHandler}
                 placeholder="이메일을 입력해주세요."
+                className="userInput"
               />
             </h5>
           </label>
@@ -249,6 +269,7 @@ const AddUser = () => {
                 name="password"
                 onChange={changeHandler}
                 placeholder="비밀번호를 입력해주세요"
+                className="userInput"
               />
             </h5>
           </label>
@@ -260,19 +281,20 @@ const AddUser = () => {
                 type="text"
                 name="passwordCheck"
                 onChange={changeHandler}
+                className="userInput"
               />
             </h5>
-            <span></span>
+
             <span>
-              <h5>
+              <p className="addErrorText">
                 ※ 비밀번호는 최소 8자리 이상으로 영어대문자, 소문자, 숫자,
                 특수문자 중 3종류 이상 입력 필수
-              </h5>
+              </p>
             </span>
           </label>
 
           <label>
-            <h5 className="myinfo__detailauth">
+            <h5 className="addUserInput ">
               상세정보 접근권한 :
               <input type="checkbox" name="dashboard" defaultChecked disabled />
               대시보드
@@ -300,7 +322,7 @@ const AddUser = () => {
           <input type="text" name="usingService" onChange={changeHandler} />
         </label> */}
           <label>
-            <h5 className="myinfo__activeservice">
+            <h5 className="addUserInput">
               이용중인 서비스 :
               <input
                 type="checkbox"
@@ -316,8 +338,9 @@ const AddUser = () => {
               B서비스
             </h5>
           </label>
-
-          <button className="addBtn">추가</button>
+          <Button type="submit" variant="contained" className="addBtn">
+            추가
+          </Button>
         </form>
       </div>
     </div>
