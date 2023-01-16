@@ -7,14 +7,8 @@ import {
   deleteDoc,
   query,
   where,
-  collection,
 } from "firebase/firestore";
-// import Swal from "sweetalert2";
-import { dbService } from "../../../apis/firebase";
-import { useRecoilValue } from "recoil";
-import { getTheme } from "../../../recoil/selector";
 import swal from "sweetalert";
-// import Swal from "sweetalert2";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -75,14 +69,6 @@ const UserInfo = (props) => {
 
   //삭제
   async function deleteData() {
-    // if (window.confirm("정말 삭제합니까?")) {
-    //   await deleteDoc(doc(userData, userName));
-    //   swal("삭제되었습니다.");
-    //   navigate(`/usermanaging`);
-    // } else {
-    //   swal("취소합니다.");
-    // }
-
     swal({
       text: "삭제하시겠습니까?",
       icon: "warning",

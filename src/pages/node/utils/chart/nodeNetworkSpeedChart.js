@@ -18,7 +18,7 @@ const NodeNetworkChartSpeed = () => {
   const fetchdata = async () => {
     try {
       const res = await fetch(
-        "https://docuchain-72799-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
       const result = await res.json();
       setData([...result]);
@@ -32,8 +32,10 @@ const NodeNetworkChartSpeed = () => {
   }, []);
 
   return (
-    <div className="boxShadow boxLayoutel2"
-    style={({ display: "flex" }, { flexDirection: "column" })}>
+    <div
+      className="boxShadow boxLayoutel2"
+      style={({ display: "flex" }, { flexDirection: "column" })}
+    >
       <h3>노드 네트워크 속도</h3>
       <AreaChart
         width={600}
@@ -48,7 +50,7 @@ const NodeNetworkChartSpeed = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="nodeName" />
-        <YAxis/>
+        <YAxis />
         <Tooltip />
         <Legend />
         <Area
@@ -61,6 +63,6 @@ const NodeNetworkChartSpeed = () => {
       </AreaChart>
     </div>
   );
-  };
-  
-  export default NodeNetworkChartSpeed;
+};
+
+export default NodeNetworkChartSpeed;
