@@ -9,6 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../../recoil/selector";
 
 const data = [
   {
@@ -56,12 +58,15 @@ const data = [
 ];
 
 export default function App() {
+  const isDark = useRecoilValue(getTheme);
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? "boxShadowBlack boxLayoutel2" : "boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
-      <h3>처리속도(TPS)</h3>
+      <h3 style={isDark ? { color: "white" } : {}}>처리속도(TPS)</h3>
       <ComposedChart
         width={500}
         height={360}
@@ -74,8 +79,12 @@ export default function App() {
         }}
       >
         <CartesianGrid stroke="#f5f5f5" />
-        <XAxis dataKey="name" scale="band" />
-        <YAxis />
+        <XAxis
+          dataKey="name"
+          scale="band"
+          stroke={isDark ? "white" : "black"}
+        />
+        <YAxis stroke={isDark ? "white" : "black"} />
         <Tooltip />
         <Legend />
         <Bar dataKey="처리속도" barSize={20} fill="#413ea0" />

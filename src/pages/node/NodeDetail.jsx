@@ -7,8 +7,11 @@ import NodeLatencyChart from "./utils/chart/nodeLatencyChart";
 import NodePowerUsageChart from "./utils/chart/nodePowerUsageChart";
 import NodeMemoryChart from "./utils/chart/nodeMemoryChart";
 import Button from "@mui/material/Button";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../recoil/selector";
 
 const NodeDetail = () => {
+  const isDark = useRecoilValue(getTheme);
   const { nodeName } = useParams();
   const [nodeIp, setNodeIp] = useState("");
   const nodeTableData = NodeFirebase();
@@ -33,12 +36,14 @@ const NodeDetail = () => {
 
   return (
     <div>
-      <h1>상세정보</h1>
-      <h3>
+      <h1 style={isDark ? { color: "white" } : {}}>상세정보</h1>
+      <h3 style={isDark ? { color: "white" } : {}}>
         {nodeName} : {nodeIp}
       </h3>
       <div className="toMainBtnLayout">
-      <Button variant="contained" onClick={toNode}>목록으로</Button>
+        <Button variant="contained" onClick={toNode}>
+          목록으로
+        </Button>
       </div>
 
       <div className="boxLayout2 maginBw100">

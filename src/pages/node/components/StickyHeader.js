@@ -4,10 +4,11 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { nodeData } from "../utils/nodeMockData";
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 
 export default function StickyHeadTable() {
+  const isDark = useRecoilValue(getTheme);
   const userValue = useRecoilValue(getUserInfo);
 
   const tableHeadAuth = (column) => {
@@ -18,7 +19,15 @@ export default function StickyHeadTable() {
             sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600" }}
             key={column.id}
             align={column.align}
-            style={{ minWidth: column.minWidth }}
+            style={
+              isDark
+                ? {
+                    backgroundColor: "#1e2235",
+                    color: "white",
+                    minWidth: column.minWidth,
+                  }
+                : { minWidth: column.minWidth }
+            }
           >
             {column.label}
           </TableCell>
@@ -30,7 +39,15 @@ export default function StickyHeadTable() {
           sx={{ lineHeight: "2.5rem", fontSize: "0.9rem", fontWeight: "600" }}
           key={column.id}
           align={column.align}
-          style={{ minWidth: column.minWidth }}
+          style={
+            isDark
+              ? {
+                  backgroundColor: "#1e2235",
+                  color: "white",
+                  minWidth: column.minWidth,
+                }
+              : { minWidth: column.minWidth }
+          }
         >
           {column.label}
         </TableCell>

@@ -8,10 +8,10 @@ import NodeNetworkStateChart from "../utils/chart/nodeNetworkStatusChart";
 const AllNode = () => {
   return (
     <div>
-      <h2>전체노드 지원현황 페이지</h2>
+      <div className="maginBw100"></div>
       <div className="boxLayout2 maginBw100">
-          <NodeServicePercentageChart />
-          <NodeServiceActivationChart />
+        <NodeServicePercentageChart />
+        <NodeServiceActivationChart />
       </div>
       <div className="boxLayout2 maginBw100">
         <NodeNetworkSpeedChart />

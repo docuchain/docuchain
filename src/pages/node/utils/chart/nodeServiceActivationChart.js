@@ -1,7 +1,8 @@
 import React from "react";
 import { colors } from "../../../../lib/colors";
-import { PieChart, Pie, Cell, Legend, } from "recharts";
-
+import { PieChart, Pie, Cell, Legend } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../../recoil/selector";
 
 const data = [
   { serviceName: "활성화", value: 159 },
@@ -37,14 +38,17 @@ const renderCustomizedLabel = ({
   );
 };
 export default function App() {
+  const isDark = useRecoilValue(getTheme);
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? "boxShadowBlack boxLayoutel2" : "boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>노드 서비스 활성화/비활성화</h3>
       <PieChart width={400} height={400}>
-      <Legend/>
+        <Legend />
         <Pie
           data={data}
           cx="50%"
@@ -60,7 +64,6 @@ export default function App() {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        
       </PieChart>
     </div>
   );

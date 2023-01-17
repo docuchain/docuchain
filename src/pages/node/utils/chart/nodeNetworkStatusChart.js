@@ -7,9 +7,12 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../../recoil/selector";
 import { NodeFirebase } from "../../utils/nodeMockData";
 
 const NodeNetworkChartStatus = () => {
+  const isDark = useRecoilValue(getTheme);
   const [data, setData] = useState([]);
   const [nodeChartDataList, setNodeChartDataList] = useState([]);
 
@@ -66,7 +69,9 @@ const NodeNetworkChartStatus = () => {
 
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? "boxShadowBlack boxLayoutel2" : "boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>노드 네트워크 평균 상태</h3>

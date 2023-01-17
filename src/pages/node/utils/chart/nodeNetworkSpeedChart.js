@@ -8,9 +8,12 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../../recoil/selector";
 import { NodeFirebase } from "../../utils/nodeMockData";
 
 const NodeNetworkChartSpeed = () => {
+  const isDark = useRecoilValue(getTheme);
   const [nodeChartDataList, setNodeChartDataList] = useState([]);
 
   const nodeChartData = NodeFirebase();
@@ -50,7 +53,9 @@ const NodeNetworkChartSpeed = () => {
 
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? "boxShadowBlack boxLayoutel2" : "boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>노드 네트워크 속도</h3>

@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { colors } from "../../../../lib/colors";
 import { PieChart, Pie, Sector } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../../recoil/selector";
 
 const data = [
   { name: "A서비스", value: 56 },
@@ -84,6 +86,7 @@ const renderActiveShape = (props) => {
 };
 
 export default function App() {
+  const isDark = useRecoilValue(getTheme);
   const [activeIndex, setActiveIndex] = useState(0);
   const onPieEnter = useCallback(
     (_, index) => {
@@ -94,9 +97,11 @@ export default function App() {
 
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? "boxShadowBlack boxLayoutel2" : "boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
-      >
+    >
       <h3>노드 서비스 점유율</h3>
       <PieChart width={560} height={400}>
         <Pie
