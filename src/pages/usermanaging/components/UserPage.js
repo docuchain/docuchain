@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 
 import { deleteDoc, doc, getDocs } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 // 테이블 헤더 데이터
 const columns = [
@@ -148,6 +149,7 @@ const UserPage = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   return (
     // <TableContainer component={Paper} style={{ width: "1200px" }}>
     //   <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -290,41 +292,46 @@ const UserPage = (props) => {
                 <TableCell
                   component="th"
                   scope="row"
-                  style={{ color: "#6d6d6d", width: 130, textIndent: 30 }}
+                  style={{ color: "#6d6d6d", width: 100, textIndent: 30 }}
                 >
                   {datael.role}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 150, textIndent: 30 }} align="left">
                   {datael.name}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {datael.team}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {datael.email}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 200, textIndent: 30 }} align="left">
                   {countCheck(datael.dashboard.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {countCheck(datael.block.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {countCheck(datael.trans.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {countCheck(datael.node.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {countCheck(datael.service.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   {datael.usingService}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
-                  <button value={datael.name} onClick={toUsersDetail}>
+                <TableCell style={{ width: 120, textIndent: 30 }} align="left">
+                  <Button
+                    variant="outlined"
+                    value={datael.name}
+                    onClick={toUsersDetail}
+                    style={{ fontSize: "1rem", marginRight: "20px" }}
+                  >
                     상세보기
-                  </button>
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

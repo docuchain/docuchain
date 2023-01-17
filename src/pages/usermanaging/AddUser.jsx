@@ -338,7 +338,7 @@ const AddUser = () => {
               B서비스
             </h5>
           </label>
-          <Button type="submit" variant="contained" className="addBtn">
+          <Button type="submit" variant="outlined" className="addBtn">
             추가
           </Button>
         </form>

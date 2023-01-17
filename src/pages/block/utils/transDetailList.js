@@ -64,6 +64,7 @@ export default function TransDetailList(props) {
       swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
     }
   };
+
   const closeModal = () => {
     setModalOpen(false);
   };
