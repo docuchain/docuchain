@@ -111,24 +111,17 @@ export default function BlockTable(props) {
                   {datael.serviceName}
                 </TableCell>
                 <TableCell
-                  style={
-                    isDark
-                      ? {
-                          fontWeight: 600,
-                          color: "white",
-                          width: 130,
-                          textIndent: 30,
-                        }
-                      : {
-                          fontWeight: 600,
-                          color: "#323846",
-                          width: 130,
-                          textIndent: 30,
-                        }
-                  }
+                  style={{
+                    width: 130,
+                    textIndent: 30,
+                  }}
                   align="left"
                 >
-                  <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
+                  <Link
+                    to={`${datael.blockNumber}`}
+                    value={datael.blockNumber}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
+                  >
                     {datael.blockNumber}
                   </Link>
                 </TableCell>

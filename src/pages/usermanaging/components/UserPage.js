@@ -12,6 +12,9 @@ import Paper from "@mui/material/Paper";
 
 import { deleteDoc, doc, getDocs } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
 // 테이블 헤더 데이터
 const columns = [
@@ -83,6 +86,7 @@ const columns = [
 ];
 
 const UserPage = (props) => {
+  const isDark = useRecoilValue(getTheme);
   const { userData } = props;
 
   // const [name, setName] = useState();
@@ -256,7 +260,10 @@ const UserPage = (props) => {
     //   </Table>
     // </TableContainer>
 
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper
+      sx={{ width: "100%", overflow: "hidden" }}
+      style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
+    >
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -271,7 +278,15 @@ const UserPage = (props) => {
                   }}
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={
+                    isDark
+                      ? {
+                          backgroundColor: "#1e2235",
+                          color: "white",
+                          minWidth: column.minWidth,
+                        }
+                      : { minWidth: column.minWidth }
+                  }
                 >
                   {column.label}
                 </TableCell>
@@ -290,41 +305,115 @@ const UserPage = (props) => {
                 <TableCell
                   component="th"
                   scope="row"
-                  style={{ color: "#6d6d6d", width: 130, textIndent: 30 }}
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
                 >
                   {datael.role}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.name}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.team}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.email}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {countCheck(datael.dashboard.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {countCheck(datael.block.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {countCheck(datael.trans.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {countCheck(datael.node.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {countCheck(datael.service.toString())}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.usingService}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
-                  <button value={datael.name} onClick={toUsersDetail}>
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
+                  <Button value={datael.name} onClick={toUsersDetail}>
                     상세보기
-                  </button>
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -339,6 +428,7 @@ const UserPage = (props) => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        style={isDark ? { color: "white" } : { color: "#323846" }}
       />
     </Paper>
   );
