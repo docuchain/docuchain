@@ -27,20 +27,52 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      & .img {
+      & .logoutImg {
         z-index: 1;
         width: 90px;
         height: 90px;
         border-radius: 60px;
         background: gray;
-        & .icon {
+        & .defaultIcon {
           font-size: 4rem;
           color: #fff;
           transform: translate(13px, 8px);
           // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
           // display: none;
         }
-        // background: url("../../asset/imgs/manager.jpeg");
+          // background: url("../../asset/imgs/manager.jpeg");
+        background-size: contain;
+      }
+      & .userImg {
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        border-radius: 60px;
+        background: gray;
+        & .defaultIcon {
+          font-size: 4rem;
+          color: #fff;
+          transform: translate(13px, 8px);
+          // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
+          // display: none;
+        }
+          background: url("../../asset/imgs/manager.jpeg");
+        background-size: contain;
+      }
+      & .superAdminImg {
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        border-radius: 60px;
+        background: gray;
+        & .defaultIcon {
+          font-size: 4rem;
+          color: #fff;
+          transform: translate(13px, 8px);
+          // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
+          // display: none;
+        }
+          background: url("../../asset/imgs/superManager.jpeg");
         background-size: contain;
       }
       .img_wrap {

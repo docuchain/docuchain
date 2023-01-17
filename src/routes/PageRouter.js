@@ -34,7 +34,11 @@ const PageRouter = () => {
 
   return (
     <div className="pageRouterWrap">
-      <div className="pageRouterWrap--left">
+      <div
+        className={
+          isDark ? "pageRouterWrapBlack--left" : " pageRouterWrap--left"
+        }
+      >
         <NavBar />
       </div>
       <div className="pageRouterWrap--right">

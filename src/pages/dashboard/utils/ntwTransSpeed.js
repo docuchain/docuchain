@@ -114,8 +114,12 @@ function NtwTransSpeed(props) {
         }}
       >
         <CartesianGrid stroke="#f5f5f5" />
-        <XAxis dataKey="time" scale="band" />
-        <YAxis domain={[0, 400]} />
+        <XAxis
+          dataKey="time"
+          scale="band"
+          stroke={isDark ? "white" : "black"}
+        />
+        <YAxis domain={[0, 400]} stroke={isDark ? "white" : "black"} />
         <Tooltip />
         <Legend />
         <Bar

@@ -133,8 +133,12 @@ function NtwBlockTime(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" padding={{ left: 30, right: 30 }} />
-        <YAxis />
+        <XAxis
+          dataKey="time"
+          padding={{ left: 30, right: 30 }}
+          stroke={isDark ? "white" : "black"}
+        />
+        <YAxis stroke={isDark ? "white" : "black"} />
         <Tooltip />
         <Legend />
         <Line
