@@ -44,7 +44,13 @@ const NavBar = () => {
             <div className="circle bottom"></div>
           </div>
           <p className="name">{userValue.email}</p>
-          <p className="position">직책(권한)</p>
+          {userEmail === "test@test.com" ? (
+            <p className="position">슈퍼관리자</p>
+          ) : userEmail !== "" ? (
+            <p className="position">유저</p>
+          ) : (
+            <p></p>
+          )}{" "}
         </div>
         <div className="nav">
           <ul className="navList">
