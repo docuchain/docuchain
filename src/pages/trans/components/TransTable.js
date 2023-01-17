@@ -9,7 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import swal from "sweetalert";
 
 // 테이블 헤더 데이터
@@ -47,6 +47,7 @@ const columns = [
 ];
 
 export default function TransTable(props) {
+  const isDark = useRecoilValue(getTheme);
   const userValue = useRecoilValue(getUserInfo);
   const { data, fetchdata } = props;
   // 데이터 fetch
@@ -69,7 +70,10 @@ export default function TransTable(props) {
     }
   };
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper
+      sx={{ width: "100%", overflow: "hidden" }}
+      style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
+    >
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -84,7 +88,15 @@ export default function TransTable(props) {
                   }}
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={
+                    isDark
+                      ? {
+                          backgroundColor: "#1e2235",
+                          color: "white",
+                          minWidth: column.minWidth,
+                        }
+                      : { minWidth: column.minWidth }
+                  }
                 >
                   {column.label}
                 </TableCell>
@@ -102,31 +114,61 @@ export default function TransTable(props) {
                   component="th"
                   scope="row"
                 >
-                  {datael.serviceName}
+                  <Link
+                    value={datael.transNumber}
+                    to={`${datael.transNumber}`}
+                    onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
+                  >
+                    {datael.serviceName}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 160, textIndent: 30 }} align="left">
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
                     onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.transNumber}
                   </Link>
                 </TableCell>
                 <TableCell style={{ width: 220, textIndent: 30 }} align="left">
-                  {datael.timeStamp}
+                  <Link
+                    value={datael.transNumber}
+                    to={`${datael.transNumber}`}
+                    onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
+                  >
+                    {datael.timeStamp}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 280, textIndent: 30 }} align="left">
-                  {datael.transHash}
+                  <Link
+                    value={datael.transNumber}
+                    to={`${datael.transNumber}`}
+                    onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
+                  >
+                    {datael.transHash}
+                  </Link>
                 </TableCell>
                 <TableCell style={{ width: 100, textIndent: 30 }} align="left">
-                  {datael.transSize}
+                  <Link
+                    value={datael.transNumber}
+                    to={`${datael.transNumber}`}
+                    onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
+                  >
+                    {datael.transSize}
+                  </Link>
                 </TableCell>
 
                 <TableCell style={{ width: 100, textIndent: 30 }} align="left">
                   <Link
                     value={datael.blockNumber}
                     to={`/block/${datael.blockNumber}`}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.blockNumber}
                   </Link>
@@ -144,6 +186,7 @@ export default function TransTable(props) {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        style={isDark ? { color: "white" } : { color: "#323846" }}
       />
     </Paper>
   );

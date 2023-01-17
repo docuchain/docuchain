@@ -5,8 +5,7 @@ import NodeTap from "../node/components/NodeTab";
 import AllNode from "./components/AllNode";
 
 import { NodeFirebase } from "./utils/nodeMockData";
-import { getTheme } from "../../recoil/selector";
-import { useRecoilValue } from "recoil";
+
 const Node = () => {
   const [selectedTap, setSelectedTap] = useState("NODE_LIST");
   const nodeTableData = NodeFirebase();
@@ -14,7 +13,7 @@ const Node = () => {
   return (
     <>
       <div className="boxLayout1">
-      <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
+        <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
       </div>
       {selectedTap === "NODE_LIST" ? <NodeTable /> : <AllNode />}
     </>
