@@ -21,9 +21,11 @@ export default function TransDetailTable(props) {
 
   // 복사 버튼
   const [copy, copied] = useState(false);
+
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
+      copied(!copy);
       copied(!copy);
       swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
@@ -96,14 +98,6 @@ export default function TransDetailTable(props) {
               <TableCell>트랜잭션해시</TableCell>
               <TableCell>
                 {transHash}
-                {/* <Button
-                  className="btnLayout"
-                  variant="contained"
-                  disableElevation
-                  onClick={() => handleCopyClipBoard(transHash)}
-                >
-                  복사
-                </Button> */}
                 <Stack spacing={2} direction="row" className="btnLayout">
                   {copy === true ? (
                     <Button variant="contained">
