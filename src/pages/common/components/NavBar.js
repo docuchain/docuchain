@@ -11,14 +11,7 @@ const NavBar = () => {
   const nowUser = authService.currentUser;
   const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
-
-  // =============================
-
-  // let data = ["대시보드", "블록", "트랜잭션", "노드", "서비스"];
-
   const [tab, setTab] = useState("");
-
-  // ==========================
 
   return (
     <div className="Navbar">
@@ -26,7 +19,7 @@ const NavBar = () => {
       <div className="logo">
         <div className="img" onClick={() => navigate("/")}></div>
       </div>
-      ;{/* 영역 2 */}
+      {/* 영역 2 */}
       <div className="innerContainer">
         <div className="avatar">
           <div className="img">
@@ -69,7 +62,6 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      ;
     </div>
   );
 };
