@@ -5,19 +5,21 @@ import { authService } from "../../../apis/firebase";
 import { logout } from "../../myinfo/utils/logout";
 import PersonIcon from "@mui/icons-material/Person";
 import { useRecoilValue, useResetRecoilState } from "recoil";
-import { userInfo } from "../../../recoil/atom";
+import { userEmail, userInfo } from "../../../recoil/atom";
 import { List } from "@mui/material";
 import "../style/userlogo.scss";
 import { getUserInfo } from "../../../recoil/selector";
 const UserLogo = () => {
   const userValue = useRecoilValue(getUserInfo);
   const resetUser = useResetRecoilState(userInfo);
+  const resetEmail = useResetRecoilState(userEmail);
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
+  const nowUser = authService.currentUser;
 
   useEffect(() => {
     toggleChange();
-  }, []);
+  }, [userValue.email]);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -48,6 +50,7 @@ const UserLogo = () => {
                     onClick={() => {
                       logout();
                       resetUser();
+                      resetEmail();
                     }}
                   >
                     <span>로그아웃</span>
@@ -70,6 +73,7 @@ const UserLogo = () => {
                     onClick={() => {
                       logout();
                       resetUser();
+                      resetEmail();
                     }}
                   >
                     로그아웃
