@@ -6,9 +6,7 @@
 /* dash */
 
 .App {
- 
 }
-
 
 /* pageRouterApp */
 a {
@@ -38,4 +36,11 @@ li {
 
 .pageRouterWrap--right--footer {
   height: 8vh;
+}
+
+//Black
+.pageRouterWrapBlack--left {
+  min-width: 280px;
+  font-size: 1.5rem;
+  background: #1e2235;
 }

@@ -6,10 +6,11 @@ import { useForm } from "react-hook-form";
 import { async } from "@firebase/util";
 import block from "../../block/Block";
 import { authService } from "../../../apis/firebase";
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 import swal from "sweetalert";
 const SearchBar = () => {
+  const isDark = useRecoilValue(getTheme);
   const { handleSubmit } = useForm();
   const [input, setInput] = useState("");
   const [url, setUrl] = useState("");
@@ -75,6 +76,7 @@ const SearchBar = () => {
             placeholder="블록번호/블록해시/트랜잭션해시"
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
           ></input>
         </label>
         <Button type="submit" className="searchIconBox">
