@@ -12,13 +12,14 @@ import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
 
 import StickyHeadTable from "./StickyHeader";
 import "../NodeStyle.scss";
 
 const NodeTable = () => {
+  const isDark = useRecoilValue(getTheme);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const navigate = useNavigate();
@@ -73,7 +74,14 @@ const NodeTable = () => {
               <TableContainer sx={{ maxHeight: 440 }}>
                 <Table stickyHeader aria-label="sticky table">
                   <StickyHeadTable />
-                  <TableBody sx={{ lineHeight: "2.5rem", fontSize: "0.9rem" }}>
+                  <TableBody
+                    sx={{ lineHeight: "2.5rem", fontSize: "0.9rem" }}
+                    style={
+                      isDark
+                        ? { backgroundColor: "#1e2235", color: "white" }
+                        : {}
+                    }
+                  >
                     {nodeTableDataList
                       .slice(
                         page * rowsPerPage,
@@ -86,6 +94,14 @@ const NodeTable = () => {
                               className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.serviceName}
                             </TableCell>
@@ -93,6 +109,14 @@ const NodeTable = () => {
                               className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.status}
                             </TableCell>
@@ -100,6 +124,14 @@ const NodeTable = () => {
                               className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.nodeName}
                             </TableCell>
@@ -107,6 +139,14 @@ const NodeTable = () => {
                               className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.type}
                             </TableCell>
@@ -114,6 +154,14 @@ const NodeTable = () => {
                               className="selectableArea"
                               align="center"
                               onClick={() => onClickNodeDetail(node.nodeName)}
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.serviceNameE}
                             </TableCell>
@@ -122,17 +170,45 @@ const NodeTable = () => {
                                 className="selectableArea"
                                 align="center"
                                 onClick={() => onClickNodeDetail(node.nodeName)}
+                                style={
+                                  isDark
+                                    ? {
+                                        backgroundColor: "#1e2235",
+                                        color: "white",
+                                      }
+                                    : {}
+                                }
                               >
                                 {node.IP}
                               </TableCell>
                             ) : (
-                              <TableCell align="center">www.xxx.xxx</TableCell>
+                              <TableCell
+                                align="center"
+                                style={
+                                  isDark
+                                    ? {
+                                        backgroundColor: "#1e2235",
+                                        color: "white",
+                                      }
+                                    : {}
+                                }
+                              >
+                                www.xxx.xxx
+                              </TableCell>
                             )}
                             <TableCell
                               className="selectableArea"
                               align="center"
                               onClick={() =>
                                 onClickBlockDetail(node.blockNumber)
+                              }
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
                               }
                             >
                               {node.newBlockNum}
@@ -143,14 +219,44 @@ const NodeTable = () => {
                               onClick={() =>
                                 onClickBlockDetail(node.blockNumber)
                               }
+                              style={
+                                isDark
+                                  ? {
+                                      backgroundColor: "#1e2235",
+                                      color: "white",
+                                    }
+                                  : {}
+                              }
                             >
                               {node.newBlockTime}
                             </TableCell>
                             {userValue.node && (
-                              <TableCell align="center">{node.TPS}</TableCell>
+                              <TableCell
+                                align="center"
+                                style={
+                                  isDark
+                                    ? {
+                                        backgroundColor: "#1e2235",
+                                        color: "white",
+                                      }
+                                    : {}
+                                }
+                              >
+                                {node.TPS}
+                              </TableCell>
                             )}
                             {userValue.node && (
-                              <TableCell align="center">
+                              <TableCell
+                                align="center"
+                                style={
+                                  isDark
+                                    ? {
+                                        backgroundColor: "#1e2235",
+                                        color: "white",
+                                      }
+                                    : {}
+                                }
+                              >
                                 {node.latency}
                               </TableCell>
                             )}
@@ -159,9 +265,17 @@ const NodeTable = () => {
                       })}
                     {emptyRows > 0 && (
                       <TableRow
-                        style={{
-                          height: 50 * emptyRows,
-                        }}
+                        style={
+                          isDark
+                            ? {
+                                backgroundColor: "#1e2235",
+                                color: "white",
+                                height: 50 * emptyRows,
+                              }
+                            : {
+                                height: 50 * emptyRows,
+                              }
+                        }
                       >
                         <TableCell colSpan={6} />
                       </TableRow>
@@ -177,6 +291,11 @@ const NodeTable = () => {
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
+                style={
+                  isDark
+                    ? { backgroundColor: "#1e2235", color: "white" }
+                    : { color: "#323846" }
+                }
               />
             </Paper>
           </Table>
