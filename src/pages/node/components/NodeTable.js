@@ -45,10 +45,9 @@ const NodeTable = () => {
 
   const onClickNodeDetail = (nodeName) => {
     if (userValue.node) {
-      swal("노드 세부페이지로 이동합니다");
       navigate(`/node/${nodeName}`);
     } else {
-      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
     }
   };
 

@@ -20,28 +20,28 @@ const columns = [
     id: "timeStamp",
     label: "타임스탬프",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "blockHash",
     label: "트랜잭션해시",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "blockSize",
     label: "트랜잭션크기",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toFixed(2),
   },
   {
     id: "transnum",
     label: "블록번호",
     minWidth: 100,
-    align: "left",
+    align: "center",
     format: (value) => value.toFixed(2),
   },
 ];
@@ -65,7 +65,7 @@ export default function TransTable(props) {
   //트랜잭션 권한여부 판별
   const transAuth = (e) => {
     if (!userValue.trans) {
-      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
       e.preventDefault();
     }
   };
@@ -123,7 +123,10 @@ export default function TransTable(props) {
                     {datael.serviceName}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 160, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ width: 160, textIndent: 30 }}
+                  align="center"
+                >
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -133,7 +136,10 @@ export default function TransTable(props) {
                     {datael.transNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 220, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ width: 220, textIndent: 30 }}
+                  align="center"
+                >
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -143,7 +149,10 @@ export default function TransTable(props) {
                     {datael.timeStamp}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 280, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ width: 280, textIndent: 30 }}
+                  align="center"
+                >
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -153,7 +162,10 @@ export default function TransTable(props) {
                     {datael.transHash}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ width: 100, textIndent: 30 }}
+                  align="center"
+                >
                   <Link
                     value={datael.transNumber}
                     to={`${datael.transNumber}`}
@@ -164,7 +176,10 @@ export default function TransTable(props) {
                   </Link>
                 </TableCell>
 
-                <TableCell style={{ width: 100, textIndent: 30 }} align="left">
+                <TableCell
+                  style={{ width: 100, textIndent: 30 }}
+                  align="center"
+                >
                   <Link
                     value={datael.blockNumber}
                     to={`/block/${datael.blockNumber}`}
