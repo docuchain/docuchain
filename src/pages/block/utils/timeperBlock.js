@@ -77,7 +77,7 @@ function TimePerBlock(props) {
           type="monotone"
           dataKey="timePerBlock"
           stroke="#8884d8"
-          fill="rgba(0,136,254,0.7)"
+          fill="rgba(0,136,254)"
           key={Math.random()}
         />
       </AreaChart>
