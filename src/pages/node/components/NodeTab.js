@@ -5,7 +5,7 @@ import "../NodeStyle.scss";
 
 const NodeTap = ({ selectedTap, setSelectedTap }) => {
   return (
-    <div className="nodeTabContainer" >
+    <div className="nodeTabContainer">
       <div
         className="tab"
         style={{
