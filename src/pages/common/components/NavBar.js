@@ -5,14 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import { getUserEmail } from "../../../recoil/selector";
+
 const NavBar = () => {
   const nowUser = authService.currentUser;
+  const userEmail = useRecoilValue(getUserEmail);
   const userValue = useRecoilValue(getUserInfo);
   const navigate = useNavigate();
-  const activeStyle = {
-    background: "#4e81ef",
-    color: "yellow",
-  };
+  const [tab, setTab] = useState("");
 
   return (
     <div className="Navbar">
@@ -23,65 +24,59 @@ const NavBar = () => {
       {/* 영역 2 */}
       <div className="innerContainer">
         <div className="avatar">
-          <div className="img"></div>
+          <div
+            className={
+              userEmail === "test@test.com"
+                ? "superAdminImg"
+                : userEmail !== ""
+                ? "userImg"
+                : "logoutImg"
+            }
+          >
+            {userEmail === "" ? (
+              <PersonOutlineIcon className="defaultIcon" />
+            ) : (
+              <div></div>
+            )}{" "}
+          </div>
+          <div className="img_wrap">
+            <div className="circle top"></div>
+            <div className="circle bottom"></div>
+          </div>
           <p className="name">{userValue.email}</p>
-          <p className="position">FE Developer</p>
+          <p className="position">직책(권한)</p>
         </div>
         <div className="nav">
           <ul className="navList">
-            <li className="NavBar__link">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "navlinkClicked" : "navlinkDefault"
-                }
-              >
+            <li className={`li ${tab === "dash" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/" onClick={() => setTab("dash")}>
                 대시보드
               </NavLink>
             </li>
-            <li className="NavBar__link">
-              <NavLink
-                to="/block"
-                className={({ isActive }) =>
-                  isActive ? "navlinkClicked" : "navlinkDefault"
-                }
-              >
+            <li className={`li ${tab === "block" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/block" onClick={() => setTab("block")}>
                 블록
               </NavLink>
             </li>
-            <li className="NavBar__link">
-              <NavLink
-                to="/trans"
-                className={({ isActive }) =>
-                  isActive ? "navlinkClicked" : "navlinkDefault"
-                }
-              >
+            <li className={`li ${tab === "trans" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/trans" onClick={() => setTab("trans")}>
                 트랜잭션
               </NavLink>
             </li>
-            <li className="NavBar__link">
-              <NavLink
-                to="/node"
-                className={({ isActive }) =>
-                  isActive ? "navlinkClicked" : "navlinkDefault"
-                }
-              >
+            <li className={`li ${tab === "node" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/node" onClick={() => setTab("node")}>
                 노드
               </NavLink>
             </li>
-            <li className="NavBar__link">
-              <NavLink
-                to="/service"
-                className={({ isActive }) =>
-                  isActive ? "navlinkClicked" : "navlinkDefault"
-                }
-              >
+            <li className={`li ${tab === "service" ? "navlinkClicked" : ""}`}>
+              <NavLink to="/service" onClick={() => setTab("service")}>
                 서비스
               </NavLink>
             </li>
           </ul>
         </div>
       </div>
+      ;
     </div>
   );
 };

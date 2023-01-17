@@ -24,6 +24,9 @@ export default function ContentsTitle() {
 
   useEffect(() => {
     fetchdata();
+  }, []);
+
+  useEffect(() => {
     nameChange();
   });
 
