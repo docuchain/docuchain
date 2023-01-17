@@ -1,6 +1,3 @@
-메인 IMG
-링크 :
-
 # 👇프로젝트 명 : 다큐체인 모니터링 뷰어
 <br />
 
@@ -32,10 +29,9 @@
 
 ### 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
 
-
+<br />
 
 ## 📌 구현 기능
-
 - HTML 태그 이용하여 웹페이지 구성
 
 - ReCharts를 활용하여 분석 및 차트를 구현
@@ -48,7 +44,7 @@
 - Firebase를 임의데이터 활용 실시간 데이터 출력
 - 관리자 권한 여부에 따른 접근 설정 구현
 
-
+<br />
 
 ## 📑 초안 / 프로젝트 레이아웃
 
@@ -64,7 +60,7 @@
 
 ![Group 88](https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg)
 
-
+<br />
 
 ## 📁 폴더 구조
 
@@ -120,6 +116,7 @@
 .env.local
 ```
 
+<br />
 
 ## 🛠 사용 기술
 
@@ -141,6 +138,8 @@
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+<br />
 
 ### ⚙ 기술 스택
 
