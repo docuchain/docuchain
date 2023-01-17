@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -8,11 +7,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { getUserInfo } from "../../../recoil/selector";
+import swal from "sweetalert";
 
 // 테이블 헤더 데이터
 const columns = [
