@@ -141,7 +141,7 @@ const UserInfo = (props) => {
     <div className="boxLayout1 boxShadow">
       <div className="Myinfo">
         <h2>USER INFO</h2>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} style={{ marginBottom: "20px" }}>
           <label>
             <h5>이름 : {userName}</h5>
           </label>
@@ -195,9 +195,29 @@ const UserInfo = (props) => {
             <h5>유형 : {userRole}</h5>
           </label>
 
-          <Button onClick={toUsers}>취소</Button>
-          <Button onClick={updateData}>정보 변경</Button>
-          <Button onClick={deleteData}>사용자 삭제</Button>
+          <Button
+            style={{ marginRight: "20px" }}
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={toUsers}
+          >
+            취소
+          </Button>
+          <Button
+            style={{ marginRight: "20px" }}
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={updateData}
+          >
+            정보 변경
+          </Button>
+          <Button
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={deleteData}
+          >
+            사용자 삭제
+          </Button>
         </form>
       </div>
     </div>
