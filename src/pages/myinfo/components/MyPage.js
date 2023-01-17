@@ -90,7 +90,7 @@ const MyPage = () => {
         <h5>이메일 : {user.email}</h5>
         <form onSubmit={handleSubmit(onPasswordChange, onError)}>
           <label>
-            비밀번호 :{" "}
+            <h5 style={{ display: "inline" }}>비밀번호 : </h5>
             <Input
               className="passwordInput"
               type={"password"}
@@ -108,7 +108,7 @@ const MyPage = () => {
           <br />
           <br />
           <label>
-            비밀번호 재확인 :{" "}
+            <h5 style={{ display: "inline" }}>비밀번호 재확인 :</h5>
             <Input
               className="passwordInput"
               type={"password"}
@@ -123,7 +123,12 @@ const MyPage = () => {
               })}
             />
           </label>
-          <Button type="submit" variant="contained">
+          <Button
+            type="submit"
+            variant="outlined"
+            href="#contained-buttons"
+            style={{ marginLeft: "20px" }}
+          >
             변경
           </Button>
           {errors && (

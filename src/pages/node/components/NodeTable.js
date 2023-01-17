@@ -46,7 +46,7 @@ const NodeTable = () => {
     if (userValue.node) {
       navigate(`/node/${nodeName}`);
     } else {
-      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
     }
   };
 
