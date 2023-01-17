@@ -14,8 +14,6 @@ import Button from "@mui/material/Button";
 const AddUser = () => {
   const userData = collection(dbService, "user");
   const [newUser, setNewUser] = useState({});
-  const [Info, setInfo] = useRecoilState(userInfo);
-  const [checked, setChecked] = useState(0);
   const [dashboardChecked, setDashboardChecked] = useState(true);
   const [blockChecked, setBlockChecked] = useState(true);
   const [transChecked, setTransChecked] = useState(false);
@@ -52,7 +50,6 @@ const AddUser = () => {
       email: newUser.email,
       password: newUser.password,
       team: newUser.team,
-      //dashboard: newUser.dashboard,
       dashboard: dashboardChecked,
 
       block: blockChecked,
@@ -86,16 +83,6 @@ const AddUser = () => {
     setNewUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-      // role: e.target.value,
-      // name: e.target.value,
-      // email: e.target.value,
-      // team: e.target.value,
-      // usingService: e.target.value,
-      // dashboard: checkHandler(e),
-      // block: e.target.checked,
-      // trans: e.target.checked,
-      // node: e.target.checked,
-      // service: e.target.checked,
     }));
   }
   //roleHandler
@@ -107,44 +94,14 @@ const AddUser = () => {
     async function getUsers() {
       const data = await getDocs(userData);
       console.log(data);
-      // setInfo(
-      //   data.docs.map((item) => ({
-      //     ...item.data(),
-      //   }))
-      // );
-
-      // data.forEach((item) => {
-      //   setName(item.id);
-      // });
     }
-    //  isEmailCheck();
-    //  isPasswordCheck();
-    //  submitHandler();
+
     console.log(isEmail);
     console.log(isPassword);
     getUsers();
   }, []);
 
   const userValue = useRecoilValue(getUserInfo);
-  //console.log(userValue);
-  //console.log(userValue[2].email);
-
-  //boolean
-  const dashboardCheckHandler = (e) => {
-    if (e.target.checked === true) {
-      setDashboardChecked(true);
-    } else {
-      setDashboardChecked(false);
-    }
-  };
-
-  const blockCheckHandler = (e) => {
-    if (e.target.checked === true) {
-      setBlockChecked(true);
-    } else {
-      setBlockChecked(false);
-    }
-  };
 
   const transCheckHandler = (e) => {
     if (e.target.checked === true) {
@@ -317,10 +274,6 @@ const AddUser = () => {
             </h5>
           </label>
 
-          {/* <label>
-          이용중인 서비스
-          <input type="text" name="usingService" onChange={changeHandler} />
-        </label> */}
           <label>
             <h5 className="addUserInput">
               이용중인 서비스 :
@@ -338,7 +291,7 @@ const AddUser = () => {
               B서비스
             </h5>
           </label>
-          <Button type="submit" variant="contained" className="addBtn">
+          <Button type="submit" variant="outlined" className="addBtn">
             추가
           </Button>
         </form>

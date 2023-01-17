@@ -14,6 +14,7 @@ import swal from "sweetalert";
 import { getTheme } from "../../recoil/selector";
 import { useRecoilValue } from "recoil";
 const ServiceDetail = () => {
+  const isDark = useRecoilValue(getTheme);
   // 데이터 담기
   const [data, setData] = useState([]);
 
@@ -83,33 +84,83 @@ const ServiceDetail = () => {
       <div>
         <ToServiceMainBtn />
       </div>
-      <div className="boxLayout1 boxShadow">
+      <div
+        className={
+          isDark ? "boxLayout1 boxShadowBlack" : "boxLayout1 boxShadow"
+        }
+      >
         <TableContainer className="detailTableInner">
           <Table sx={{ minWidth: 600 }} aria-label="simple table">
             <TableBody>
               <TableRow>
-                <TableCell>네트워크명</TableCell>
-                <TableCell>{serviceName}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  네트워크명
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {serviceName}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>타임스탬프</TableCell>
-                <TableCell>{time}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  타임스탬프
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {time}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>API 종류</TableCell>
-                <TableCell>{apiKinds}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  API 종류
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {apiKinds}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>노드명</TableCell>
-                <TableCell>{nodeName}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  노드명
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {nodeName}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>트랜잭션번호</TableCell>
-                <TableCell>{transNum}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  트랜잭션번호
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {transNum}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>트랜잭션해시</TableCell>
-                <TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  트랜잭션해시
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
                   {transHash}
 
                   {/* 복사 btn */}
@@ -123,6 +174,7 @@ const ServiceDetail = () => {
                       <Button
                         variant="outlined"
                         onClick={() => handleCopyClipBoard(transHash)}
+                        style={isDark ? { color: "white" } : {}}
                       >
                         Copy&nbsp;
                         <AiOutlineCopy />
@@ -132,12 +184,28 @@ const ServiceDetail = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>블록번호</TableCell>
-                <TableCell>{blockNum}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  블록번호
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {blockNum}
+                </TableCell>
               </TableRow>
               <TableRow sx={{ borderBottom: "hidden" }}>
-                <TableCell>상태</TableCell>
-                <TableCell>{status}</TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  상태
+                </TableCell>
+                <TableCell
+                  style={isDark ? { color: "white" } : { color: "#323846" }}
+                >
+                  {status}
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>

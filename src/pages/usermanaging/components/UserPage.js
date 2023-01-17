@@ -10,8 +10,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { deleteDoc, doc, getDocs } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
+import { getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { getTheme } from "../../../recoil/selector";
@@ -89,7 +89,6 @@ const UserPage = (props) => {
   const isDark = useRecoilValue(getTheme);
   const { userData } = props;
 
-  // const [name, setName] = useState();
   const navigate = useNavigate();
   // users 데이터 담기
   const [users, setUsers] = useState([]);
@@ -97,16 +96,11 @@ const UserPage = (props) => {
   useEffect(() => {
     async function getUsers() {
       const data = await getDocs(userData);
-      // console.log(data);
       setUsers(
         data.docs.map((item) => ({
           ...item.data(),
         }))
       );
-
-      // data.forEach((item) => {
-      //   setName(item.id);
-      // });
     }
 
     getUsers();
@@ -120,16 +114,6 @@ const UserPage = (props) => {
       return "X";
     }
   };
-
-  // //삭제
-  // async function deleteData() {
-  //   if (window.confirm("정말 삭제합니까?")) {
-  //     await deleteDoc(doc(userData, name));
-  //     alert("삭제되었습니다.");
-  //   } else {
-  //     alert("취소합니다.");
-  //   }
-  // }
 
   //toUsersDetail
   const [usersId, setUsersId] = useState("");
@@ -153,113 +137,6 @@ const UserPage = (props) => {
     setPage(0);
   };
   return (
-    // <TableContainer component={Paper} style={{ width: "1200px" }}>
-    //   <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-    //     <TableHead>
-    //       <TableRow>
-    //         <TableCell align="center">유형</TableCell>
-    //         <TableCell align="center">이름</TableCell>
-    //         <TableCell align="center">소속</TableCell>
-    //         <TableCell align="center">이메일(아이디)</TableCell>
-    //         <TableCell align="center">대시보드</TableCell>
-    //         <TableCell align="center">블록</TableCell>
-    //         <TableCell align="center">트랜잭션</TableCell>
-    //         <TableCell align="center">노드</TableCell>
-    //         <TableCell align="center">서비스</TableCell>
-    //         <TableCell align="center">이용중인 서비스</TableCell>
-    //         <TableCell align="center">상세보기</TableCell>
-    //       </TableRow>
-    //     </TableHead>
-    //     <TableBody>
-    //       {(rowsPerPage > 0
-    //         ? users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    //         : users
-    //       ).map((data, idx) => (
-    //         <TableRow key={idx}>
-    //           <TableCell
-    //             component="th"
-    //             scope="row"
-    //             style={{ width: 160 }}
-    //             align="center"
-    //           >
-    //             {data.role}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {data.name}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {data.team}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {data.email}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {countCheck(data.dashboard.toString())}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {countCheck(data.block.toString())}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {countCheck(data.trans.toString())}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {countCheck(data.node.toString())}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {countCheck(data.service.toString())}
-    //           </TableCell>
-    //           <TableCell style={{ width: 160 }} align="center">
-    //             {data.usingService}
-    //           </TableCell>
-
-    //           {/* <TableCell style={{ width: 160 }} align="center">
-    //             <button onClick={deleteData}>{"❌"}</button>
-    //           </TableCell> */}
-    //           <TableCell>
-    //             <button value={data.name} onClick={toUsersDetail}>
-    //               상세보기
-    //             </button>
-    //           </TableCell>
-    //         </TableRow>
-    //       ))}
-
-    //       {emptyRows > 0 && (
-    //         <TableRow style={{ height: 53 * emptyRows }}>
-    //           <TableCell colSpan={6} />
-    //         </TableRow>
-    //       )}
-    //     </TableBody>
-    //     <TableFooter>
-    //       <TableRow>
-    //         <TablePagination
-    //           rowsPerPageOptions={[
-    //             5,
-    //             10,
-    //             25,
-    //             50,
-    //             100,
-    //             200,
-    //             { label: "All", value: -1 },
-    //           ]}
-    //           colSpan={3}
-    //           count={users.length}
-    //           rowsPerPage={rowsPerPage}
-    //           page={page}
-    //           SelectProps={{
-    //             inputProps: {
-    //               "aria-label": "rows per page",
-    //             },
-    //             native: true,
-    //           }}
-    //           onPageChange={handleChangePage}
-    //           onRowsPerPageChange={handleChangeRowsPerPage}
-    //           ActionsComponent={TablePaginationActions}
-    //         />
-    //       </TableRow>
-    //     </TableFooter>
-    //   </Table>
-    // </TableContainer>
-
     <Paper
       sx={{ width: "100%", overflow: "hidden" }}
       style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
@@ -411,7 +288,11 @@ const UserPage = (props) => {
                   }
                   align="left"
                 >
-                  <Button value={datael.name} onClick={toUsersDetail}>
+                  <Button
+                    variant="outlined"
+                    value={datael.name}
+                    onClick={toUsersDetail}
+                  >
                     상세보기
                   </Button>
                 </TableCell>

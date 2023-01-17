@@ -146,8 +146,8 @@ function ActiveNtw(props) {
         style={({ display: "flex" }, { flexDirection: "column" })}
       >
         <h3>서비스별 네트워크 활동 비율</h3>
-
         <PieChart
+          style={{ textAlign: "center" }}
           width={600}
           height={400}
           margin={{
