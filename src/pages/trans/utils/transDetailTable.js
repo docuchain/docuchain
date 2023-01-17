@@ -4,17 +4,8 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import "../style/TransDetailTable.scss";
-//
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { AiOutlineCopy } from "react-icons/ai";
-// btns
-// import DetailBtn from "../utils/detailBtn";
-// import Button from "@mui/material/Button";
-// import CopyBtn from "./copyBtn";
-
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -50,16 +41,6 @@ export default function TransDetailTable(props) {
   const toTrans = () => {
     navigate(`/trans`);
   };
-
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const handleChangePage = (event, newPage) => {
-  //   setIdx(newPage);
-  // };
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setIdx(0);
-  // };
 
   useEffect(() => {
     async function getTrans() {
@@ -128,13 +109,6 @@ export default function TransDetailTable(props) {
               <TableCell>{status}</TableCell>
             </TableRow>
           </TableBody>
-          {/* <Pagination
-            count={data.length}
-            rowsPerPage={rowsPerPage}
-            idx={idx}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          /> */}
         </Table>
       </TableContainer>
     </div>
