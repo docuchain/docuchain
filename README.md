@@ -142,7 +142,7 @@
 
 ## ⚙ 기술 스택
 
-- 프론트 : HTML,SCSS,React, react-bootstrap
+- 프론트 : HTML,SCSS,React, react-hook-form
 - 백엔드 : Firebase
 - 상태관리 : Recoil
 - 배포 : vercel
