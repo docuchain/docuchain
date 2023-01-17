@@ -11,8 +11,13 @@ const UserManage = () => {
   //삭제
   return (
     <div>
-      <Button>
-        <Link to="/usermanaging/adduser">사용자 추가</Link>
+      <Button variant="contained" style={{ margin: "1rem 0" }}>
+        <Link
+          to="/usermanaging/adduser"
+          style={{ color: "white", fontSize: "1rem" }}
+        >
+          사용자 추가
+        </Link>
       </Button>
       <UserPage userData={userData} />
     </div>

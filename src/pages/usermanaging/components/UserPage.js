@@ -288,7 +288,11 @@ const UserPage = (props) => {
                   }
                   align="left"
                 >
-                  <Button value={datael.name} onClick={toUsersDetail}>
+                  <Button
+                    variant="outlined"
+                    value={datael.name}
+                    onClick={toUsersDetail}
+                  >
                     상세보기
                   </Button>
                 </TableCell>

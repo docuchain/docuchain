@@ -65,7 +65,7 @@ export default function TransTable(props) {
   //트랜잭션 권한여부 판별
   const transAuth = (e) => {
     if (!userValue.trans) {
-      swal("권한이 없습니다. 관리자에게 요청하십시오", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
       e.preventDefault();
     }
   };

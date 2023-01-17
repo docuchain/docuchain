@@ -24,6 +24,7 @@ const MyPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const isBlack = useRecoilValue(getTheme);
   const [isPassword, setIsPassword] = useState(); // 비밀번호, 비밀번호 재확인 같은지여부확인
   const userData = collection(dbService, "user");
   //오늘 날짜 저장
@@ -79,7 +80,9 @@ const MyPage = () => {
   };
 
   return (
-    <div className="boxLayout1 boxShadow">
+    <div
+      className={isBlack ? "boxLayout1 boxShadowBlack" : "boxLayout1 boxShadow"}
+    >
       <div className="Myinfo">
         <h2>My Info</h2>
         <h5>이름 : {user.name}</h5>
@@ -87,7 +90,7 @@ const MyPage = () => {
         <h5>이메일 : {user.email}</h5>
         <form onSubmit={handleSubmit(onPasswordChange, onError)}>
           <label>
-            비밀번호 :{" "}
+            <h5 style={{ display: "inline" }}>비밀번호 : </h5>
             <Input
               className="passwordInput"
               type={"password"}
@@ -105,7 +108,7 @@ const MyPage = () => {
           <br />
           <br />
           <label>
-            비밀번호 재확인 :{" "}
+            <h5 style={{ display: "inline" }}>비밀번호 재확인 :</h5>
             <Input
               className="passwordInput"
               type={"password"}
@@ -120,7 +123,12 @@ const MyPage = () => {
               })}
             />
           </label>
-          <Button type="submit" variant="contained">
+          <Button
+            type="submit"
+            variant="outlined"
+            href="#contained-buttons"
+            style={{ marginLeft: "20px" }}
+          >
             변경
           </Button>
           {errors && (

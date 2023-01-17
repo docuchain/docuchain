@@ -8,15 +8,16 @@ import {
   query,
   where,
 } from "firebase/firestore";
-
+import swal from "sweetalert";
 import { Button } from "@mui/material";
-
+import { getTheme } from "../../../recoil/selector";
+import { useRecoilValue } from "recoil";
 const UserInfo = (props) => {
   // users 데이터 담기
   const [users, setUsers] = useState([]);
   // 데이터 불러오기
   const { userData } = props;
-
+  const isDark = useRecoilValue(getTheme);
   useEffect(() => {
     async function getUsersRef() {
       const data = await getDocs(userData);
@@ -71,13 +72,22 @@ const UserInfo = (props) => {
 
   //삭제
   async function deleteData() {
-    if (window.confirm("정말 삭제합니까?")) {
-      await deleteDoc(doc(userData, userName));
-      alert("삭제되었습니다.");
-      navigate(`/usermanaging`);
-    } else {
-      alert("취소합니다.");
-    }
+    swal({
+      text: "삭제하시겠습니까?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteDoc(doc(userData, userName));
+        swal("삭제되었습니다", {
+          icon: "success",
+        });
+        navigate(`/usermanaging`);
+      } else {
+        swal("취소하였습니다");
+      }
+    });
   }
 
   //업데이트
@@ -138,10 +148,12 @@ const UserInfo = (props) => {
   console.log(userTrans);
 
   return (
-    <div className="boxLayout1 boxShadow">
+    <div
+      className={isDark ? "boxLayout1 boxShadowBlack" : "boxLayout1 boxShadow"}
+    >
       <div className="Myinfo">
         <h2>USER INFO</h2>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} style={{ marginBottom: "20px" }}>
           <label>
             <h5>이름 : {userName}</h5>
           </label>
@@ -195,9 +207,29 @@ const UserInfo = (props) => {
             <h5>유형 : {userRole}</h5>
           </label>
 
-          <Button onClick={toUsers}>취소</Button>
-          <Button onClick={updateData}>정보 변경</Button>
-          <Button onClick={deleteData}>사용자 삭제</Button>
+          <Button
+            style={{ marginRight: "20px" }}
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={toUsers}
+          >
+            취소
+          </Button>
+          <Button
+            style={{ marginRight: "20px" }}
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={updateData}
+          >
+            정보 변경
+          </Button>
+          <Button
+            variant="outlined"
+            href="#contained-buttons"
+            onClick={deleteData}
+          >
+            사용자 삭제
+          </Button>
         </form>
       </div>
     </div>
