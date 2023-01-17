@@ -14,33 +14,33 @@ import { getTheme } from "../../../recoil/selector";
 
 const columns = [
   { id: "serviceName", label: "서비스 명", minWidth: 170, align: "left" },
-  { id: "blockNumber", label: "블록번호", minWidth: 100, align: "left" },
+  { id: "blockNumber", label: "블록번호", minWidth: 100, align: "center" },
   {
     id: "timeStamp",
     label: "타임스탬프",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "blockHash",
     label: "블록해시",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "blockSize",
     label: "블록크기",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toFixed(2),
   },
   {
     id: "transCount",
     label: "트랜잭션 수",
     minWidth: 170,
-    align: "left",
+    align: "center",
     format: (value) => value.toFixed(2),
   },
 ];
@@ -115,7 +115,7 @@ export default function BlockTable(props) {
                     width: 130,
                     textIndent: 30,
                   }}
-                  align="left"
+                  align="center"
                 >
                   <Link
                     to={`${datael.blockNumber}`}
@@ -131,7 +131,7 @@ export default function BlockTable(props) {
                       ? { color: "white", width: 130, textIndent: 30 }
                       : { color: "#323846", width: 130, textIndent: 30 }
                   }
-                  align="left"
+                  align="center"
                 >
                   {datael.timeStamp}
                 </TableCell>
@@ -141,7 +141,7 @@ export default function BlockTable(props) {
                       ? { color: "white", width: 130, textIndent: 30 }
                       : { color: "#323846", width: 130, textIndent: 30 }
                   }
-                  align="left"
+                  align="center"
                 >
                   {datael.blockHash}
                 </TableCell>
@@ -151,7 +151,7 @@ export default function BlockTable(props) {
                       ? { color: "white", width: 130, textIndent: 30 }
                       : { color: "#323846", width: 130, textIndent: 30 }
                   }
-                  align="left"
+                  align="center"
                 >
                   {datael.blockSize}
                 </TableCell>
@@ -161,7 +161,7 @@ export default function BlockTable(props) {
                       ? { color: "white", width: 130, textIndent: 30 }
                       : { color: "#323846", width: 130, textIndent: 30 }
                   }
-                  align="left"
+                  align="center"
                 >
                   {datael.transCount}
                 </TableCell>

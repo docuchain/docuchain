@@ -4,11 +4,12 @@ import "../style/navbar.scss";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../../../apis/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { getUserEmail } from "../../../recoil/selector";
 
 const NavBar = () => {
+  const isDark = useRecoilValue(getTheme);
   const nowUser = authService.currentUser;
   const userEmail = useRecoilValue(getUserEmail);
   const userValue = useRecoilValue(getUserInfo);
