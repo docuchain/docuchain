@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useMatch } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 export default function ContentsTitle() {
+  const isDark = useRecoilValue(getTheme);
   const [data, setData] = useState([]);
   const [name, setName] = useState();
   const { id } = useParams();
@@ -46,7 +49,7 @@ export default function ContentsTitle() {
 
   return (
     <>
-      <div className="ContentsTitle">
+      <div className="ContentsTitle" style={isDark ? { color: "white" } : {}}>
         {transMatch || blockMatch || nodeMatch || serviceMatch ? (
           <h4> | 상세정보</h4>
         ) : location.pathname === "/" ||

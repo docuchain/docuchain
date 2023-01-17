@@ -76,7 +76,15 @@ const SearchBar = () => {
             placeholder="블록번호/블록해시/트랜잭션해시"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
+            style={
+              isDark
+                ? {
+                    backgroundColor: "#1e2235",
+                    color: "white",
+                    boxShadow: "0px -9px 23px 1px rgb(8, 13, 27)",
+                  }
+                : {}
+            }
           ></input>
         </label>
         <Button type="submit" className="searchIconBox">
