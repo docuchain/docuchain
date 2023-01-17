@@ -14,7 +14,7 @@ const Node = () => {
   return (
     <>
       <div className="boxLayout1">
-      <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
+        <NodeTap selectedTap={selectedTap} setSelectedTap={setSelectedTap} />
       </div>
       {selectedTap === "NODE_LIST" ? <NodeTable /> : <AllNode />}
     </>
