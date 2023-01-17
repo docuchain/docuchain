@@ -1,5 +1,5 @@
 import { display } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import Timer from "./timer";
 import { getTheme } from "../../../recoil/selector";
 import { useRecoilValue } from "recoil";
@@ -8,9 +8,6 @@ const TotalBlockCnt = (props) => {
   const dark = "";
 
   const { data, fetchdata } = props;
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   return (
     <div
@@ -24,7 +21,9 @@ const TotalBlockCnt = (props) => {
       }
     >
       <h3>전체 블록 수</h3>
-      <h1 className="DashboardCntNum">{data.length}</h1>
+      <h1 className={isDark ? "DashboardCntNumBlack" : "DashboardCntNum"}>
+        {data.length}
+      </h1>
       <Timer />
     </div>
   );

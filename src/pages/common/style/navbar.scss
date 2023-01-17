@@ -21,18 +21,113 @@
 
   & .innerContainer {
     margin-top: 50px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     & .avatar {
       display: flex;
       flex-direction: column;
       align-items: center;
-      & .img {
+      & .logoutImg {
+        z-index: 1;
         width: 90px;
         height: 90px;
         border-radius: 60px;
         background: gray;
+        & .defaultIcon {
+          font-size: 4rem;
+          color: #fff;
+          transform: translate(13px, 8px);
+          // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
+          // display: none;
+        }
+          // background: url("../../asset/imgs/manager.jpeg");
+        background-size: contain;
+      }
+      & .userImg {
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        border-radius: 60px;
+        background: gray;
+        & .defaultIcon {
+          font-size: 4rem;
+          color: #fff;
+          transform: translate(13px, 8px);
+          // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
+          // display: none;
+        }
+          background: url("../../asset/imgs/manager.jpeg");
+        background-size: contain;
+      }
+      & .superAdminImg {
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        border-radius: 60px;
+        background: gray;
+        & .defaultIcon {
+          font-size: 4rem;
+          color: #fff;
+          transform: translate(13px, 8px);
+          // 로그인 시 하단에 display:none이 활성화되고 background에 url이 들어가야됨
+          // display: none;
+        }
+          background: url("../../asset/imgs/superManager.jpeg");
+        background-size: contain;
+      }
+      .img_wrap {
+        position: absolute;
+        left: 150px;
+        top: 200px;
+        width: 120px;
+        height: 120px;
+        transform: translate(-50%, -50%);
+      }
+      .circle {
+        position: relative;
+        // overflow: hidden;
+        height: 50%;
+      }
+      .circle.bottom {
+        transform: translate(0, -15px);
+      }
+      .circle:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 50px solid transparent;
+      }
+      @keyframes spin-circle-top {
+        from {
+          transform: rotate(80deg);
+        }
+        to {
+          transform: rotate(445deg);
+        }
+      }
+      @keyframes spin-circle-bottom {
+        from {
+          transform: rotate(-100deg);
+        }
+        to {
+          transform: rotate(265deg);
+        }
+      }
+      .circle.top:after {
+        border-top-color: mediumblue;
+        border-left-color: rgba(78, 129, 239, 0.5);
+        animation: spin-circle-top 0.5s 1 ease-in-out both;
+      }
+      .circle.bottom:after {
+        border-top-color: rgba(78, 129, 239, 0.5);
+        border-left-color: rgba(78, 129, 239, 0.5);
+        top: -45px;
+        animation: spin-circle-bottom 0.5s 1 ease-in-out both;
       }
       & .name {
         margin: 20px 0 10px;
@@ -47,59 +142,45 @@
     }
     & .nav {
       margin-top: 60px;
+
       & .navList {
         transform: translate(14px);
         padding: 0px;
-      & .navlinkClicked {
-          color:lawngreen;
+
+        & .li.navlinkClicked {
+          border-radius: 5px;
+          background-color: #4e81ef;
         }
-      & .navlinkDefault {
-          color:peachpuff;
+        & .li.navlinkClicked a {
+          color: white;
+        }
+        & .li.navlinkClicked a::before {
+          content: " ";
+          display: inline-block;
+          background: #ff8042;
+          width: 8px;
+          height: 8px;
+          border-radius: 5px;
+          margin-right: -8px;
+          transform: translate(-20px, -4px);
         }
         & li {
           text-align-last: left;
           transform: translate(-20px);
           padding: 4px 0;
           margin-bottom: 14px;
-          margin: 7px 20px;
+          margin: 14px 20px;
+
           & a {
             display: inline-block;
             margin: 0 60px;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 600;
             font-size: 1.3rem;
-          }
-          & a:hover::before {
-            content: " ";
-            display: inline-block;
-            background: #eab308;
-            width: 8px;
-            height: 8px;
-            border-radius: 5px;
-            transform: translate(-16px, -4px);
-          }
-          & a:hover {
-            text-indent: -8px;
-          }
-        }
-        & li::before {
-          content: "";
-        }
-        & li:hover {
-          background: #4e81ef;
-          border-radius: 12px;
-
-          & a {
-            color: white;
+            width: 100px;
           }
         }
       }
     }
   }
-}
-.redbull {
-  color:red;
-}
-.kamill {
-  color:green;
 }

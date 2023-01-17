@@ -4,40 +4,33 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-// import Paper from "@mui/material/Paper";
-// import "../style/BlockDetailTable.scss";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { AiOutlineCopy } from "react-icons/ai";
 import TransDetailList from "./transDetailList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Pagination } from "@mui/material";
-import copyBtn from "./copyBtn";
-import styled from "@emotion/styled";
-import { fontSize } from "@mui/system";
+import swal from "sweetalert";
+
 export default function BlockDetailTable(props) {
   const { data, fetchdata } = props;
-  // 자세히 버튼 toggle
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => setToggle((prev) => !prev);
 
-  // 복사 버튼
+  const [copy, copied] = useState(false);
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-
-      alert("복사 성공!");
+      copied(!copy);
+      swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
-      alert("복사 실패!");
+      swal("복사 실패!", "다시 시도해주세요!", "error");
     }
   };
 
-  //useParams
   const { id } = useParams();
 
-  //state에 데이터 저장
   const [serviceName, setServiceName] = useState();
   const [time, setTime] = useState();
   const [blockHash, setBlockHash] = useState();
@@ -48,7 +41,7 @@ export default function BlockDetailTable(props) {
 
   useEffect(() => {
     async function getBlocks() {
-      const result3 = data.filter((item) => item.blockNumber == parseInt(id));
+      const result3 = data.filter((item) => item.blockNumber === parseInt(id));
 
       result3.forEach((item) => {
         setServiceName(item.serviceName);
@@ -62,11 +55,6 @@ export default function BlockDetailTable(props) {
     }
     getBlocks();
   });
-
-  // const style = {
-  //   border: "1px solid red",
-  //   padding: "40px",
-  // };
 
   return (
     <>
@@ -90,15 +78,22 @@ export default function BlockDetailTable(props) {
                 <TableCell>블록해시</TableCell>
                 <TableCell>
                   {blockHash}
-                  {/* 복사 btn */}
-                  <Button
-                    className="btnLayout"
-                    variant="contained"
-                    disableElevation
-                    onClick={() => handleCopyClipBoard(blockHash)}
-                  >
-                    복사
-                  </Button>
+                  <Stack spacing={2} direction="row" className="btnLayout">
+                    {copy === true ? (
+                      <Button variant="contained">
+                        Copied&nbsp;
+                        <AiOutlineCopy />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        onClick={() => handleCopyClipBoard(blockHash)}
+                      >
+                        Copy&nbsp;
+                        <AiOutlineCopy />
+                      </Button>
+                    )}
+                  </Stack>
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -111,9 +106,9 @@ export default function BlockDetailTable(props) {
                   {transCount}
                   <Button
                     className="btnLayout"
-                    variant="contained"
                     disableElevation
                     onClick={handleToggle}
+                    style={{ border: "1px solid #1976d2" }}
                   >
                     자세히
                   </Button>

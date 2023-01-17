@@ -1,26 +1,14 @@
-import React, { useState } from "react";
-import {
-  PieChart,
-  Pie,
-  Legend,
-  Sector,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import React from "react";
+import { PieChart, Pie, Legend, Cell, Tooltip } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
 function ActiveNtw(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   const countFunc = (a, b) => {
     const filterService = data.filter((user) => user.serviceName.includes(a));
-    // const filterNetWork = filterService.filter((user) =>
-    //   user.network.includes(b)
-    // );
-    // const ntwPerService = filterNetWork.length;
-    // const avgResult = filterNetWork
-    //   .map((item) => item.TPS)
-    //   .reduce((prev, curr) => prev + curr, 0);
 
     return filterService.length;
   };
@@ -152,7 +140,9 @@ function ActiveNtw(props) {
   return (
     <>
       <div
-        className="boxShadow boxLayoutel2"
+        className={
+          isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+        }
         style={({ display: "flex" }, { flexDirection: "column" })}
       >
         <h3>서비스별 네트워크 활동 비율</h3>

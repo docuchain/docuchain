@@ -12,8 +12,3 @@ export default function BlockDetailTitle() {
     </div>
   );
 }
-
-/* <div className="blockDetailTitleLeft">
-          <h2>블록</h2>
-          <h4>상세정보</h4>
-        </div> */

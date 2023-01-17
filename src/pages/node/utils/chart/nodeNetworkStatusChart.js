@@ -1,6 +1,3 @@
-// 노드 네트워크 상태
-import "../../NodeStyle.scss";
-
 import React, { useEffect, useState } from "react";
 import {
   AreaChart,
@@ -15,22 +12,6 @@ import { NodeFirebase } from "../../utils/nodeMockData";
 const NodeNetworkChartStatus = () => {
   const [data, setData] = useState([]);
   const [nodeChartDataList, setNodeChartDataList] = useState([]);
-
-  // const fetchdata = async () => {
-  //   try {
-  //     const res = await fetch(
-  //       "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
-  //     );
-  //     const result = await res.json();
-  //     setData([...result]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   const gradientOffset = () => {
     const dataMax = Math.max(...data.map((i) => i.uv));
@@ -50,6 +31,31 @@ const NodeNetworkChartStatus = () => {
 
   const nodeChartData = NodeFirebase();
 
+  const getAverage = (serviceName) => {
+    let sum = 0;
+    const serviceDataLength = nodeChartDataList.filter(
+      (data) => data.serviceName === serviceName
+    ).length;
+    nodeChartDataList.filter((data) => {
+      if (data.serviceName === serviceName) {
+        sum += data.TPS;
+      }
+    });
+
+    return {
+      serviceName: serviceName,
+      average: sum / serviceDataLength,
+    };
+  };
+
+  const average = [
+    getAverage("A서비스"),
+    getAverage("B서비스"),
+    getAverage("C서비스"),
+    getAverage("D서비스"),
+    getAverage("E서비스"),
+  ];
+
   useEffect(() => {
     if (nodeChartData.length > 0) {
       setNodeChartDataList(nodeChartData);
@@ -63,11 +69,11 @@ const NodeNetworkChartStatus = () => {
       className="boxShadow boxLayoutel2"
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
-      <h3>노드 네트워크 상태</h3>
+      <h3>노드 네트워크 평균 상태</h3>
       <AreaChart
         width={600}
         height={400}
-        data={nodeChartDataList}
+        data={average}
         margin={{
           top: 10,
           right: 30,
@@ -77,7 +83,7 @@ const NodeNetworkChartStatus = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="serviceName" />
-        <YAxis />
+        <YAxis ticks={[50, 100, 150, 200, 250, 300]} />
         <Tooltip />
         <defs>
           <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
@@ -87,9 +93,9 @@ const NodeNetworkChartStatus = () => {
         </defs>
         <Area
           type="monotone"
-          dataKey="TPS"
-          stroke="#000"
-          fill="url(#splitColor)"
+          dataKey="average"
+          stroke="#0F3460"
+          fill="#8DCBE6"
         />
       </AreaChart>
     </div>

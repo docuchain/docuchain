@@ -5,9 +5,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Paper from "@mui/material/Paper";
-import "../style/TransDetailList.scss";
-// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineDatabase } from "react-icons/ai";
 import Modal from "./Modal";
@@ -18,10 +15,7 @@ import { useRecoilValue } from "recoil";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-
-// 데이터 받아오면 목데이터 지울것 -----------
-
-// -----------------------------------
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 export default function TransDetailList(props) {
   const { data, fetchdata } = props;
@@ -39,10 +33,8 @@ export default function TransDetailList(props) {
     fetchdata();
   }, []);
 
-  //useParams
   const { id } = useParams();
 
-  //state에 데이터 저장
   useEffect(() => {
     async function getTrans() {
       const result3 = data.filter((item) => item.blockNumber == parseInt(id));
@@ -59,24 +51,22 @@ export default function TransDetailList(props) {
   });
 
   const openModal = () => {
-    //트랜잭션 권한 있을경우
     if (userValue.trans) {
       setModalOpen(true);
     } else {
-      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
     }
   };
   const naviTransDetail = () => {
     if (userValue.trans) {
       navigate(`/trans/${transNum}`);
     } else {
-      swal("권한이 없습니다. 관리자에게 요청하십시오.", "", "error");
+      swal("권한이 없습니다.", "관리자에게 문의하세요", "error");
     }
   };
   const closeModal = () => {
     setModalOpen(false);
   };
-  //  ------------------------------
   return (
     <div className="boxLayout1 boxShadow mt20">
       <TableContainer className="detailTableInner">
@@ -101,22 +91,24 @@ export default function TransDetailList(props) {
               <TableCell align="left">{time}</TableCell>
               <TableCell
                 className="selectableArea"
-                // 모달 오픈
                 onClick={naviTransDetail}
                 align="left"
               >
-                <Button>{transHash}</Button>
+                <Button style={{ padding: "4px" }}>
+                  {transHash}&nbsp;
+                  <ArrowOutwardIcon style={{ fontSize: "1.3rem" }} />
+                </Button>
               </TableCell>
               <TableCell align="left">{transSize}</TableCell>
               {userValue.trans && (
                 <TableCell
                   className="selectableArea"
                   align="left"
-                  // 모달 -
                   onClick={openModal}
                 >
-                  <Button>
-                    <AiOutlineDatabase />
+                  <Button style={{ fontWeight: 600, padding: "4px" }}>
+                    상세보기&nbsp;
+                    <AiOutlineDatabase style={{ fontSize: "1rem" }} />
                   </Button>
                 </TableCell>
               )}

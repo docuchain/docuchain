@@ -1,5 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import {
   ComposedChart,
@@ -11,14 +10,13 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useRecoilValue } from "recoil";
 import { dbService } from "../../../apis/firebase";
+import { getTheme } from "../../../recoil/selector";
 
 function NtwTransSpeed(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   const countFunc = (a, b) => {
     const filterTime = data.filter((user) => user.timeStamp.includes(a));
@@ -97,31 +95,13 @@ function NtwTransSpeed(props) {
 
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 트랜잭션처리속도 (TPS)</h3>
-      {/* <ComposedChart
-        width={600}
-        height={400}
-        data={Data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 0,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" />
-        <YAxis domain={[0, 400]} />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="ntwAPerTPS" fill="#0088FE" key={Math.random()} />
-        <Bar dataKey="ntwBPerTPS" fill="#00C49F" key={Math.random()} />
-        <Bar dataKey="ntwCPerTPS" fill="#FFBB28" key={Math.random()} />
-        <Bar dataKey="ntwDPerTPS" fill="#FF8042" key={Math.random()} />
-      </BarChart> */}
+
       <ComposedChart
         width={600}
         height={400}
@@ -134,8 +114,12 @@ function NtwTransSpeed(props) {
         }}
       >
         <CartesianGrid stroke="#f5f5f5" />
-        <XAxis dataKey="time" scale="band" />
-        <YAxis domain={[0, 400]} />
+        <XAxis
+          dataKey="time"
+          scale="band"
+          stroke={isDark ? "white" : "black"}
+        />
+        <YAxis domain={[0, 400]} stroke={isDark ? "white" : "black"} />
         <Tooltip />
         <Legend />
         <Bar

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -8,8 +8,11 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
 function NtwBlockTime(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   // useEffect(() => {
@@ -112,7 +115,9 @@ function NtwBlockTime(props) {
   ];
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>네트워크별 블록생성시간(분)</h3>
@@ -128,8 +133,12 @@ function NtwBlockTime(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" padding={{ left: 30, right: 30 }} />
-        <YAxis />
+        <XAxis
+          dataKey="time"
+          padding={{ left: 30, right: 30 }}
+          stroke={isDark ? "white" : "black"}
+        />
+        <YAxis stroke={isDark ? "white" : "black"} />
         <Tooltip />
         <Legend />
         <Line

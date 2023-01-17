@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserPage from "./UserPage";
 import { dbService } from "../../../apis/firebase";
 import { collection } from "firebase/firestore";
-import Button from "../../common/components/Button";
+import Button from "@mui/material/Button";
 
 const UserManage = () => {
   const userData = collection(dbService, "user");

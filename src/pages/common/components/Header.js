@@ -16,12 +16,9 @@ const Header = () => {
     console.log(location);
     headerNameChange();
   });
-  const darkTheme = useRecoilValue(getTheme);
-  const dark = {
-    color: "black",
-  };
-
   const [themeMode, setThemeMode] = useRecoilState(theme);
+  const isDark = useRecoilValue(getTheme);
+
   const themeModeHandler = () => {
     console.log(themeMode);
     setThemeMode((prev) => !prev);
@@ -50,10 +47,12 @@ const Header = () => {
     <>
       <div
         className="Header"
-        style={darkTheme ? { backgroundColor: "black" } : {}}
+        style={isDark ? { backgroundColor: "#151c2c" } : {}}
       >
         <div className="leftA">
-          <div className="headerTitle">{headerName}</div>
+          <div className={isDark ? "headerTitleBlack" : "headerTitle"}>
+            {headerName}
+          </div>
           <ContentsTitle />
         </div>
         <div className="rightA">

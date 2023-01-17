@@ -21,10 +21,11 @@ import UserModify from "../pages/usermanaging/UserModify";
 import LoginPage from "../pages/myinfo/components/LoginPage";
 import NavBar from "../pages/common/components/NavBar";
 import { useRecoilValue } from "recoil";
-import { getUserUid, getUserInfo } from "../recoil/selector";
+import { getUserUid, getUserInfo, getTheme } from "../recoil/selector";
 import "../pages/common/style/contents.scss";
 
 const PageRouter = () => {
+  const isDark = useRecoilValue(getTheme);
   const uidValue = useRecoilValue(getUserUid);
   const userValue = useRecoilValue(getUserInfo);
   useEffect(() => {
@@ -33,12 +34,16 @@ const PageRouter = () => {
 
   return (
     <div className="pageRouterWrap">
-      <div className="pageRouterWrap--left">
+      <div
+        className={
+          isDark ? "pageRouterWrapBlack--left" : " pageRouterWrap--left"
+        }
+      >
         <NavBar />
       </div>
       <div className="pageRouterWrap--right">
         <Header />
-        <div className="Contents">
+        <div className={isDark ? "ContentsBlack" : "Contents"}>
           <Routes>
             {/* dashboard route */}
             <Route path="/" element={<Dashboard />}></Route>
@@ -76,7 +81,7 @@ const PageRouter = () => {
             <Route
               path="/usermanaging"
               element={
-                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                userValue.email === "test@test.com" ? (
                   <UserManaging />
                 ) : (
                   <LoginPage />
@@ -86,7 +91,7 @@ const PageRouter = () => {
             <Route
               path="/usermanaging/adduser"
               element={
-                uidValue === "8GSCb6U6zmUsaLm2KhN6o9OSLBh2" ? (
+                userValue.email === "test@test.com" ? (
                   <AddUser />
                 ) : (
                   <LoginPage />

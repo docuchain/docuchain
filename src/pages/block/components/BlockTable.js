@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -8,13 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import BlockDetailTable from "../utils/blockDetailTable";
-import { lineHeight } from "@mui/system";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
-// 테이블 헤더 데이터
 const columns = [
   { id: "serviceName", label: "서비스 명", minWidth: 170, align: "left" },
   { id: "blockNumber", label: "블록번호", minWidth: 100, align: "left" },
@@ -49,6 +46,7 @@ const columns = [
 ];
 
 export default function BlockTable(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   const [page, setPage] = React.useState(0);
@@ -61,12 +59,11 @@ export default function BlockTable(props) {
     setPage(0);
   };
 
-  // 상세페이지 이동 위한 navigate
-  const [blockId, setBlockId] = useState("");
-  const navigate = useNavigate();
-
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper
+      sx={{ width: "100%", overflow: "hidden" }}
+      style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
+    >
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -81,7 +78,15 @@ export default function BlockTable(props) {
                   }}
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={
+                    isDark
+                      ? {
+                          backgroundColor: "#1e2235",
+                          color: "white",
+                          minWidth: column.minWidth,
+                        }
+                      : { minWidth: column.minWidth }
+                  }
                 >
                   {column.label}
                 </TableCell>
@@ -97,25 +102,74 @@ export default function BlockTable(props) {
                 <TableCell
                   component="th"
                   scope="row"
-                  style={{ color: "#6d6d6d", width: 130, textIndent: 30 }}
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
                 >
                   {datael.serviceName}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? {
+                          fontWeight: 600,
+                          color: "white",
+                          width: 130,
+                          textIndent: 30,
+                        }
+                      : {
+                          fontWeight: 600,
+                          color: "#323846",
+                          width: 130,
+                          textIndent: 30,
+                        }
+                  }
+                  align="left"
+                >
                   <Link to={`${datael.blockNumber}`} value={datael.blockNumber}>
                     {datael.blockNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.timeStamp}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.blockHash}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.blockSize}
                 </TableCell>
-                <TableCell style={{ width: 130, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 130, textIndent: 30 }
+                      : { color: "#323846", width: 130, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.transCount}
                 </TableCell>
               </TableRow>
@@ -131,6 +185,7 @@ export default function BlockTable(props) {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        style={isDark ? { color: "white" } : { color: "#323846" }}
       />
     </Paper>
   );

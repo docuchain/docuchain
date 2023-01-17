@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import {
   AreaChart,
@@ -7,20 +6,12 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 function TimePerBlock(props) {
   const { data, fetchdata } = props;
 
   const countFunc = (a) => {
-    // let count = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].timeStamp.includes(a) == true) {
-    //     count++;
-    //   }
-    // }
-    // return count;
     const result1 = data.filter((user) => user.timeStamp.includes(a));
     return result1.length;
   };
@@ -86,7 +77,7 @@ function TimePerBlock(props) {
           type="monotone"
           dataKey="timePerBlock"
           stroke="#8884d8"
-          fill="rgba(0,136,254,0.7)"
+          fill="rgba(0,136,254)"
           key={Math.random()}
         />
       </AreaChart>
