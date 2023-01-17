@@ -49,8 +49,10 @@ const NodeNetworkChartSpeed = () => {
   }, [nodeChartData]);
 
   return (
-    <div className="boxShadow boxLayoutel2"
-    style={({ display: "flex" }, { flexDirection: "column" })}>
+    <div
+      className="boxShadow boxLayoutel2"
+      style={({ display: "flex" }, { flexDirection: "column" })}
+    >
       <h3>노드 네트워크 속도</h3>
       <AreaChart
         width={600}
@@ -65,7 +67,7 @@ const NodeNetworkChartSpeed = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="nodeName" />
-        <YAxis/>
+        <YAxis />
         <Tooltip />
         <Area
           type="monotone"

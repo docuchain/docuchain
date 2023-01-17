@@ -50,7 +50,6 @@
 }
 .transDetailTitleContainer {
   min-width: 1200px;
-  /* border: 1px solid blue; */
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;

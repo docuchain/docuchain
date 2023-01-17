@@ -9,7 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { getUserInfo } from "../../../recoil/selector";
+import { getTheme, getUserInfo } from "../../../recoil/selector";
 import swal from "sweetalert";
 
 const columns = [
@@ -23,6 +23,7 @@ const columns = [
 ];
 
 export default function StickyHeadTable(props) {
+  const isDark = useRecoilValue(getTheme);
   const userValue = useRecoilValue(getUserInfo);
   //서비스 권한여부 판별
   const serviceAuth = (e) => {
@@ -46,6 +47,7 @@ export default function StickyHeadTable(props) {
     }
   };
   const { data, fetchdata } = props;
+
   // 데이터 담기
 
   //==================================================
@@ -64,7 +66,10 @@ export default function StickyHeadTable(props) {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper
+      sx={{ width: "100%", overflow: "hidden" }}
+      style={isDark ? { backgroundColor: "#1e2235", color: "white" } : {}}
+    >
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -78,7 +83,15 @@ export default function StickyHeadTable(props) {
                     lineHeight: "2.5rem",
                     textIndent: 30,
                   }}
-                  style={{ width: 130, textIndent: 30 }}
+                  style={
+                    isDark
+                      ? {
+                          backgroundColor: "#1e2235",
+                          color: "white",
+                          minWidth: column.minWidth,
+                        }
+                      : { minWidth: column.minWidth }
+                  }
                 >
                   {/* 테이블 메인 타이틀 */}
                   {column.label}
@@ -101,6 +114,7 @@ export default function StickyHeadTable(props) {
                     to={`/service/${datael.id}`}
                     value={datael.id}
                     onClick={serviceAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.serviceName}
                   </Link>
@@ -110,6 +124,7 @@ export default function StickyHeadTable(props) {
                     to={`/service/${datael.id}`}
                     value={datael.id}
                     onClick={serviceAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.timeStamp}
                   </Link>
@@ -119,6 +134,7 @@ export default function StickyHeadTable(props) {
                     to={`/service/${datael.id}`}
                     value={datael.id}
                     onClick={serviceAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.apiKinds}
                   </Link>
@@ -128,6 +144,7 @@ export default function StickyHeadTable(props) {
                     to={`/node/${datael.nodeName}`}
                     value={datael.transNumber}
                     onClick={nodeAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.nodeName}
                   </Link>
@@ -137,6 +154,7 @@ export default function StickyHeadTable(props) {
                     to={`/trans/${datael.transNumber}`}
                     value={datael.transNumber}
                     onClick={transAuth}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.transNumber}
                   </Link>
@@ -145,11 +163,19 @@ export default function StickyHeadTable(props) {
                   <Link
                     to={`/block/${datael.blockNumber}`}
                     value={datael.blockNumber}
+                    style={isDark ? { color: "white" } : { color: "#323846" }}
                   >
                     {datael.blockNumber}
                   </Link>
                 </TableCell>
-                <TableCell style={{ width: 90, textIndent: 30 }} align="left">
+                <TableCell
+                  style={
+                    isDark
+                      ? { color: "white", width: 90, textIndent: 30 }
+                      : { color: "#323846", width: 90, textIndent: 30 }
+                  }
+                  align="left"
+                >
                   {datael.status}
                 </TableCell>
               </TableRow>

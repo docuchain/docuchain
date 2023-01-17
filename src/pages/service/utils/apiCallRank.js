@@ -71,7 +71,13 @@ function ApiCallRank(props) {
         <XAxis dataKey="apiKinds" />
         <YAxis />
         <Tooltip />
-        <Bar type="monotone" dataKey="topFiveApi" fill="#2563EB" barSize={30} />
+        <Bar
+          type="monotone"
+          dataKey="topFiveApi"
+          fill="#2563EB"
+          barSize={30}
+          key={Math.random()}
+        />
       </BarChart>
     </div>
   );

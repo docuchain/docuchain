@@ -52,16 +52,6 @@ export default function TransDetailTable(props) {
     navigate(`/trans`);
   };
 
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const handleChangePage = (event, newPage) => {
-  //   setIdx(newPage);
-  // };
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setIdx(0);
-  // };
-
   useEffect(() => {
     async function getTrans() {
       const result3 = data.filter((item) => item.transNumber == parseInt(id));
@@ -137,13 +127,6 @@ export default function TransDetailTable(props) {
               <TableCell>{status}</TableCell>
             </TableRow>
           </TableBody>
-          {/* <Pagination
-            count={data.length}
-            rowsPerPage={rowsPerPage}
-            idx={idx}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          /> */}
         </Table>
       </TableContainer>
     </div>

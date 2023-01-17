@@ -7,9 +7,8 @@ import {
   deleteDoc,
   query,
   where,
-  collection,
 } from "firebase/firestore";
-import { dbService } from "../../../apis/firebase";
+
 import { Button } from "@mui/material";
 
 const UserInfo = (props) => {
@@ -139,64 +138,6 @@ const UserInfo = (props) => {
   console.log(userTrans);
 
   return (
-    // <div>
-    //   <form onSubmit={submitHandler}>
-    //     <h1>사용자 정보</h1>
-
-    //     <div>이름 {userName}</div>
-    //     <div>소속 {userTeam}</div>
-    //     <div>이메일(아이디) {userEmail}</div>
-
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userDashboard}
-    //         onChange={changeDashboardHandler}
-    //         disabled
-    //       />
-    //       대시보드
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userBlock}
-    //         onChange={changeBlockHandler}
-    //         disabled
-    //       />
-    //       블록
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userTrans}
-    //         onChange={changeTransHandler}
-    //       />
-    //       트랜잭션
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userNode}
-    //         onChange={changeNodeHandler}
-    //       />
-    //       노드
-    //     </label>
-    //     <label>
-    //       <input
-    //         type="checkbox"
-    //         checked={userService}
-    //         onChange={changeServiceHandler}
-    //       />
-    //       서비스
-    //     </label>
-
-    //     <div>유형 {userRole}</div>
-
-    //     <button onClick={toUsers}>취소</button>
-    //     <button >정보 변경</button>
-    //     <button onClick={deleteData}>사용자 삭제</button>
-    //   </form>
-    // </div>
     <div className="boxLayout1 boxShadow">
       <div className="Myinfo">
         <h2>USER INFO</h2>
