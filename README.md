@@ -11,26 +11,25 @@
 
 - 차트 라이브러리를 이용한 시각화
 
-<hr />
+<br>
 
 ## 👩‍💻 팀명 & 팀원 소개 👨‍💻
 
-### 팀명 : 천기블록체인
+- 팀명 : 천기블록체인
 
-### 팀원 : 옥주희, 문승현, 김원석, 이가은, 박용재, 강신우
-
-<hr />
+- 팀원 : 옥주희, 문승현, 김원석, 이가은, 박용재, 강신우
 
 ## 🔗 배포 링크 / 프로젝트 결과물
 
-● 링크 :
+<br>
+
+📌 링크 :
 
 ![KakaoTalk_20230116_213006669](https://user-images.githubusercontent.com/47172522/212785102-ee4ac283-a701-4412-bf56-c77df9ce2b92.gif)
 
-### 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
+- 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
 
-<hr />
-
+<br>
 ## 📌 구현 기능
 
 - HTML 태그 이용하여 웹페이지 구성
@@ -45,7 +44,7 @@
 - Firebase를 임의데이터 활용 실시간 데이터 출력
 - 관리자 권한 여부에 따른 접근 설정 구현
 
-<hr />
+<br>
 
 ## 📑 초안 / 프로젝트 레이아웃
 
@@ -61,7 +60,7 @@
 
 ![Group 88](https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg)
 
-<hr />
+<br>
 
 ## 📁 폴더 구조
 
@@ -117,7 +116,7 @@
 .env.local
 ```
 
-<hr />
+<br>
 
 ## 🛠 사용 기술
 
@@ -146,4 +145,3 @@
 - 배포 : AWS, Docker, Nginx, IaC(Terraform, Ansible), Freenom
 - 협업관리 : Notion, github
 - 툴 : Adobe Photoshop, Adobe Illustrator, Figma,
-<hr />
