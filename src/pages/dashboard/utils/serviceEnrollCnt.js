@@ -7,8 +7,11 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 
 function ServiceEnrollCnt(props) {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
   const countFunc = (a) => {
@@ -108,7 +111,9 @@ function ServiceEnrollCnt(props) {
   ];
   return (
     <div
-      className="boxShadow boxLayoutel2"
+      className={
+        isDark ? " boxShadowBlack boxLayoutel2" : " boxShadow boxLayoutel2"
+      }
       style={({ display: "flex" }, { flexDirection: "column" })}
     >
       <h3>시간당 서비스 등록 건수(건)</h3>
@@ -124,15 +129,15 @@ function ServiceEnrollCnt(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" />
-        <YAxis />
+        <XAxis dataKey="time" stroke={isDark ? "white" : "black"} />
+        <YAxis stroke={isDark ? "white" : "black"} />
         <Tooltip />
 
         <Area
           type="monotone"
           dataKey="timePerService"
           stroke="#8884d8"
-          fill="rgba(199,120,299,0.5)"
+          fill="#E8D2FF"
           key={Math.random()}
           name="시간당 서비스 등록"
         />

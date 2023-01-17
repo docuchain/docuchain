@@ -1,9 +1,12 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 import "../style/footer.scss";
 
 const Footer = () => {
+  const isDark = useRecoilValue(getTheme);
   return (
-    <div className="Footer">
+    <div className={isDark ? "FooterBlack" : "Footer"}>
       <h4 className="footerLogoImg"></h4>
       <h6>서울시 마포구 성암로330, 521(상암동, DMC첨단산업센터 5층)(03920)</h6>
       <h6>TEL 1644-2378｜ FAX 02-3151-0942</h6>

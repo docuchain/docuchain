@@ -19,7 +19,9 @@ const TotalServiceCnt = (props) => {
       }
     >
       <h3>전체 서비스 등록 건수</h3>
-      <h1 className="DashboardCntNum">{data.length}</h1>
+      <h1 className={isDark ? "DashboardCntNumBlack" : "DashboardCntNum"}>
+        {data.length}
+      </h1>
       <Timer />
     </div>
   );
