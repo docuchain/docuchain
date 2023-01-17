@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { getTheme } from "../../../recoil/selector";
 import Timer from "./timer";
 
 const TotalServiceCnt = (props) => {
+  const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
 
   return (
     <div
-      className="TotalServiceCnt boxShadow boxLayoutel4"
+      className={
+        isDark
+          ? "TotalServiceCnt boxShadowBlack boxLayoutel4"
+          : "TotalServiceCnt boxShadow boxLayoutel4"
+      }
       style={
         ({ height: "400px" }, { display: "flex" }, { flexDirection: "column" })
       }

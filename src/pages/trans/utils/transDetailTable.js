@@ -26,6 +26,7 @@ export default function TransDetailTable(props) {
     try {
       await navigator.clipboard.writeText(text);
       copied(!copy);
+      copied(!copy);
       swal("복사 성공!", "복사가 완료됐습니다!", "success");
     } catch (error) {
       swal("복사 실패!", "다시 시도해주세요!", "error");
