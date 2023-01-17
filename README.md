@@ -23,17 +23,16 @@
 
 ## 🔗 배포 링크 / 프로젝트 결과물
 
-● 링크 :
+- 링크 :
 
 ![KakaoTalk_20230116_213006669](https://user-images.githubusercontent.com/47172522/212785102-ee4ac283-a701-4412-bf56-c77df9ce2b92.gif)
 
-### 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
+개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
 
 <br />
 
 ## 📌 구현 기능
 - HTML 태그 이용하여 웹페이지 구성
-
 - ReCharts를 활용하여 분석 및 차트를 구현
 - MUI 테이블을 활용하여 표를 구현
 - Scss를 이용하여 전체적인 스타일을 작업
@@ -141,7 +140,7 @@
 
 <br />
 
-### ⚙ 기술 스택
+## ⚙ 기술 스택
 
 - 프론트 : HTML,SCSS,React, react-bootstrap, Firebase
 - 배포 : AWS, Docker, Nginx, IaC(Terraform, Ansible), Freenom
