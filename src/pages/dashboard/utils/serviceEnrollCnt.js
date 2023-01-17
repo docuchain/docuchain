@@ -137,7 +137,7 @@ function ServiceEnrollCnt(props) {
           type="monotone"
           dataKey="timePerService"
           stroke="#8884d8"
-          fill="#E8D2FF"
+          fill="#F273E6"
           key={Math.random()}
           name="시간당 서비스 등록"
         />
