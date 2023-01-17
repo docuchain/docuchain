@@ -20,7 +20,9 @@ const TotalTransCnt = (props) => {
       }
     >
       <h3>전체 트랜잭션 수</h3>
-      <h1 className="DashboardCntNum">{data.length}</h1>
+      <h1 className={isDark ? "DashboardCntNumBlack" : "DashboardCntNum"}>
+        {data.length}
+      </h1>
       <Timer />
     </div>
   );

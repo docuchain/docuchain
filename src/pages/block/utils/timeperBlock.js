@@ -56,7 +56,7 @@ function TimePerBlock(props) {
 
   return (
     <div className="Chart">
-      <h3 className="chart_trans_title">시간 당 블록 수(개)</h3>
+      <h3 className="chart_trans_title">시간당 블록 수(개)</h3>
       <AreaChart
         width={580}
         height={400}
@@ -77,7 +77,7 @@ function TimePerBlock(props) {
           type="monotone"
           dataKey="timePerBlock"
           stroke="#8884d8"
-          fill="rgba(0,136,254,0.7)"
+          fill="rgba(0,136,254)"
           key={Math.random()}
         />
       </AreaChart>

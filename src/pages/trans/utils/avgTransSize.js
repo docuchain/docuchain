@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   AreaChart,
   Area,
@@ -7,20 +6,12 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 function AvgTransSize(props) {
   const { data, fetchdata } = props;
 
   const countFunc = (a) => {
-    // let count = 0;
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].timeStamp.includes(a) == true) {
-    //     count++;
-    //   }
-    // }
-    // return count;
     const result1 = data.filter((user) => user.timeStamp.includes(a));
     return result1.length;
   };
@@ -65,7 +56,7 @@ function AvgTransSize(props) {
 
   return (
     <div className="Chart">
-      <h3 className="chart_trans_title">시간 당 트랜잭션 크기(KB)</h3>
+      <h3 className="chart_trans_title">시간당 트랜잭션 크기(KB)</h3>
       <AreaChart
         width={600}
         height={400}

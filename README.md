@@ -1,9 +1,11 @@
-메인 IMG
-링크 :
-
 # 👇프로젝트 명 : 다큐체인 모니터링 뷰어
+<br />
 
-## 📌 프로젝트 목표
+## 📌 프로젝트 설명
+
+SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (주)디지털존의 블록체인 프로젝트인 docuchain의 관리자 페이지 구현
+
+
 
 - 블록체인 실시간 데이터를 제공 <br>
 
@@ -11,7 +13,8 @@
 
 - 차트 라이브러리를 이용한 시각화
 
-<br>
+
+<br />
 
 ## 👩‍💻 팀명 & 팀원 소개 👨‍💻
 
@@ -31,17 +34,15 @@
 
 <br>
 ## 📌 구현 기능
-
-- HTML 태그 이용하여 웹페이지 구성
-
+- JSX 태그 이용하여 웹페이지 구성
 - ReCharts를 활용하여 분석 및 차트를 구현
 - MUI 테이블을 활용하여 표를 구현
 - Scss를 이용하여 전체적인 스타일을 작업
 - onClick, onChange 등 이벤트 핸들링 작업
 - props를 이용한 컴포넌트 간 데이터 전달
-- Hooks를 사용하여 로그인 기능 구현
+- firebase를 활용한 로그인 기능 구현
 - React-router를 이용한 라우팅 사용하여 페이지 이동 구현
-- Firebase를 임의데이터 활용 실시간 데이터 출력
+- Firebase에 임의데이터 저장 후 활용 실시간 데이터 출력
 - 관리자 권한 여부에 따른 접근 설정 구현
 
 <br>
@@ -71,42 +72,42 @@
 ├── 📁vscode
 ├── 📁node_modules
 ├── 📁public
-├── 📁src
-│    ├── 📁apis
-│    ├── 📁lib
-│    ├── 📁pages
-│    │    ├── 📁asset
-│    │    ├── 📁block
-│    │    │     ├── 📁components
-│    │    │     ├── 📁style
-│    │    │     └── 📁utils
-│    │    ├── 📁common
-│    │    │     ├── 📁components
-│    │    │     ├── 📁style
-│    │    │     └── 📁utils
-│    │    ├── 📁dashboard
-│    │    │     ├── 📁dist
-│    │    │     └── 📁utils
-│    │    ├── 📁myinfo
-│    │    │     ├── 📁components
-│    │    │     └── 📁utils
-│    │    ├── 📁node
-│    │    │     ├── 📁components
-│    │    │     └── 📁utils
-│    │    ├── 📁service
-│    │    │     ├── 📁components
-│    │    │     ├── 📁style
-│    │    │     └── 📁utils
-│    │    ├── 📁trans
-│    │    │     ├── 📁components
-│    │    │     ├── 📁style
-│    │    │     └── 📁utils
-│    │    └──📁usermanaging
-│    │          ├── 📁components
-│    │          └── 📁utils
-│    ├── 📁recoil
-│    └── 📁routes
-└──────── 📁user
+└── 📁src
+    ├── 📁apis
+    ├── 📁lib
+    ├── 📁pages
+    │    ├── 📁asset
+    │    ├── 📁block
+    │    │     ├── 📁components
+    │    │     ├── 📁style
+    │    │     └── 📁utils
+    │    ├── 📁common
+    │    │     ├── 📁components
+    │    │     ├── 📁style
+    │    │     └── 📁utils
+    │    ├── 📁dashboard
+    │    │     ├── 📁dist
+    │    │     └── 📁utils
+    │    ├── 📁myinfo
+    │    │     ├── 📁components
+    │    │     └── 📁utils
+    │    ├── 📁node
+    │    │     ├── 📁components
+    │    │     └── 📁utils
+    │    ├── 📁service
+    │    │     ├── 📁components
+    │    │     ├── 📁style
+    │    │     └── 📁utils
+    │    ├── 📁trans
+    │    │     ├── 📁components
+    │    │     ├── 📁style
+    │    │     └── 📁utils
+    │    └──📁usermanaging
+    │          ├── 📁components
+    │          └── 📁utils
+    ├── 📁recoil
+    └── 📁routes
+
 
 .docu.json
 .package-lock.json
@@ -134,14 +135,19 @@
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
+![Recoil](https://img.shields.io/badge/Recoil-black.svg?style=for-the-badge&logo=Recoil&logoColor=white)
 
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-### ⚙ 기술 스택
+<br />
 
-- 프론트 : HTML,SCSS,React, react-bootstrap, Firebase
-- 배포 : AWS, Docker, Nginx, IaC(Terraform, Ansible), Freenom
+## ⚙ 기술 스택
+
+- 프론트 : HTML,SCSS,React, react-hook-form
+- 백엔드 : Firebase
+- 상태관리 : Recoil
+- 배포 : vercel
 - 협업관리 : Notion, github
 - 툴 : Adobe Photoshop, Adobe Illustrator, Figma,
+<hr />
