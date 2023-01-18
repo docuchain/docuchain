@@ -1,0 +1,95 @@
+.Header {
+  background: #f4f7ff;
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.6);
+
+  & .leftA {
+    min-width: 600px;
+    margin-left: 80px;
+
+    & .headerTitle {
+      color: #2f2f2f;
+      font-size: 1.8rem;
+      font-weight: 600;
+      float: left;
+    }
+  }
+  & .rightA {
+    margin-right: 80px;
+    min-width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    & .searchBar {
+      & input {
+        padding: none;
+        height: 32px;
+        width: 280px;
+        background: white;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0px 2px 6px 0px rgba(204, 204, 204, 0.7);
+        text-indent: 14px;
+      }
+      & .icon1 {
+        color: #6d6d6d;
+        width: 20px;
+        height: 20px;
+        transform: translate(0, 2px);
+      }
+    }
+    & Button {
+      margin-left: 36px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: white;
+      border: none;
+      box-shadow: 0px 2px 6px 0px rgba(204, 204, 204, 0.7);
+
+      & .icon2 {
+        color: #6d6d6d;
+        width: 20px;
+        height: 20px;
+        transform: translate(0.5px, 1.5px);
+      }
+      & .icon3 {
+        color: #6d6d6d;
+        width: 20px;
+        height: 20px;
+        transform: translate(0.5px, 1.5px);
+      }
+    }
+    & .searchIconBox {
+      margin: 0 0 0 10px;
+      transform: translate(0, 3px);
+    }
+  }
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 1.9rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+//Black
+.headerTitleBlack {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  float: left;
+}

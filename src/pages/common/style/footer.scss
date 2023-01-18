@@ -1,0 +1,89 @@
+.Footer {
+  min-width: 1200px;
+  height: 6vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: inset -10px 0px 15px -5px rgba(0, 0, 0, 0.15);
+  background-color: #f4f7ff;
+  color: #6d6d6d;
+
+  & .footerLogoImg {
+    width: 150px;
+    height: 50px;
+    background-size: 90px;
+    background-image: url("../../asset/imgs/docuChain_logo.png");
+    background-repeat: no-repeat;
+  }
+  & .footerSubImgBox {
+    width: 8vw;
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .footerSubImg {
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      background-size: 50px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    & .footerSub1 {
+      background-image: url("../../asset/imgs/footer_mark1.png");
+    }
+    & .footerSub2 {
+      background-image: url("../../asset/imgs/footer_mark2.png");
+    }
+    & .footerSub3 {
+      background-image: url("../../asset/imgs/footer_mark3.png");
+    }
+  }
+}
+
+//Black
+
+.FooterBlack {
+  min-width: 1200px;
+  height: 6vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: inset -10px 0px 15px -5px rgba(0, 0, 0, 0.15);
+  background-color: #151c2c;
+  color: #6d6d6d;
+
+  & .footerLogoImg {
+    width: 150px;
+    height: 50px;
+    background-size: 90px;
+    background-image: url("../../asset/imgs/docuChain_logo.png");
+    background-repeat: no-repeat;
+  }
+  & .footerSubImgBox {
+    width: 8vw;
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .footerSubImg {
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      background-size: 50px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    & .footerSub1 {
+      background-image: url("../../asset/imgs/footer_mark1.png");
+    }
+    & .footerSub2 {
+      background-image: url("../../asset/imgs/footer_mark2.png");
+    }
+    & .footerSub3 {
+      background-image: url("../../asset/imgs/footer_mark3.png");
+    }
+  }
+}

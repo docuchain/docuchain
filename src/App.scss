@@ -1,0 +1,46 @@
+/* common */
+@import "./pages/common/style/navbar.scss";
+@import "./pages/common/style/hedaer.scss";
+@import "./pages/common/style/footer.scss";
+@import "./pages/common/style/contents.scss";
+/* dash */
+
+.App {
+}
+
+/* pageRouterApp */
+a {
+  color: black;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+.pageRouterWrap {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+.pageRouterWrap--left {
+  min-width: 280px;
+  font-size: 1.5rem;
+  background: #1653da;
+}
+.pageRouterWrap--right {
+  width: 86%;
+}
+.pageRouterWrap--right--header {
+  height: 8vh;
+}
+
+.pageRouterWrap--right--footer {
+  height: 8vh;
+}
+
+//Black
+.pageRouterWrapBlack--left {
+  min-width: 280px;
+  font-size: 1.5rem;
+  background: #1e2235;
+}

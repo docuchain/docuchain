@@ -1,0 +1,15 @@
+.boxShadowNonePadding {
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px rgba(204, 204, 204, 0.2);
+  border-radius: 20px;
+  padding: 8px 0;
+}
+
+.Chart {
+  font-size: 0.7rem;
+  padding: 0px;
+  & .chart_trans_title {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+}

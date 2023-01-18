@@ -1,0 +1,60 @@
+/* trans index */
+.TransContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.trans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.transTitle {
+  border: 1px solid blue;
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.transChartContainer {
+  display: flex;
+  margin-bottom: 40px;
+}
+.transdetailwrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.transDetailDataModalContainer {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  height: 800px;
+  align-items: center;
+}
+.transDetailDataModalContainer .transDetailDataModal {
+  border: 1px solid green;
+  width: 800px;
+  height: 400px;
+}
+/* transDetailTable */
+.transDetailTable {
+  border: 1px solid blue;
+}
+
+/* transDetailTitle */
+.transDetailTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.transDetailTitleContainer {
+  min-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.transDetailTitleRight {
+  display: flex;
+  align-items: center;
+}
