@@ -48,19 +48,14 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 
 ## 📑 초안 / 프로젝트 레이아웃
 
-💡 Menu Structure ( 메뉴구조 )
-<img src="https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg"  width="30%"/>
+💡 Menu Structure ( 메뉴구조 )<br>
+<img src="https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg"  width="60%"/>
 
-![Group 84 (2)](https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg)
+💡 Flowchart ( 플로우차트 ) / 대시보드, 블록, 트랜잭션<br>
+<img src="https://user-images.githubusercontent.com/47172522/212784787-b66d87c3-afb9-42f0-b9c7-9e24b593a438.jpg"  width="60%"/>
 
-💡 Flowchart ( 플로우차트 ) / 대시보드, 블록, 트랜잭션
-
-![Group 85](https://user-images.githubusercontent.com/47172522/212784787-b66d87c3-afb9-42f0-b9c7-9e24b593a438.jpg)
-
-💡 Flowchart ( 플로우차트 ) / 노드, 서비스, 사용자정보
-
-![Group 88](https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg)
-
+💡 Flowchart ( 플로우차트 ) / 노드, 서비스, 사용자정보<br>
+<img src="https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg"  width="60%"/>
 <br>
 
 ## 📁 폴더 구조
@@ -154,9 +149,6 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 <br>
 <br>
 <hr />
-<br>
 
 ### 🔗 프로젝트 링크 : https://docuchain.vercel.app/
-<br>
 
-#### 감사합니다 🙏🏻
