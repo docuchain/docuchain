@@ -20,6 +20,7 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 ## 🔗 배포 링크 / 프로젝트 결과물
 - 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
 <br>
+
 #### ✨ 로그인 기능(권한에 따른 데이터 차등 접근 설정)
 ![1  로그인 기능](https://user-images.githubusercontent.com/65056196/213118835-9b3514da-293d-4f49-819c-cc66d791d09c.gif)
 <br>
@@ -48,6 +49,7 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 ## 📑 초안 / 프로젝트 레이아웃
 
 💡 Menu Structure ( 메뉴구조 )
+<img src="https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg"  width="30%"/>
 
 ![Group 84 (2)](https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg)
 
@@ -153,6 +155,8 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 <br>
 <hr />
 <br>
+
 ### 🔗 프로젝트 링크 : https://docuchain.vercel.app/
 <br>
+
 #### 감사합니다 🙏🏻
