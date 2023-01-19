@@ -128,23 +128,23 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 <br>
 
 ## 🛠 사용 기술
-##### FE
+#### FE
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 <br>
-##### Frameworks & Platforms 
+#### Frameworks & Platforms 
 ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 ![Recoil](https://img.shields.io/badge/Recoil-black.svg?style=for-the-badge&logo=Recoil&logoColor=white)
-##### DB & BE
+#### DB & BE
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 <br>
-##### cooperataion tools
+#### cooperataion tools
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
@@ -152,6 +152,7 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 <br>
 <br>
 <hr />
+
 ### 🔗 &nbsp; [👉 프로젝트를 자세히 보고싶다면 클릭하세요!](https://docuchain.vercel.app/)
 
 
