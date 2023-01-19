@@ -57,7 +57,7 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 💡 Flowchart ( 플로우차트 ) / 노드, 서비스, 사용자정보<br>
 <img src="https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg"  width="60%"/>
 <br>
-
+<br>
 ## 📁 폴더 구조
 
 🗃 Project Folder
