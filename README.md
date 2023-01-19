@@ -20,13 +20,12 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 ## 🔗 배포 링크 / 프로젝트 결과물
 - 개발기간 : 2022년 12월 19일 ~ 2023년 01월 19일
 <br>
-
 #### ✨ 로그인 기능(권한에 따른 데이터 차등 접근 설정)
-![1  로그인 기능](https://user-images.githubusercontent.com/65056196/213118835-9b3514da-293d-4f49-819c-cc66d791d09c.gif)
+    ![1  로그인 기능](https://user-images.githubusercontent.com/65056196/213118835-9b3514da-293d-4f49-819c-cc66d791d09c.gif)
 <br>
 
 #### ✨ 다크 모드 구현
-![3 다크모드](https://user-images.githubusercontent.com/65056196/213120791-bc22ae2f-2ce0-43e7-a735-182f3fdf08aa.gif)
+    ![3 다크모드](https://user-images.githubusercontent.com/65056196/213120791-bc22ae2f-2ce0-43e7-a735-182f3fdf08aa.gif)
 <br>
 
 👇 더 자세히 보고싶다면, 하단 링크를 클릭해주세요!
@@ -48,17 +47,17 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 
 ## 📑 초안 / 프로젝트 레이아웃
 
-💡 Menu Structure ( 메뉴구조 )
+    💡 Menu Structure ( 메뉴구조 )
 
-![Group 84 (2)](https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg)
+    ![Group 84 (2)](https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg)
 
-💡 Flowchart ( 플로우차트 ) / 대시보드, 블록, 트랜잭션
+    💡 Flowchart ( 플로우차트 ) / 대시보드, 블록, 트랜잭션
 
-![Group 85](https://user-images.githubusercontent.com/47172522/212784787-b66d87c3-afb9-42f0-b9c7-9e24b593a438.jpg)
+    ![Group 85](https://user-images.githubusercontent.com/47172522/212784787-b66d87c3-afb9-42f0-b9c7-9e24b593a438.jpg)
 
-💡 Flowchart ( 플로우차트 ) / 노드, 서비스, 사용자정보
+    💡 Flowchart ( 플로우차트 ) / 노드, 서비스, 사용자정보
 
-![Group 88](https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg)
+    ![Group 88](https://user-images.githubusercontent.com/47172522/212784984-51a556fd-db29-4f57-935a-b1a3dc992f3f.jpg)
 
 <br>
 
@@ -66,55 +65,55 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 
 🗃 Project Folder
 
-```bash
-📁docuchain
-├── 📁vscode
-├── 📁node_modules
-├── 📁public
-└── 📁src
-    ├── 📁apis
-    ├── 📁lib
-    ├── 📁pages
-    │    ├── 📁asset
-    │    ├── 📁block
-    │    │     ├── 📁components
-    │    │     ├── 📁style
-    │    │     └── 📁utils
-    │    ├── 📁common
-    │    │     ├── 📁components
-    │    │     ├── 📁style
-    │    │     └── 📁utils
-    │    ├── 📁dashboard
-    │    │     ├── 📁dist
-    │    │     └── 📁utils
-    │    ├── 📁myinfo
-    │    │     ├── 📁components
-    │    │     └── 📁utils
-    │    ├── 📁node
-    │    │     ├── 📁components
-    │    │     └── 📁utils
-    │    ├── 📁service
-    │    │     ├── 📁components
-    │    │     ├── 📁style
-    │    │     └── 📁utils
-    │    ├── 📁trans
-    │    │     ├── 📁components
-    │    │     ├── 📁style
-    │    │     └── 📁utils
-    │    └──📁usermanaging
-    │          ├── 📁components
-    │          └── 📁utils
-    ├── 📁recoil
-    └── 📁routes
+    ```bash
+    📁docuchain
+    ├── 📁vscode
+    ├── 📁node_modules
+    ├── 📁public
+    └── 📁src
+        ├── 📁apis
+        ├── 📁lib
+        ├── 📁pages
+        │    ├── 📁asset
+        │    ├── 📁block
+        │    │     ├── 📁components
+        │    │     ├── 📁style
+        │    │     └── 📁utils
+        │    ├── 📁common
+        │    │     ├── 📁components
+        │    │     ├── 📁style
+        │    │     └── 📁utils
+        │    ├── 📁dashboard
+        │    │     ├── 📁dist
+        │    │     └── 📁utils
+        │    ├── 📁myinfo
+        │    │     ├── 📁components
+        │    │     └── 📁utils
+        │    ├── 📁node
+        │    │     ├── 📁components
+        │    │     └── 📁utils
+        │    ├── 📁service
+        │    │     ├── 📁components
+        │    │     ├── 📁style
+        │    │     └── 📁utils
+        │    ├── 📁trans
+        │    │     ├── 📁components
+        │    │     ├── 📁style
+        │    │     └── 📁utils
+        │    └──📁usermanaging
+        │          ├── 📁components
+        │          └── 📁utils
+        ├── 📁recoil
+        └── 📁routes
 
 
-.docu.json
-.package-lock.json
-.package.json
-.yarn.lock
-.gitignore
-.env.local
-```
+    .docu.json
+    .package-lock.json
+    .package.json
+    .yarn.lock
+    .gitignore
+    .env.local
+    ```
 
 <br>
 
@@ -126,7 +125,7 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 - 배포 : vercel
 - 협업관리 : Notion, github
 - 툴 : Adobe Photoshop, Adobe Illustrator, Figma,
-<hr />
+<br>
 
 ## 🛠 사용 기술
 ##### FE
@@ -152,3 +151,8 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 <br>
 
+<hr />
+
+### 🔗 프로젝트 링크 : https://docuchain.vercel.app/
+
+#### 감사합니다 🙏🏻
