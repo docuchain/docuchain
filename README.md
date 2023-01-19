@@ -47,7 +47,8 @@ SeSAC (청년취업사관학교) 에서 진행 된 기업연계 프로젝트 (�
 <br>
 
 ## 📑 초안 / 프로젝트 레이아웃
-
+👉 [Figma - docuchain Flow chart ](https://www.figma.com/file/SiCFUx7hU9z6FnP2GyYpW1/%EB%8B%A4%ED%81%90%EC%B2%B4%EC%9D%B8---%EB%94%94%EC%A7%80%ED%84%B81%ED%8C%80(%ED%96%89%EB%B3%B5%ED%9A%8C%EB%A1%9C)%2F-%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%B1%A0%ED%8A%B8?node-id=0%3A1&t=5GQr59NwagoBwkXk-0)
+<br>
 💡 Menu Structure ( 메뉴구조 )<br>
 <img src="https://user-images.githubusercontent.com/47172522/212784521-92486105-86b2-4d1b-acee-88eccb3025e0.jpg"  width="60%"/>
 
