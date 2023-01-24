@@ -60,7 +60,6 @@ const NodeTable = () => {
     if (nodeTableData.length > 0) {
       setNodeTableDataList(nodeTableData);
     } else {
-      console.log("nodeTableData length : 0");
     }
   }, [nodeTableData]);
 

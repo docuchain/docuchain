@@ -25,7 +25,7 @@ const SearchBar = () => {
   const fetchData = async () => {
     try {
       const blockRes = await fetch(
-        "https://docuchain-a7ae3-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
+        "https://docuchain-d108b-default-rtdb.asia-southeast1.firebasedatabase.app/docu.json"
       );
 
       const blockResJson = await blockRes.json();

@@ -27,14 +27,8 @@ const MyPage = () => {
   const isBlack = useRecoilValue(getTheme);
   const [isPassword, setIsPassword] = useState(); // 비밀번호, 비밀번호 재확인 같은지여부확인
   const userData = collection(dbService, "user");
-  //오늘 날짜 저장
-  // const today = new Date();
-  // const getToday = `${today.getFullYear()}-${
-  //   today.getMonth() + 1
-  // }-${today.getDate()}`;
 
   useEffect(() => {
-    console.log(nowUser.email);
     getCurrentUserInfo();
   }, []);
   //비밀번호 변경함수
@@ -53,27 +47,16 @@ const MyPage = () => {
           console.log(error);
         });
     }
-    console.log(data);
     console.log(nowUser);
   };
 
   //현재 로그인된 유저정보 저장
   const getCurrentUserInfo = async () => {
-    // await userValue.forEach((ele) => {
-    //   if (ele.email === nowUser.email) {
-    //     console.log(ele);
-    //     setUser(ele);
-    //   } else {
-    //     console.log(ele.email);
-    //     console.log(nowUser.email);
-    //   }
-    // });
     const data = query(userData, where("email", "==", nowUser.email));
     const querySnapshot = await getDocs(data);
     querySnapshot.forEach((item) => {
       setUser(item.data());
     });
-    console.log(user);
   };
   const onError = (error) => {
     console.log(error);

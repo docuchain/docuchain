@@ -27,7 +27,6 @@ function NtwTransSpeed(props) {
 
     return (avgResult / filterNetWork.length).toFixed(2);
   };
-  console.log(countFunc(" 10:", "A"));
 
   const avgFunc = (a) => {
     const result2 = data.filter((user) => user.apiKinds.includes(a));

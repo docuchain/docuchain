@@ -15,20 +15,12 @@ function NtwBlockTime(props) {
   const isDark = useRecoilValue(getTheme);
   const { data, fetchdata } = props;
 
-  // useEffect(() => {
-  //   fetchdata();
-  // }, []);
-
   const countFunc = (a, b) => {
     const filterTime = data.filter((user) => user.timeStamp.includes(a));
     const filterNetWork = filterTime.filter((user) => user.network.includes(b));
-    // const avgResult = filterNetWork
-    //   .map((item) => item.TPS)
-    //   .reduce((prev, curr) => prev + curr, 0);
 
     return (60 / filterNetWork.length).toFixed(2);
   };
-  console.log(countFunc(" 10:", "A"));
 
   const avgFunc = (a) => {
     const result2 = data.filter((user) => user.apiKinds.includes(a));

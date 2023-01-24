@@ -73,7 +73,6 @@ const AddUser = () => {
         newUser.email,
         newUser.password
       );
-      console.log(user);
     } catch (error) {
       console.log(error.message);
     }
@@ -96,8 +95,6 @@ const AddUser = () => {
       console.log(data);
     }
 
-    console.log(isEmail);
-    console.log(isPassword);
     getUsers();
   }, []);
 
