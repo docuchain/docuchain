@@ -12,7 +12,6 @@ function ActiveNtw(props) {
 
     return filterService.length;
   };
-  console.log(countFunc("A", "A"));
 
   const avgFunc = (a) => {
     const result2 = data.filter((user) => user.apiKinds.includes(a));

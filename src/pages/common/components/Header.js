@@ -13,14 +13,12 @@ const Header = () => {
   const [headerName, setHeaderName] = useState();
   let location = useLocation();
   useEffect(() => {
-    console.log(location);
     headerNameChange();
   });
   const [themeMode, setThemeMode] = useRecoilState(theme);
   const isDark = useRecoilValue(getTheme);
 
   const themeModeHandler = () => {
-    console.log(themeMode);
     setThemeMode((prev) => !prev);
   };
 

@@ -8,18 +8,17 @@ import { useRecoilValue, useResetRecoilState } from "recoil";
 import { userEmail, userInfo } from "../../../recoil/atom";
 import { List } from "@mui/material";
 import "../style/userlogo.scss";
-import { getUserInfo } from "../../../recoil/selector";
+import { getUserInfo, getUserEmail } from "../../../recoil/selector";
 const UserLogo = () => {
   const userValue = useRecoilValue(getUserInfo);
   const resetUser = useResetRecoilState(userInfo);
   const resetEmail = useResetRecoilState(userEmail);
   const [isOpen, setMenu] = useState(false); // toggle on off boolean
   const [toggleState, setToggleState] = useState(); //user logo toggle상태저장
-  const nowUser = authService.currentUser;
-
+  const recoilUserEmail = useRecoilValue(getUserEmail);
   useEffect(() => {
     toggleChange();
-  }, [userValue.email]);
+  }, [recoilUserEmail]);
 
   //로그인 상태에 따른 toggle변화
   const toggleChange = () => {
@@ -29,7 +28,7 @@ const UserLogo = () => {
         //로그인 상태일때
         if (user) {
           //관리자 로그인 할 경우
-          if (userValue.email === "test@test.com") {
+          if (recoilUserEmail === "test@test.com") {
             setToggleState(
               <>
                 <List className="logoList">

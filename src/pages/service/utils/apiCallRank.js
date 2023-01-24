@@ -9,13 +9,11 @@ function ApiCallRank(props) {
     const result1 = data.filter((user) => user.serviceName.includes(a));
     return result1.length;
   };
-  console.log(countFunc("A서비스"));
   const avgFunc = (a) => {
     const result2 = data.filter((user) => user.apiKinds.includes(a));
 
     return result2.length;
   };
-  console.log(avgFunc("인증서 등록"));
   const Data = [
     {
       time: "10:00",

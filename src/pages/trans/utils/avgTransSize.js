@@ -15,7 +15,6 @@ function AvgTransSize(props) {
     const result1 = data.filter((user) => user.timeStamp.includes(a));
     return result1.length;
   };
-  console.log(countFunc(" 10:"));
   const avgFunc = (a) => {
     const result2 = data.filter((user) => user.timeStamp.includes(a));
 

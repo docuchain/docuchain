@@ -28,9 +28,6 @@ const PageRouter = () => {
   const isDark = useRecoilValue(getTheme);
   const uidValue = useRecoilValue(getUserUid);
   const userValue = useRecoilValue(getUserInfo);
-  useEffect(() => {
-    console.log(userValue);
-  });
 
   return (
     <div className="pageRouterWrap">
